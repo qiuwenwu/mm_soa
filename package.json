@@ -1,0 +1,43 @@
+{
+	"name": "mm_soa",
+	"version": "1.0.0",
+	"description": "这是超级美眉web万网互联服务端框架。",
+	"main": "index.js",
+	"scripts": {
+		"test": "./node_modules/.bin/cross-env NODE_ENV=development PORT=5000 nodemon demo/test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/qiuwenwu/mm_soa.git"
+	},
+	"keywords": [
+		"server",
+		"soa",
+		"app",
+		"os",
+		"web",
+		"rpc",
+		"grpc",
+		"websocket",
+		"cmd",
+		"函数式",
+		"系统",
+		"网站",
+		"服务端",
+		"公众号",
+		"框架"
+	],
+	"author": "邱文武",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/qiuwenwu/mm_soa/issues"
+	},
+	"homepage": "https://github.com/qiuwenwu/mm_soa#readme",
+	"dependencies": {
+		"koa": "^2.11.0",
+		"koa-body": "^4.1.1",
+		"koa-compress": "^4.0.1",
+		"koa-websocket": "^6.0.0",
+		"mm_expand": "^1.4.5"
+	}
+}
