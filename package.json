@@ -38,6 +38,7 @@
 		"koa-body": "^4.1.1",
 		"koa-compress": "^4.0.1",
 		"koa-websocket": "^6.0.0",
-		"mm_expand": "^1.4.5"
+		"mm_expand": "^1.4.7",
+		"mm_logs": "^1.0.5"
 	}
 }

@@ -1,7 +1,7 @@
 const cluster = require('cluster');
 const Koa = require('koa');
-const numCPUs = require('os').cpus().length;
-const Base = require('./base.js');
+const { Base } = require('mm_expand');
+const startup = require('./startup.js');
 
 /**
  * SOA服务类
@@ -10,15 +10,234 @@ class Soa extends Base {
 	/**
 	 * 构造函数
 	 * @param {Object} config 配置参数
-	 * @param {Object} options 附加选项
 	 */
-	constructor(config, options) {
-		super(Object.assign({
+	constructor(config) {
+		super({
+			/**
+			 * web服务配置
+			 * @type {Object}
+			 */
 			web: {
-				host: '0.0.0.0',
-				port: 5000
+				/**
+				 * 监听地址
+				 * @type {String}
+				 */
+				host: "0.0.0.0",
+				/**
+				 * 监听端口
+				 * @type {Number}
+				 */
+				port: 5000,
+				/**
+				 * 是否输出操作日志
+				 * @type {Boolean}
+				 */
+				log: false,
+				/**
+				 * 进程数, 0为根据CPU核心数创建线程数
+				 * @type {Number}
+				 */
+				process_num: 0
+			},
+			/**
+			 * 路径配置
+			 * @type {Object}
+			 */
+			path: {
+				/**
+				 * 程序根目录路
+				 * @type {String}
+				 */
+				root: $.runPath,
+				/**
+				 * 应用根目录
+				 * @type {String}
+				 */
+				app: "./app".fullname(),
+				/**
+				 * 静态文件跟目录
+				 * @type {String}
+				 */
+				static: './bin/static'.fullname($.binPath)
+			},
+			/**
+			 * 系统项
+			 * @type {Object}
+			 */
+			sys: {
+				/**
+				 * 服务端名称
+				 * @type {String}
+				 */
+				name: "mm",
+				/**
+				 * 服务端中文名
+				 * @type {String}
+				 */
+				title: "超级美眉",
+				/**
+				 * 系统使用的语言
+				 * @type {String}
+				 */
+				lang: "zh",
+				/**
+				 * 缓存方式, 选填 redis, cache, memory
+				 * @type {String}
+				 */
+				cache: "redis",
+				/**
+				 * 数据存储方式
+				 * @type {String}
+				 */
+				db: "mysql",
+				/**
+				 * 是否启用定时任务服务
+				 * @type {Boolean}
+				 */
+				task: false,
+				/**
+				 * 是否启用压缩
+				 * @type {Boolean}
+				 */
+				compress: false,
+				/**
+				 * 是否启用静态文件处理器
+				 * @type {Boolean}
+				 */
+				static: true,
+				/**
+				 * 是否引用com函数
+				 * @type {Boolean}
+				 */
+				com: true,
+				/**
+				 * 是否启用websocket通讯
+				 * @type {Boolean}
+				 */
+				websocket: true,
+				/**
+				 * 使用外事件
+				 * @type {Boolean}
+				 */
+				event: true
+			},
+			/**
+			 * 外缓存配置
+			 */
+			redis: {
+				/**
+				 * 服务器地址
+				 * @type {String}
+				 */
+				host: "127.0.0.1",
+				/**
+				 * 端口号
+				 * @type {Number}
+				 */
+				port: 6379,
+				/**
+				 * 密码
+				 * @type {String}
+				 */
+				password: "asd123",
+				/**
+				 * 选用的数据库0-9
+				 * @type {Number}
+				 */
+				database: 0,
+				/**
+				 * 键前缀
+				 * @type {String}
+				 */
+				prefix: "mm_"
+			},
+			/**
+			 * Mysql数据库存储配置
+			 */
+			mysql: {
+				/**
+				 * 服务器地址
+				 * @type {String}
+				 */
+				host: "127.0.0.1",
+				/**
+				 * 端口号
+				 * @type {Number}
+				 */
+				port: 3306,
+				/**
+				 * 用户名
+				 * @type {String}
+				 */
+				user: "root",
+				/**
+				 * 密码
+				 * @type {String}
+				 */
+				password: "asd123",
+				/**
+				 * 数据库名称
+				 * @type {String}
+				 */
+				database: "mm"
+			},
+			/**
+			 * mongo数据库存储配置
+			 */
+			mongodb: {
+				/**
+				 * 服务器地址
+				 * @type {String}
+				 */
+				host: "localhost",
+				/**
+				 * 端口号
+				 * @type {Number}
+				 */
+				port: 27017,
+				/**
+				 * 数据库名
+				 * @type {String}
+				 */
+				database: "mm",
+				/**
+				 * 用户名
+				 * @type {String}
+				 */
+				user: "admin",
+				/**
+				 * 密码
+				 * @type {String}
+				 */
+				password: "asd123"
+			},
+			/**
+			 * 重定向
+			 */
+			redirect: {
+				// 将m.开头的域名指向到/phone/路由路径
+				"m.*": "/phone/",
+				"pad.*": "/pad/",
+				"tv.*": "/tv/"
+			},
+			/**
+			 * 代理
+			 */
+			proxy: {
+				// 转发到web socket服务器
+				webscoket: {
+					path: ["/ws/*"],
+					com: ["*"]
+				},
+				// 转发到开发者服务器
+				dev: {
+					path: ["/dev/*", "/api/dev/*"],
+					com: ["task", "app"]
+				}
 			}
-		}, config), options);
+		});
+
+		this.set_config(config, {});
 	}
 }
 
@@ -29,147 +248,65 @@ class Soa extends Base {
  * @return {Object} 返回执行结果
  */
 Base.prototype.run_main = async function(ctx, next) {
-	console.log('执行了');
-	this.worker_req('req', "你好啊", {
+	var body = await $.worker.req('config', {
 		req: ctx.request
 	});
-};
 
-/**
- * 主进程请求消息(主要)
- * @param {Object} method 方法名
- * @param {Object} param 参数
- * @param {Object} other 其他参数
- * @return {Object} 返回执行结果
- */
-Base.prototype.master_req_main = async function(method, param, other) {
-	console.log('请求了');
-	// 通知主进程接收到了请求。
-	return await process.send({
-		method,
-		param,
-		other
-	});
+	if (body) {
+		ctx.status = 200;
+		ctx.body = JSON.stringify(body);
+	}
 };
-
-/**
- * 主进程请求消息
- * @param {Object} method 方法名
- * @param {Object} param 参数
- * @param {Object} other 其他参数
- * @return {Object} 返回执行结果
- */
-Base.prototype.master_req = async function(method, param, other) {
-	return await this.do('master_req', method, param, other);
-};
-
-/**
- * 主进程响应消息(主要)
- * @param {Object} ret 响应结果
- * @return {Object} 返回执行结果
- */
-Base.prototype.master_res_main = async function(ret) {
-	console.log('响应了');
-	master_req.send(ret);
-};
-
-/**
- * 主进程响应消息
- * @param {Object} ret 响应结果
- * @return {Object} 返回执行结果
- */
-Base.prototype.master_res = async function(ret) {
-	return await this.do('master_res', ret);
-};
-
-/**
- * 工作进程请求消息(主要)
- * @param {Object} method 方法名
- * @param {Object} param 参数
- * @param {Object} other 其他参数
- * @return {Object} 返回执行结果
- */
-Base.prototype.worker_req_main = async function(method, param, other) {
-	console.log('worker请求了');
-	// 通知主进程接收到了请求。
-	process.send({
-		method,
-		param,
-		other
-	});
-};
-
-/**
- * 工作进程请求消息
- * @param {Object} method 方法名
- * @param {Object} param 参数
- * @param {Object} other 其他参数
- * @return {Object} 返回执行结果
- */
-Base.prototype.worker_req = async function(method, param, other) {
-	return await this.do('worker_req', method, param, other);
-};
-
-/**
- * 工作进程响应消息(主要)
- * @param {Object} method 方法名
- * @param {Object} param 参数
- * @param {Object} other 其他参数
- * @return {Object} 返回执行结果
- */
-Base.prototype.worker_res_main = async function(name, param, other) {
-	console.log('响应了');
-	console.log(name, param, other);
-	worker.send('你好');
-};
-
-/**
- * 工作进程响应消息
- * @param {Object} method 方法名
- * @param {Object} param 参数
- * @param {Object} other 其他参数
- * @return {Object} 返回执行结果
- */
-Base.prototype.worker_res = async function(method, param, other) {
-	return await this.do('worker_res', method, param, other);
-};
-
 
 /**
  * 初始化(主要)
  */
 Soa.prototype.init_main = function() {
+	// 工作进程可以共享任何 TCP 连接。在这种情况下，它是一个 HTTP 服务器。
+	var {
+		port,
+		host,
+		process_num,
+	} = this.config.web;
+
 	if (cluster.isMaster) {
-		console.log(`主进程 ${process.pid} 正在运行`);
+		// 获取要开展的进程数
+		var len = process_num || require('os').cpus().length;
+		$.log.info('欢迎使用' + this.config.sys.title, `访问地址 http://${host}:${port}`);
+		// console.log(`主进程${process.pid}: 正在运行...`);
 
 		// 衍生工作进程。
-		for (let i = 0; i < numCPUs; i++) {
+		for (let i = 0; i < len; i++) {
 			cluster.fork();
 		}
-
 		for (const id in cluster.workers) {
-			cluster.workers[id].on('message', (msg) => {
-				this.master_res(msg);
+			var o = cluster.workers[id];
+			// 监听子进程推送来的消息
+			o.on('message', (data) => {
+				$.master.handle(data);
 			});
 		}
 
 		cluster.on('fork', (worker) => {
-			console.log('工作进程已关闭:', worker.isDead());
+			// console.log(`工作进程${worker.process.pid}: 启动完毕！`);
+			// console.log('工作进程已关闭:', worker.isDead());
 		});
 
-		cluster.on('exit', (worker, code, signal) => {
-			console.log('工作进程已关闭:', worker.isDead());
-		});
+		// cluster.on('exit', (worker, code, signal) => {
+		// 	console.log('工作进程已关闭:', worker.isDead());
+		// });
+
+		$.master.cluster = cluster;
 	} else if (cluster.isWorker) {
-		var app = new Koa();
-		app.use((ctx, next) => {
-			this.run(ctx, next);
+		// 监听主进程推送来的消息
+		process.on('message', (data) => {
+			$.worker.handle(data);
 		});
-		// 工作进程可以共享任何 TCP 连接。在这种情况下，它是一个 HTTP 服务器。
-		var {
-			port,
-			host
-		} = this.config.web;
+		var app = new Koa();
+		app.use(async (ctx, next) => {
+			await this.run(ctx, next);
+		});
+
 
 		app.listen(port, host);
 	}

@@ -35,6 +35,9 @@ const {
 	createDecipheriv
 } = require('crypto');
 
+const Base = require('./base.js');
+const Lang = require('./lang.js');
+
 /**
  * @type {String}
  */
@@ -500,7 +503,11 @@ function keys(obj, file) {
  * @property {Function(Object):String} info 查询对象明细
  */
 if (typeof($) === "undefined") {
-	global.$ = {
+	global.$ = Object.assign(new Base(), {
+		// 基础类
+		Base,
+		// 语言包类
+		Lang,
 		// 数据连接池, 用于存储有关数据库的操作类
 		pool: {},
 		// 任务池, 用于存储定时任务操作类
@@ -521,17 +528,6 @@ if (typeof($) === "undefined") {
 			session_id: "mm:uuid",
 			user_id: "user_id",
 			token: "x-auth-token"
-		},
-		/**
-		 * @description 语言包, 用于全局的语言替换
-		 * @property {String} now = [chinese|english] 当前语言
-		 * @property {Object} chinese 中文语言包
-		 * @property {Object} english 英文语言包
-		 */
-		lang: {
-			now: "chinese",
-			chinese: {},
-			english: {}
 		},
 		// 当前系统路径使用的斜杠
 		slash: slash,
@@ -563,7 +559,7 @@ if (typeof($) === "undefined") {
 		keys: keys,
 		// 查询对象明细
 		info: info
-	};
+	});
 }
 
 /* == 数字原型函数 == */
@@ -2541,4 +2537,90 @@ if (typeof($) === "undefined") {
 	}
 
 	$.prop = prop;
+	
+	/**
+	 * @description 语言包, 用于全局的语言替换
+	 * @property {String} now = [chinese|english] 当前语言
+	 * @property {Object} chinese 中文语言包
+	 * @property {Object} english 英文语言包
+	 */
+	$.lang = new Lang({
+		zh: {
+			name: "超级美眉"
+		},
+		en: {
+			name: "MM"
+		}
+	});
+	
+	/**
+	 * 运行代码
+	 * @param {String} code 代码字符串
+	 * @param {Object} cm common公共对象
+	 * @param {Object} em event事件对象
+	 * @param {Object} qm quest任务对象
+	 * @param {Object} rm reactor反应堆对象
+	 * @return {String} 返回运行结果
+	 */
+	$.run_code = async function(code, cm, em = {}, qm = {}, rm = {}){
+		var func_str = `async function run_code() {
+			var body;
+			
+			${code}
+			
+			return body;
+		}`;
+		eval(func_str);
+		return await run_code();
+	};
+	
+	/**
+	 * 运行代码
+	 * @param {String} code 代码字符串
+	 * @param {Object} cm common公共对象
+	 * @param {Object} em event事件对象
+	 * @param {Object} qm quest任务对象
+	 * @param {Object} rm reactor反应堆对象
+	 * @return {String} 返回运行结果
+	 */
+	$.run_srcipt = async function(file, cm, em = {}, qm = {}, rm = {}){
+		if(file.hasFile()){
+			return await $.run_code(file.loadText(), cm, em, qm, rm);
+		}
+		else {
+			return undefined;
+		}
+	};
+	
+	/**
+	 * 加载模块
+	 * @param {String} file 文件路径
+	 */
+	$.load = function(file){
+		return require(file);
+	};
+	
+	/**
+	 * 卸载模块
+	 * @param {String} file 文件路径
+	 */
+	$.unload = function(file){
+		var f = require.resolve(file);
+		delete require.cache[f];
+		return f;
+	};
+	
+	/**
+	 * 重载模块
+	 * @param {String} file 文件路径
+	 */
+	$.reload = function(file){
+		var f = $.unload(file);
+		return $.load(f);
+	};
 })();
+
+module.exports = {
+	Lang,
+	Base
+};

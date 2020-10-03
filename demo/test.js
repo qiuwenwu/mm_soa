@@ -1,11 +1,10 @@
+require('mm_expand');
+$.runPath = __dirname + '/';
 const Soa = require('../index.js');
 
 var soa = new Soa({
 	sys: {
-		name: "soa",
-		func: function(t1){
-			return 'tt' + t1
-		}
+		name: "soa"
 	},
 	list: []
 });
