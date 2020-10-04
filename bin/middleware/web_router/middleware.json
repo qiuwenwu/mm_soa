@@ -6,5 +6,5 @@
 	"type": "web",
 	"process_type": "common_after",
 	"after": true,
-	"sort": 18
+	"sort": 21
 }

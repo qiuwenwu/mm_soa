@@ -1,0 +1,10 @@
+{
+	"name": "web_event",
+	"title": "web路由事件",
+	"description": "用于拓展事件API",
+	"version": "1.0",
+	"type": "web",
+	"process_type": "common_before",
+	"after": true,
+	"sort": 15
+}
