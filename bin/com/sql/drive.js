@@ -297,9 +297,6 @@ Drive.prototype.get_main = async function(db, query, method) {
 	} else {
 		ret = $.ret.list(await db.getSql(query_str, db.orderby, db.field));
 	}
-	if (cg.log) {
-		$.log.debug('查询SQL语句', db.sql)
-	}
 	if (db.error) {
 		$.log.error('查询SQL', db.sql, db.error);
 	}

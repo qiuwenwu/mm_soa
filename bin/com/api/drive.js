@@ -528,7 +528,7 @@ Drive.prototype.runRPC = async function(db, method, query, body) {
 		}
 	}
 	catch (err){
-		$.log.debug(err);
+		$.log.error(err);
 		ret = {
 			error: {
 				code: 500,

@@ -4,6 +4,7 @@
 	"description": "用于拓展web路由的基本功能和事件API",
 	"version": "1.0",
 	"type": "web",
-	"process_type": "common",
-	"sort": 15
+	"process_type": "common_after",
+	"after": true,
+	"sort": 18
 }

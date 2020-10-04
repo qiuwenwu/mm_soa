@@ -1,9 +1,9 @@
 {
-	"name": "web waf",
+	"name": "web_waf",
 	"title": "web防火墙",
 	"description": "用于防止sql注入、脚本注入等",
 	"version": "1.0",
 	"type": "web",
-	"process_type": "common",
+	"process_type": "common_before",
 	"sort": 3
 }

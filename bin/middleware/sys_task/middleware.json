@@ -1,0 +1,9 @@
+{
+	"name": "sys_task",
+	"title": "系统任务",
+	"description": "用于做定时任务，定时执行程序",
+	"version": "1.0",
+	"type": "sys",
+	"process_type": "master",
+	"sort": 21
+}

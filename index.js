@@ -1,11 +1,15 @@
 const cluster = require('cluster');
 const Koa = require('koa');
 $.binPath = __dirname.fullname();
-const { Base } = require('mm_expand');
+const {
+	Base
+} = require('mm_expand');
 const Bin = require('./bin/index.js');
 const startup = require('./startup.js');
 
 var bin = new Bin();
+
+
 /**
  * SOA服务类
  */
@@ -16,47 +20,6 @@ class Soa extends Base {
 	 */
 	constructor(config, server = new Koa()) {
 		super({
-			/**
-			 * web服务配置
-			 * @type {Object}
-			 */
-			web: {
-				/**
-				 * 监听地址
-				 * @type {String}
-				 */
-				host: "0.0.0.0",
-				/**
-				 * 监听端口
-				 * @type {Number}
-				 */
-				port: 5000,
-				/**
-				 * 是否输出操作日志
-				 * @type {Boolean}
-				 */
-				log: false,
-				/**
-				 * 进程数, 0为根据CPU核心数创建线程数
-				 * @type {Number}
-				 */
-				process_num: 0,
-				/**
-				 * 是否启用静态文件处理器
-				 * @type {Boolean}
-				 */
-				static: true,
-				/**
-				 * 使用外事件
-				 * @type {Boolean}
-				 */
-				event: true,
-				/**
-				 * 是否启用压缩
-				 * @type {Boolean}
-				 */
-				compress: false
-			},
 			/**
 			 * 路径配置
 			 * @type {Object}
@@ -88,136 +51,199 @@ class Soa extends Base {
 				 */
 				static: './bin/static'.fullname(__dirname)
 			},
+			"master": {
+				/**
+				 * 系统服务监听地址
+				 * @type {String}
+				 */
+				"host": "0.0.0.0",
+				/**
+				 * 系统服务监听端口
+				 * @type {Number}
+				 */
+				"port": 10001
+			},
+			/**
+			 * web服务配置
+			 * @type {Object}
+			 */
+			"web": {
+				/**
+				 * 监听地址
+				 * @type {String}
+				 */
+				"host": "0.0.0.0",
+				/**
+				 * 监听端口
+				 * @type {Number}
+				 */
+				"port": 5000,
+				/**
+				 * 是否输出操作日志
+				 * @type {Boolean}
+				 */
+				"log": false,
+				/**
+				 * 进程数, 0为根据CPU核心数创建线程数
+				 * @type {Number}
+				 */
+				"process_num": 1,
+				/**
+				 * 是否启用压缩
+				 * @type {Boolean}
+				 */
+				"compress": false,
+				/**
+				 * 是否启用websocket通讯
+				 * @type {Boolean}
+				 */
+				"websocket": true,
+				/**
+				 * 是否启用静态文件处理器
+				 * @type {Boolean}
+				 */
+				"static": true,
+				/**
+				 * 使用外事件
+				 * @type {Boolean}
+				 */
+				"event": true
+			},
 			/**
 			 * 系统项
 			 * @type {Object}
 			 */
-			sys: {
+			"sys": {
 				/**
 				 * 服务端名称
 				 * @type {String}
 				 */
-				name: "mm",
+				"name": "mm",
 				/**
 				 * 服务端中文名
 				 * @type {String}
 				 */
-				title: "超级美眉",
+				"title": "超级美眉",
 				/**
 				 * 系统使用的语言
 				 * @type {String}
 				 */
-				lang: "zh",
+				"lang": "zh",
 				/**
 				 * 缓存方式, 选填 redis, cache, memory
 				 * @type {String}
 				 */
-				cache: "redis",
+				"cache": "redis",
 				/**
 				 * 数据存储方式
 				 * @type {String}
 				 */
-				db: "mysql",
+				"db": "mysql",
+				/**
+				 * 是否引用com函数
+				 * @type {Boolean}
+				 */
+				"com": true,
 				/**
 				 * 是否启用定时任务服务
 				 * @type {Boolean}
 				 */
-				task: false
+				"task": true
 			},
 			/**
 			 * 外缓存配置
 			 */
-			redis: {
+			"redis": {
 				/**
 				 * 服务器地址
 				 * @type {String}
 				 */
-				host: "127.0.0.1",
+				"host": "127.0.0.1",
 				/**
 				 * 端口号
 				 * @type {Number}
 				 */
-				port: 6379,
+				"port": 6379,
 				/**
 				 * 密码
 				 * @type {String}
 				 */
-				password: "asd123",
+				"password": "asd123",
 				/**
 				 * 选用的数据库0-9
 				 * @type {Number}
 				 */
-				database: 0,
+				"database": 0,
 				/**
 				 * 键前缀
 				 * @type {String}
 				 */
-				prefix: "mm_"
+				"prefix": "mm_"
 			},
 			/**
 			 * Mysql数据库存储配置
 			 */
-			mysql: {
+			"mysql": {
 				/**
 				 * 服务器地址
 				 * @type {String}
 				 */
-				host: "127.0.0.1",
+				"host": "127.0.0.1",
 				/**
 				 * 端口号
 				 * @type {Number}
 				 */
-				port: 3306,
+				"port": 3306,
 				/**
 				 * 用户名
 				 * @type {String}
 				 */
-				user: "root",
+				"user": "root",
 				/**
 				 * 密码
 				 * @type {String}
 				 */
-				password: "asd123",
+				"password": "asd123",
 				/**
 				 * 数据库名称
 				 * @type {String}
 				 */
-				database: "mm"
+				"database": "mm"
 			},
 			/**
 			 * mongo数据库存储配置
 			 */
-			mongodb: {
+			"mongodb": {
 				/**
 				 * 服务器地址
 				 * @type {String}
 				 */
-				host: "localhost",
+				"host": "localhost",
 				/**
 				 * 端口号
 				 * @type {Number}
 				 */
-				port: 27017,
+				"port": 27017,
 				/**
 				 * 数据库名
 				 * @type {String}
 				 */
-				database: "mm",
+				"database": "mm",
 				/**
 				 * 用户名
 				 * @type {String}
 				 */
-				user: "admin",
+				"user": "admin",
 				/**
 				 * 密码
 				 * @type {String}
 				 */
-				password: "asd123"
+				"password": "asd123"
 			},
 			/**
 			 * 重定向
 			 */
-			redirect: {
+			"redirect": {
 				// 将m.开头的域名指向到/phone/路由路径
 				"m.*": "/phone/",
 				"pad.*": "/pad/",
@@ -226,47 +252,27 @@ class Soa extends Base {
 			/**
 			 * 代理
 			 */
-			proxy: {
-				// 转发到web socket服务器
-				webscoket: {
-					path: ["/ws/*"],
-					com: ["*"]
-				},
-				// 转发到开发者服务器
-				dev: {
-					path: ["/dev/*", "/api/dev/*"],
-					com: ["task", "app"]
-				}
+			"proxy": {
 			}
 		});
 		this.set_config(config, {});
-		
+
 		$.push(server, this, true);
-		$.path = this.config.path;
+		$.push($.config, this.config, true);
 		bin.new(server);
 		return server;
 	}
 }
 
-/**
- * 主执行(主要)
- * @param {Object} ctx 请求上下文
- * @param {Function} next 跳过函数
- * @return {Object} 返回执行结果
- */
-Soa.prototype.run_main = async function(ctx, next) {
-	var body = await $.worker.req('config', {
-		req: ctx.request
-	});
-
-	if (body) {
-		ctx.status = 200;
-		ctx.body = JSON.stringify(body);
+Soa.prototype.getIP = function(os){
+	var IPv4;
+	for (var i = 0; i < os.networkInterfaces().WLAN.length; i++) {
+		if (os.networkInterfaces().WLAN[i].family == 'IPv4') {
+			IPv4 = os.networkInterfaces().WLAN[i].address;
+		}
 	}
-	else {
-		next();
-	}
-};
+	return IPv4;
+}
 
 /**
  * 初始化(主要)
@@ -276,15 +282,21 @@ Soa.prototype.init_main = function() {
 	var {
 		port,
 		host,
-		process_num,
+		process_num
 	} = this.config.web;
-	bin.init(this, 'common');
+	bin.init(this, 'common_before');
 	if (cluster.isMaster) {
+		var os = require('os');
 		// 获取要开展的进程数
-		var len = process_num || require('os').cpus().length;
-		$.log.info('欢迎使用' + this.config.sys.title, `访问地址 http://${host}:${port}`);
-		// console.log(`主进程${process.pid}: 正在运行...`);
-
+		var len = process_num || os.cpus().length;
+		var h = host == '0.0.0.0' ? this.getIP(os) : host;
+		
+		var m = this.config.master;
+		
+		$.log.info('欢迎使用' + this.config.sys.title);
+		console.log('访问地址', `http://${h}:${port}`);
+		console.log('主程地址', `http://${m.host}:${m.port}`);
+		
 		// 衍生工作进程。
 		for (let i = 0; i < len; i++) {
 			cluster.fork();
@@ -297,31 +309,20 @@ Soa.prototype.init_main = function() {
 			});
 		}
 
-		cluster.on('fork', (worker) => {
-			// console.log(`工作进程${worker.process.pid}: 启动完毕！`);
-			// console.log('工作进程已关闭:', worker.isDead());
-		});
-
-		// cluster.on('exit', (worker, code, signal) => {
-		// 	console.log('工作进程已关闭:', worker.isDead());
-		// });
-
 		$.master.cluster = cluster;
 		bin.init(this, 'master');
+
+		this.listen(m.port, m.host);
 	} else if (cluster.isWorker) {
 		// 监听主进程推送来的消息
 		process.on('message', (data) => {
 			$.worker.handle(data);
 		});
-		
+
 		bin.init(this, 'worker');
-		// this.use(async (ctx, next) => {
-		// 	console.log('监听了');
-		// 	await this.run(ctx, next);
-		// });
-		
 		this.listen(port, host);
 	}
+	bin.init(this, 'common_after', true);
 	return this;
 };
 

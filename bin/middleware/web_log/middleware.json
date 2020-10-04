@@ -1,0 +1,9 @@
+{
+	"name": "web_log",
+	"title": "web请求响应日志",
+	"description": "用于调试模式",
+	"version": "1.0",
+	"type": "web",
+	"process_type": "common_before",
+	"sort": 4
+}

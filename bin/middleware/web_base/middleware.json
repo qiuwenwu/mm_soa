@@ -4,6 +4,6 @@
 	"description": "用于网站常规功能",
 	"version": "1.0",
 	"type": "web",
-	"process_type": "common",
-	"sort": 9
+	"process_type": "common_before",
+	"sort": 12
 }

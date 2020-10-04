@@ -4,12 +4,8 @@ require("mm_https");
 require('mm_crypto');
 require('mm_matchs');
 require("mm_timer");
-$.Html = require('mm_html');
-$.binPath = __dirname.fullname() + "/";
-$.redis_admin = require("mm_redis").redis_admin;
-$.mongodb_admin = require("mm_mongodb").mongodb_admin;
-$.mysql_admin = require('mm_mysql').mysql_admin;
 
+const init = require('./init.js');
 const Com = require('./com/index.js');
 const Middleware = require('./middleware/index.js');
 
@@ -31,10 +27,12 @@ class Bin {
  * @param {Object} server 服务
  */
 Bin.prototype.new = function(server) {
-	this.com = new Com(server.config);
+	var config = server.config;
+	init(config);
+	this.com = new Com(config);
 	this.com.init();
 
-	this.middleware = new Middleware(server.config);
+	this.middleware = new Middleware(config);
 	this.middleware.init();
 };
 
@@ -55,7 +53,7 @@ Bin.prototype.load_middleware = function(server, process_type) {
 	var list = this.middleware.list;
 	for(var i = 0; i < list.length; i++){
 		var o = list[i];
-		if(o.process_type !== process_type){
+		if(o.process_type === process_type){
 			o.func = require(o.func_file);
 			if(o.func){
 				o.func(server);

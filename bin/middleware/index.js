@@ -68,7 +68,7 @@ Middleware.prototype.sort = function() {
  */
 Middleware.prototype.init = function() {
 	this.each_load(__dirname.fullname());
-	this.each_load($.path.middleware);
+	this.each_load($.config.path.middleware);
 	this.sort();
 };
 

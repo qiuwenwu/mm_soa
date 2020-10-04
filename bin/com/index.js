@@ -67,7 +67,7 @@ Com.prototype.unload = function(file) {
  */
 Com.prototype.init = function() {
 	this.each_load(__dirname.fullname());
-	this.each_load($.path.com);
+	this.each_load($.config.path.com);
 };
 
 module.exports = Com;

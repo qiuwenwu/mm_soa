@@ -66,10 +66,14 @@ class Expand {
 			if (!ret) {
 				await next();
 				ret = await this.run_event(ctx, this.events.after, db) || db.ret;
-			}
-			if (ret) {
+				if (ret) {
+					ctx.body = ret;
+					ctx.status = ctx.status == 404 ? 200 : ctx.status;
+				}
+			} else {
 				ctx.body = ret;
 				ctx.status = ctx.status == 404 ? 200 : ctx.status;
+				next();
 			}
 		});
 
@@ -93,9 +97,8 @@ class Expand {
 			}
 			if (db.ret) {
 				ctx.body = db.ret;
-			} else {
-				next();
 			}
+			next();
 		});
 		return server;
 	}
@@ -425,7 +428,7 @@ Expand.prototype.sort = function() {
  */
 module.exports = function(server) {
 	"./app".fullname().addDir();
-	
+
 	server = new Expand(server);
 	return server;
 };

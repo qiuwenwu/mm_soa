@@ -6,7 +6,6 @@ const statics = require('mm_statics');
  */
 module.exports = function(server) {
 	var config = server.config;
-
 	// 处理静态文件
 	if (config.web.static) {
 		server.use(statics(
@@ -23,6 +22,5 @@ module.exports = function(server) {
 			server.use($.static.run);
 		}
 	}
-	
 	return server;
 };

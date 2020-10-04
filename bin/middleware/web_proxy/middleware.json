@@ -1,0 +1,9 @@
+{
+	"name": "web_proxy",
+	"title": "web代理服务",
+	"description": "用于将特定路由转发到别的服务端上做处理",
+	"version": "1.0",
+	"type": "web",
+	"process_type": "worker",
+	"sort": 6
+}
