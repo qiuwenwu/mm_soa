@@ -57,9 +57,9 @@ async function startup(test){
 		ctx.body = "子函数";
 	});
 	
-	app.after('/src/*', async (ctx, db) => {
-		console.log('进入了', ctx.response);
-	});
+	// app.after('/src/*', async (ctx, db) => {
+	// 	console.log('进入了', ctx.response);
+	// });
 }
 
 startup();

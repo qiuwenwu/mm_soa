@@ -1,4 +1,4 @@
-栏目
+// 栏目
 import mm_action from '/src/components/bar/mm_action.vue';
 import mm_buy from '/src/components/bar/mm_buy.vue';
 import mm_chat from '/src/components/bar/mm_chat.vue';
@@ -36,7 +36,7 @@ import mm_drag from '/src/components/expand/mm_drag.vue';
 export default {
 	install(Vue, options) {
 
-		栏目组件
+		// 栏目组件
 		Vue.component('mm_action', mm_action);
 		Vue.component('mm_buy', mm_buy);
 		Vue.component('mm_chat', mm_chat);

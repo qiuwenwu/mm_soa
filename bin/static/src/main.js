@@ -17,6 +17,7 @@ require({
 		jquery: '/js/jquery.min',
 		swiper: "/js/swiper.min",
 		clipboard: '/js/clipboard.min',
+		quill: '/js/quill.min',
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
 		ui: '/js/mm_vue_ui',
