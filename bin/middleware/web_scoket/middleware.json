@@ -1,0 +1,9 @@
+{
+	"name": "web_scoket",
+	"title": "webscoket通讯",
+	"description": "用于即时通讯",
+	"version": "1.0",
+	"type": "web",
+	"process_type": "common",
+	"sort": 6
+}

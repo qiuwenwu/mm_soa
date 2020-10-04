@@ -1,8 +1,11 @@
 const cluster = require('cluster');
 const Koa = require('koa');
+$.binPath = __dirname.fullname();
 const { Base } = require('mm_expand');
+const Bin = require('./bin/index.js');
 const startup = require('./startup.js');
 
+var bin = new Bin();
 /**
  * SOA服务类
  */
@@ -11,7 +14,7 @@ class Soa extends Base {
 	 * 构造函数
 	 * @param {Object} config 配置参数
 	 */
-	constructor(config) {
+	constructor(config, server = new Koa()) {
 		super({
 			/**
 			 * web服务配置
@@ -37,7 +40,22 @@ class Soa extends Base {
 				 * 进程数, 0为根据CPU核心数创建线程数
 				 * @type {Number}
 				 */
-				process_num: 0
+				process_num: 0,
+				/**
+				 * 是否启用静态文件处理器
+				 * @type {Boolean}
+				 */
+				static: true,
+				/**
+				 * 使用外事件
+				 * @type {Boolean}
+				 */
+				event: true,
+				/**
+				 * 是否启用压缩
+				 * @type {Boolean}
+				 */
+				compress: false
 			},
 			/**
 			 * 路径配置
@@ -48,17 +66,27 @@ class Soa extends Base {
 				 * 程序根目录路
 				 * @type {String}
 				 */
-				root: $.runPath,
+				root: $.runPath.fullname(),
 				/**
 				 * 应用根目录
 				 * @type {String}
 				 */
 				app: "./app".fullname(),
 				/**
+				 * 公共模块目录
+				 * @type {String}
+				 */
+				com: "./com".fullname(),
+				/**
+				 * 中间件目录
+				 * @type {String}
+				 */
+				middleware: "./middleware".fullname(),
+				/**
 				 * 静态文件跟目录
 				 * @type {String}
 				 */
-				static: './bin/static'.fullname($.binPath)
+				static: './bin/static'.fullname(__dirname)
 			},
 			/**
 			 * 系统项
@@ -94,32 +122,7 @@ class Soa extends Base {
 				 * 是否启用定时任务服务
 				 * @type {Boolean}
 				 */
-				task: false,
-				/**
-				 * 是否启用压缩
-				 * @type {Boolean}
-				 */
-				compress: false,
-				/**
-				 * 是否启用静态文件处理器
-				 * @type {Boolean}
-				 */
-				static: true,
-				/**
-				 * 是否引用com函数
-				 * @type {Boolean}
-				 */
-				com: true,
-				/**
-				 * 是否启用websocket通讯
-				 * @type {Boolean}
-				 */
-				websocket: true,
-				/**
-				 * 使用外事件
-				 * @type {Boolean}
-				 */
-				event: true
+				task: false
 			},
 			/**
 			 * 外缓存配置
@@ -236,8 +239,12 @@ class Soa extends Base {
 				}
 			}
 		});
-
 		this.set_config(config, {});
+		
+		$.push(server, this, true);
+		$.path = this.config.path;
+		bin.new(server);
+		return server;
 	}
 }
 
@@ -247,7 +254,7 @@ class Soa extends Base {
  * @param {Function} next 跳过函数
  * @return {Object} 返回执行结果
  */
-Base.prototype.run_main = async function(ctx, next) {
+Soa.prototype.run_main = async function(ctx, next) {
 	var body = await $.worker.req('config', {
 		req: ctx.request
 	});
@@ -255,6 +262,9 @@ Base.prototype.run_main = async function(ctx, next) {
 	if (body) {
 		ctx.status = 200;
 		ctx.body = JSON.stringify(body);
+	}
+	else {
+		next();
 	}
 };
 
@@ -268,7 +278,7 @@ Soa.prototype.init_main = function() {
 		host,
 		process_num,
 	} = this.config.web;
-
+	bin.init(this, 'common');
 	if (cluster.isMaster) {
 		// 获取要开展的进程数
 		var len = process_num || require('os').cpus().length;
@@ -297,19 +307,24 @@ Soa.prototype.init_main = function() {
 		// });
 
 		$.master.cluster = cluster;
+		bin.init(this, 'master');
 	} else if (cluster.isWorker) {
 		// 监听主进程推送来的消息
 		process.on('message', (data) => {
 			$.worker.handle(data);
 		});
-		var app = new Koa();
-		app.use(async (ctx, next) => {
-			await this.run(ctx, next);
-		});
-
-
-		app.listen(port, host);
+		
+		bin.init(this, 'worker');
+		// this.use(async (ctx, next) => {
+		// 	console.log('监听了');
+		// 	await this.run(ctx, next);
+		// });
+		
+		this.listen(port, host);
 	}
-}
+	return this;
+};
+
+
 
 module.exports = Soa;

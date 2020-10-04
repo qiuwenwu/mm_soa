@@ -1,0 +1,9 @@
+{
+	"name": "web_static",
+	"title": "web静态文件处理",
+	"description": "用于处理静态文件",
+	"version": "1.0",
+	"type": "web",
+	"process_type": "worker",
+	"sort": 12
+}
