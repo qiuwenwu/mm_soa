@@ -1,208 +1,157 @@
 <template>
-	<div class="mm_rich quill-editor">
-		<slot name="toolbar"></slot>
-		<div class="mm_rich_content" ref="editor"></div>
-	</div>
+	<textarea class="mm_rich" :id="id"></textarea>
 </template>
 
 <script>
+	import Vue from 'Vue';
 	// require sources
-	import Quill from '/js/quill.min.js';
-	import '/css/quill.snow.css';
-	import '/css/quill.core.css';
-	import '/css/quill.bubble.css';
-	
-	const defaultOptions = {
-		theme: 'snow',
-		boundary: document.body,
-		modules: {
-			toolbar: [
-				['bold', 'italic', 'underline', 'strike'],
-				['blockquote', 'code-block'],
-				[{
-					'header': 1
-				}, {
-					'header': 2
-				}],
-				[{
-					'list': 'ordered'
-				}, {
-					'list': 'bullet'
-				}],
-				[{
-					'script': 'sub'
-				}, {
-					'script': 'super'
-				}],
-				[{
-					'indent': '-1'
-				}, {
-					'indent': '+1'
-				}],
-				[{
-					'direction': 'rtl'
-				}],
-				[{
-					'size': ['small', false, 'large', 'huge']
-				}],
-				[{
-					'header': [1, 2, 3, 4, 5, 6, false]
-				}],
-				[{
-					'color': []
-				}, {
-					'background': []
-				}],
-				[{
-					'font': []
-				}],
-				[{
-					'align': []
-				}],
-				['clean'],
-				['link', 'image', 'video']
-			]
-		},
-		placeholder: 'Insert text here ...',
-		readOnly: false
-	}
-	// pollfill
-	if (typeof Object.assign != 'function') {
-		Object.defineProperty(Object, 'assign', {
-			value(target, varArgs) {
-				if (target == null) {
-					throw new TypeError('Cannot convert undefined or null to object')
-				}
-				const to = Object(target)
-				for (let index = 1; index < arguments.length; index++) {
-					const nextSource = arguments[index]
-					if (nextSource != null) {
-						for (const nextKey in nextSource) {
-							if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-								to[nextKey] = nextSource[nextKey]
-							}
-						}
-					}
-				}
-				return to
-			},
-			writable: true,
-			configurable: true
-		})
-	}
-	// export
+	import Tinymce from '/tinymce/tinymce.min.js';
+
 	export default {
-		name: 'quill-editor',
-		model: {
-			event: "input",
-			prop: "value"
-		},
-		data() {
-			return {
-				op: {},
-				ct: '',
-				defaultOptions
-			}
-		},
+		name: "tinymce",
 		props: {
-			content: String,
-			value: String,
-			disabled: {
-				type: Boolean,
-				default: false
+			id: {
+				type: String,
+				required: true
 			},
 			options: {
 				type: Object,
-				required: false,
-				default: () => ({})
-			},
-			globalOptions: {
-				type: Object,
-				required: false,
-				default: () => ({})
-			}
-		},
-		mounted() {
-			this.initialize()
-		},
-		beforeDestroy() {
-			this.quill = null
-			delete this.quill
-		},
-		methods: {
-			// Init Quill instance
-			initialize() {
-				if (this.$el) {
-					// Options
-					this.op = Object.assign({}, this.defaultOptions, this.globalOptions, this.options)
-					// Instance
-					this.quill = new Quill(this.$refs.editor, this.op)
-
-					this.quill.enable(false)
-					// Set editor content
-					if (this.value || this.content) {
-						this.quill.pasteHTML(this.value || this.content)
+				default: function() {
+					return {
+						plugins: 'print preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template code codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists wordcount imagetools textpattern help emoticons autosave bdmap autoresize',
+						toolbar: `formatselect fontselect fontsizeselect | bold italic underline strikethrough link anchor forecolor backcolor | alignleft aligncenter alignright alignjustify outdent indent | table image axupimgs media charmap emoticons blockquote
+						| code undo redo restoredraft | bullist numlist | subscript superscript removeformat |
+						cut copy paste pastetext | hr pagebreak insertdatetime print preview | bdmap axupimgs indent2em lineheight formatpainter | fullscreen `,
+						// height: 650, //编辑器高度
+						min_height: 400,
+						fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
+						font_formats: '微软雅黑=Microsoft YaHei,Helvetica Neue,PingFang SC,sans-serif;苹果苹方=PingFang SC,Microsoft YaHei,sans-serif;宋体=simsun,serif;仿宋体=FangSong,serif;黑体=SimHei,sans-serif;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats;知乎配置=BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;小米配置=Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif',
+						images_upload_base_path: '/sys/img'
 					}
-					// Disabled editor
-					if (!this.disabled) {
-						this.quill.enable(true)
-					}
-					// Mark model as touched if editor lost focus
-					this.quill.on('selection-change', range => {
-						if (!range) {
-							this.$emit('blur', this.quill)
-						} else {
-							this.$emit('focus', this.quill)
-						}
-					})
-					// Update model if text changes
-					this.quill.on('text-change', (delta, oldDelta, source) => {
-						let html = this.$refs.editor.children[0].innerHTML
-						const quill = this.quill
-						const text = this.quill.getText()
-						if (html === '<p><br></p>') html = ''
-						this.ct = html
-						this.$emit('input', this.ct)
-						this.$emit('change', {
-							html,
-							text,
-							quill
-						})
-					})
-					// Emit ready event
-					this.$emit('ready', this.quill)
 				}
+			},
+			content: {
+				type: String,
+				default: ''
+			},
+			value: String,
+			lang: {
+				type: String,
+				default: 'zh_CN'
+			},
+			url: {
+				type: String,
+				default: '/upload/image'
+			},
+			// 上传方式
+			base64: {
+				type: String,
+				default: ''
 			}
 		},
 		watch: {
-			// Watch content change
-			content(newVal, oldVal) {
-				if (this.quill) {
-					if (newVal && newVal !== this.ct) {
-						this.ct = newVal
-						this.quill.pasteHTML(newVal)
-					} else if (!newVal) {
-						this.quill.setText('')
-					}
-				}
-			},
-			// Watch content change
-			value(newVal, oldVal) {
-				if (this.quill) {
-					if (newVal && newVal !== this.ct) {
-						this.ct = newVal
-						this.quill.pasteHTML(newVal)
-					} else if (!newVal) {
-						this.quill.setText('')
-					}
-				}
-			},
-			// Watch disabled change
-			disabled(newVal, oldVal) {
-				if (this.quill) {
-					this.quill.enable(!newVal)
-				}
+			content() {
+				tinymce.get(this.id).setContent(this.content)
 			}
+		},
+		methods: {
+			upload_image_base64(blobInfo, succFun, failFun) {
+				$.post(this.url, {
+					filename: blobInfo.filename(),
+					image: blobInfo.base64()
+				}, function(json, status) {
+					if (json.result && json.result.obj) {
+						succFun(json.result.obj.url);
+					} else {
+						if (json.error) {
+							failFun(json.error.message);
+						} else {
+							failFun('失败！');
+						}
+					}
+				});
+			},
+			upload_image(blobInfo, succFun, failFun) {
+				var formData = new FormData();
+				formData.append('name', blobInfo.name());
+				formData.append('filename', blobInfo.filename());
+				formData.append('file', blobInfo.blob());
+
+				var hp = {
+					type: 'POST',
+					url: this.url,
+					data: formData,
+					processData: false,
+					contentType: false,
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function success(json, status) {
+						if (json.result && json.result.obj) {
+							console.log(json.result.obj.url);
+							succFun(json.result.obj.url);
+						} else {
+							if (json.error) {
+								failFun(json.error.message);
+							} else {
+								failFun('失败！');
+							}
+						}
+					},
+					complete: function complete(XHR, TS) {
+						XHR = null;
+					},
+					error: function(status) {
+						failFun(status);
+					}
+				};
+				hp.headers = {};
+				$.ajax(hp);
+			}
+		},
+		mounted() {
+			//Initial configuration
+			let options = {}
+			let s1 = new Function()
+			let config = (editor) => {
+				editor.on('NodeChange Change KeyUp', (e) => {
+					this.$emit('input', tinymce.get(this.id).getContent())
+					this.$emit('change', tinymce.get(this.id), tinymce.get(this.id).getContent())
+				})
+				editor.on('init', (e) => {
+					if (this.content != undefined) tinymce.get(this.id).setContent(this.content)
+					this.$emit('input', this.content)
+				})
+			}
+
+			//Default configuration
+			s1 = (e) => config(e)
+			if (typeof this.options == 'object') {
+
+				options = Object.assign({}, this.options)
+				if (!this.options.hasOwnProperty('selector')) options.selector = '#' + this.id
+				if (typeof this.options.setup == 'function') {
+					s1 = (editor) => {
+						config(editor)
+						this.options.setup(editor)
+					}
+				}
+
+			} else options.selector = '#' + this.id
+
+			options.setup = (editor) => s1(editor);
+			options.language = this.lang;
+			options.images_upload_handler = (blobInfo, succFun, failFun) => {
+				if (this.base64) {
+					this.upload_image_base64(blobInfo, succFun, failFun);
+				} else {
+					this.upload_image(blobInfo, succFun, failFun);
+				}
+			};
+			Vue.nextTick(() => tinymce.init(options))
+		},
+		beforeDestroy() {
+			tinymce.execCommand('mceRemoveEditor', false, this.id)
 		}
 	}
 </script>
