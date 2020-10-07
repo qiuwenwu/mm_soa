@@ -252,8 +252,7 @@ class Soa extends Base {
 			/**
 			 * 代理
 			 */
-			"proxy": {
-			}
+			"proxy": {}
 		});
 		this.set_config(config, {});
 
@@ -264,12 +263,23 @@ class Soa extends Base {
 	}
 }
 
-Soa.prototype.getIP = function(os){
+/**
+ * 获取IP
+ * @param {Object} os 当前系统信息
+ * @return {String} 返回局域网IP
+ */
+Soa.prototype.getIP = function(os) {
 	var IPv4;
-	for (var i = 0; i < os.networkInterfaces().WLAN.length; i++) {
-		if (os.networkInterfaces().WLAN[i].family == 'IPv4') {
-			IPv4 = os.networkInterfaces().WLAN[i].address;
+	var obj = os.networkInterfaces();
+	for (var k in obj) {
+		var arr = obj[k].reverse();
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i].family == 'IPv4') {
+				IPv4 = arr[i].address;
+				break;
+			}
 		}
+		break;
 	}
 	return IPv4;
 }
@@ -290,13 +300,13 @@ Soa.prototype.init_main = function() {
 		// 获取要开展的进程数
 		var len = process_num || os.cpus().length;
 		var h = host == '0.0.0.0' ? this.getIP(os) : host;
-		
+
 		var m = this.config.master;
-		
+
 		$.log.info('欢迎使用' + this.config.sys.title);
 		console.log('访问地址', `http://${h}:${port}`);
 		console.log('主程地址', `http://${m.host}:${m.port}`);
-		
+
 		// 衍生工作进程。
 		for (let i = 0; i < len; i++) {
 			cluster.fork();
