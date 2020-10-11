@@ -11,5 +11,6 @@ module.exports = function(server) {
 		$.timer.start();
 		console.log('已启动定时任务！');
 	};
+	
 	return server;
 };

@@ -5,7 +5,7 @@
 	"description": "描述该插件是做什么用的",
 	"version": "1.0",
 	"lang_path": "./lang/",
-	"icon": "/img/logo.png",
+	"icon": "/{1}/{0}/img/logo.png",
 	"cmd": "{2}",
 	"sort": 10
 }

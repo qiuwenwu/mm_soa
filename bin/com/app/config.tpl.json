@@ -1,0 +1,10 @@
+{
+	"name": "{0}",
+	"title": "示例应用",
+	"description": "描述该应用是做什么用的",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/{0}/img/logo.png",
+	"cmd": "{1}",
+	"sort": 10
+}

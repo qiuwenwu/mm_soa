@@ -137,16 +137,16 @@ Plugin.prototype.sort = function() {
  */
 Plugin.prototype.load = function(path) {
 	if (!path) {
-		path = '/app/' + this.scope + "/plugin/";
+		path = '/app/' + this.scope;
 	}
-	var list = this.list;
-	if (path.endsWith('/app/')) {
-		var list_scope = $.dir.get(path);
+	list = this.list;
+	var dir_plugin = path + "/plugin/";
+	if (dir_plugin.hasDir()) {
+		var list_scope = $.dir.get(dir_plugin);
 
 		// 遍历目录路径
-
 		list_scope.map(function(o) {
-			var file = './app.json'.fullname(o);
+			var file = './plugin.json'.fullname(o);
 			if (file.hasFile()) {
 				var obj = new Drive(o);
 				obj.load(file);
@@ -155,23 +155,6 @@ Plugin.prototype.load = function(path) {
 				}
 			}
 		});
-	} else {
-		var dir_plugin = path + "/plugin/";
-		if (dir_plugin.hasDir()) {
-			var list_scope = $.dir.get(dir_plugin);
-
-			// 遍历目录路径
-			list_scope.map(function(o) {
-				var file = './plugin.json'.fullname(o);
-				if (file.hasFile()) {
-					var obj = new Drive(o);
-					obj.load(file);
-					if (obj.config.name) {
-						list.push(obj);
-					}
-				}
-			});
-		}
 	}
 };
 

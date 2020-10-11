@@ -9,7 +9,6 @@ const startup = require('./startup.js');
 
 var bin = new Bin();
 
-
 /**
  * SOA服务类
  */

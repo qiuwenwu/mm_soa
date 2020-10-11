@@ -1,3 +1,11 @@
+function applyOptions() {
+	var defaults = {
+		modules: 'amd',
+		sourceMap: false
+	};
+	return defaults;
+}
+
 /**
  * Vue loader for RequireJS
  *
@@ -11,7 +19,7 @@
  * @author vikseriq
  * @license MIT
  */
-define(['module'], function(module) {
+define(['babel', 'module'], function(babel, module) {
 	'use strict';
 
 	var fetchContent = null,
@@ -45,7 +53,7 @@ define(['module'], function(module) {
 		fetchContent = function(url, callback) {
 			try {
 				var file = fs.readFileSync(url, 'utf8');
-				// remove BOM 4ð7
+				// remove BOM ï¿½4ï¿½1
 				if (file[0] === '\uFEFF') {
 					file = file.substring(1);
 				}
@@ -131,6 +139,7 @@ define(['module'], function(module) {
 			return this._wrapped_content(text, 'style');
 		},
 
+
 		/**
 		 * Styles extractor
 		 */
@@ -138,18 +147,23 @@ define(['module'], function(module) {
 			var script = this._wrapped_content(text, 'script', {
 				whitespaces: true
 			}).trim();
+			if (script.indexOf('import ') !== -1 || text.indexOf('export ') !== -1) {
+				script = babel.transform(script, applyOptions(module.config())).code;
+			}
 			if (!script) {
 				script =
 					"define([], function () { return { template: __template__, data: function data() { return {}; } }; });"
+			} else {
+				script = script.replace('exports = {', 'exports = {\ntemplate: __template__,');
 			}
 			return script
 		}
 	};
 
 	/**
-	 * „1¤7„1¤7„1¤7„1¤7CSS„1¤7„1¤70¶4
-	 * @param {String} style „1¤7„1¤70¶4„1¤7„1¤7„1¤7„1¤7
-	 * @param {String} id „1¤7„1¤70¶4„1¤7„1¤7ID
+	 * ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7CSSï¿½1ï¿½7ï¿½1ï¿½7ï¿½0ï¿½4
+	 * @param {String} style ï¿½1ï¿½7ï¿½1ï¿½7ï¿½0ï¿½4ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7
+	 * @param {String} id ï¿½1ï¿½7ï¿½1ï¿½7ï¿½0ï¿½4ï¿½1ï¿½7ï¿½1ï¿½7ID
 	 */
 	var processStyles = function(style, id) {
 		if (!style || !style.trim().length)
@@ -187,7 +201,7 @@ define(['module'], function(module) {
 	var parse = function(text, url) {
 		var tpl = module.config().templateVar;
 
-		// „1¤7„1¤7„1¤7„1¤7„1¤7„1¤70¶4„1¤7„1¤7„1¤7„1¤7
+		// ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7ï¿½0ï¿½4ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7ï¿½1ï¿½7
 		if (text.indexOf(tpl) === -1 && text.indexOf('<template>') !== -1) {
 			var txt = 'props: {';
 			var idx = text.indexOf(txt);
