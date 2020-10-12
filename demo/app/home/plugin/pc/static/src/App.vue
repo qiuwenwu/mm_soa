@@ -98,7 +98,6 @@
 
 <style>
 	.mm_page {
-		min-height: 100vh;
 		position: relative;
 	}
 
