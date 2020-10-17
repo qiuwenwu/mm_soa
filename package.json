@@ -25,6 +25,13 @@
 		"websocket",
 		"cmd",
 		"api",
+		"Functional",
+		"System",
+		"Website",
+		"Server",
+		"Official Account",
+		"Cross-domain application connection",
+		"Resource Sharing",
 		"函数式",
 		"系统",
 		"网站",
@@ -33,7 +40,7 @@
 		"跨域应用连接",
 		"资源共享"
 	],
-	"author": "邱文武",
+	"author ": "邱文武",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/qiuwenwu/mm_soa/issues"
