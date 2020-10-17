@@ -32,7 +32,7 @@ class Drive extends Item {
 			// 阶段, 分执行前before、验证check、主要main、渲染render、执行后after阶段
 			"stage": "main",
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
-			"func_file": "./index.js",
+			"func_file": "./main.js",
 			// 回调函数名 用于决定调用脚本的哪个函数
 			"func_name": "main",
 			// 执行顺序, 数字越小，越优先执行
@@ -44,6 +44,36 @@ class Drive extends Item {
 		};
 	}
 }
+
+
+/**
+ * 新建脚本
+ * @param {String} 文件
+ */
+Drive.prototype.new_config = function(file) {
+	var fl = __dirname + "/config.tpl.json";
+	if (fl.hasFile()) {
+		var text = fl.loadText();
+		if (text) {
+		var l = $.slash;
+			var arr = file.split(l);
+			var name = arr[arr.length - 2];
+			text = text.replaceAll('{0}', name);
+			if (file.indexOf('plugin' + l) !== -1) {
+				name = file.between('plugin' + l, l);
+				if (file.indexOf('app' + l) !== -1) {
+					var app = file.between('app' + l, l);
+					text = text.replaceAll('{1}', "/" + app);
+				}
+				text = text.replaceAll('{0}', "/" + name + "*");
+			} else if (file.indexOf('app' + l) !== -1) {
+				name = file.between('app' + l, l);
+				text = text.replaceAll('{0}', "/" + name + "*")
+			}
+			file.saveText(text);
+		}
+	}
+};
 
 /**
  * 执行事件

@@ -99,6 +99,36 @@ class Drive extends Item {
 	}
 }
 
+
+/**
+ * 新建配置
+ * @param {String} 文件
+ */
+Drive.prototype.new_config = function(file) {
+	var fl = __dirname + "/config.tpl.json";
+	if (fl.hasFile()) {
+		var text = fl.loadText();
+		if (text) {
+			var l = $.slash;
+			var arr = file.split(l);
+			var name = arr[arr.length - 2];
+			text = text.replaceAll('{0}', name);
+			if (file.indexOf('plugin' + l) !== -1) {
+				if (file.indexOf('app' + l) !== -1) {
+					var app = file.between('app' + l, l);
+					text = text.replaceAll('{path}', "/" + app + "/" + name);
+					text = text.replaceAll('{name}', app + "_" + name);
+				}
+			} else if (file.indexOf('app' + l) !== -1) {
+				text = text.replaceAll('{path}', "/" + name);
+				text = text.replaceAll('{name}', name);
+			}
+			file.saveText(text);
+		}
+	}
+};
+
+
 /**
  * 加载完成后执行
  */
