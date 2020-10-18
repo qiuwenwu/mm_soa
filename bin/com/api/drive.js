@@ -3,16 +3,11 @@ const Param = require('../param/drive.js'); // 是MM自带的参数机制，可�
 const Sql = require('../sql/drive.js'); // 是MM自带的参数机制，可以不使用
 const Oauth = require('./oauth.js'); // 是MM自带的身份验证机制，基于Oauth2.0，可以不使用
 const Ret = require('mm_ret').Ret;
-const CacheBase = require('mm_cachebase');
 
 if (!$.dict) {
 	if (!$.dict.session_id) {
 		$.dict.session_id = "mm:uuid";
 	}
-}
-
-if (!$.cache) {
-	$.cache = new CacheBase();
 }
 
 /**
@@ -275,8 +270,7 @@ Drive.prototype.loadRPC = async function(file_path) {
 			await this.unloadRPC(this.rpc_file_now);
 			var f = require(p);
 			this.methods = f(this);
-		}
-		else {
+		} else {
 			var fl = this.dir_base + "/rpc.js";
 			fl.copyFile(p);
 			var f = require(p);
@@ -367,31 +361,31 @@ Drive.prototype.run = async function(ctx, db) {
  * @return {String} 响应内容
  */
 Drive.prototype.getCache = async function(ctx) {
-	var req = ctx.request;
-	if (this.config.client_cache) {
-		var etag = req.headers['if-none-match'];
-		if (etag) {
-			var stamp = Number(etag.replace('"', '').replace('"', ''));
-			var cha = stamp * 1000 - Date.parse(new Date());
-			if (cha > 0) {
-				ctx.response.status = 304;
-				return ' ';
+	var cg = this.config;
+	if (cg.cache) {
+		var req = ctx.request;
+		if (cg.client_cache) {
+			var etag = req.headers['if-none-match'];
+			if (etag) {
+				var stamp = Number(etag.replace('"', '').replace('"', ''));
+				var cha = stamp * 1000 - Date.parse(new Date());
+				if (cha > 0) {
+					ctx.response.status = 304;
+					return ' ';
+				}
+			}
+		} else {
+			// console.log('需要读缓存');
+			var data = await $.cache.get("api_" + req.url);
+			if (data) {
+				// console.log('有缓存', data);
+				var obj = JSON.parse(data);
+				ctx.response.type = obj.type;
+				return obj.body;
 			}
 		}
 	}
-	var userID = "(everyone)";
-	var id = ctx.cookies.get($.dict.session_id);
-	if (id) {
-		userID = id;
-	}
-	var data = await $.cache.get("api_" + userID + ":" + req.url);
-	if (data) {
-		var obj = JSON.parse(data);
-		ctx.response.type = obj.type;
-		return obj.body;
-	} else {
-		return null;
-	}
+	return null;
 };
 
 /**
@@ -411,12 +405,7 @@ Drive.prototype.setCache = async function(ctx, body) {
 			var o = {};
 			o.body = body;
 			o.type = ctx.response.type;
-			var userID = "(everyone)";
-			var id = ctx.cookies.get($.dict.session_id);
-			if (id) {
-				userID = id;
-			}
-			$.cache.set("api_" + userID + ":" + req.url, JSON.stringify(o), cg.cache);
+			$.cache.set("api_" + req.url, JSON.stringify(o), cg.cache * 60);
 		}
 	}
 };
@@ -540,14 +529,12 @@ Drive.prototype.runRPC = async function(db, method, query, body) {
 	var func = this.methods[method];
 	var ret = {};
 	try {
-		if(func){
+		if (func) {
 			ret = this.checkParam(query, body, method);
-			if(!ret)
-			{
+			if (!ret) {
 				ret = await func(db, query, body);
 			}
-		}
-		else {
+		} else {
 			ret = {
 				error: {
 					code: 60000,
@@ -556,8 +543,7 @@ Drive.prototype.runRPC = async function(db, method, query, body) {
 				}
 			}
 		}
-	}
-	catch (err){
+	} catch (err) {
 		$.log.error(err);
 		ret = {
 			error: {

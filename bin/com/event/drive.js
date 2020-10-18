@@ -45,6 +45,35 @@ class Drive extends Item {
 	}
 }
 
+/**
+ * 新建脚本
+ * @param {String} 文件
+ */
+Drive.prototype.new_script = function(file) {
+	var fl = __dirname + "/script.js";
+	if (fl.hasFile()) {
+		var text = fl.loadText();
+		if (text) {
+			var l = $.slash;
+			var arr = file.split(l);
+			var name = arr[arr.length - 2];
+			text = text.replaceAll('{0}', name);
+			if (file.indexOf('plugin' + l) !== -1) {
+				name = file.between('plugin' + l, l);
+				if (file.indexOf('app' + l) !== -1) {
+					var app = file.between('app' + l, l);
+					text = text.replaceAll('{1}', app);
+				}
+				text = text.replaceAll('{0}', name);
+			} else if (file.indexOf('app' + l) !== -1) {
+				name = file.between('app' + l, l);
+				text = text.replaceAll('{0}', app)
+			}
+			file.saveText(text);
+		}
+	}
+};
+
 
 /**
  * 新建脚本
@@ -55,7 +84,7 @@ Drive.prototype.new_config = function(file) {
 	if (fl.hasFile()) {
 		var text = fl.loadText();
 		if (text) {
-		var l = $.slash;
+			var l = $.slash;
 			var arr = file.split(l);
 			var name = arr[arr.length - 2];
 			text = text.replaceAll('{0}', name);
@@ -68,7 +97,7 @@ Drive.prototype.new_config = function(file) {
 				text = text.replaceAll('{0}', "/" + name + "*");
 			} else if (file.indexOf('app' + l) !== -1) {
 				name = file.between('app' + l, l);
-				text = text.replaceAll('{0}', "/" + name + "*")
+				text = text.replaceAll('{0}', "/" + app + "*")
 			}
 			file.saveText(text);
 		}

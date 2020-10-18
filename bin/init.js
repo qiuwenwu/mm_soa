@@ -10,18 +10,23 @@ $.mysql_admin = require('mm_mysql').mysql_admin;
 module.exports = function(config) {
 	var sys = config.sys;
 	// 选择缓存方式,默认memory缓存
-	if (sys.cache == 'redis') {
+	if (sys.cache === 'redis') {
 		// 将Api的缓存改为redis方式，如果不用redis可以将以下4行注释掉
 		var redis = $.redis_admin('sys');
 		redis.setConfig(config.redis);
 		redis.open();
 		$.cache = redis;
-	} else if (sys.cache == 'cache') {
+		// $.push($.cache, redis, true);
+	} else if (sys.cache === 'cache') {
 		// 将Api的缓存改为cache方式, 本地缓存方式
-		$.cache = $.cache_admin();
-	} else if (sys.cache == 'mongodb') {
+		$.push($.cache, $.cache_admin(), true);
+	} else if (sys.cache === 'mongodb') {
+		var mongodb = $.mongodb_admin();
+		mongodb.setConfig(config.mongodb);
+		mongodb.open();
+		$.cache = mongodb;
 		// 将Api的缓存改为mongoDB方式
-		$.cache = $.mongodb_admin();
+		// $.push($.cache, mongodb, true);
 	}
 
 	// 选择数据库

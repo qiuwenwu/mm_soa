@@ -1,5 +1,5 @@
 // 使用api管理器
-var api = $.api_admin('{0}', '{0}');
+var api = $.api_admin('document', 'document');
 // 首次启动更新api接口;
 api.update();
 
