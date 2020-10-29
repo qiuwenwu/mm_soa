@@ -1931,10 +1931,10 @@ if (typeof($) === "undefined") {
 				type: 'GET',
 				url: url,
 				async: fun !== null,
-				xhrFields: {
-					withCredentials: true
-				},
-				crossDomain: true,
+				// xhrFields: {
+				// 	withCredentials: true
+				// },
+				// crossDomain: true,
 				success: function success(data, status) {
 					if (fun) {
 						fun(data, status);
@@ -1992,10 +1992,10 @@ if (typeof($) === "undefined") {
 				type: 'POST',
 				url: url,
 				async: fun !== null,
-				xhrFields: {
-					withCredentials: true
-				},
-				crossDomain: true,
+				// xhrFields: {
+				// 	withCredentials: true
+				// },
+				// crossDomain: true,
 				data: pm,
 				dataType: "json",
 				contentType: contentType,
