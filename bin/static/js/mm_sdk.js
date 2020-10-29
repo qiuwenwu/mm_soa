@@ -262,10 +262,9 @@ function toUrl(obj, url) {
 	if (url) {
 		if (url.endWith('?') || url.endWith('&')) {
 			return url + queryStr.replace('&', '');
-		} else if(url.indexOf('?') === -1) {
+		} else if (url.indexOf('?') === -1) {
 			return url + queryStr.replace('&', '?');
-		}
-		else {
+		} else {
 			return url + queryStr;
 		}
 	} else {
@@ -861,7 +860,7 @@ if (typeof($) === "undefined") {
 	 * @return {Number} 浮点数
 	 */
 	String.prototype.toNum = function(len, mode) {
-		return new Number(num).get(len, mode);
+		return new Number(this).get(len, mode);
 	};
 	/**
 	 * @description 转为对象
@@ -989,7 +988,7 @@ if (typeof($) === "undefined") {
 		for (var i = 0; i < list.length; i++) {
 			var o = list[i];
 			if (o[father_id] === value) {
-				o[sub] = toTree(list, id, o[id]);
+				o[sub] = toTree(list, id, o[id], father_id, sub);
 				arr.push(o);
 			}
 		}
