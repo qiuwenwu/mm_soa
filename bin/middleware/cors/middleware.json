@@ -1,0 +1,9 @@
+{
+	"name": "web_cors",
+	"title": "web跨域请求",
+	"description": "用于跨域请求限制",
+	"version": "1.0",
+	"type": "web",
+	"process_type": "common_before",
+	"sort": 4
+}

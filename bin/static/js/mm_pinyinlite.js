@@ -871,29 +871,3 @@ Array.prototype.sortBy = function(method, key) {
 		return this;
 	}
 };
-
-/**
- * @description 获取字符串的拼音
- * @return {String} 拼音
- */
-String.prototype.pinyin = function() {
-	return pinyin(this).join('');
-};
-/**
- * @description 获取字符串的拼音
- * @return {String} 拼音
- */
-String.prototype.pinyinS = function() {
-	var arr = pinyin(this);
-	var str = "";
-	for (var i = 0; i < arr.length; i++) {
-		var ar = arr[i];
-		if (ar.length > 0) {
-			var o = ar[0];
-			str += o.charAt(0).toLocaleUpperCase() + o.substring(1);
-		} else {
-			str += ' ';
-		}
-	}
-	return str;
-};

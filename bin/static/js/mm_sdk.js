@@ -578,6 +578,16 @@ if (typeof($) === "undefined") {
 /* == 字符串拓展函数 == */
 (function() {
 	/**
+	 * @description MD5加密
+	 * @return {String} 加密后的字符串
+	 */
+	String.prototype.md5 = function() {
+		var md5 = createHash("md5");
+		md5.update(this + '');
+		return md5.digest('hex');
+	};
+
+	/**
 	 * aes加密
 	 * @param data 待加密内容
 	 * @param key 必须为32位私钥
@@ -612,6 +622,31 @@ if (typeof($) === "undefined") {
 		return cipherChunks.join('');
 	};
 
+	/**
+	 * @description 获取字符串的拼音
+	 * @return {String} 拼音
+	 */
+	String.prototype.pinyin = function() {
+		return pinyin(this).join('');
+	};
+	/**
+	 * @description 获取字符串的拼音
+	 * @return {String} 拼音
+	 */
+	String.prototype.pinyinS = function() {
+		var arr = pinyin(this);
+		var str = "";
+		for (var i = 0; i < arr.length; i++) {
+			var ar = arr[i];
+			if (ar.length > 0) {
+				var o = ar[0];
+				str += o.charAt(0).toLocaleUpperCase() + o.substring(1);
+			} else {
+				str += ' ';
+			}
+		}
+		return str;
+	};
 	/**
 	 * @description 将json字符串转为对象
 	 * @return {Object} 对象
@@ -826,7 +861,7 @@ if (typeof($) === "undefined") {
 	 * @return {Number} 浮点数
 	 */
 	String.prototype.toNum = function(len, mode) {
-		return new Number(this).get(len, mode);
+		return new Number(num).get(len, mode);
 	};
 	/**
 	 * @description 转为对象
@@ -954,7 +989,7 @@ if (typeof($) === "undefined") {
 		for (var i = 0; i < list.length; i++) {
 			var o = list[i];
 			if (o[father_id] === value) {
-				o[sub] = toTree(list, id, o[id], father_id, sub);
+				o[sub] = toTree(list, id, o[id]);
 				arr.push(o);
 			}
 		}
@@ -1440,8 +1475,8 @@ if (typeof($) === "undefined") {
 	 * @return {Array} 对象数组
 	 */
 	Array.prototype.setList = function(list, query, end) {
-		for (var i = 0; i < list.length; i++) {
-			this.setObj(list[i], query, end);
+		for (var i = 0; i < this.length; i++) {
+			this.setObj(this[i], query, end);
 		}
 	};
 	/**
@@ -1879,13 +1914,6 @@ if (typeof($) === "undefined") {
 	};
 
 	$.md5 = $.hex_md5;
-	
-	/**
-	 * MD5加密
-	 */
-	String.prototype.md5 = function(){
-		return $.md5(this);
-	}
 })();
 
 (function() {
