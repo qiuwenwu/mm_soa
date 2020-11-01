@@ -111,11 +111,11 @@ Drive.prototype.new_config = function(file) {
 			if (file.indexOf('plugin' + l) !== -1) {
 				if (file.indexOf('app' + l) !== -1) {
 					var app = file.between('app' + l, l);
-					text = text.replaceAll('{path}', "/" + app + "/" + name);
+					text = text.replaceAll('{path}', "/api/" + app + "/" + name);
 					text = text.replaceAll('{name}', app + "_" + name);
 				}
 			} else if (file.indexOf('app' + l) !== -1) {
-				text = text.replaceAll('{path}', "/" + name);
+				text = text.replaceAll('{path}', "/api/" + name);
 				text = text.replaceAll('{name}', name);
 			}
 			file.saveText(text);
