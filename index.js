@@ -139,6 +139,11 @@ class Soa extends Base {
 				 */
 				"db": "mysql",
 				/**
+				 * 数据库管理器
+				 * @type {Boolean}
+				 */
+				"db_admin": true,
+				/**
 				 * 是否引用com函数
 				 * @type {Boolean}
 				 */
