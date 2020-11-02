@@ -118,7 +118,7 @@ Drive.prototype.new_config = function(file) {
 			}
 			else if(api_name.indexOf('_client') !== -1){
 				text = text.replaceAll('{path}', `/api/${scope}/${name}`);
-				text = text.replaceAll('{name}', `${scope}_${name}_client`);
+				text = text.replaceAll('{name}', `${scope}_${name}`);
 			}
 			else {
 				text = text.replaceAll('{path}', `/api/${scope}/${name}`);

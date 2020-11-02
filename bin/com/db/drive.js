@@ -1047,7 +1047,7 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 			"user_admin": []
 		};
 		o.path = o.path.replace("/api/", "/apis/");
-		o.name += 2;
+		o.name += "_manage";
 		this.save_file(manage + '/api.json', o, cover);
 	}
 };
