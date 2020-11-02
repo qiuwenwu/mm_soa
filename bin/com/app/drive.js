@@ -72,17 +72,11 @@ Drive.prototype.new_script = function(file) {
 		if (text) {
 			var name = 'sys';
 			var l = $.slash;
-			if (file.indexOf('app' + l) !== -1) {
-				name = file.between('app' + l, l);
-				if (file.indexOf('app' + l) !== -1) {
-					var app = file.between('app' + l, l);
-					text = text.replaceAll('{1}', app);
-				}
-				text = text.replaceAll('{0}', name);
-			} else if (file.indexOf('app' + l) !== -1) {
-				name = file.between('app' + l, l);
-				text = text.replaceAll('{0}', name)
-			}
+			var arr = file.split(l);
+			arr = arr.slice(arr.indexOf('app'));
+			var app_name = arr[1];
+			text = text.replaceAll('{0}', app_name);
+			text = text.replaceAll('{1}', app_name);
 			file.saveText(text);
 		}
 	}
@@ -99,17 +93,11 @@ Drive.prototype.new_config = function(file) {
 		if (text) {
 			var name = 'sys';
 			var l = $.slash;
-			if (file.indexOf('app' + l) !== -1) {
-				name = file.between('app' + l, l);
-				if (file.indexOf('app' + l) !== -1) {
-					var app = file.between('app' + l, l);
-					text = text.replaceAll('{1}', app).replaceAll('{2}', app + '.' + name);
-				}
-				text = text.replaceAll('{0}', name);
-			} else if (file.indexOf('app' + l) !== -1) {
-				name = file.between('app' + l, l);
-				text = text.replaceAll('{0}', name).replaceAll('\r\n	"app": "{1}",', '').replaceAll('插件', '应用').replaceAll('{2}', name);
-			}
+			var arr = file.split(l);
+			arr = arr.slice(arr.indexOf('app'));
+			var app_name = arr[1];
+			text = text.replaceAll('{0}', app_name);
+			text = text.replaceAll('{1}', app_name);
 			file.saveText(text);
 		}
 	}

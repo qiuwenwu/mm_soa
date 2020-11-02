@@ -56,18 +56,15 @@ Drive.prototype.new_script = function(file) {
 		if (text) {
 			var l = $.slash;
 			var arr = file.split(l);
-			var name = arr[arr.length - 2];
-			text = text.replaceAll('{0}', name);
-			if (file.indexOf('plugin' + l) !== -1) {
-				name = file.between('plugin' + l, l);
-				if (file.indexOf('app' + l) !== -1) {
-					var app = file.between('app' + l, l);
-					text = text.replaceAll('{1}', app);
-				}
-				text = text.replaceAll('{0}', name);
-			} else if (file.indexOf('app' + l) !== -1) {
-				name = file.between('app' + l, l);
-				text = text.replaceAll('{0}', app)
+			arr = arr.slice(arr.indexOf('app'));
+			var app_name = arr[1];
+			var event_name = arr[3];
+			if (event_name === 'client') {
+				text = text.replaceAll('{0}', app_name + '_' + event_name);
+			} else if (event_name === 'manage') {
+				text = text.replaceAll('{0}', app_name + '_' + event_name);
+			} else {
+				text = text.replaceAll('{0}', event_name);
 			}
 			file.saveText(text);
 		}
@@ -86,19 +83,20 @@ Drive.prototype.new_config = function(file) {
 		if (text) {
 			var l = $.slash;
 			var arr = file.split(l);
-			var name = arr[arr.length - 2];
-			text = text.replaceAll('{0}', name);
-			if (file.indexOf('plugin' + l) !== -1) {
-				name = file.between('plugin' + l, l);
-				if (file.indexOf('app' + l) !== -1) {
-					var app = file.between('app' + l, l);
-					text = text.replaceAll('{1}', "/" + app);
-				}
-				text = text.replaceAll('{0}', "/" + name + "*");
-			} else if (file.indexOf('app' + l) !== -1) {
-				name = file.between('app' + l, l);
-				text = text.replaceAll('{0}', "/" + app + "*")
+			arr = arr.slice(arr.indexOf('app'));
+			var app_name = arr[1];
+			var event_name = arr[3];
+			if (event_name === 'client') {
+				text = text.replaceAll('{0}', app_name + '_' + event_name);
+				text = text.replaceAll('{1}', '/api/' + app_name + '*');
+			} else if (event_name === 'manage') {
+				text = text.replaceAll('{0}', app_name + '_' + event_name);
+				text = text.replaceAll('{1}', '/apis/' + app_name + '*');
+			} else {
+				text = text.replaceAll('{0}', event_name);
+				text = text.replaceAll('{1}', '/' + event_name + '*');
 			}
+			
 			file.saveText(text);
 		}
 	}

@@ -1,0 +1,11 @@
+{
+	"app": "test",
+	"name": "test_plugin",
+	"title": "示例插件",
+	"description": "描述该插件是做什么用的",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/test/test_plugin/img/logo.png",
+	"cmd": "test.test_plugin",
+	"sort": 10
+}

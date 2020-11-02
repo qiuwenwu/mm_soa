@@ -106,18 +106,25 @@ Drive.prototype.new_config = function(file) {
 		if (text) {
 			var l = $.slash;
 			var arr = file.split(l);
+			arr = arr.slice(arr.indexOf('app'));
+			var app_name = arr[1];
 			var name = arr[arr.length - 2];
-			text = text.replaceAll('{0}', name);
-			if (file.indexOf('plugin' + l) !== -1) {
-				if (file.indexOf('app' + l) !== -1) {
-					var app = file.between('app' + l, l);
-					text = text.replaceAll('{path}', "/api/" + app + "/" + name);
-					text = text.replaceAll('{name}', app + "_" + name);
-				}
-			} else if (file.indexOf('app' + l) !== -1) {
-				text = text.replaceAll('{path}', "/api/" + name);
-				text = text.replaceAll('{name}', name);
+			var api_name = arr[arr.length - 3];
+			console.log(api_name);
+			var scope = api_name.replace('_manage', '').replace('_client', '').replace('api_', '');
+			if(api_name.indexOf('_manage') !== -1){
+				text = text.replaceAll('{path}', `/apis/${scope}/${name}`);
+				text = text.replaceAll('{name}', `${scope}_${name}_manage`);
 			}
+			else if(api_name.indexOf('_client') !== -1){
+				text = text.replaceAll('{path}', `/api/${scope}/${name}`);
+				text = text.replaceAll('{name}', `${scope}_${name}_client`);
+			}
+			else {
+				text = text.replaceAll('{path}', `/api/${scope}/${name}`);
+				text = text.replaceAll('{name}', `${scope}_${name}`);
+			}
+			text = text.replaceAll('{0}', name);
 			file.saveText(text);
 		}
 	}
