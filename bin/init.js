@@ -1,7 +1,6 @@
 $.binPath = __dirname.fullname() + "/";
 $.Html = require('mm_html');
 $.redis_admin = require("mm_redis").redis_admin;
-$.mongodb_admin = require("mm_mongodb").mongodb_admin;
 $.mysql_admin = require('mm_mysql').mysql_admin;
 
 /**
@@ -19,9 +18,11 @@ module.exports = function(config) {
 		// $.push($.cache, redis, true);
 	} else if (sys.cache === 'cache') {
 		// 将Api的缓存改为cache方式, 本地缓存方式
-		$.push($.cache, $.cache_admin(), true);
+		$.cache_admin = require('mm_cache').cache_admin;
+		$.push($.cache, $.cache_admin('sys'), true);
 	} else if (sys.cache === 'mongodb') {
-		var mongodb = $.mongodb_admin();
+		$.mongodb_admin = require("mm_mongodb").mongoDB_admin;
+		var mongodb = $.mongodb_admin('sys');
 		mongodb.setConfig(config.mongodb);
 		mongodb.open();
 		$.cache = mongodb;
