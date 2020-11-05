@@ -682,8 +682,12 @@ if (typeof($) === "undefined") {
 	 */
 	String.prototype.toQuery = function() {
 		var str = this + "";
-		if(str.indexOf("?") === 0){
-			str = str.substring(1);
+		var index = str.indexOf("?");
+		if(index !== -1){
+			str = str.substring(index + 1);
+		}
+		else {
+			return {};
 		}
 		return str.toUrl();
 	};
