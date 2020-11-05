@@ -675,6 +675,19 @@ if (typeof($) === "undefined") {
 		});
 		return obj;
 	};
+	
+	/**
+	 * @description 将url参数转为对象
+	 * @return {Object} 对象
+	 */
+	String.prototype.toQuery = function() {
+		var str = this + "";
+		if(str.indexOf("?") === 0){
+			str = str.substring(1);
+		}
+		return str.toUrl();
+	};
+	
 	/**
 	 * @description 删除首字符
 	 * @param {String} str  要删除的字符, 默认删除空字符
