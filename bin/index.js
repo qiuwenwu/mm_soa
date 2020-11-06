@@ -1,5 +1,6 @@
 require("mm_logs");
 require('mm_tpl');
+require("mm_tpl");
 require("mm_https");
 require('mm_crypto');
 require('mm_matchs');
