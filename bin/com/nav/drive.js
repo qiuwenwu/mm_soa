@@ -262,7 +262,7 @@ Drive.prototype.new_config = function(file) {
 				var o = f.loadJson();
 				if (o) {
 					delete o.oauth.scope;
-					var name = o.name.trim('2');
+					var name = o.name.replace('_manage', '');
 					// 添加一个列表页
 					var obj = _this.new_routes(app, plugin, name, 1, o.oauth);
 
@@ -314,6 +314,14 @@ Drive.prototype.new_config = function(file) {
 	}
 	cg.name = plugin;
 	var title = "未命名";
+	var app_file = ("/app/" + app + "/app.json").fullname();
+	if(app_file.hasFile())
+	{
+		var jobj = app_file.loadJson();
+		if(jobj){
+			title = jobj.title;
+		}
+	}
 	var app_config = (file + '').left('plugin') + 'app.json';
 	if (app_config.hasFile()) {
 		var oj = app_config.loadJson();
@@ -392,6 +400,7 @@ Drive.prototype.get_api = function(app, route) {
 		param: {},
 		sql: {}
 	};
+	
 	for (var i = 0; i < lt.length; i++) {
 		var o = lt[i];
 		if (o.config.path === api_route) {
@@ -404,6 +413,8 @@ Drive.prototype.get_api = function(app, route) {
 			break;
 		}
 	}
+	
+	// console.log(scope, app, config, api_route);
 	return config;
 };
 
@@ -414,7 +425,9 @@ Drive.prototype.get_api = function(app, route) {
  */
 Drive.prototype.create_vue = async function(file, route) {
 	var l = $.slash;
-	var arr = file.replace($.runPath, '/').split(l);
+	file = file.replace($.runPath, '/');
+	var arr = file.substring(file.indexOf('app')).split(l);
+
 	var name = arr[arr.length - 1].replace('.vue', '');
 	var f = this.tpl_path;
 	var plugin = "";

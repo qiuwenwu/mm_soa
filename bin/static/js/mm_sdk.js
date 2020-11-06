@@ -43,44 +43,50 @@ function sleep(milliSeconds, obj, key) {
  * @return {Boolean} 相似返回true，否则返回false
  */
 function as(obj, query, all) {
-	var bl = true;
-	var type = typeof(obj);
-	if (type !== typeof(query)) {
-		// 如果类型不一致 则两个无相似
-		bl = false;
-	} else if (type === 'string' || type === 'bool' || type === 'number') {
-		bl = obj === query;
-	} else if (obj.constructor == Array) {
-		// 如果都是数组
-		var lh = obj.length;
-		if (all && lh !== query.length) {
-			// 要求完全一致 而长度不一致 说明不相似
+	if(obj)
+	{
+		var bl = true;
+		var type = typeof(obj);
+		if (type !== typeof(query)) {
+			// 如果类型不一致 则两个无相似
 			bl = false;
+		} else if (type === 'string' || type === 'bool' || type === 'number') {
+			bl = obj === query;
+		} else if (obj.constructor == Array) {
+			// 如果都是数组
+			var lh = obj.length;
+			if (all && lh !== query.length) {
+				// 要求完全一致 而长度不一致 说明不相似
+				bl = false;
+			} else {
+				// 否则判断数组里的每个成员是否相似
+				for (var i = 0; i < lh; i++) {
+					if (!as(obj[i], query[i])) {
+						bl = false;
+						break;
+					}
+				}
+			}
 		} else {
-			// 否则判断数组里的每个成员是否相似
-			for (var i = 0; i < lh; i++) {
-				if (!as(obj[i], query[i])) {
-					bl = false;
-					break;
+			// 如果类型为对象
+			if (all && Object.getOwnPropertyNames(obj).length !== Object.getOwnPropertyNames(query).length) {
+				// 如果要求完全一致, 而属性长度不一致，则不相似
+				bl = false;
+			} else {
+				// 否则都为对象则判断其值是否一致
+				for (var k in query) {
+					if (!as(obj[k], query[k], all)) {
+						bl = false;
+						break;
+					}
 				}
 			}
 		}
-	} else {
-		// 如果类型为对象
-		if (all && Object.getOwnPropertyNames(obj).length !== Object.getOwnPropertyNames(query).length) {
-			// 如果要求完全一致, 而属性长度不一致，则不相似
-			bl = false;
-		} else {
-			// 否则都为对象则判断其值是否一致
-			for (var k in query) {
-				if (!as(obj[k], query[k], all)) {
-					bl = false;
-					break;
-				}
-			}
-		}
+		return bl;
 	}
-	return bl;
+	else {
+		return false;
+	}
 }
 
 /**
