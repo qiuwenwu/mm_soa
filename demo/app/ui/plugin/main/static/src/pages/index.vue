@@ -139,6 +139,11 @@
 						title: "模态窗",
 						name: "mm_modal",
 						url: "/layout/modal"
+					},
+					{
+						title: "精灵",
+						name: "mm_sptite",
+						url: "/layout/sptite"
 					}
 				],
 				form: [{

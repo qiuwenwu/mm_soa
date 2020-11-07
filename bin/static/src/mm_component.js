@@ -31,6 +31,7 @@ import mm_slide_text from '/src/components/slide/mm_slide_text.vue';
 
 // 拓展
 import mm_drag from '/src/components/expand/mm_drag.vue';
+import mm_sptite from '/src/components/expand/mm_sptite.vue';
 
 /* === 创建全局组件 === */
 export default {
@@ -68,7 +69,8 @@ export default {
 		Vue.component('mm_slide_page', mm_slide_page);
 		Vue.component('mm_slide_text', mm_slide_text);
 
-		// 轮播
+		// 拖拽
 		Vue.component('mm_drag', mm_drag);
+		Vue.component('mm_sptite', mm_sptite);
 	}
 }

@@ -101,7 +101,7 @@ Drive.prototype.setPeriod = function(_this, func) {
 				};
 			} else {
 				fn = function() {
-					if (new Date().toStr('mm') === time) {
+					if (new Date().toStr('ss') === time) {
 						func();
 					}
 				};

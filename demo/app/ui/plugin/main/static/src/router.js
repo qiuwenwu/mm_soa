@@ -100,6 +100,13 @@ define(["Vue", "VueRouter"], function(Vue, VueRouter) {
 			}
 		},
 		{
+			// 精灵
+			path: "/layout/sptite",
+			component: function(resolve) {
+				return require(['vue!./pages/layout/sptite.vue'], resolve);
+			}
+		},
+		{
 			// 表格
 			path: "/layout/table",
 			component: function(resolve) {

@@ -432,8 +432,12 @@ main .mm_col>*~*,main [class*=mm_col_]>*~* {margin-top:1rem;}
 .mm_group>*:focus,[class*=mm_group_]>*:focus {z-index:20;}
 .mm_group>*:first-child,[class*=mm_group_]>*:first-child {margin-left:-1px;}
 
+.pc_hide {display:none;}
+.pc_show {display:initial;}
+	
 @media only screen and (max-width:1200px) {
 	.pad_hide {display:none;}
+	.pad_show {display:initial;}
 	[class*=mm_col_] {flex:1;}
 	main .mm_col_25 {min-width:20rem;}
 	pre::-webkit-scrollbar {display:none;}
@@ -441,6 +445,7 @@ main .mm_col>*~*,main [class*=mm_col_]>*~* {margin-top:1rem;}
 
 @media only screen and (max-width:640px) {
 	.phone_hide {display:none;}
+	.phone_show {display:initial;}
 	.mm_col_75,.mm_col_80,.mm_col_90,.mm_col_100 {overflow-x:auto;}
 	.mm_col_75::-webkit-scrollbar,.mm_col_80::-webkit-scrollbar,.mm_col_90::-webkit-scrollbar,.mm_col_100::-webkit-scrollbar {display:none;}
 	main .mm_col_50 {min-width:20rem;}

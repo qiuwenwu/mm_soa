@@ -404,8 +404,9 @@ Drive.prototype.setCache = async function(ctx, body) {
 	var cg = this.config;
 	if (cg.cache && ctx.method === 'GET') {
 		if (cg.client_cache) {
-			ctx.set('Cache-Control', 'max-age=' + cg.cache);
-			ctx.etag = Date.parse(new Date()) / 1000 + cg.cache;
+			var age = cg.cache * 60;
+			ctx.set('Cache-Control', 'max-age=' + age);
+			ctx.etag = Date.parse(new Date()) / 1000 + age;
 			return " ";
 		} else {
 			var req = ctx.request;
