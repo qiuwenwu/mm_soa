@@ -127,6 +127,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {-webkit-appea
 .mm_select select {padding:0 1.5rem 0 0.5rem;border-radius:.25rem;border:1px solid rgba(125,125,125,0.25);height:2rem;background-position-x:calc(100% - .25rem); }
 .mm_select .selected {padding:0 .5rem;border-radius:.25rem;height:2rem;line-height:2rem;border:1px solid rgba(125,125,125,0.25);/* background:url("/img/down.png") no-repeat scroll right center transparent;background-position-x:calc(100% - .25rem);*/}
 .mm_select .mm_box {top:2.05rem;bottom:initial;overflow:hidden;background:#fff;border:1px solid rgba(125,125,125,0.25);border-radius:.25rem;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.2);box-shadow:0 1px 3px rgba(0,0,0,.2);left:0;width:100%;min-width:5rem;}
+.mm_select ul { padding: 0; list-style: none; }
 .mm_select li {padding:0 .5rem;line-height:2rem;width:100%;}
 .mm_select li:hover {background:#f9f9f9;color:#000000;}
 .current .selected, .hover:hover .selected,.focus:focus .selected {border-color:#38f;}
