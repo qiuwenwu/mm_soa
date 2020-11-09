@@ -47,7 +47,7 @@ class Drive extends Item {
 			// 执行结束日期
 			"date_end": "",
 			// 执行顺序
-			"sort": 100,
+			"sort": 100
 		};
 		// 当前状态 
 		this.state = "end";
