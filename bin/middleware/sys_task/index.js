@@ -7,8 +7,9 @@ module.exports = function(server) {
 		// 创建一个任务管理器
 		$.task = $.task_admin('sys');
 		$.task.update();
+		$.task.run();
 		// 启动计时器
-		$.timer.start();
+		$.timer.run();
 		console.log('已启动定时任务！');
 	};
 	

@@ -1,23 +1,6 @@
 const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
-if ($.timer) {
-	$.timer.add({
-		/**
-		 * 缓存
-		 */
-		name: "task_timer",
-		/**
-		 * 执行函数
-		 */
-		async run() {
-			var dt = $.pool.task;
-			for (var k in dt) {
-				dt[k].run();
-			}
-		}
-	});
-}
 
 /**
  * 任务类
@@ -41,11 +24,22 @@ class Task extends Index {
 
 /**
  * 执行任务
+ * @param {String} name 要执行的名称
  */
-Task.prototype.run = async function() {
+Task.prototype.run = async function(name) {
 	var lt = this.list;
-	for (var i = 0, o; o = lt[i++];) {
-		o.run();
+	if(name){
+		for (var i = 0, o; o = lt[i++];) {
+			if(o.name === name){
+				o.run();
+				break;
+			}
+		}
+	}
+	else {
+		for (var i = 0, o; o = lt[i++];) {
+			o.run();
+		}
 	}
 };
 

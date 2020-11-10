@@ -22,7 +22,7 @@ exports.notify = async function(name, message) {
 			// 主动中断
 			// $.log.debug('已结束');
 			break;
-		case "end time":
+		case "end_time":
 			// $.log.debug('时间到');
 			// 删除任务
 			this.del(name)

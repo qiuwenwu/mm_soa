@@ -84,9 +84,8 @@ class Drive extends Item {
 		/**
 		 * 定义rpc 方法
 		 */
-		this.methods = {
-
-		};
+		this.methods = {};
+		
 		/**
 		 * 定义当前RPC文件路径
 		 */
