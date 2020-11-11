@@ -61,7 +61,8 @@
 									<th scope="col" class="th_handle"><span>操作</span></th>
 								</tr>
 							</thead>
-							<draggable v-model="list" tag="tbody" @change="sort_change">
+							<tbody>
+							<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 								<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 									<!--{loop field v idx}-->
@@ -96,7 +97,8 @@
 										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
 									</td>
 								</tr>
-							</draggable>
+							</tbody>
+							<!-- </draggable> -->
 						</mm_table>
 					</mm_body>
 					<footer>

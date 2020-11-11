@@ -60,7 +60,7 @@ class Soa extends Base {
 				 * 系统服务监听端口
 				 * @type {Number}
 				 */
-				"port": 10000
+				"port": 10001
 			},
 			/**
 			 * web服务配置

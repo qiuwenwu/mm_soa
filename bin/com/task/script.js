@@ -8,9 +8,9 @@ exports.main = async function main() {
 /**
  * 执行结果通知
  * @param {String} name 任务名称
- * @param {String} message 提示内容
+ * @param {String} state 状态
  */
-exports.notify = async function(name, message) {
+exports.notify = async function(name, state) {
 	switch (state) {
 		case "init":
 			$.log.debug('初始化');
@@ -27,13 +27,9 @@ exports.notify = async function(name, message) {
 			break;
 		case "time_end":
 			$.log.debug('已到期');
-			// 删除任务
-			this.del(name)
 			break;
 		case "completed":
 			$.log.debug('已完成');
-			// 删除任务
-			this.del(name)
 			break;
 		default:
 			break;

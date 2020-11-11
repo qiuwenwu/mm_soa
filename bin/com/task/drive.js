@@ -334,11 +334,9 @@ Drive.prototype.notify = function(name, state) {
 	// 		break;
 	// 	case "time_end":
 	// 		$.log.debug('已到期');
-	// 		// 删除任务
 	// 		break;
 	// 	case "completed":
 	// 		$.log.debug('已完成');
-	// 		// 删除任务
 	// 		break;
 	// 	default:
 	// 		break;
