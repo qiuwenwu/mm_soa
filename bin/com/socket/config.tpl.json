@@ -1,8 +1,14 @@
 {
-	"path": "/ws/'{0}'",
+	// webscoket请求路由地址
+	"path": "/ws/{0}",
+	// 名称
 	"name": "{0}",
+	// websocket标题
 	"title": "示例websocket",
+	// 描述，用来介绍该websocket程序是做什么用的
 	"description": "用来测试",
+	// webscoket调用的脚本文件
 	"func_file": "./index.js",
+	// 同步消息循环发送的时间间隔
 	"interval": 1000
 }
