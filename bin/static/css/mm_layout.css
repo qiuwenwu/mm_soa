@@ -50,10 +50,7 @@
  * 卡片
  */
 .mm_card {
-	background: #fff;
 	border-radius: 0.25rem;
-	border: 1px solid rgba(125, 125, 125, 0.25);
-	box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
 	overflow: hidden;
 	height: 100%;
 }
@@ -116,25 +113,11 @@ ol.mm_list li::before {
 	width: 1.125rem;
 	line-height: 1.125rem;
 	text-align: center;
-	background-color: #afbfd4;
 	border-radius: 0.125rem;
-	color: #fff;
 	transform: translateY(-50%);
 	letter-spacing: 0;
 	font-size: 0.75rem;
 	height: 1.125rem;
-}
-
-ol.mm_list li:nth-child(1)::before {
-	background-color: #f12f04;
-}
-
-ol.mm_list li:nth-child(2)::before {
-	background-color: #ff5000;
-}
-
-ol.mm_list li:nth-child(3)::before {
-	background-color: #ff9000;
 }
 
 /* ===  布局控制  === */
@@ -187,15 +170,16 @@ ol.mm_list li:nth-child(3)::before {
 }
 
 
-
 .mm_info .mm_item {
 	border-top: none;
 	border-bottom: none;
 }
+
 .mm_info .title {
 	display: flex;
 	align-items: center;
 }
+
 .mm_info .title::after,
 .mm_info .content::after {
 	content: "";
