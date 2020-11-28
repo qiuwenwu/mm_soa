@@ -2,7 +2,7 @@
 	<mm_page id="error_404">
 		<div class="box">
 			<h1>404</h1>
-			<div class="mm_grid">
+			<div class="mm_row">
 				<div class="mm_col_50">
 					<h2>超级美眉</h2>
 				</div>
@@ -35,7 +35,7 @@
 		z-index: 2;
 	}
 
-	#error_404 .mm_grid {
+	#error_404 .mm_row {
 		border-top: 1px solid #e1e4e8;
 		padding-top: 0.5rem;
 	}

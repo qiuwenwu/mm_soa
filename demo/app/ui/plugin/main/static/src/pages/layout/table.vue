@@ -1,26 +1,26 @@
 <template>
 	<mm_page id="page_table">
 		<header>
-			<mm_grid>
+			<mm_warp><mm_container><mm_row>
 				<mm_col width="100">
-					<mm_view url="/">
+					<mm_card url="/">
 						<h3>
 							<span>表格</span>
 							<span class="fr">&lt; 返回</span></router-link>
 						</h3>
-					</mm_view>
+					</mm_card>
 				</mm_col>
-			</mm_grid>
+			</mm_row></mm_container></mm_warp>
 		</header>
 		<main>
-			<mm_grid>
+			<mm_warp><mm_container><mm_row>
 				<mm_col width="100">
-					<mm_view>
+					<mm_card>
 						<mm_btn class="btn_info" @click.native="small = !small">切换大小</mm_btn>
 						<mm_btn class="btn_info" @click.native="dark = !dark">反色</mm_btn>
-					</mm_view>
+					</mm_card>
 
-					<mm_view>
+					<mm_card>
 						<h5>样式一</h5>
 						<mm_table type="1" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
@@ -52,10 +52,10 @@
 								</tr>
 							</tbody>
 						</mm_table>
-					</mm_view>
+					</mm_card>
 
 				
-					<mm_view>
+					<mm_card>
 						<h5>样式二</h5>
 						<mm_table type="2" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
@@ -87,10 +87,10 @@
 								</tr>
 							</tbody>
 						</mm_table>
-					</mm_view>
+					</mm_card>
 
 					
-					<mm_view>
+					<mm_card>
 						<h5>样式三</h5>
 						<mm_table type="3" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
@@ -122,9 +122,9 @@
 								</tr>
 							</tbody>
 						</mm_table>
-					</mm_view>
+					</mm_card>
 
-					<mm_view>
+					<mm_card>
 						<h5>样式四</h5>
 						<mm_table type="4" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
@@ -156,9 +156,9 @@
 								</tr>
 							</tbody>
 						</mm_table>
-					</mm_view>
+					</mm_card>
 				</mm_col>
-			</mm_grid>
+			</mm_row></mm_container></mm_warp>
 		</main>
 	</mm_page>
 </template>

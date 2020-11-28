@@ -1,76 +1,114 @@
 <template>
-	<mm_page id="page_root">
+	<mm_page id="page_root" class="mobile">
 		<header>
-			<mm_grid>
-				<mm_col width="100">
-					<mm_view>
-						<h3>
-							<span>MM-UI组件示例</span>
-							<router-link to="/design"><span>点击查看</span> <span class="font_info">设计规范</span> <span>&gt;</span></router-link>
-						</h3>
-					</mm_view>
-				</mm_col>
-			</mm_grid>
+			<mm_warp>
+				<mm_container>
+					<mm_warp><mm_container><mm_row>
+						<mm_col width="100">
+							<mm_view>
+								<h3>
+									<span>MM-UI组件示例</span>
+									<router-link to="/design"><span>点击查看</span> <span class="font_info">设计规范</span> <span>&gt;</span></router-link>
+								</h3>
+							</mm_view>
+						</mm_col>
+					</mm_row></mm_container></mm_warp>
+				</mm_container>
+			</mm_warp>
 		</header>
 		<main>
-			<mm_grid col="3" class="center grid_min-1">
-				<mm_col width="100">
-					<div>基础组件</div>
-				</mm_col>
-				<mm_col>
-					<mm_view>
-						<h4>内容容器</h4>
-						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in content" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
-						</mm_list>
-					</mm_view>
-				</mm_col>
-				<mm_col>
-					<mm_view>
-						<h4>布局容器</h4>
-						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in layout" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
-						</mm_list>
-					</mm_view>
-				</mm_col>
-				<mm_col>
-					<mm_view>
-						<h4>表单组件</h4>
-						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in form" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
-						</mm_list>
-					</mm_view>
-				</mm_col>
-			</mm_grid>
-			<mm_grid col="3" class="center grid_min-1">
-				<mm_col width="100">
-					<div class="mt">复合组件</div>
-				</mm_col>
-				<mm_col>
-					<mm_view>
-						<h4>栏</h4>
-						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in bar" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
-						</mm_list>
-					</mm_view>
-				</mm_col>
-				<mm_col>
-					<mm_view>
-						<h4>列表</h4>
-						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in list" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
-						</mm_list>
-					</mm_view>
-				</mm_col>
-				<mm_col>
-					<mm_view>
-						<h4>轮播</h4>
-						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in swiper" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
-						</mm_list>
-					</mm_view>
-				</mm_col>
-			</mm_grid>
+			<mm_warp>
+				<mm_container>
+					<mm_row class="row-md-3 row-sm-1">
+						<mm_col width="100">
+							<div class="center">基础组件</div>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="mm_card_head">内容容器</div>
+								<div class="mm_card_body">
+									<mm_list col="1" class="item-lr img-small content-right">
+										<mm_item class="arrow" v-for="(o, idx) in content" :key="idx" :url="o.url">
+											<div class="title">{{ o.title }}</div>
+											<div class="content">{{ o.name }}</div>
+										</mm_item>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="mm_card_head">布局容器</div>
+								<div class="mm_card_body">
+									<mm_list col="1" class="item-lr img-small content-right">
+										<mm_item class="arrow" v-for="(o, idx) in layout" :key="idx" :url="o.url">
+											<div class="title">{{ o.title }}</div>
+											<div class="content">{{ o.name }}</div>
+										</mm_item>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="mm_card_head">表单组件</div>
+								<div class="mm_card_body">
+									<mm_list col="1" class="item-lr img-small content-right">
+										<mm_item class="arrow" v-for="(o, idx) in form" :key="idx" :url="o.url">
+											<div class="title">{{ o.title }}</div>
+											<div class="content">{{ o.name }}</div>
+										</mm_item>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+					<mm_row class="row-md-3 row-sm-1">
+						<mm_col width="100">
+							<div class="center mt">复合组件</div>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="mm_card_head">栏</div>
+								<div class="mm_card_body">
+									<mm_list col="1" class="item-lr img-small content-right">
+										<mm_item class="arrow" v-for="(o, idx) in bar" :key="idx" :url="o.url">
+											<div class="title">{{ o.title }}</div>
+											<div class="content">{{ o.name }}</div>
+										</mm_item>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="mm_card_head">列表</div>
+								<div class="mm_card_body">
+									<mm_list col="1" class="item-lr img-small content-right">
+										<mm_item class="arrow" v-for="(o, idx) in list" :key="idx" :url="o.url">
+											<div class="title">{{ o.title }}</div>
+											<div class="content">{{ o.name }}</div>
+										</mm_item>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="mm_card_head">轮播</div>
+								<div class="mm_card_body">
+									<mm_list col="1" class="item-lr img-small content-right">
+										<mm_item class="arrow" v-for="(o, idx) in swiper" :key="idx" :url="o.url">
+											<div class="title">{{ o.title }}</div>
+											<div class="content">{{ o.name }}</div>
+										</mm_item>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
 		</main>
 	</mm_page>
 </template>
@@ -112,7 +150,7 @@
 				],
 				layout: [{
 						title: "栅格",
-						name: "mm_grid",
+						name: "mm_row",
 						url: "/layout/grid"
 					},
 					{
@@ -132,7 +170,7 @@
 					},
 					{
 						title: "块",
-						name: "mm_view",
+						name: "mm_card",
 						url: "/layout/div"
 					},
 					{
@@ -345,7 +383,6 @@
 	#page_root h3 a {
 		font-size: 1rem;
 		float: right;
-		padding-top: .5rem;
 		color: #999;
 	}
 
@@ -356,22 +393,5 @@
 	#page_root h4 {
 		margin: auto;
 		padding-bottom: 1rem;
-	}
-
-	#page_root .mm_item {
-		color: #333;
-		text-align: left;
-		padding: 0.5rem 1.5rem;
-		border: 1px solid #DBDBDB;
-		margin-top: -1px;
-	}
-
-	#page_root .mm_item span:last-child {
-		color: #999;
-		float: right;
-	}
-
-	#page_root .mm_item:hover {
-		background: #f9f9f9;
 	}
 </style>

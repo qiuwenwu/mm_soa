@@ -20,24 +20,22 @@
 	body {
 		background: #fff;
 	}
-	body>div>header h3{ 
-		padding-left: .5rem;
-		padding-right: .5rem;
-	}
-	body>div>header {
-		background: #fff;
-		color: #333;
-		padding-top: 3rem;
-		border-bottom: 1px solid rgba(125,125,125,0.25);
-		padding-bottom: 0.5rem;
-	}
-	
 	main {
 		padding: 2rem 0;
+		padding-top: 5rem !important;
+	}
+	.content {
+		color: #999;
+	}
+	.mm_card_head {
+		font-weight: 600;
+		text-align: center;
+	}
+	header h3 {
+		line-height: 2.5rem;
 	}
 	header h3 .fr {
-		color: #999;
-		font-size: 1rem;
-		padding-top: .5rem;
+		font-weight: normal;
+		font-size: 0.75rem;
 	}
 </style>

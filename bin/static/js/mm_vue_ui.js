@@ -1581,14 +1581,34 @@ define(['jquery'], function(jquery) {
 		created: function created() {
 			var wh = this.wh;
 			if (wh) {
-				if (wh.indexOf("_") == -1) {
-					this.wh = "_" + wh;
+				if (wh.indexOf("-") == -1) {
+					this.wh = " wh-" + wh;
 				}
 			}
 		}
 	};
 	var mm_foot = {
 		template: "<!-- \u5757\u5C3E --><footer class=\"mm_foot\"><slot></slot></footer>"
+	};
+	var mm_row = {
+		template: "<div :class=\"'mm_row' + cl\"><slot></slot></div>",
+		props: {
+			col: {
+				type: String,
+				default: ""
+			}
+		},
+		computed: {
+			cl: function cl() {
+				var cl = this.col;
+	
+				if (cl && cl.indexOf("-") == -1) {
+					cl = " row-" + cl;
+				}
+	
+				return cl;
+			}
+		}
 	};
 	var mm_grid = {
 		template: "<!-- \u6805\u683C --><div :class=\"'mm_grid' + cl\"><slot></slot></div>",
@@ -1602,8 +1622,8 @@ define(['jquery'], function(jquery) {
 			cl: function cl() {
 				var cl = this.col;
 
-				if (cl && cl.indexOf("_") == -1) {
-					cl = "_" + cl;
+				if (cl && cl.indexOf("-") == -1) {
+					cl = " grid-" + cl;
 				}
 
 				return cl;
@@ -1648,8 +1668,8 @@ define(['jquery'], function(jquery) {
 			cl: function cl() {
 				var cl = this.col;
 
-				if (cl && cl.indexOf("_") == -1) {
-					cl = "_" + cl;
+				if (cl && cl.indexOf("-") == -1) {
+					cl = " list-" + cl;
 				}
 
 				return cl;
@@ -1714,6 +1734,16 @@ define(['jquery'], function(jquery) {
 				if (window) {
 					window.open(this.url);
 				}
+			}
+		}
+	};
+	
+	var mm_card = {
+		template: "<div class=\"mm_card\"><slot></slot></div>",
+		props: {
+			fun: {
+				type: Function,
+				default: function _default() {}
 			}
 		}
 	};
@@ -1787,8 +1817,12 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_warp = {
-		template: "<!-- \u9875\u5916\u5957 --><div class=\"mm_warp\"><slot></slot></div>"
+		template: "<div class=\"mm_warp\"><slot></slot></div>"
 	};
+	var mm_container = {
+		template: "<div class=\"mm_container\"><slot></slot></div>"
+	};
+	
 	var mm_checkbox = {
 		template: "<!-- \u590D\u9009\u6846 --><div class=\"mm_checkbox\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': has(o[field]), 'disabled': o.disabled }\" @click=\"selected(o[field])\"><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
@@ -2339,6 +2373,7 @@ define(['jquery'], function(jquery) {
 			Vue.component("mm_btn", mm_btn);
 			Vue.component("mm_loading", mm_loading);
 			Vue.component("mm_body", mm_body);
+			Vue.component("mm_row", mm_row);
 			Vue.component("mm_col", mm_col);
 			Vue.component("mm_foot", mm_foot);
 			Vue.component("mm_grid", mm_grid);
@@ -2351,9 +2386,11 @@ define(['jquery'], function(jquery) {
 			Vue.component("mm_movable", mm_movable);
 			Vue.component("mm_page", mm_page);
 			Vue.component("mm_view", mm_view);
+			Vue.component("mm_card", mm_card);
 			Vue.component("mm_side", mm_side);
 			Vue.component("mm_table", mm_table);
 			Vue.component("mm_warp", mm_warp);
+			Vue.component("mm_container", mm_container);
 			Vue.component("mm_title", mm_title);
 			Vue.component("mm_content", mm_content);
 			Vue.component("mm_form", mm_form);
