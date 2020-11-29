@@ -27,7 +27,7 @@
 	.content {
 		color: #999;
 	}
-	.mm_card_head {
+	.card_head {
 		font-weight: 600;
 		text-align: center;
 	}

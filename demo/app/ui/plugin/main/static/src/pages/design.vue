@@ -23,7 +23,7 @@
 					<mm_row col="3">
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">字体大小</div>
+								<div class="card_head">字体大小</div>
 								<table>
 									<tr>
 										<td>
@@ -78,7 +78,7 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">图标大小</div>
+								<div class="card_head">图标大小</div>
 								<table>
 									<tr>
 										<td>
@@ -115,7 +115,7 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">字体颜色</div>
+								<div class="card_head">字体颜色</div>
 								<table>
 									<tr>
 										<td>

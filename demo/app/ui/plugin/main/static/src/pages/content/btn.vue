@@ -19,11 +19,11 @@
 		<main>
 			<mm_warp>
 				<mm_container>
-					<mm_row class="row-sm-1 row-md-2">
+					<mm_row class="row-1 row-md-2">
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">按钮颜色——带背景</div>
-								<div class="mm_card_body">
+								<div class="card_head">按钮颜色——带背景</div>
+								<div class="card_body">
 									<mm_btn class="btn_default">默认</mm_btn>
 									<mm_btn class="btn_primary">主要</mm_btn>
 									<mm_btn class="btn_info">信息</mm_btn>
@@ -35,8 +35,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">按钮——不带背景</div>
-								<div class="mm_card_body">
+								<div class="card_head">按钮——不带背景</div>
+								<div class="card_body">
 									<mm_btn class="btn_default-x">默认</mm_btn>
 									<mm_btn class="btn_primary-x">主要</mm_btn>
 									<mm_btn class="btn_info-x">信息</mm_btn>
@@ -48,8 +48,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">全屏宽按钮</div>
-								<div class="mm_card_body">
+								<div class="card_head">全屏宽按钮</div>
+								<div class="card_body">
 									<mm_group>
 										<mm_btn class="btn_default">默认</mm_btn>
 									</mm_group>
@@ -67,8 +67,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card class="btn-3">
-								<div class="mm_card_head">全屏宽按钮圆角</div>
-								<div class="mm_card_body">
+								<div class="card_head">全屏宽按钮圆角</div>
+								<div class="card_body">
 									<mm_group class="b-a mtb">
 										<mm_btn class="btn_default">默认</mm_btn>
 									</mm_group>
@@ -108,7 +108,7 @@
 		padding-top: 0.75rem;
 	}
 
-	#page_btn .mm_card_body {
+	#page_btn .card_body {
 		padding: 1rem;
 	}
 </style>

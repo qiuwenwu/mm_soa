@@ -1,32 +1,40 @@
 <template>
 	<mm_page id="page_modal">
 		<header>
-			<mm_warp><mm_container><mm_row>
-				<mm_col width="100">
-					<mm_card url="/">
-						<h3>
-							<span>模态窗</span>
-							<span class="fr">&lt; 返回</span></router-link>
-						</h3>
-					</mm_card>
-				</mm_col>
-			</mm_row></mm_container></mm_warp>
+			<mm_warp>
+				<mm_container>
+					<mm_row>
+						<mm_col width="100">
+							<mm_view url="/">
+								<h3>
+									<span>模态窗</span>
+									<span class="fr">&lt; 返回</span></router-link>
+								</h3>
+							</mm_view>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
 		</header>
 		<main>
-			<mm_warp><mm_container><mm_row>
-				<mm_col width="100">
-					<mm_card>
-						<h5>点击按钮测试</h5>
-						<mm_btn class="btn_info" @click.native="show1 = !show1, show2 = false">带遮罩 {{ show1 }}</mm_btn>
-						<mm_btn class="btn_info" @click.native="show2 = !show2, show1 = false">不带遮罩 {{ show2 }}</mm_btn>
-					</mm_card>
+			<mm_warp>
+				<mm_container>
+					<mm_row>
+						<mm_col width="100">
+							<mm_card>
+								<h5>点击按钮测试</h5>
+								<mm_btn class="btn_info" @click.native="show1 = !show1, show2 = false">带遮罩 {{ show1 }}</mm_btn>
+								<mm_btn class="btn_info" @click.native="show2 = !show2, show1 = false">不带遮罩 {{ show2 }}</mm_btn>
+							</mm_card>
 
-					<mm_card>
-						<h5>出入场方式 {{ value }}</h5>
-						<mm_radio v-model="value" :options="options"></mm_radio>
-					</mm_card>
-				</mm_col>
-			</mm_row></mm_container></mm_warp>
+							<mm_card>
+								<h5>出入场方式 {{ value }}</h5>
+								<mm_radio v-model="value" :options="options"></mm_radio>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
 		</main>
 		<mm_modal v-model="show1" mask="true" :display="value">
 			<mm_card class="card">

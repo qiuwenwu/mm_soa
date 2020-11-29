@@ -3,7 +3,7 @@
 		<header>
 			<mm_warp>
 				<mm_container>
-					<mm_warp><mm_container><mm_row>
+					<mm_row>
 						<mm_col width="100">
 							<mm_view>
 								<h3>
@@ -12,7 +12,7 @@
 								</h3>
 							</mm_view>
 						</mm_col>
-					</mm_row></mm_container></mm_warp>
+					</mm_row>
 				</mm_container>
 			</mm_warp>
 		</header>
@@ -25,8 +25,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">内容容器</div>
-								<div class="mm_card_body">
+								<div class="card_head">内容容器</div>
+								<div class="card_body">
 									<mm_list col="1" class="item-lr img-small content-right">
 										<mm_item class="arrow" v-for="(o, idx) in content" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
@@ -38,8 +38,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">布局容器</div>
-								<div class="mm_card_body">
+								<div class="card_head">布局容器</div>
+								<div class="card_body">
 									<mm_list col="1" class="item-lr img-small content-right">
 										<mm_item class="arrow" v-for="(o, idx) in layout" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
@@ -51,8 +51,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">表单组件</div>
-								<div class="mm_card_body">
+								<div class="card_head">表单组件</div>
+								<div class="card_body">
 									<mm_list col="1" class="item-lr img-small content-right">
 										<mm_item class="arrow" v-for="(o, idx) in form" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
@@ -69,8 +69,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">栏</div>
-								<div class="mm_card_body">
+								<div class="card_head">栏</div>
+								<div class="card_body">
 									<mm_list col="1" class="item-lr img-small content-right">
 										<mm_item class="arrow" v-for="(o, idx) in bar" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
@@ -82,8 +82,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">列表</div>
-								<div class="mm_card_body">
+								<div class="card_head">列表</div>
+								<div class="card_body">
 									<mm_list col="1" class="item-lr img-small content-right">
 										<mm_item class="arrow" v-for="(o, idx) in list" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
@@ -95,8 +95,8 @@
 						</mm_col>
 						<mm_col>
 							<mm_card>
-								<div class="mm_card_head">轮播</div>
-								<div class="mm_card_body">
+								<div class="card_head">轮播</div>
+								<div class="card_body">
 									<mm_list col="1" class="item-lr img-small content-right">
 										<mm_item class="arrow" v-for="(o, idx) in swiper" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>

@@ -1,48 +1,64 @@
 <template>
 	<mm_page id="page_list">
 		<header>
-			<mm_warp><mm_container><mm_row>
-				<mm_col width="100">
-					<mm_card url="/">
-						<h3>
-							<span>精灵布局</span>
-							<span class="fr">&lt; 返回</span></router-link>
-						</h3>
-					</mm_card>
-				</mm_col>
-			</mm_row></mm_container></mm_warp>
+			<mm_warp>
+				<mm_container>
+					<mm_row>
+						<mm_col width="100">
+							<mm_view url="/">
+								<h3>
+									<span>精灵布局</span>
+									<span class="fr">&lt; 返回</span></router-link>
+								</h3>
+							</mm_view>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
 		</header>
 		<main>
-			<mm_warp><mm_container><mm_row>
-				<mm_col width="100">
-					<mm_card>
-						<mm_sptite v-for="(o, i) in list" :key="i" :client="o.client" :name="o.name" :size="o.size" :pos="o.pos" :align="o.align" :tag="o.tag"
-						 :type="o.type" :src="o.src" background="o.background" :z-index="o.zIndex"></mm_sptite>
-					</mm_card>
-				</mm_col>
-			</mm_row></mm_container></mm_warp>
-			<mm_warp><mm_container><mm_row>
-				<mm_col width="100">
-					<mm_card>
-						<mm_sptite v-for="(o, i) in list_form" :key="i" :client="o.client" :name="o.name" :size="o.size" v-model="o.text" :pos="o.pos"
-						 :align="o.align" :tag="o.tag" :type="o.type" :background="o.background" :z-index="o.zIndex"></mm_sptite>
-					</mm_card>
-				</mm_col>
-			</mm_row></mm_container></mm_warp>
-			<mm_warp><mm_container><mm_row>
-				<mm_col width="100">
-					<mm_card>
-						<mm_sptite v-for="(o, i) in list_form" :key="i" :client="o.client" :name="o.name" :size="o.size" v-model="o.text" :pos="o.pos"
-						 :align="o.align" :tag="o.tag" :type="o.type" :background="o.background" :z-index="o.zIndex">
-							<template slot-scope="scope">
-								<a :style="scope.style_sub">
-									你好
-								</a>
-							</template>
-						</mm_sptite>
-					</mm_card>
-				</mm_col>
-			</mm_row></mm_container></mm_warp>
+			<mm_warp>
+				<mm_container>
+					<mm_row>
+						<mm_col width="100">
+							<mm_card>
+								<mm_sptite v-for="(o, i) in list" :key="i" :client="o.client" :name="o.name" :size="o.size" :pos="o.pos" :align="o.align"
+								 :tag="o.tag" :type="o.type" :src="o.src" background="o.background" :z-index="o.zIndex"></mm_sptite>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
+			<mm_warp>
+				<mm_container>
+					<mm_row>
+						<mm_col width="100">
+							<mm_card>
+								<mm_sptite v-for="(o, i) in list_form" :key="i" :client="o.client" :name="o.name" :size="o.size" v-model="o.text"
+								 :pos="o.pos" :align="o.align" :tag="o.tag" :type="o.type" :background="o.background" :z-index="o.zIndex"></mm_sptite>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
+			<mm_warp>
+				<mm_container>
+					<mm_row>
+						<mm_col width="100">
+							<mm_card>
+								<mm_sptite v-for="(o, i) in list_form" :key="i" :client="o.client" :name="o.name" :size="o.size" v-model="o.text"
+								 :pos="o.pos" :align="o.align" :tag="o.tag" :type="o.type" :background="o.background" :z-index="o.zIndex">
+									<template slot-scope="scope">
+										<a :style="scope.style_sub">
+											你好
+										</a>
+									</template>
+								</mm_sptite>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
 		</main>
 	</mm_page>
 </template>

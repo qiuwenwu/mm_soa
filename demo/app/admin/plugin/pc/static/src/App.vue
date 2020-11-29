@@ -277,7 +277,7 @@
 		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
 	}
 
-	.mm_card_head {
+	.card_head {
 		position: relative;
 		height: 2.5rem;
 		line-height: 2.5rem;
@@ -287,7 +287,7 @@
 		font-size: 14px;
 	}
 
-	.mm_card_body {
+	.card_body {
 		position: relative;
 		padding: 0.5rem 1rem 1rem 1rem;
 	}

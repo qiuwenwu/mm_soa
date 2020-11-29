@@ -128,14 +128,14 @@ footer.hide {
 		border: 1px solid rgba(125, 125, 125, 0.25);
 		box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
 	}
-	
+
 	.mm_side.fold .mm_item:hover .box {
 		display: block;
 		max-height: initial;
 	}
-	
+
 	.mm_side.fold .box a:hover {
-		background:var(--color_primary);
+		background: var(--color_primary);
 	}
 }
 
@@ -178,19 +178,23 @@ footer.hide {
 	align-items: stretch;
 }
 
-.mm_col {
-	overflow: hidden;
-}
-
 .mm_grid {
-	width: 100%;
-	display: -webkit-flex;
+	max-width: 76rem;
+	margin: 0 auto;
+	position: relative;
+	flex-wrap: wrap;
 	display: flex;
-	flex-flow: row wrap;
-	align-items: flex-start;
-	justify-content: flex-start;
+	align-content: flex-start;
+	align-items: stretch;
+	justify-content: space-between;
+	justify-items: stretch;
 }
-
+.mm_grid>* {
+	margin-top: -1px;
+	margin-left: -1px;
+	border: 1px solid var(--color_border);
+	flex: 1;
+}
 /**
  * 卡片
  */
@@ -201,20 +205,20 @@ footer.hide {
 	margin: var(--margin_small);
 }
 
-.mm_card_body {
+.card_body {
 	position: relative;
 }
 
-.mm_card_head {
+.card_head {
 	position: relative;
 	padding: var(--padding_mini) var(--padding_base);
 }
 
-.mm_card_head~.mm_card_body {
+.card_head~.card_body {
 	border-top: 1px solid rgba(125, 125, 125, 0.25);
 }
 
-.mm_card_foot {
+.card_foot {
 	position: relative;
 	padding: var(--padding_small) var(--padding_base);
 }
