@@ -27,7 +27,7 @@
 							<mm_card>
 								<div class="card_head">内容容器</div>
 								<div class="card_body">
-									<mm_list col="1" class="item-lr img-small content-right">
+									<mm_list col="1" class="item-lr content-right">
 										<mm_item class="arrow" v-for="(o, idx) in content" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
 											<div class="content">{{ o.name }}</div>
@@ -40,7 +40,7 @@
 							<mm_card>
 								<div class="card_head">布局容器</div>
 								<div class="card_body">
-									<mm_list col="1" class="item-lr img-small content-right">
+									<mm_list col="1" class="item-lr content-right">
 										<mm_item class="arrow" v-for="(o, idx) in layout" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
 											<div class="content">{{ o.name }}</div>
@@ -53,7 +53,7 @@
 							<mm_card>
 								<div class="card_head">表单组件</div>
 								<div class="card_body">
-									<mm_list col="1" class="item-lr img-small content-right">
+									<mm_list col="1" class="item-lr content-right">
 										<mm_item class="arrow" v-for="(o, idx) in form" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
 											<div class="content">{{ o.name }}</div>
@@ -71,7 +71,7 @@
 							<mm_card>
 								<div class="card_head">栏</div>
 								<div class="card_body">
-									<mm_list col="1" class="item-lr img-small content-right">
+									<mm_list col="1" class="item-lr content-right">
 										<mm_item class="arrow" v-for="(o, idx) in bar" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
 											<div class="content">{{ o.name }}</div>
@@ -84,7 +84,7 @@
 							<mm_card>
 								<div class="card_head">列表</div>
 								<div class="card_body">
-									<mm_list col="1" class="item-lr img-small content-right">
+									<mm_list col="1" class="item-lr content-right">
 										<mm_item class="arrow" v-for="(o, idx) in list" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
 											<div class="content">{{ o.name }}</div>
@@ -97,7 +97,7 @@
 							<mm_card>
 								<div class="card_head">轮播</div>
 								<div class="card_body">
-									<mm_list col="1" class="item-lr img-small content-right">
+									<mm_list col="1" class="item-lr content-right">
 										<mm_item class="arrow" v-for="(o, idx) in swiper" :key="idx" :url="o.url">
 											<div class="title">{{ o.title }}</div>
 											<div class="content">{{ o.name }}</div>
@@ -393,5 +393,9 @@
 	#page_root h4 {
 		margin: auto;
 		padding-bottom: 1rem;
+	}
+
+	#page_root .card_body {
+		padding: 0;
 	}
 </style>

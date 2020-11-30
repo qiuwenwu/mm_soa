@@ -20,25 +20,34 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="100">
+						<mm_col width="50">
 							<mm_card class="pc">
-								<h5 @click="$copy(code_1)">样式一（PC）</h5>
-								<mm_switch title="开关" v-model="value"></mm_switch>
+								<div class="card_head">PC版</div>
+								<div class="card_body">
+									<mm_view>
+										<h5 @click="$copy(code_1)">样式一</h5>
+										<mm_switch title="开关" v-model="value"></mm_switch>
+									</mm_view>
+									<mm_view>
+										<h5 @click="$copy(code_2)">样式二</h5>
+										<mm_switch title="开关" v-model="value" display="2"></mm_switch>
+									</mm_view>
+								</div>
 							</mm_card>
-
-							<mm_card class="pc">
-								<h5 @click="$copy(code_2)">样式二（PC）</h5>
-								<mm_switch title="开关" v-model="value" display="2"></mm_switch>
-							</mm_card>
-
+						</mm_col>
+						<mm_col width="50">
 							<mm_card class="mobile">
-								<h5 @click="$copy(code_3)">样式三（mobile）</h5>
-								<mm_switch title="开关" v-model="value"></mm_switch>
-							</mm_card>
-
-							<mm_card class="mobile">
-								<h5 @click="$copy(code_4)">样式四（mobile）</h5>
-								<mm_switch title="开关" v-model="value" display="2"></mm_switch>
+								<div class="card_head">Mobile版本</div>
+								<div class="card_body">
+									<mm_view>
+										<h5 @click="$copy(code_3)">样式三</h5>
+										<mm_switch title="开关" v-model="value"></mm_switch>
+									</mm_view>
+									<mm_view>
+										<h5 @click="$copy(code_4)">样式四</h5>
+										<mm_switch title="开关" v-model="value" display="2"></mm_switch>
+									</mm_view>
+								</div>
 							</mm_card>
 						</mm_col>
 					</mm_row>
@@ -47,7 +56,13 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="100">{{ value }}</mm_col>
+						<mm_col width="100">
+							<mm_card>
+								<div class="card_body">
+									选择结果：{{ value }}
+								</div>
+							</mm_card>
+						</mm_col>
 					</mm_row>
 				</mm_container>
 			</mm_warp>

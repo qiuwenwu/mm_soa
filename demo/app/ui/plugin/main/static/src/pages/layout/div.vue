@@ -19,50 +19,56 @@
 		<main>
 			<mm_warp>
 				<mm_container>
-					<mm_row>
+					<mm_row class="center">
 						<mm_col width="100">
-							<mm_row class="center">
-								<mm_col width="100">
-									<h5>默认块</h5>
-									<mm_card class="ba">
-										<div class="head">块头</div>
-										<div class="body">
-											<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-										</div>
-										<div class="foot">块脚</div>
-									</mm_card>
+							<mm_view>
+								<h5>无圆角</h5>
+							</mm_view>
+						</mm_col>
+						<mm_col width="50">
+							<mm_card class="b-n">
+								<div class="card_head">块头</div>
+								<div class="card_body">
+									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
+								</div>
+								<div class="card_foot">块脚</div>
+							</mm_card>
+						</mm_col>
+						<mm_col width="50">
+							<mm_card class="b-n">
+								<div class="card_head">块头</div>
+								<div class="card_body">
+									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
+								</div>
+								<div class="card_foot bt">块脚</div>
+							</mm_card>
+						</mm_col>
 
-									<mm_card class="card b-n">
-										<div class="head">块头</div>
-										<div class="body">
-											<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-										</div>
-										<div class="foot">块脚</div>
-									</mm_card>
-								</mm_col>
-								<mm_col width="100">
-									<h5>带圆角块</h5>
-									<mm_card class="ba b-a">
-										<div class="head">块头</div>
-										<div class="body">
-											<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-										</div>
-										<div class="foot">块脚</div>
-									</mm_card>
-									<mm_card class="card">
-										<div class="head">块头</div>
-										<div class="body">
-											<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-										</div>
-										<div class="foot">块脚</div>
-									</mm_card>
-								</mm_col>
-							</mm_row>
+						<mm_col width="100">
+							<mm_view>
+								<h5>带圆角块</h5>
+							</mm_view>
+						</mm_col>
+						<mm_col width="50">
+							<mm_card class="ba b-a">
+								<div class="card_head">块头</div>
+								<div class="card_body">
+									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
+								</div>
+								<div class="card_foot bt">块脚</div>
+							</mm_card>
+						</mm_col>
+						<mm_col width="50">
+							<mm_card>
+								<div class="card_head">块头</div>
+								<div class="card_body">
+									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
+								</div>
+								<div class="card_foot">块脚</div>
+							</mm_card>
+						</mm_col>
+					</mm_row>
 				</mm_container>
-			</mm_warp>
-			</mm_col>
-			</mm_row>
-			</mm_container>
 			</mm_warp>
 		</main>
 	</mm_page>

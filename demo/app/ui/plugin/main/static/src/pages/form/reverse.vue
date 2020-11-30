@@ -20,21 +20,31 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
+						<mm_col width="50">
+							<mm_card>
+								<div class="card_head">
+									<h5 @click="$copy(code_1)">样式一</h5>
+								</div>
+								<div class="card_body">
+									<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback"></mm_reverse>
+									<mm_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback"></mm_reverse>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col width="50">
+							<mm_card>
+								<div class="card_head">
+									<h5 @click="$copy(code_2)">样式二</h5>
+								</div>
+								<div class="card_body">
+									<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback" display="2"></mm_reverse>
+									<mm_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback" display="2"></mm_reverse>
+								</div>
+							</mm_card>
+						</mm_col>
 						<mm_col width="100">
 							<mm_card>
-								<h5 @click="$copy(code_1)">样式一</h5>
-								<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback"></mm_reverse>
-								<mm_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback"></mm_reverse>
-							</mm_card>
-
-							<mm_card>
-								<h5 @click="$copy(code_2)">样式二</h5>
-								<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback" display="2"></mm_reverse>
-								<mm_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback" display="2"></mm_reverse>
-							</mm_card>
-
-							<mm_card>
-								排序方式 {{ query.orderby }}
+								<div class="card_body">排序方式 {{ query.orderby }}</div>
 							</mm_card>
 						</mm_col>
 					</mm_row>

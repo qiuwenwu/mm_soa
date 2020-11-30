@@ -21,16 +21,16 @@
 				<mm_container>
 					<mm_row>
 						<mm_col width="100">
-							<mm_card>
+							<mm_view>
 								<h5>点击按钮测试</h5>
 								<mm_btn class="btn_info" @click.native="show1 = !show1, show2 = false">带遮罩 {{ show1 }}</mm_btn>
 								<mm_btn class="btn_info" @click.native="show2 = !show2, show1 = false">不带遮罩 {{ show2 }}</mm_btn>
-							</mm_card>
+							</mm_view>
 
-							<mm_card>
+							<mm_view>
 								<h5>出入场方式 {{ value }}</h5>
 								<mm_radio v-model="value" :options="options"></mm_radio>
-							</mm_card>
+							</mm_view>
 						</mm_col>
 					</mm_row>
 				</mm_container>
@@ -38,20 +38,20 @@
 		</main>
 		<mm_modal v-model="show1" mask="true" :display="value">
 			<mm_card class="card">
-				<header>块头</header>
-				<mm_body>
+				<div class="card_head">块头</div>
+				<div class="card_body">
 					<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-				</mm_body>
-				<mm_foot>块脚</mm_foot>
+				</div>
+				<div class="card_foot">块脚</div>
 			</mm_card>
 		</mm_modal>
 		<mm_modal v-model="show2" :display="value">
 			<mm_card class="card">
-				<header>块头 <span class="fr" @click="show2 = false">×</span></header>
-				<mm_body>
+				<div class="card_head">块头 <a class="fr btn-link" href="javascript:void(0)" @click="show2 = false">×</a></div>
+				<div class="card_body">
 					<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-				</mm_body>
-				<mm_foot>块脚</mm_foot>
+				</div>
+				<div class="card_foot">块脚</div>
 			</mm_card>
 		</mm_modal>
 	</mm_page>
@@ -89,15 +89,4 @@
 </script>
 
 <style>
-	#page_modal .mm_head {
-		padding: 0.5rem 1rem;
-	}
-
-	#page_modal .mm_foot {
-		padding: 0.5rem 1rem;
-	}
-
-	#page_modal .main {
-		padding: 1rem;
-	}
 </style>

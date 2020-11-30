@@ -483,7 +483,6 @@ button {
 	padding-left: var(--padding_small);
 	padding-right: var(--padding_small);
 	display: inline-block;
-	min-width: 2.5rem;
 }
 
 [type=button],
@@ -536,8 +535,8 @@ form textarea {
 	height: auto;
 }
 
-label~label {
-	margin-left: var(--margin_base);
+label {
+	margin-right: var(--margin_base);
 }
 
 optgroup {
@@ -770,7 +769,7 @@ img {
 figure {
 	position: relative;
 	overflow: hidden;
-	display: block;
+	display: inline-block;
 	background: center center no-repeat;
 	background-size: 100%;
 }

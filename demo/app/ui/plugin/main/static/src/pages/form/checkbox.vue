@@ -20,14 +20,24 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="100">
+						<mm_col width="50">
 							<mm_card class="pc">
-								<h5 @click="$copy(code_1)">样式一(PC)</h5>
-								<mm_checkbox v-model="value" :options="options"></mm_checkbox>
+								<div class="card_head">
+									<h5 @click="$copy(code_1)">样式一(PC)</h5>
+								</div>
+								<div class="card_body">
+									<mm_checkbox v-model="value" :options="options"></mm_checkbox>
+								</div>
 							</mm_card>
+						</mm_col>
+						<mm_col width="50">
 							<mm_card class="mobile">
-								<h5 @click="$copy(code_2)">样式二(mobile)</h5>
-								<mm_checkbox v-model="value" :options="options"></mm_checkbox>
+								<div class="card_head">
+									<h5 @click="$copy(code_2)">样式二(mobile)</h5>
+								</div>
+								<div class="card_body">
+									<mm_checkbox v-model="value" :options="options"></mm_checkbox>
+								</div>
 							</mm_card>
 						</mm_col>
 					</mm_row>
@@ -36,7 +46,13 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="100">{{ value }}</mm_col>
+						<mm_col width="100">
+							<mm_card>
+								<div class="card_body">
+									选择结果：{{ value }}
+								</div>
+							</mm_card>
+						</mm_col>
 					</mm_row>
 				</mm_container>
 			</mm_warp>

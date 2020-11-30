@@ -107,8 +107,4 @@
 		font-size: 1rem;
 		padding-top: 0.75rem;
 	}
-
-	#page_btn .card_body {
-		padding: 1rem;
-	}
 </style>

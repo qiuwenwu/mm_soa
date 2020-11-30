@@ -22,14 +22,19 @@
 					<mm_row>
 						<mm_col width="100">
 							<mm_card>
-								<mm_rich id="test" v-model="content"></mm_rich>
+								<div class="card_body">
+									<mm_rich id="test" v-model="content"></mm_rich>
+								</div>
 							</mm_card>
 						</mm_col>
-
 						<mm_col width="100">
-							<h5>查看结果</h5>
-							<mm_card v-html="content">
-							</mm_card>
+							<div class="card_head">
+								<h5>查看结果</h5>
+							</div>
+							<div class="card_body">
+								<mm_view v-html="content">
+								</mm_view>
+							</div>
 						</mm_col>
 					</mm_row>
 				</mm_container>

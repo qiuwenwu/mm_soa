@@ -38,6 +38,8 @@
 									</mm_list>
 								</div>
 							</mm_card>
+						</mm_col>
+						<mm_col width="100">
 							<mm_card>
 								<div class="card_head">炫彩(无高光)</div>
 								<div class="card_body">
@@ -50,7 +52,8 @@
 									</mm_list>
 								</div>
 							</mm_card>
-
+						</mm_col>
+						<mm_col width="100">
 							<mm_card>
 								<div class="card_head">常规</div>
 								<div class="card_body">

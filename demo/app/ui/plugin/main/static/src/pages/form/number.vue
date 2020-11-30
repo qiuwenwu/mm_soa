@@ -20,19 +20,31 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="100">
+						<mm_col width="50">
 							<mm_card class="pc">
-								<h5 @click="$copy(code_1)">样式一</h5>
-								<mm_number v-model="value" :min="min" :max="max" :num="num"></mm_number>
+								<div class="card_head">
+									<h5 @click="$copy(code_1)">样式一</h5>
+								</div>
+								<div class="card_body">
+									<mm_number v-model="value" :min="min" :max="max" :num="num"></mm_number>
+								</div>
 							</mm_card>
-
+						</mm_col>
+						<mm_col width="50">
 							<mm_card class="mobile">
-								<h5 @click="$copy(code_2)">样式二</h5>
-								<mm_number v-model="value" :min="min" :max="max" :num="num"></mm_number>
+								<div class="card_head">
+									<h5 @click="$copy(code_2)">样式二</h5>
+								</div>
+								<div class="card_body">
+									<mm_number v-model="value" :min="min" :max="max" :num="num"></mm_number>
+								</div>
 							</mm_card>
-
+						</mm_col>
+						<mm_col width="100">
 							<mm_card>
-								{{ value }}
+								<div class="card_body">
+									选择结果：{{ value }}
+								</div>
 							</mm_card>
 						</mm_col>
 					</mm_row>

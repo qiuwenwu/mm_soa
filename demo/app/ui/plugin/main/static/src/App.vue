@@ -38,4 +38,8 @@
 		font-weight: normal;
 		font-size: 0.75rem;
 	}
+	
+	.card_body {
+		padding: 1rem;
+	}
 </style>

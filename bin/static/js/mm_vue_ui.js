@@ -1582,7 +1582,7 @@ define(['jquery'], function(jquery) {
 			var wh = this.wh;
 			if (wh) {
 				if (wh.indexOf("-") == -1) {
-					this.wh = " wh-" + wh;
+					this.wh = " w-" + wh;
 				}
 			}
 		}
@@ -1631,7 +1631,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_group = {
-		template: "<!-- \u7EC4\u5408\u6846 --><div class=\"mm_group\"><slot></slot></div>"
+		template: "<div class=\"mm_group\"><slot></slot></div>"
 	};
 	var mm_head = {
 		template: "<!-- \u5757\u5934 --><header class=\"mm_head\"><slot></slot></header>"
@@ -1680,7 +1680,7 @@ define(['jquery'], function(jquery) {
 		template: "<div class=\"mm_main\"><slot></slot></div>"
 	};
 	var mm_modal = {
-		template: "<!-- \u6A21\u6001\u7A97 --><div class=\"mm_modal\" v-bind:class=\"{ 'show' : show }\"><div v-bind:class=\"'from_' + display\"><slot></slot></div><!-- \u906E\u7F69 --><div class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></div></div>",
+		template: "<div class=\"mm_modal\" v-bind:class=\"{ 'show' : show }\"><div v-bind:class=\"'popup from_' + display\"><slot></slot></div><div class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></div></div>",
 		props: {
 			display: {
 				type: String,

@@ -29,7 +29,10 @@
 	.mm_code {
 		position: relative;
 	}
-
+	.mm_code ul {
+		list-style: none;
+		padding-left: 0;
+	}
 	.mm_code .copy_btn {
 		position: absolute;
 		right: 0.75rem;
@@ -60,7 +63,7 @@
 	.hljs li:before {
 		float: left;
 		content: attr(data-line-number);
-		min-width: 2.25rem;
+		min-width: 2.5rem;
 		border-right: 1px solid #c5c5c5;
 		word-wrap: normal;
 		text-align: right;
