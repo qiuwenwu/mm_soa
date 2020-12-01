@@ -22,64 +22,64 @@
 				<mm_container>
 					<mm_row>
 						<mm_col width="100">
-							<mm_card>
+							<mm_view>
 								<button class="btn_info" @click="border = !border"><span v-if="border">无</span><span v-else>加</span>边框</button>
-							</mm_card>
+							</mm_view>
 						</mm_col>
 						<mm_col width="100">
-							<mm_card>
+							<mm_view>
 								<h5>样式一</h5>
-								<mm_list col="4" id="list_img_1" v-bind:class="{'icon-x': border}">
+								<mm_list col="4" id="list_img_1" class="list_img" v-bind:class="{'icon-x': border}">
 									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
 										<mm_img :obj="o"></mm_img>
 									</mm_item>
 								</mm_list>
-							</mm_card>
+							</mm_view>
 
-							<mm_card>
+							<mm_view>
 								<h5>样式二</h5>
-								<mm_list col="4" id="list_img_2" v-bind:class="{'icon-x': border}">
+								<mm_list col="4" id="list_img_2" class="list_img" v-bind:class="{'icon-x': border}">
 									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
 										<mm_img :obj="o"></mm_img>
 									</mm_item>
 								</mm_list>
-							</mm_card>
+							</mm_view>
 
-							<mm_card>
+							<mm_view>
 								<h5>样式三</h5>
-								<mm_list col="2" id="list_img_2" class="div-ltb" v-bind:class="{'icon-x': border}">
+								<mm_list col="2" id="list_img_2" class="list_img item-ltb" v-bind:class="{'icon-x': border}">
 									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
 										<mm_img :obj="o"></mm_img>
 									</mm_item>
 								</mm_list>
-							</mm_card>
+							</mm_view>
 
-							<mm_card>
+							<mm_view>
 								<h5>样式四</h5>
-								<mm_list col="2" id="list_img_2" class="div-rtb" v-bind:class="{'icon-x': border}">
+								<mm_list col="2" id="list_img_2" class="item-rtb" v-bind:class="{'icon-x': border}">
 									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
 										<mm_img :obj="o"></mm_img>
 									</mm_item>
 								</mm_list>
-							</mm_card>
+							</mm_view>
 
-							<mm_card>
+							<mm_view>
 								<h5>样式五</h5>
-								<mm_list col="2" id="list_img_2" class="div-ll" v-bind:class="{'icon-x': border}">
+								<mm_list col="2" id="list_img_2" class="item-ll" v-bind:class="{'icon-x': border}">
 									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
 										<mm_img :obj="o"></mm_img>
 									</mm_item>
 								</mm_list>
-							</mm_card>
+							</mm_view>
 
-							<mm_card>
+							<mm_view>
 								<h5>样式五</h5>
-								<mm_list col="2" id="list_img_2" class="div-rr" v-bind:class="{'icon-x': border}">
+								<mm_list col="2" id="list_img_2" class="item-rr" v-bind:class="{'icon-x': border}">
 									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
 										<mm_img :obj="o"></mm_img>
 									</mm_item>
 								</mm_list>
-							</mm_card>
+							</mm_view>
 						</mm_col>
 					</mm_row>
 				</mm_container>
@@ -145,6 +145,17 @@
 </script>
 
 <style>
+	#list_img_1 figure {
+	    border-radius: 0.25rem;
+	}
+	
+	#list_img_2 .mm_img {
+	    border-radius: 0.25rem;
+	    background: #fff;
+	    overflow: hidden;
+	    box-shadow: 0 0.25rem 0.5rem 0 rgba(7,17,27,0.1);
+	}
+	
 	#page_img #list_img2 .mm_img {
 		border: none;
 		box-shadow: none;
@@ -161,5 +172,8 @@
 		right: 0;
 		text-align: right;
 		color: #fff;
+	}
+	#page_img .mm_item {
+		padding: 0.5rem;
 	}
 </style>

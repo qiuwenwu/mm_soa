@@ -185,15 +185,10 @@ footer.hide {
 	display: flex;
 	align-content: flex-start;
 	align-items: stretch;
-	justify-content: space-between;
+	justify-content: start;
 	justify-items: stretch;
 }
-.mm_grid>* {
-	margin-top: -1px;
-	margin-left: -1px;
-	border: 1px solid var(--color_border);
-	flex: 1;
-}
+
 /**
  * 卡片
  */
@@ -274,14 +269,12 @@ ol.mm_list li::before {
 .mm_item {
 	position: relative;
 	padding: var(--padding_mini) var(--padding_base);
-	flex: 1;
 }
 
 .mm_item .title,
 .mm_item .content {
 	overflow: hidden;
 }
-
 
 .item-ltb .media {
 	float: left;
@@ -293,6 +286,34 @@ ol.mm_list li::before {
 	margin-left: var(--margin_base);
 }
 
+.item-ll .media,
+.item-lr .media {
+	float: left;
+	margin-right: var(--margin_small);
+}
+
+.item-ll .title,
+.item-lr .title {
+	float: left;
+	margin-right: var(--margin_small);
+	min-width: 2.5rem;
+}
+
+.item-lr .content {
+	text-align: right;
+}
+
+.item-rl .media,
+.item-rr .media {
+	float: right;
+}
+
+.item-rl .title {
+	float: left;
+}
+.item-rr .title {
+	float: right;
+}
 
 .mobile .mm_item {
 	border-bottom: 1px solid var(--color_border);
@@ -336,6 +357,8 @@ ol.mm_list li::before {
 .group-2>*:first-child { border-top-left-radius: .5rem !important;border-bottom-left-radius: .5rem !important; }
 .group-2>*:last-child { border-top-right-radius: .5rem !important;border-bottom-right-radius: .5rem !important; }
 
+
+
 .mm_info .mm_item {
 	border-top: none;
 	border-bottom: none;
@@ -372,27 +395,13 @@ ol.mm_list li::before {
 	max-height: 16.25rem;
 }
 
-.item-lr .media {
-	float: left;
-	margin-right: var(--margin_small);
-}
-
-.item-lr .title {
-	float: left;
-	margin-right: var(--margin_small);
-	min-width: 2.5rem;
-}
-
-.item-lr.img-mini .title {
-	line-height: var(--height_small);
-}
-
-.item-lr.img-small .title {
-	line-height: var(--height_base);
-}
+.item-ll.img-small .title,
+.item-lr.img-small .title,
+.item-ll.img-small .content,
 .item-lr.img-small .content {
 	line-height: var(--height_base);
 }
+
 
 .info-base .mm_item {
 	display: flex;

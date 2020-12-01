@@ -24,7 +24,7 @@
 							<mm_card>
 								<div class="card_head">常见栅格布局</div>
 								<div class="card_body">
-									<mm_grid class="center grid-x">
+									<mm_grid class="center grid-x grid-auto">
 										<!-- 100% -->
 										<mm_col width="100">
 											<mm_view>100</mm_view>
@@ -123,8 +123,7 @@
 								<div class="card_head">通过父级改变列数 <mm_btn class="btn_info" @click.native="add()">{{ col }}列</mm_btn>
 								</div>
 								<div class="card_body">
-
-									<mm_grid :col="col" class="center">
+									<mm_grid :col="col" class="center grid-x">
 										<mm_col>
 											<mm_view>1</mm_view>
 										</mm_col>
@@ -171,7 +170,7 @@
 								<div class="card_head">自适应列数 <mm_btn class="btn_info" @click.native="add_num()">{{ num }}列</mm_btn>
 								</div>
 								<div class="card_body">
-									<mm_grid class="center">
+									<mm_grid class="center grid-x grid-auto">
 										<mm_col v-for="(o, idx) in num" :key="idx">
 											<mm_view>{{ o }}</mm_view>
 										</mm_col>
@@ -184,7 +183,7 @@
 								<div class="card_head">常见响应式列</div>
 								<div class="card_body">
 
-									<mm_grid col="1" class="center">
+									<mm_grid col="1" class="center grid-x">
 										<mm_col class="col-lg-2 col-md-3 col-sm-6">
 											<mm_view>1</mm_view>
 										</mm_col>

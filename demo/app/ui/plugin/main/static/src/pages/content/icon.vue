@@ -2677,11 +2677,11 @@
 							<mm_card>
 								<div class="card_head">图片图标</div>
 								<div class="card_body">
-									<mm_icon src="/img/logo.png" class="icon-huge"></mm_icon>
-									<mm_icon src="/img/logo.png" class="icon-larger"></mm_icon>
-									<mm_icon src="/img/logo.png" class="icon-base"></mm_icon>
-									<mm_icon src="/img/logo.png" class="icon-small"></mm_icon>
-									<mm_icon src="/img/logo.png" class="icon-mini"></mm_icon>
+									<mm_icon src="/img/logo.png" class="size-huge"></mm_icon>
+									<mm_icon src="/img/logo.png" class="size-larger"></mm_icon>
+									<mm_icon src="/img/logo.png" class="size-base"></mm_icon>
+									<mm_icon src="/img/logo.png" class="size-small"></mm_icon>
+									<mm_icon src="/img/logo.png" class="size-mini"></mm_icon>
 								</div>
 							</mm_card>
 						</mm_col>

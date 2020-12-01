@@ -18,8 +18,22 @@ async function main(ctx, db) {
 			title: $.config.sys.title + "门户",
 			keywords: "mm home pc",
 			description: "",
-			content: ""
+			content: "",
+			list: [
+				{ 
+					name: "张三",
+					age: 21,
+					sex: 1
+				},
+				{
+					name: "李四",
+					age: 31,
+					sex: 0
+				}
+			]
 		};
+		// return model;
+		// art模板引擎
 		return db.tpl.view(file, model);
 	}
 	return null;

@@ -1448,7 +1448,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_btn = {
-		template: "<!-- \u6309\u94AE --><button :type=\"type\" class=\"mm_btn\" v-if=\"!url\" @click=\"click_down()\"><slot></slot></button><button class=\"mm_btn\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></button><router-link class=\"mm_btn\" :to=\"url\" v-else><slot></slot></router-link>",
+		template: "<button :type=\"type\" class=\"mm_btn\" v-if=\"!url\" @click=\"click_down()\"><slot></slot></button><button class=\"mm_btn\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></button><router-link class=\"mm_btn\" :to=\"url\" v-else><slot></slot></router-link>",
 		props: {
 			url: {
 				type: String,
@@ -1477,7 +1477,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_icon = {
-		template: "<!-- \u56FE\u6807 --><figure class=\"mm_icon\" v-if=\"src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img :src=\"src\" :alt=\"alt\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
+		template: "<figure class=\"mm_icon\" v-if=\"src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img :src=\"src\" :alt=\"alt\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
 		props: {
 			src: {
 				type: String,
@@ -1563,10 +1563,10 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_body = {
-		template: "<!-- \u5757\u4E3B\u4F53 --><div class=\"mm_body\"><slot></slot></div>"
+		template: "<div class=\"mm_body\"><slot></slot></div>"
 	};
 	var mm_col = {
-		template: "<!-- \u683C\u5B50 --><div :class=\"'mm_col' + this.wh\"><slot></slot></div>",
+		template: "<div :class=\"'mm_col' + this.wh\"><slot></slot></div>",
 		props: {
 			width: {
 				type: String,
@@ -1588,7 +1588,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_foot = {
-		template: "<!-- \u5757\u5C3E --><footer class=\"mm_foot\"><slot></slot></footer>"
+		template: "<footer class=\"mm_foot\"><slot></slot></footer>"
 	};
 	var mm_row = {
 		template: "<div :class=\"'mm_row' + cl\"><slot></slot></div>",
@@ -1611,7 +1611,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_grid = {
-		template: "<!-- \u6805\u683C --><div :class=\"'mm_grid' + cl\"><slot></slot></div>",
+		template: "<div :class=\"'mm_grid' + cl\"><slot></slot></div>",
 		props: {
 			col: {
 				type: String,
@@ -1634,10 +1634,10 @@ define(['jquery'], function(jquery) {
 		template: "<div class=\"mm_group\"><slot></slot></div>"
 	};
 	var mm_head = {
-		template: "<!-- \u5757\u5934 --><header class=\"mm_head\"><slot></slot></header>"
+		template: "<header class=\"mm_head\"><slot></slot></header>"
 	};
 	var mm_item = {
-		template: "<!-- \u9879\u76EE\u5757 --><div class=\"mm_item\" v-if=\"!url\"><slot></slot></div><div class=\"mm_item\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></div><router-link class=\"mm_item\" :to=\"url\" v-else><slot></slot></router-link>",
+		template: "<div class=\"mm_item\" v-if=\"!url\"><slot></slot></div><div class=\"mm_item\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></div><router-link class=\"mm_item\" :to=\"url\" v-else><slot></slot></router-link>",
 		props: {
 			url: {
 				type: String,
@@ -1657,7 +1657,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_list = {
-		template: "<!-- \u5217\u8868 --><nav :class=\"'mm_list' + cl\"><slot></slot></nav>",
+		template: "<nav :class=\"'mm_list' + cl\"><slot></slot></nav>",
 		props: {
 			col: {
 				type: String,
@@ -1706,10 +1706,10 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_movable = {
-		template: "<!-- \u62D6\u52A8\u5BB9\u5668 --><div class=\"mm_movable\"><slot></slot></div>"
+		template: "<div class=\"mm_movable\"><slot></slot></div>"
 	};
 	var mm_page = {
-		template: "<!-- \u9875\u9762 --><div class=\"mm_page\"><slot></slot></div>",
+		template: "<div class=\"mm_page\"><slot></slot></div>",
 		props: {
 			fun: {
 				type: Function,
@@ -1718,7 +1718,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_view = {
-		template: "<!-- \u5757 --><div class=\"mm_view\" v-if=\"!url\"><slot></slot></div><div class=\"mm_view\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></div><router-link class=\"mm_view\" :to=\"url\" v-else><slot></slot></router-link>",
+		template: "<div class=\"mm_view\" v-if=\"!url\"><slot></slot></div><div class=\"mm_view\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></div><router-link class=\"mm_view\" :to=\"url\" v-else><slot></slot></router-link>",
 		props: {
 			url: {
 				type: String,
@@ -1824,7 +1824,7 @@ define(['jquery'], function(jquery) {
 	};
 	
 	var mm_checkbox = {
-		template: "<!-- \u590D\u9009\u6846 --><div class=\"mm_checkbox\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': has(o[field]), 'disabled': o.disabled }\" @click=\"selected(o[field])\"><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_checkbox\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': has(o[field]), 'disabled': o.disabled }\" @click=\"selected(o[field])\"><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			selected: function selected(val) {
@@ -1852,7 +1852,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_code = {
-		template: "<!-- \u9A8C\u8BC1\u7801 --><div class=\"mm_code\"><mm_icon :icon=\"icon\"></mm_icon><div class=\"title\" v-if=\"title\">{{ title }}</div><slot><mm_group><input type=\"text\" :value=\"value\" :placeholder=\"desc || placeholder\" @input=\"$emit('input', $event.target.value)\"></input><button :class=\"'btn-' + type\" v-html=\"btn\"></button></mm_group></slot><div class=\"tip\" v-if=\"tip\" v-html=\"tip\"></div></div>",
+		template: "<div class=\"mm_code\"><mm_icon :icon=\"icon\"></mm_icon><div class=\"title\" v-if=\"title\">{{ title }}</div><slot><mm_group><input type=\"text\" :value=\"value\" :placeholder=\"desc || placeholder\" @input=\"$emit('input', $event.target.value)\"></input><button :class=\"'btn-' + type\" v-html=\"btn\"></button></mm_group></slot><div class=\"tip\" v-if=\"tip\" v-html=\"tip\"></div></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -1877,7 +1877,7 @@ define(['jquery'], function(jquery) {
 	};
 	
 	var mm_input = {
-		template: "<!-- \u8F93\u5165\u6846 --><div class=\"mm_input\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type\" :value=\"value\" :min=\"min\" :max=\"max\" :minlength=\"min_length\" :maxlength=\"max_length\" :placeholder=\"desc || placeholder\" @input=\"set\" :disabled=\"disabled\" :required=\"required\" @blur=\"$emit('blur')\" /><slot><span class=\"unit\" v-if=\"unit\">{{ unit }}</span></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_input\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type\" :value=\"value\" :min=\"min\" :max=\"max\" :minlength=\"min_length\" :maxlength=\"max_length\" :placeholder=\"desc || placeholder\" @input=\"set\" :disabled=\"disabled\" :required=\"required\" @blur=\"$emit('blur')\" /><slot><span class=\"unit\" v-if=\"unit\">{{ unit }}</span></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -1914,7 +1914,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_number = {
-		template: "<!-- \u6570\u5B57\u6846 --><div class=\"mm_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn class=\"btn_primary btn_del\" @click.native=\"del\"><span></span></mm_btn><input type=\"number\" :value.number=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn class=\"btn_primary btn_add\" @click.native=\"add\"><span></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn class=\"btn_primary btn_del\" @click.native=\"del\"><span></span></mm_btn><input type=\"number\" :value.number=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn class=\"btn_primary btn_add\" @click.native=\"add\"><span></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			setInt: function setInt(e) {
@@ -1953,7 +1953,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_pager = {
-		template: "<!-- \u5206\u9875\u5668 --><div class=\"mm_pager\"><nav><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"first\" @click=\"first\" v-bind:class=\"{ 'disabled': page === 1 }\"><span v-html=\"icons[0]\"></span></a><a href=\"javascript:void(0);\" class=\"previous\" @click=\"previous\" v-bind:class=\"{ 'disabled' : page <= 1 }\"><span v-html=\"icons[1]\"></span></a><a href=\"javascript:void(0);\" v-for=\"(p, i) in pages\" :key=\"i\" v-bind:class=\"{'active': page == p }\" @click=\"set(p)\">{{ p }}</a><a href=\"javascript:void(0);\" class=\"next\" v-bind:class=\"{ 'disabled': page >= ct }\" @click=\"next\"><span v-html=\"icons[2]\"></span></a><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"last\" v-bind:class=\"{ 'disabled': page == ct }\" @click=\"last\"><span v-html=\"icons[3]\"></span></a></nav><slot></slot></div>",
+		template: "<div class=\"mm_pager\"><nav><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"first\" @click=\"first\" v-bind:class=\"{ 'disabled': page === 1 }\"><span v-html=\"icons[0]\"></span></a><a href=\"javascript:void(0);\" class=\"previous\" @click=\"previous\" v-bind:class=\"{ 'disabled' : page <= 1 }\"><span v-html=\"icons[1]\"></span></a><a href=\"javascript:void(0);\" v-for=\"(p, i) in pages\" :key=\"i\" v-bind:class=\"{'active': page == p }\" @click=\"set(p)\">{{ p }}</a><a href=\"javascript:void(0);\" class=\"next\" v-bind:class=\"{ 'disabled': page >= ct }\" @click=\"next\"><span v-html=\"icons[2]\"></span></a><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"last\" v-bind:class=\"{ 'disabled': page == ct }\" @click=\"last\"><span v-html=\"icons[3]\"></span></a></nav><slot></slot></div>",
 		model: {
 			prop: "page",
 			event: "input"
@@ -2058,7 +2058,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_radio = {
-		template: "<!-- \u5355\u9009\u6846 --><div class=\"mm_radio\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': value == o[field] }\" @click=\"$emit('input', $event.target.value)\"><input type=\"radio\" :name=\"name\" :value=\"o[field]\" /><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_radio\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': value == o[field] }\" @click=\"$emit('input', $event.target.value)\"><input type=\"radio\" :name=\"name\" :value=\"o[field]\" /><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		data: function data() {
 			var name = this.name;
@@ -2156,7 +2156,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_select = {
-		template: "<!-- \u9009\u62E9\u6846 --><div class=\"mm_select\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><select v-if=\"type === 'text'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\"><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><select v-else-if=\"type === 'multiple'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\" multiple><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><a href=\"javascript:void(0)\" class=\"click\" v-else-if=\"type === 'click'\" v-bind:class=\"{ 'current': sw }\"><div :class=\"{'selected': !$slots.default}\" @click=\"sw = !sw\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field]);sw = false\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a><a href=\"javascript:void(0)\" v-bind:class=\"type\" v-else><div class=\"selected\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field])\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_select\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><select v-if=\"type === 'text'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\"><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><select v-else-if=\"type === 'multiple'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\" multiple><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><a href=\"javascript:void(0)\" class=\"click\" v-else-if=\"type === 'click'\" v-bind:class=\"{ 'current': sw }\"><div :class=\"{'selected': !$slots.default}\" @click=\"sw = !sw\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field]);sw = false\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a><a href=\"javascript:void(0)\" v-bind:class=\"type\" v-else><div class=\"selected\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field])\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			set: function set(e) {
@@ -2192,7 +2192,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_switch = {
-		template: "<!-- \u5F00\u5173 --><div class=\"mm_switch\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label :class=\"{ 'active': value === 1 }\" @click=\"set\"><div class=\"onoff\"><span class=\"on\" v-if=\"display === '1'\"></span><span class=\"off\" v-if=\"display === '1'\"></span></div></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_switch\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label :class=\"{ 'active': value === 1 }\" @click=\"set\"><div class=\"onoff\"><span class=\"on\" v-if=\"display === '1'\"></span><span class=\"off\" v-if=\"display === '1'\"></span></div></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			set: function set() {
@@ -2245,7 +2245,7 @@ define(['jquery'], function(jquery) {
 	};
 
 	var mm_upload_img = {
-		template: "<!-- \u56FE\u7247\u4E0A\u4F20\u5668 --><div class=\"mm_upload_img\" v-bind:class=\"{ 'upload_add': !bg && !value }\">\t<div @click=\"choose()\"><mm_icon :src=\"value\" :style=\"'width:' + width + other\"></mm_icon>\t<slot></slot>\t<input type=\"file\" hidden @change=\"addImg\" :id=\"name\" accept=\"image/*\"/></div><div class=\"btns\"><mm_btn class='btn_default-x btn_link' v-if=\"value\" @click.native=\"preview = true\">预览</mm_btn><mm_btn class='btn_warning-x btn_link' v-if=\"value\" @click.native=\"$emit('input','')\">删除</mm_btn></div><mm_modal v-model=\"preview\" mask=\"true\"><div><img :src=\"value\" style=\"max-width:100%\" :alt=\"name\" /></div><mm_btn class=\"btn_close\" @click.native=\"preview = false\"><i class=\"fa-close\"></i></mm_btn></mm_modal></div>",
+		template: "<div class=\"mm_upload_img\" v-bind:class=\"{ 'upload_add': !bg && !value }\">\t<div @click=\"choose()\"><mm_icon :src=\"value\" :style=\"'width:' + width + other\"></mm_icon>\t<slot></slot>\t<input type=\"file\" hidden @change=\"addImg\" :id=\"name\" accept=\"image/*\"/></div><div class=\"btns\"><mm_btn class='btn_default-x btn_link' v-if=\"value\" @click.native=\"preview = true\">预览</mm_btn><mm_btn class='btn_warning-x btn_link' v-if=\"value\" @click.native=\"$emit('input','')\">删除</mm_btn></div><mm_modal v-model=\"preview\" mask=\"true\"><div><img :src=\"value\" style=\"max-width:100%\" :alt=\"name\" /></div><mm_btn class=\"btn_close\" @click.native=\"preview = false\"><i class=\"fa-close\"></i></mm_btn></mm_modal></div>",
 		model: {
 			prop: 'value',
 			event: 'input'
@@ -2329,7 +2329,7 @@ define(['jquery'], function(jquery) {
 	};
 	
 	var mm_time = {
-		template: "<!-- \u65F6\u95F4\u8F93\u5165\u6846 --><div class=\"mm_time\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type || 'datetime'\" :value=\"value\" @blur=\"set\" :disabled=\"disabled\"></select></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_time\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type || 'datetime'\" :value=\"value\" @blur=\"set\" :disabled=\"disabled\"></select></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			set: function set(e) {
@@ -2352,7 +2352,7 @@ define(['jquery'], function(jquery) {
 	};
 	
 	var mm_textarea = {
-		template: "<!-- \u65F6\u95F4\u8F93\u5165\u6846 --><div class=\"mm_textarea\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><textarea :value=\"value\" @blur=\"set\" :disabled=\"disabled\" :placeholder=\"desc || placeholder\" v-if=\"type == 'text'\"></textarea></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_textarea\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><textarea :value=\"value\" @blur=\"set\" :disabled=\"disabled\" :placeholder=\"desc || placeholder\" v-if=\"type == 'text'\"></textarea></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -2365,7 +2365,6 @@ define(['jquery'], function(jquery) {
 			}
 		}
 	};
-	
 	
 	return {
 		install: function install(Vue, options) {

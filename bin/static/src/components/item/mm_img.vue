@@ -1,11 +1,9 @@
 <template>
 	<!-- 图片 -->
 	<div class="mm_img">
-		<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
-		<div>
-			<h5 v-html="obj[vm.title]"></h5>
-			<p v-html="obj[vm.description]" v-if="obj[vm.description]"></p>
-		</div>
+		<div class="media"><mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon></div>
+		<div class="title" v-html="obj[vm.title]"></div>
+		<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
 	</div>
 </template>
 

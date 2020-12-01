@@ -89,6 +89,9 @@
 
 
 /* 栅格 */
+.row-auto>* {
+	flex: 1;
+}
 .row-1>* {
 	-ms-flex: 100%;
 	flex-basis: 100%;
@@ -144,6 +147,9 @@
 }
 
 /* ===  列表  === */
+.list-auto>* {
+	flex: 1;
+}
 .list-x>* {
 	margin-top: -1px;
 	margin-left: -1px;
@@ -195,6 +201,14 @@
 	flex-basis: 8.333333%
 }
 
+.grid-x>* {
+	margin-top: -1px;
+	margin-left: -1px;
+	border: 1px solid var(--color_border);
+}
+.grid-auto>* {
+	flex: 1;
+}
 .grid-img {
 	padding-right: 0.125rem;
 	padding-bottom: 0.125rem;
@@ -2394,6 +2408,12 @@
 }
 
 /** 图片 **/
+.icon-x figure {
+    border: 1px solid rgba(125,125,125,0.25);
+	padding: .5rem;
+	background: #fff !important;
+}
+
 .size-huge,
 .icon-huge img,
 .img-huge .img {
