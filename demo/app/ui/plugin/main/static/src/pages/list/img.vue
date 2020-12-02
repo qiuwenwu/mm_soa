@@ -30,54 +30,42 @@
 							<mm_view>
 								<h5>样式一</h5>
 								<mm_list col="4" id="list_img_1" class="list_img" v-bind:class="{'icon-x': border}">
-									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
-										<mm_img :obj="o"></mm_img>
-									</mm_item>
+									<mm_img v-for="(o, k) in list" :key="k" :url="o.url" :obj="o"></mm_img>
 								</mm_list>
 							</mm_view>
 
 							<mm_view>
 								<h5>样式二</h5>
 								<mm_list col="4" id="list_img_2" class="list_img" v-bind:class="{'icon-x': border}">
-									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
-										<mm_img :obj="o"></mm_img>
-									</mm_item>
+									<mm_img v-for="(o, k) in list" :key="k" :url="o.url" :obj="o"></mm_img>
 								</mm_list>
 							</mm_view>
 
 							<mm_view>
 								<h5>样式三</h5>
 								<mm_list col="2" id="list_img_2" class="list_img item-ltb" v-bind:class="{'icon-x': border}">
-									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
-										<mm_img :obj="o"></mm_img>
-									</mm_item>
+									<mm_img v-for="(o, k) in list" :key="k" :url="o.url" :obj="o"></mm_img>
 								</mm_list>
 							</mm_view>
 
 							<mm_view>
 								<h5>样式四</h5>
 								<mm_list col="2" id="list_img_2" class="item-rtb" v-bind:class="{'icon-x': border}">
-									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
-										<mm_img :obj="o"></mm_img>
-									</mm_item>
+									<mm_img v-for="(o, k) in list" :key="k" :url="o.url" :obj="o"></mm_img>
 								</mm_list>
 							</mm_view>
 
 							<mm_view>
 								<h5>样式五</h5>
 								<mm_list col="2" id="list_img_2" class="item-ll" v-bind:class="{'icon-x': border}">
-									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
-										<mm_img :obj="o"></mm_img>
-									</mm_item>
+									<mm_img v-for="(o, k) in list" :key="k" :url="o.url" :obj="o"></mm_img>
 								</mm_list>
 							</mm_view>
 
 							<mm_view>
 								<h5>样式五</h5>
 								<mm_list col="2" id="list_img_2" class="item-rr" v-bind:class="{'icon-x': border}">
-									<mm_item v-for="(o, k) in list" :key="k" :url="o.url">
-										<mm_img :obj="o"></mm_img>
-									</mm_item>
+									<mm_img v-for="(o, k) in list" :key="k" :url="o.url" :obj="o"></mm_img>
 								</mm_list>
 							</mm_view>
 						</mm_col>
@@ -146,33 +134,37 @@
 
 <style>
 	#list_img_1 figure {
-	    border-radius: 0.25rem;
+		border-radius: 0.25rem;
 	}
-	
+
 	#list_img_2 .mm_img {
-	    border-radius: 0.25rem;
-	    background: #fff;
-	    overflow: hidden;
-	    box-shadow: 0 0.25rem 0.5rem 0 rgba(7,17,27,0.1);
+		border-radius: 0.25rem;
+		background: #fff;
+		overflow: hidden;
+		box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
+	}
+
+	#page_img #list_img_2 .mm_img {
+		border: none;
+		/* box-shadow: none; */
 	}
 	
-	#page_img #list_img2 .mm_img {
+	#page_img #list_img_2 figure {
 		border: none;
-		box-shadow: none;
 	}
 
-	#page_img #list_img2 .title {
+	#page_img #list_img_2 .title {
 		text-align: left;
-		margin-left: 0;
 	}
 
-	#page_img #list_img2 .tip {
+	#page_img #list_img_2 .tip {
 		position: absolute;
 		bottom: 2.5rem;
 		right: 0;
 		text-align: right;
 		color: #fff;
 	}
+
 	#page_img .mm_item {
 		padding: 0.5rem;
 	}

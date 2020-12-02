@@ -150,6 +150,8 @@ define(function() {
 					title: 'title',
 					// 描述
 					description: 'description',
+					// 关键词
+					keywords: 'keywords',
 					// 图片
 					image: 'image',
 					// 内容

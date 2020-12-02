@@ -1,12 +1,18 @@
 <template>
 	<!-- 基础 -->
-	<div class="mm_base">
-		<mm_icon :src="obj[vm.icon]">
-		<div class="title" v-if="obj[vm.title]">{{ obj[vm.title] }}</div>
-		<div class="desc" v-if="obj[vm.desc]">{{ obj[vm.desc] }}</div>
-		<div class="tip" v-if="obj[vm.tip]">{{ obj[vm.tip] }}</div>
-		<slot></slot>
-	</div>
+	<mm_item :url="obj[vm.url]">
+		<div class="mm_base">
+			<div class="media" v-if="obj[vm.icon] || obj[vm.image]">
+				<mm_icon class="icon" v-if="obj[vm.icon]" :src="obj[vm.icon]"></mm_icon>
+				<mm_icon class="img" v-if="obj[vm.image]" :src="obj[vm.image]"></mm_icon>
+			</div>
+			<div class="doc">
+				<div class="title" v-html="obj[vm.title]"></div>
+				<div class="content" v-html="obj[vm.content]" v-if="obj[vm.content]"></div>
+			</div>
+			<slot></slot>
+		</div>
+	</mm_item>
 </template>
 
 <script>
@@ -15,12 +21,10 @@
 	export default {
 		mixins: [mixin],
 		data() {
-			return {
-			};
+			return {};
 		}
 	}
 </script>
 
 <style>
-
 </style>

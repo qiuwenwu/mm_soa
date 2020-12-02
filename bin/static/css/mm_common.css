@@ -62,7 +62,7 @@
 
 .arrow,
 .item-arrow>* {
-	padding-right: var(--padding_huge);
+	padding-right: var(--padding_larger) !important;
 }
 
 .arrow::after,
