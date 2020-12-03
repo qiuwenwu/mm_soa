@@ -1,15 +1,26 @@
 <template>
 	<!-- 文章 -->
-	<div class="mm_article">
-		<mm_icon :src="obj[vm.icon]"></mm_icon>
-		<div class="title">{{ obj[vm.title] }}</div>
-		<div class="desc">{{ obj[vm.desc] }}</div>
-		<div class="time">{{ obj[vm.time] }}</div>
-		<div class="collect" v-if="obj[vm.collect] && show" @click="run('collect', obj)">
-			<span class="fa fa-heart" v-bind:class="{ 'font-default': obj[vm.collect] }"></span>
-			<span>{{ obj[vm.collect] }}</span></div>
-		<div class="tag" v-html="obj[vm.tag]"></div>
-	</div>
+	<mm_item :url="obj[vm.url]">
+		<div class="mm_article">
+			<div class="media" v-if="obj[vm.image] || obj[vm.icon]">
+				<mm_icon :src="obj[vm.image] || obj[vm.icon]" :desc="obj[vm.tip]"></mm_icon>
+			</div>
+			<div class="doc">
+				<div class="title" v-if="obj[vm.title]">
+					<span class="h5">{{ obj[vm.title] }}</span>
+					<span class="tag" v-if="obj[vm.tag]"></span>
+				</div>
+				<div class="content">
+					<div class="desc">{{ obj[vm.description] }}</div>
+					<div class="time">{{ obj[vm.time] }}</div>
+					<div class="collect" v-if="obj[vm.collect] && show" @click="run('collect', obj)">
+						<span class="fa fa-heart" v-bind:class="{ 'font-default': obj[vm.collect] }"></span>
+						<span>{{ obj[vm.collect] }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</mm_item>
 </template>
 
 <script>

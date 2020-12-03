@@ -22,9 +22,14 @@
 				<mm_container>
 					<mm_row>
 						<mm_col width="100">
-							<div class="list_article">
-								<mm_article v-for="(o, k) in list" :key="k" :obj="o"></mm_article>
-							</div>
+							<mm_card>
+								<div class="card_head">样式一</div>
+								<div class="card_body">
+									<mm_list col="2" class="list_article">
+										<mm_article v-for="(o, k) in list" :key="k" :obj="o"></mm_article>
+									</mm_list>
+								</div>
+							</mm_card>
 						</mm_col>
 					</mm_row>
 				</mm_container>
@@ -38,8 +43,10 @@
 		data() {
 			return {
 				list: [{
-					title: "",
-
+					title: "标题",
+					description: "描述",
+					keywords: "关键词",
+					time: "2020-01-11 10:00:11"
 				}]
 			}
 		}

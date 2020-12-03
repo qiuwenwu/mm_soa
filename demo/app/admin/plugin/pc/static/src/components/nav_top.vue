@@ -1,5 +1,5 @@
 <template>
-	<div id="nav_top">
+	<div class="mm_nav_top" id="nav_top">
 		<a href="javascript:void(0)">
 			<mm_icon src="<i class='fa-search'></i>"></mm_icon>
 			<span>搜索</span>

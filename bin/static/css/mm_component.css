@@ -427,6 +427,7 @@ table .mm_reverse .title {
 .mm_switch .value {
 	display: inline-block;
 }
+
 .mm_input .value::before,
 .mm_checkbox .value:before,
 .mm_radio .value:before,
@@ -492,18 +493,6 @@ table .mm_reverse .title {
 	padding: .5rem 0;
 }
 
-.goto input {
-	font-size: 0.75rem;
-	position: relative;
-	top: -0.05rem;
-	width: 3rem;
-	text-align: center;
-}
-
-.goto {
-	padding: 0.25rem 0;
-}
-
 .mm_pager-x a {
 	margin-left: .5rem;
 	color: #333;
@@ -547,10 +536,35 @@ table .mm_reverse .title {
 }
 
 /* 盒子 */
-.mm_box {display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.3);z-index:9;}
-.mm_box::before,.mm_box::after {display:block;content:"";clear:both;float:none;}
-.current .mm_box {display:inline-block;}
-.active,.hover,.focus,.click {position:relative;}
+.mm_box {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 9;
+}
+
+.mm_box::before,
+.mm_box::after {
+	display: block;
+	content: "";
+	clear: both;
+	float: none;
+}
+
+.current .mm_box {
+	display: inline-block;
+}
+
+.active,
+.hover,
+.focus,
+.click {
+	position: relative;
+}
 
 /* 盒子样式 */
 .hover:hover .mm_box {
@@ -706,9 +720,11 @@ table .mm_reverse .title {
 	border-bottom: 1px solid rgba(125, 125, 125, 0.25);
 	overflow: hidden;
 }
-.mobile .mm_switch .value{
+
+.mobile .mm_switch .value {
 	display: block;
 }
+
 .mobile .mm_switch .onoff {
 	float: right;
 	margin-right: 1rem;
@@ -867,10 +883,6 @@ table .mm_reverse .title {
 	display: inline-block;
 	font-size: var(--font_small);
 	padding: 0 var(--padding_small);
-}
-
-.mm_nav_top {
-	text-align: right;
 }
 
 @media (max-width:768px) {
@@ -1057,4 +1069,37 @@ table .mm_reverse .title {
 	100% {
 		left: 100%;
 	}
+}
+
+
+/* 选项卡 */
+.mm_tab_head {
+	overflow: hidden;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+	background: #fff;
+}
+
+.mm_tab_head>div {
+	overflow: hidden;
+	text-align: center;
+	height: 2rem;
+	line-height: calc(2rem - 2px);
+	padding: 0 1rem;
+	border-bottom: 1px solid rgba(125, 125, 125, 0.25);
+	border-right: 1px solid rgba(125, 125, 125, 0.25);
+}
+
+.mm_tab_head>div:last-child {
+	flex: auto;
+	border-bottom: 1px solid rgba(125, 125, 125, 0.25);
+	border-right: 0;
+}
+
+.mm_tab_head>.active {
+	border-bottom: 1px solid #fff;
+	color: #38f;
 }
