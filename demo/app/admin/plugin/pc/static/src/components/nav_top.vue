@@ -1,5 +1,5 @@
 <template>
-	<div class="mm_nav_top" id="nav_top">
+	<mm_nav_top id="nav_top">
 		<a href="javascript:void(0)">
 			<mm_icon src="<i class='fa-search'></i>"></mm_icon>
 			<span>搜索</span>
@@ -14,7 +14,7 @@
 		<router-link to="/">
 			<mm_icon src="<i class='fa-ellipsis-v'></i>"></mm_icon>
 		</router-link>
-	</div>
+	</mm_nav_top>
 </template>
 
 <script>
@@ -41,15 +41,14 @@
 			}
 		},
 		methods: {
-			select(value){
-				if(value == '/sign_out'){
+			select(value) {
+				if (value == '/sign_out') {
 					var _this = this;
-					this.$get('~/api/user/sign_out', null, function(res){
+					this.$get('~/api/user/sign_out', null, function(res) {
 						_this.$store.commit('sign_out');
 						_this.$router.push('/sign_in');
 					});
-				}
-				else {
+				} else {
 					this.$router.push(value);
 				}
 			}
@@ -58,41 +57,49 @@
 </script>
 
 <style>
-	#nav_top {
-		float: right;
+#nav_top {
+			float: right;
+		}
+
+	@media (min-width: 576px) {
+		
+		
+		#nav_top .mm_icon {
+			width: 1.5rem;
+			height: 1.5rem;
+			text-align: center;
+		}
+		
+		#nav_top .mm_icon img {
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: 50%;
+		}
+		
+		#nav_top nav>* {
+			padding: 0.5rem 0.75rem;
+			line-height: 1.5rem;
+			color: #fff;
+			float: left;
+			border-left: 1px solid rgba(0, 0, 0, 0.4);
+			position: relative;
+		}
+
+		#nav_top nav>*:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			height: 100%;
+			border-left: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		#nav_top a .mm_icon {
+			float: left;
+		}
 	}
 
-	#nav_top .mm_icon {
-		width: 1.5rem;
-		height: 1.5rem;
-		text-align: center;
-	}
-
-	#nav_top .mm_icon img {
-		width: 1.5rem;
-		height: 1.5rem;
-		border-radius: 50%;
-	}
-
-	#nav_top>* {
-		padding: 0.5rem 0.75rem;
-		line-height: 1.5rem;
-		color: #fff;
-		float: left;
-		border-left: 1px solid rgba(0, 0, 0, 0.4);
-		position: relative;
-	}
-
-	#nav_top>*:before {
-		content: "";
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		height: 100%;
-		border-left: 1px solid rgba(255, 255, 255, 0.1);
-	}
 
 	#nav_top>a:hover {
 		background: rgba(128, 128, 128, 0.1);
@@ -102,9 +109,7 @@
 		background: rgb(0, 0, 0);
 	}
 
-	#nav_top a .mm_icon {
-		float: left;
-	}
+
 
 	#nav_top .msg {
 		text-align: center;
@@ -124,7 +129,8 @@
 
 	#nav_top .user {
 		float: left;
-		padding: 0 .5rem;
+		padding-left: 0;
+		padding-right: 0;
 		height: 2.5rem;
 	}
 
@@ -133,7 +139,6 @@
 	}
 
 	#nav_top .user .mm_box {
-		top: 2.55rem;
 		left: -50%;
 	}
 

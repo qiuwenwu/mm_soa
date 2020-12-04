@@ -1,6 +1,8 @@
 <template>
 	<main id="user_admin_form">
-		<mm_grid>
+		<mm_warp>
+			<mm_container>
+				<mm_row>
 			<mm_col width="33">
 				<mm_form class="card">
 					<div class="head arrow">
@@ -39,7 +41,9 @@
 					</div>
 				</mm_form>
 			</mm_col>
-		</mm_grid>
+		</mm_row>
+			</mm_container>
+		</mm_warp>
 	</main>
 </template>
 

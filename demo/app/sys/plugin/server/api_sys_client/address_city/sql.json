@@ -5,8 +5,8 @@
     "orderby": "{0}",
     "orderby_default": "`display` asc",
     "field": "{0}",
-    "field_obj": "`city_id`,`show`,`province_id`,`name`",
-    "field_default": "`city_id`,`show`,`display`,`province_id`,`name`",
+    "field_obj": "`city_id`,`name`,`province_id`,`show`",
+    "field_default": "`city_id`,`display`,`name`,`province_id`,`show`",
     "field_hide": [
         "*password*",
         "*token*"
@@ -41,6 +41,12 @@
     "func_file": "",
     "format": [
         {
+            "key": "province_id",
+            "title": "所属省份",
+            "table": "sys_address_province",
+            "name": "name"
+        },
+        {
             "key": "show",
             "title": "显示位置",
             "list": [
@@ -48,12 +54,6 @@
                 "表单和搜索可见",
                 "均可见"
             ]
-        },
-        {
-            "key": "province_id",
-            "title": "所属省份",
-            "table": "sys_address_province",
-            "name": "name"
         }
     ],
     "del_repeat": {},

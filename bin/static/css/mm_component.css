@@ -1,3 +1,47 @@
+.active,
+.hover,
+.focus,
+.click {
+	position: relative;
+}
+
+.mm_btn {
+	display: inline-block;
+	text-transform: none;
+	height: var(--height_base);
+	line-height: var(--height_base);
+	cursor: pointer;
+	border: 1px solid var(--color_border);
+	padding-left: var(--padding_small);
+	padding-right: var(--padding_small);
+	border-radius: var(--radius_small);
+	font-size: 0.875rem;
+}
+
+/* 盒子 */
+.mm_box {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 9;
+}
+
+.mm_box::before,
+.mm_box::after {
+	display: block;
+	content: "";
+	clear: both;
+	float: none;
+}
+
+.current .mm_box {
+	display: inline-block;
+}
+
 /* ====== 表单 ====== */
 /* 单选框 */
 .mm_radio input {
@@ -229,14 +273,6 @@
 	border-color: #38f;
 }
 
-.click {
-	display: inline-block;
-}
-
-.click .mm_box {
-	right: initial;
-	min-width: 5.25rem;
-}
 
 /* 反转器 */
 .mm_reverse {
@@ -459,114 +495,24 @@ table .mm_reverse .title {
 	text-decoration: none;
 }
 
-/* 分页器 */
-.mm_pager,
-[class*=mm_pager_] {
-	text-align: center;
-}
-
-.mm_pager a,
-[class*=mm_pager_] a {
-	padding: 0 .5rem;
-	position: relative;
-	z-index: 1;
-	min-width: 2.25rem;
-	white-space: nowrap;
-	display: inline-block;
-	height: 2rem;
-	line-height: calc(2rem - 2px);
-	color: #333;
-	border: 1px solid rgba(125, 125, 125, 0.25);
-	margin-left: -1px;
-	text-align: center;
-}
-
-.mm_pager_sm a {
-	height: 1.5rem;
-	line-height: 1.5rem;
-	min-width: 1.5rem;
-	font-size: 0.85rem;
-}
-
 .mm_data_count {
 	line-height: 2rem;
 	padding: .5rem 0;
 }
 
-.mm_pager-x a {
-	margin-left: .5rem;
-	color: #333;
-	border-radius: .25rem;
-}
 
-.mm_pager-x a:last-of-type {
-	margin-right: 0;
-}
 
-.mm_pager a:first-child {
-	border-top-left-radius: .25rem;
-	border-bottom-left-radius: .25rem;
-}
 
-.mm_pager a:last-child {
-	border-top-right-radius: .25rem;
-	border-bottom-right-radius: .25rem;
-}
-
-.mm_pager-x .active {
-	background: #38f;
-	color: #fff;
-}
-
-.mm_pager a:hover,
-.mm_pager a:active {
-	z-index: 2;
-}
-
-.mm_pager .active,
-[class*=mm_pager_] .active {
-	background: #38f;
-	color: #fff;
-	border-color: #38f;
-}
-
-.mm_pager.group>a,
-[class*=mm_pager_].group>a {
-	margin-left: -1px;
-}
-
-/* 盒子 */
-.mm_box {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.3);
-	z-index: 9;
-}
-
-.mm_box::before,
-.mm_box::after {
-	display: block;
-	content: "";
-	clear: both;
-	float: none;
-}
-
-.current .mm_box {
+/* 盒子样式 */
+.click {
 	display: inline-block;
 }
 
-.active,
-.hover,
-.focus,
-.click {
-	position: relative;
+.click .mm_box {
+	right: initial;
+	min-width: 5.25rem;
 }
 
-/* 盒子样式 */
 .hover:hover .mm_box {
 	display: inline-block;
 }
@@ -669,10 +615,6 @@ table .mm_reverse .title {
 	border-color: transparent;
 }
 
-.mobile .mm_input .title~.value {
-	overflow: hidden;
-	display: flex;
-}
 
 .mobile .mm_input .unit {
 	line-height: 2rem;
@@ -730,6 +672,11 @@ table .mm_reverse .title {
 	margin-right: 1rem;
 }
 
+.mobile .mm_input .title~.value {
+	overflow: hidden;
+	display: flex;
+}
+
 /* ===  导航栏  === */
 .mm_bar_logo {
 	overflow: hidden;
@@ -770,10 +717,16 @@ table .mm_reverse .title {
 }
 
 /* ===  导航栏  === */
-.mm_nav_fast button {
+.mm_nav_fast {
+	float: left;
+}
+
+.mm_nav_fast>* {
 	line-height: var(--height_big);
 	height: var(--height_big);
 	border-radius: 0;
+	padding-right: var(--padding_base);
+	padding-left: var(--padding_base);
 }
 
 .mm_nav_side .mm_item {
@@ -878,11 +831,25 @@ table .mm_reverse .title {
 	display: none;
 }
 
+.nav_mask {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
 .mm_nav_top a,
 .mm_nav_main a {
 	display: inline-block;
 	font-size: var(--font_small);
 	padding: 0 var(--padding_small);
+}
+
+.mm_nav_top>button {
+	height: 2.5rem;
+	line-height: 2.5rem;
 }
 
 @media (max-width:768px) {
@@ -918,10 +885,11 @@ table .mm_reverse .title {
 		max-height: 100vh;
 		padding-top: 2.5rem;
 	}
-}
 
-.mm_nav_side a:hover {
-	color: var(--color_white);
+	.mm_nav_top>.show figure {
+		display: inline-block;
+		line-height: 1;
+	}
 }
 
 
@@ -1074,32 +1042,123 @@ table .mm_reverse .title {
 
 /* 选项卡 */
 .mm_tab_head {
-	overflow: hidden;
-	display: -webkit-flex;
-	display: flex;
-	flex-flow: row wrap;
-	align-items: flex-start;
-	justify-content: flex-start;
-	background: #fff;
+	color: var(--color_base);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 2rem;
+	line-height: 2rem;
+	border-bottom: 1px solid var(--color_border);
 }
 
 .mm_tab_head>div {
-	overflow: hidden;
 	text-align: center;
-	height: 2rem;
-	line-height: calc(2rem - 2px);
 	padding: 0 1rem;
-	border-bottom: 1px solid rgba(125, 125, 125, 0.25);
-	border-right: 1px solid rgba(125, 125, 125, 0.25);
-}
-
-.mm_tab_head>div:last-child {
-	flex: auto;
-	border-bottom: 1px solid rgba(125, 125, 125, 0.25);
-	border-right: 0;
+	border-right: 1px solid var(--color_border);
+	display: inline-block;
 }
 
 .mm_tab_head>.active {
-	border-bottom: 1px solid #fff;
+	border-bottom: 1px solid var(--bg_grey);
 	color: #38f;
+	background-color: var(--bg_grey);
+}
+
+.mm_tab_head .fa-times-circle {
+	color: var(--color_default_h);
+}
+
+.mm_tab_head .fa-times-circle:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+/* 分页器 */
+.mm_pager,
+[class*=mm_pager_] {
+	text-align: center;
+	padding: 0.5rem 0;
+	margin: auto;
+}
+
+.mm_pager a,
+[class*=mm_pager_] a {
+	padding: 0 .5rem;
+	position: relative;
+	z-index: 1;
+	min-width: 2.25rem;
+	white-space: nowrap;
+	display: inline-block;
+	height: 2rem;
+	line-height: calc(2rem - 2px);
+	color: #333;
+	border: 1px solid rgba(125, 125, 125, 0.25);
+	margin-left: -1px;
+	text-align: center;
+}
+
+.mm_pager_sm a {
+	height: 1.5rem;
+	line-height: 1.5rem;
+	min-width: 1.5rem;
+	font-size: 0.85rem;
+}
+
+.mm_pager-x a {
+	margin-left: .5rem;
+	color: #333;
+	border-radius: .25rem;
+}
+
+.mm_pager-x a:last-of-type {
+	margin-right: 0;
+}
+
+.mm_pager a:first-child {
+	border-top-left-radius: .25rem;
+	border-bottom-left-radius: .25rem;
+}
+
+.mm_pager a:last-child {
+	border-top-right-radius: .25rem;
+	border-bottom-right-radius: .25rem;
+}
+
+.mm_pager-x .active {
+	background: #38f;
+	color: #fff;
+}
+
+.mm_pager a:hover,
+.mm_pager a:active {
+	z-index: 2;
+}
+
+.mm_pager .active,
+[class*=mm_pager_] .active {
+	background: #38f;
+	color: #fff;
+	border-color: #38f;
+}
+
+.mm_pager.group>a,
+[class*=mm_pager_].group>a {
+	margin-left: -1px;
+}
+
+.mm_nav_side a:hover {
+	color: var(--color_white);
+}
+
+.mm_table {
+	overflow-x: auto;
+}
+
+.mm_table th {
+	white-space:nowrap;
+}
+.td_display {
+    width: 3rem;
+    text-align: center;
+    border-radius: var(--radius_small);
+    border: 1px solid var(--color_border);
 }

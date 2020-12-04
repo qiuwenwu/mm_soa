@@ -233,13 +233,6 @@
 		padding: 0.5rem;
 	}
 
-	.mm_card {
-		background: #fff;
-		border-radius: 2px;
-		background-color: #fff;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
-	}
-
 	.card_head {
 		position: relative;
 		height: 2.5rem;

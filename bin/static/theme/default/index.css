@@ -33,7 +33,7 @@
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
 }
-.mm_table,[class*=mm_table_] {
+.mm_table,[class*=table-] {
 	background: #fff;
 }
 
@@ -98,7 +98,6 @@ nav a:active {
 .mm_page>header .mm_warp {
 	background: var(--bg_black);
 	color: var(--color_white);
-	line-height: 2.5rem;
 }
 
 .mm_page>footer .mm_warp {
@@ -513,15 +512,15 @@ ol.mm_list li:nth-child(3)::before {
 }
 
 /* 表格样式 */
-.mm_table_3 th,
-.mm_table_3 td {
+.table-3 th,
+.table-3 td {
 	border-right: none;
 	border-left: none;
 }
 
 
-.mm_table_4 th,
-.mm_table_4 td {
+.table-4 th,
+.table-4 td {
 	border-right: none;
 	border-left: none;
 }
@@ -620,11 +619,11 @@ tbody tr.active {
 	background-color: rgba(255, 255, 255, .085)
 }
 
-.mm_table_2 tbody tr:nth-of-type(odd) {
+.table-2 tbody tr:nth-of-type(odd) {
 	background-color: rgba(0, 0, 0, .05)
 }
 
-.mm_table_4 tbody tr:nth-of-type(odd) {
+.table-4 tbody tr:nth-of-type(odd) {
 	background-color: rgba(0, 0, 0, .05)
 }
 

@@ -1,6 +1,8 @@
 <template>
 	<main id="sys_address_province_form">
-		<mm_grid>
+		<mm_warp>
+			<mm_container>
+				<mm_row>
 			<mm_col width="33">
 				<mm_form class="card">
 					<div class="head arrow">
@@ -8,14 +10,13 @@
 					</div>
 					<div class="body">
 						<dl>
+							<dt>省份ID</dt>
+							<dd>
+								<mm_input v-model="form.province_id" :minlength="0" :maxlength="0" placeholder="" />
+							</dd>
 							<dt>是否可见</dt>
 							<dd>
 								<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
-							</dd>
-							<dt class="required">省份名称</dt>
-							<dd>
-								<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
-								 :required="true" />
 							</dd>
 						</dl>
 					</div>
@@ -27,7 +28,9 @@
 					</div>
 				</mm_form>
 			</mm_col>
-		</mm_grid>
+		</mm_row>
+			</mm_container>
+		</mm_warp>
 	</main>
 </template>
 
@@ -47,9 +50,9 @@
 					"province_id": 0
 				},
 				form: {
+					"name": '',
 					"province_id": 0,
 					"show": 0,
-					"name": '',
 				},
 				// 是否可见
 				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],

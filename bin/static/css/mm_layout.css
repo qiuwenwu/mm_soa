@@ -16,7 +16,7 @@
 }
 
 main {
-	padding-bottom: 2.5rem;
+	margin-bottom: 2.5rem;
 	transition: all 0.5s ease-in-out;
 }
 
@@ -32,7 +32,7 @@ main {
 }
 
 .mm_page>header~main {
-	padding-top: 2.5rem;
+	margin-top: 2.5rem;
 }
 
 .mm_page>footer {
@@ -55,6 +55,17 @@ main {
 	width: 12rem;
 	white-space: nowrap;
 	transition: all 0.5s ease-in-out;
+}
+
+.mm_view {
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.mm_view::-webkit-scrollbar {
+	display: none;
 }
 
 /* 
@@ -196,6 +207,7 @@ footer.hide {
 	border-radius: var(--radius_small);
 	height: calc(100% - var(--margin_small) * 2);
 	margin: var(--margin_small);
+	overflow-x: hidden;
 }
 
 .card_body {
@@ -526,7 +538,7 @@ ol.mm_list li::before {
 
 .table-sm td,
 .table-sm th {
-	padding: .25rem .5rem
+	padding: .25rem var(--padding_mini)
 }
 
 

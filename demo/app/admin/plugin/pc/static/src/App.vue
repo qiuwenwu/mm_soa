@@ -3,8 +3,8 @@
 		<mm_page v-if="is_sign">
 			<router-view></router-view>
 		</mm_page>
-		<mm_page id="page_root">
-			<mm_side :class="{hide: hide, fold: fold}" :func="set_width">
+		<mm_page id="page_root" v-else>
+			<mm_side v-model="hide" :fold="fold" :func="set_width">
 				<mm_warp>
 					<div class="mm_bar_logo"><img src="/img/logo.png"><span>超级美眉</span></div>
 					<nav_side></nav_side>
@@ -14,18 +14,13 @@
 				<mm_warp>
 					<mm_container>
 						<mm_row>
-							<mm_col class="col-6">
-								<div class="mm_nav_fast">
+							<mm_col class="col-12">
+								<nav_quick>
 									<button class="btn_link btn_primary hide_phone" @click="fold = !fold"><i class="fa-bars"></i></button>
 									<button class="btn_link btn_primary show_phone" @click="hide = !hide"><i class="fa-bars"></i></button>
-								</div>
-							</mm_col>
-							<mm_col class="col-6">
+								</nav_quick>
 								<nav_top></nav_top>
 							</mm_col>
-							<!-- <mm_col class="col-12">
-								<nav_quick></nav_quick>
-							</mm_col> -->
 						</mm_row>
 					</mm_container>
 				</mm_warp>
@@ -34,14 +29,16 @@
 						<mm_row>
 							<mm_col width="100">
 								<!-- 页签组件 -->
-								<div class="mm_tab_head" id="tabs">
-									<div v-for="(o, idx) in nav_cache" :key="idx" :class="{ 'active': o.url === url_now }">
-										<i class="fa-times-circle" v-if="o.name !== 'index'" @click="del_tab(o)"></i>
-										<router-link :to="o.url">
-											{{ o.title }}
-										</router-link>
+								<mm_view id="tabs">
+									<div class="mm_tab_head">
+										<div v-for="(o, idx) in nav_cache" :key="idx" :class="{ 'active': o.url === url_now }">
+											<router-link :to="o.url">
+												{{ o.title }}
+											</router-link>
+											<i class="fa-times-circle" v-if="o.name !== 'index'" @click="del_tab(o)"></i>
+										</div>
 									</div>
-								</div>
+								</mm_view>
 							</mm_col>
 						</mm_row>
 					</mm_container>
@@ -49,17 +46,6 @@
 			</header>
 
 			<router-view id="main" :style="'width: calc(100% -' + width + 'px)'"></router-view>
-			<!-- <mm_main>
-				<mm_warp>
-					<mm_container>
-						<mm_row>
-							<mm_col class="col-6">
-								<div class="mm_card"></div>
-							</mm_col>
-						</mm_row>
-					</mm_container>
-				</mm_warp>
-			</mm_main> -->
 			<footer :style="'width: calc(100% -' + width + 'px)'">
 				<div class="mm_warp">
 					<div class="mm_container">
@@ -81,7 +67,6 @@
 
 <script>
 	import Vue from 'Vue';
-	// import mm_side from './components/mm_side.vue'
 	import nav_top from './components/nav_top.vue'
 	import nav_side from './components/nav_side.vue'
 	import nav_quick from './components/nav_quick.vue'
@@ -174,5 +159,74 @@
 </script>
 
 <style>
-
+	#tabs {
+		width: 100%;
+		overflow-x: auto;
+		background: #fff;
+	}
+	
+	.mm_page>header~main {
+		margin-top: 4.5rem;
+	}
+	
+	.card_body {
+	    position: relative;
+	    padding: var(--padding_mini) var(--padding_base);
+	}
+	
+	.mm_filter {
+	    display: flex;
+		padding-bottom: .5rem;
+		margin-bottom: 1rem;
+		border-bottom: 1px solid rgba(51,136,255,.25);
+	}
+	
+	 .mm_filter .mm_list {
+		 align-items:center;
+	 }
+	.mm_filter .mm_item {
+		min-width: 20rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+	.mm_filter>.title {
+	    flex: 1;
+	    position: relative;
+	    border-right: 2px solid #DBDBDB;
+	    background: #f3f9ff;
+		min-width: 7rem;
+	    max-width: 7rem;
+		text-align: center;
+		min-height: 2rem;
+	}
+	
+	.mm_filter>.title h5 {
+	    position: absolute;
+		width: 100%;
+		left: 0;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    white-space: nowrap;
+	}
+	
+	.pager_now {
+		padding: 0;
+		width: 3rem;
+		min-width: auto !important;
+	}
+	
+	.mm_filter button:first-child {
+	    margin-left: 1rem;
+	}
+	
+	@media (max-width: 576px) {
+		.mm_filter {
+			display: block;
+		}
+	}
+	
+	.mm_action {margin:1rem 0 .5rem 0; }
+	.mm_action>h5 {float:left; line-height: 2rem;}
+	.mm_action>div {float:right;}
+	.mm_action::before,.mm_action::after {content:"";display:block;clear:both;}
 </style>

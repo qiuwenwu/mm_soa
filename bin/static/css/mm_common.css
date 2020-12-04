@@ -55,9 +55,9 @@
 
 /* 基本元素 */
 .stroke {
-    -webkit-background-clip: content-box;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px var(--color_base);
+	-webkit-background-clip: content-box;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke: 1px var(--color_base);
 }
 
 .arrow,
@@ -92,6 +92,7 @@
 .row-auto>* {
 	flex: 1;
 }
+
 .row-1>* {
 	-ms-flex: 100%;
 	flex-basis: 100%;
@@ -150,6 +151,7 @@
 .list-auto>* {
 	flex: 1;
 }
+
 .list-x>* {
 	margin-top: -1px;
 	margin-left: -1px;
@@ -206,14 +208,17 @@
 	margin-left: -1px;
 	border: 1px solid var(--color_border);
 }
+
 .grid-auto>* {
 	flex: 1;
 }
+
 .grid-img {
 	padding-right: 0.125rem;
 	padding-bottom: 0.125rem;
 	overflow: hidden;
 }
+
 .grid-1>* {
 	width: 100%;
 	flex-basis: 100%
@@ -2409,7 +2414,7 @@
 
 /** 图片 **/
 .icon-x figure {
-    border: 1px solid rgba(125,125,125,0.25);
+	border: 1px solid rgba(125, 125, 125, 0.25);
 	padding: .5rem;
 	background: #fff !important;
 }
@@ -2507,4 +2512,11 @@
 .invert {
 	-webkit-filter: invert(100%);
 	filter: invert(100%);
+}
+
+.disabled {
+	pointer-events: none;
+	cursor: not-allowed;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
 }

@@ -4,8 +4,8 @@
     "table": "sys_address_province",
     "key": "province_id",
     "orderby_default": "`display` asc",
-    "field_obj": "`province_id`,`show`,`name`",
-    "field_default": "`province_id`,`show`,`display`,`name`",
+    "field_obj": "`name`,`province_id`,`show`",
+    "field_default": "`display`,`name`,`province_id`,`show`",
     "method": "get get_obj",
     "query": {
         "show_min": "`show` >= {0}",

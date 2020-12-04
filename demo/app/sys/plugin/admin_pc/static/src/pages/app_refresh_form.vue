@@ -1,6 +1,8 @@
 <template>
 	<main id="sys_app_refresh_form">
-		<mm_grid>
+		<mm_warp>
+			<mm_container>
+				<mm_row>
 			<mm_col width="33">
 				<mm_form class="card">
 					<div class="head arrow">
@@ -8,19 +10,18 @@
 					</div>
 					<div class="body">
 						<dl>
-							<dt>用户</dt>
+							<dt>刷新Token的ID</dt>
 							<dd>
-								<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
-							</dd>
-							<dt class="required">应用ID</dt>
-							<dd>
-								<mm_input v-model="form.appid" :minlength="0" :maxlength="0" placeholder=""
-								 :required="true" />
+								<mm_input v-model="form.refresh_id" :minlength="0" :maxlength="0" placeholder="" />
 							</dd>
 							<dt class="required">刷新令牌</dt>
 							<dd>
 								<mm_input v-model="form.refresh_token" :minlength="0" :maxlength="0" placeholder="用来刷新访问牌，保留30天"
 								 :required="true" />
+							</dd>
+							<dt>用户</dt>
+							<dd>
+								<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
 							</dd>
 						</dl>
 					</div>
@@ -32,7 +33,9 @@
 					</div>
 				</mm_form>
 			</mm_col>
-		</mm_grid>
+		</mm_row>
+			</mm_container>
+		</mm_warp>
 	</main>
 </template>
 
@@ -52,10 +55,10 @@
 					"refresh_id": 0
 				},
 				form: {
-					"refresh_id": 0,
-					"user_id": 0,
 					"appid": '',
+					"refresh_id": 0,
 					"refresh_token": '',
+					"user_id": 0,
 				},
 				// 用户
 				'list_account': [ ],

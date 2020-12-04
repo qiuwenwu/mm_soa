@@ -1,6 +1,8 @@
 <template>
 	<main id="sys_address_city_form">
-		<mm_grid>
+		<mm_warp>
+			<mm_container>
+				<mm_row>
 			<mm_col width="33">
 				<mm_form class="card">
 					<div class="head arrow">
@@ -8,18 +10,18 @@
 					</div>
 					<div class="body">
 						<dl>
-							<dt>显示位置</dt>
+							<dt class="required">城市名称</dt>
 							<dd>
-								<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
+								<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
+								 :required="true" />
 							</dd>
 							<dt>所属省份</dt>
 							<dd>
 								<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name')" />
 							</dd>
-							<dt class="required">城市名称</dt>
+							<dt>显示位置</dt>
 							<dd>
-								<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
-								 :required="true" />
+								<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
 							</dd>
 						</dl>
 					</div>
@@ -31,7 +33,9 @@
 					</div>
 				</mm_form>
 			</mm_col>
-		</mm_grid>
+		</mm_row>
+			</mm_container>
+		</mm_warp>
 	</main>
 </template>
 
@@ -52,14 +56,14 @@
 				},
 				form: {
 					"city_id": 0,
-					"show": 0,
-					"province_id": 0,
 					"name": '',
+					"province_id": 0,
+					"show": 0,
 				},
-				// 显示位置
-				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],
 				// 所属省份
 				'list_address_province': [ ],
+				// 显示位置
+				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],
 			}
 		},
 		methods: {
