@@ -3,102 +3,104 @@
 		<mm_warp>
 			<mm_container>
 				<mm_row>
-			<mm_col width="33">
-				<mm_form class="card">
-					<div class="head arrow">
-						<h5>{{ form[field] ? '修改' : '创建' }}用户账户</h5>
-					</div>
-					<div class="body">
-						<dl>
-							<dt>账户状态</dt>
-							<dd>
-								<mm_select v-model="form.state" :options="$to_kv(arr_state)" />
-							</dd>
-							<dt>会员级别</dt>
-							<dd>
-								<mm_number v-model="form.vip" :min="0" :max="10" />
-							</dd>
-							<dt>管理员级别</dt>
-							<dd>
-								<mm_number v-model="form.gm" :min="0" :max="10" />
-							</dd>
-							<dt>商家级别</dt>
-							<dd>
-								<mm_number v-model="form.mc" :min="0" :max="10" />
-							</dd>
-							<dt>所在用户组</dt>
-							<dd>
-								<mm_select v-model="form.group_id" :options="$to_kv(list_group, 'group_id', 'name')" />
-							</dd>
-							<dt>所在管理组</dt>
-							<dd>
-								<mm_select v-model="form.admin_id" :options="$to_kv(list_admin, 'admin_id', 'name')" />
-							</dd>
-							<dt>推荐人</dt>
-							<dd>
-								<mm_select v-model="form.referee_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
-							</dd>
-							<dt>上次登录时间</dt>
-							<dd>
-								<mm_time v-model="form.login_time" type="datetime-local" />
-							</dd>
-							<dt class="required">邀请注册码</dt>
-							<dd>
-								<mm_input v-model="form.invite_code" :minlength="0" :maxlength="0" placeholder="随着用户注册而生成"
-								 :required="true" />
-							</dd>
-							<dt>手机号码</dt>
-							<dd>
-								<mm_input v-model="form.phone" :minlength="0" :maxlength="0" placeholder="用户的手机号码，用于找回密码时或登录时" />
-							</dd>
-							<dt>手机认证</dt>
-							<dd>
-								<mm_select v-model="form.phone_state" :options="$to_kv(arr_phone_state)" />
-							</dd>
-							<dt class="required">用户名</dt>
-							<dd>
-								<mm_input v-model="form.username" :minlength="0" :maxlength="0" placeholder="用户登录时所用的账户名称"
-								 :required="true" />
-							</dd>
-							<dt>昵称</dt>
-							<dd>
-								<mm_input v-model="form.nickname" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>邮箱</dt>
-							<dd>
-								<mm_input v-model="form.email" :minlength="0" :maxlength="0" placeholder="用户的邮箱，用于找回密码时或登录时" />
-							</dd>
-							<dt>邮箱认证</dt>
-							<dd>
-								<mm_select v-model="form.email_state" :options="$to_kv(arr_email_state)" />
-							</dd>
-							<dt>上次登录时的IP地址</dt>
-							<dd>
-								<mm_input v-model="form.login_ip" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>个性签名</dt>
-							<dd>
-								<mm_input v-model="form.signature" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>头像地址</dt>
-							<dd>
-								<mm_input v-model="form.avatar" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>好友</dt>
-							<dd>
-								<mm_textarea v-model="form.friends" type="text" placeholder="多个好友ID用“,”分隔" />
-							</dd>
-						</dl>
-					</div>
-					<div class="foot">
-						<div class="mm_group">
-							<button class="btn_default" type="button" @click="cancel">取消</button>
-							<button class="btn_primary" type="button" @click="submit()">提交</button>
-						</div>
-					</div>
-				</mm_form>
-			</mm_col>
-		</mm_row>
+					<mm_col>
+						<mm_card>
+							<div class="card_head arrow">
+								<h5>{{ form[field] ? '修改' : '创建' }}用户账户</h5>
+							</div>
+							<div class="card_body">
+								<mm_form>
+									<dl>
+										<dt>账户状态</dt>
+										<dd>
+											<mm_select v-model="form.state" :options="$to_kv(arr_state)" />
+										</dd>
+										<dt>会员级别</dt>
+										<dd>
+											<mm_number v-model="form.vip" :min="0" :max="10" />
+										</dd>
+										<dt>管理员级别</dt>
+										<dd>
+											<mm_number v-model="form.gm" :min="0" :max="10" />
+										</dd>
+										<dt>商家级别</dt>
+										<dd>
+											<mm_number v-model="form.mc" :min="0" :max="10" />
+										</dd>
+										<dt>所在用户组</dt>
+										<dd>
+											<mm_select v-model="form.group_id" :options="$to_kv(list_group, 'group_id', 'name')" />
+										</dd>
+										<dt>所在管理组</dt>
+										<dd>
+											<mm_select v-model="form.admin_id" :options="$to_kv(list_admin, 'admin_id', 'name')" />
+										</dd>
+										<dt>推荐人</dt>
+										<dd>
+											<mm_select v-model="form.referee_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+										</dd>
+										<dt>上次登录时间</dt>
+										<dd>
+											<mm_time v-model="form.login_time" type="datetime-local" />
+										</dd>
+										<dt class="required">邀请注册码</dt>
+										<dd>
+											<mm_input v-model="form.invite_code" :minlength="0" :maxlength="0" placeholder="随着用户注册而生成"
+											 :required="true" />
+										</dd>
+										<dt>手机号码</dt>
+										<dd>
+											<mm_input v-model="form.phone" :minlength="0" :maxlength="0" placeholder="用户的手机号码，用于找回密码时或登录时" />
+										</dd>
+										<dt>手机认证</dt>
+										<dd>
+											<mm_select v-model="form.phone_state" :options="$to_kv(arr_phone_state)" />
+										</dd>
+										<dt class="required">用户名</dt>
+										<dd>
+											<mm_input v-model="form.username" :minlength="0" :maxlength="0" placeholder="用户登录时所用的账户名称"
+											 :required="true" />
+										</dd>
+										<dt>昵称</dt>
+										<dd>
+											<mm_input v-model="form.nickname" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>邮箱</dt>
+										<dd>
+											<mm_input v-model="form.email" :minlength="0" :maxlength="0" placeholder="用户的邮箱，用于找回密码时或登录时" />
+										</dd>
+										<dt>邮箱认证</dt>
+										<dd>
+											<mm_select v-model="form.email_state" :options="$to_kv(arr_email_state)" />
+										</dd>
+										<dt>上次登录时的IP地址</dt>
+										<dd>
+											<mm_input v-model="form.login_ip" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>个性签名</dt>
+										<dd>
+											<mm_input v-model="form.signature" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>头像地址</dt>
+										<dd>
+											<mm_input v-model="form.avatar" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>好友</dt>
+										<dd>
+											<mm_textarea v-model="form.friends" type="text" placeholder="多个好友ID用“,”分隔" />
+										</dd>
+									</dl>
+								</mm_form>
+							</div>
+							<div class="card_foot">
+								<div class="mm_group">
+									<button class="btn_default" type="button" @click="cancel">取消</button>
+									<button class="btn_primary" type="button" @click="submit()">提交</button>
+								</div>
+							</div>
+						</mm_card>
+					</mm_col>
+				</mm_row>
 			</mm_container>
 		</mm_warp>
 	</main>

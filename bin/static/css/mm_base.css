@@ -451,7 +451,10 @@ input[type=checkbox] {
 	padding: 0;
 }
 
-
+input[type=datetime-local]{
+	background: #fff;
+	letter-spacing: -1px;
+}
 
 /* 非法选择器 */
 input:invalid {
@@ -513,6 +516,7 @@ textarea {
 	border: 1px solid var(--color_border);
 	border-radius: var(--radius_small);
 	font: 400 13.3333px;
+	min-width: 13.25rem;
 }
 
 form textarea {
@@ -562,15 +566,6 @@ dt {
 	position: relative;
 }
 
-dt.required::before {
-	position: absolute;
-	content: "*";
-	color: var(--color_error);
-	left: 0;
-	top: 50%;
-	transform: translateY(-37.5%);
-}
-
 dt>span,
 dd>span {
 	line-height: var(--height_base);
@@ -594,10 +589,6 @@ ul {
 dl,
 dd {
 	display: block;
-}
-
-form dl {
-	margin: var(--margin_small) var(--margin_base) var(--margin_base) var(--margin_base);
 }
 
 dl::before,

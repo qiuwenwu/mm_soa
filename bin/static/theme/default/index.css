@@ -588,7 +588,7 @@ tbody tr:hover {
 }
 
 tbody tr.active {
-	background-color: rgba(0, 100, 200, .075);
+	background-color: rgba(0, 100, 200, .075) !important;
 }
 
 .table_warning tr:hover {

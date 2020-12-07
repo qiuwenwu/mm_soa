@@ -2517,6 +2517,20 @@
 .disabled {
 	pointer-events: none;
 	cursor: not-allowed;
-	-webkit-filter: grayscale(100%);
-	filter: grayscale(100%);
+/* 	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%); */
+	border: none !important;
+	background: rgba(250, 250, 250, 1);
+	color: var(--color_default) !important;
+}
+.required {
+	position: relative;
+}
+.required::before {
+	position: absolute;
+	content: "*";
+	color: var(--color_error);
+	left: 0;
+	top: 50%;
+	transform: translateY(-37.5%);
 }

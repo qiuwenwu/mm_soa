@@ -1,19 +1,27 @@
 <template>
 	<mm_nav_top id="nav_top">
-		<a href="javascript:void(0)">
-			<mm_icon src="<i class='fa-search'></i>"></mm_icon>
-			<span>搜索</span>
-		</a>
-		<router-link to="/">
-			<span>消息</span>
-			<span class="msg">{{ msg_count }}</span>
-		</router-link>
-		<mm_select class="user" v-model="option" :options="options" type="click" :func="select">
-			<mm_icon class="avatar" :src="user.avatar"></mm_icon>
-		</mm_select>
-		<router-link to="/">
-			<mm_icon src="<i class='fa-ellipsis-v'></i>"></mm_icon>
-		</router-link>
+		<div class="item">
+			<a href="javascript:void(0)">
+				<mm_icon src="<i class='fa-search'></i>"></mm_icon>
+				<span>搜索</span>
+			</a>
+		</div>
+		<div class="item">
+			<router-link to="/">
+				<span>消息</span>
+				<span class="msg">{{ msg_count }}</span>
+			</router-link>
+		</div>
+		<div class="item">
+			<mm_select class="user" v-model="option" :options="options" type="click" :func="select">
+				<img class="avatar" :src="user.avatar" />
+			</mm_select>
+		</div>
+		<div class="item">
+			<router-link to="/config">
+				<mm_icon src="<i class='fa-ellipsis-v'></i>"></mm_icon>
+			</router-link>
+		</div>
 	</mm_nav_top>
 </template>
 
@@ -57,35 +65,16 @@
 </script>
 
 <style>
-#nav_top {
-			float: right;
-		}
-
+	
 	@media (min-width: 576px) {
-		
-		
-		#nav_top .mm_icon {
-			width: 1.5rem;
-			height: 1.5rem;
-			text-align: center;
-		}
-		
-		#nav_top .mm_icon img {
-			width: 1.5rem;
-			height: 1.5rem;
-			border-radius: 50%;
-		}
-		
-		#nav_top nav>* {
-			padding: 0.5rem 0.75rem;
-			line-height: 1.5rem;
-			color: #fff;
-			float: left;
+		#nav_top .item>* {
 			border-left: 1px solid rgba(0, 0, 0, 0.4);
 			position: relative;
+			min-width: 2.5rem;
+			text-align: center;
 		}
 
-		#nav_top nav>*:before {
+		#nav_top .item>*:before {
 			content: "";
 			display: block;
 			position: absolute;
@@ -95,21 +84,16 @@
 			height: 100%;
 			border-left: 1px solid rgba(255, 255, 255, 0.1);
 		}
-		#nav_top a .mm_icon {
-			float: left;
-		}
 	}
 
 
-	#nav_top>a:hover {
+	#nav_top .item>*:hover {
 		background: rgba(128, 128, 128, 0.1);
 	}
 
-	#nav_top>a:active {
+	#nav_top .item>*:active {
 		background: rgb(0, 0, 0);
 	}
-
-
 
 	#nav_top .msg {
 		text-align: center;
@@ -121,25 +105,16 @@
 		line-height: 1.425;
 		padding: 0 0.25rem 0 0.2rem;
 		background: #ff9000;
+		color: #fff;
 	}
 
 	#nav_top .user:hover {
 		background: rgba(128, 128, 128, 0.1);
 	}
 
-	#nav_top .user {
-		float: left;
-		padding-left: 0;
-		padding-right: 0;
-		height: 2.5rem;
-	}
-
-	#nav_top .user .avatar {
-		border-radius: 50%;
-	}
-
 	#nav_top .user .mm_box {
-		left: -50%;
+		left: calc(-100% - var(--padding_small) / 2);
+		top: 100%;
 	}
 
 	#nav_top .user a {

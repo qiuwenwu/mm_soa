@@ -1847,7 +1847,7 @@ define(['jquery'], function(jquery) {
 	};
 
 	var mm_nav_top = {
-		template: "<div class=\"mm_nav_top\"><button class=\"btn_link\" @click=\"show = !show\"><i class=\"fa fa-bars\"></i></button><nav :class=\"{show: show}\"><slot></slot></nav><div class=\"nav_mask\" @click=\"show = false\"></div></div>",
+		template: "<div class=\"mm_nav_top\" :class=\"{show: show}\"><button class=\"btn_link\" @click=\"show = !show\"><i class=\"fa fa-bars\"></i></button><div class=\"nav_warp\"><nav><slot></slot></nav><div class=\"mask\" @click=\"show = false\"></div></div></div>",
 		props: {
 
 		},

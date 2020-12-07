@@ -3,88 +3,90 @@
 		<mm_warp>
 			<mm_container>
 				<mm_row>
-			<mm_col width="33">
-				<mm_form class="card">
-					<div class="head arrow">
-						<h5>{{ form[field] ? '修改' : '创建' }}用户信息</h5>
-					</div>
-					<div class="body">
-						<dl>
-							<dt>性别</dt>
-							<dd>
-								<mm_select v-model="form.sex" :options="$to_kv(arr_sex)" />
-							</dd>
-							<dt>身份实名认证</dt>
-							<dd>
-								<mm_select v-model="form.idcard_state" :options="$to_kv(arr_idcard_state)" />
-							</dd>
-							<dt>年龄</dt>
-							<dd>
-								<mm_number v-model="form.age" :min="0" :max="150" />
-							</dd>
-							<dt>省份</dt>
-							<dd>
-								<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name')" />
-							</dd>
-							<dt>所在城市</dt>
-							<dd>
-								<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name')" />
-							</dd>
-							<dt>生日</dt>
-							<dd>
-								<mm_time v-model="form.birthday" type="date" />
-							</dd>
-							<dt>姓名</dt>
-							<dd>
-								<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>职业</dt>
-							<dd>
-								<mm_input v-model="form.job" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>毕业学校</dt>
-							<dd>
-								<mm_input v-model="form.school" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>所学专业</dt>
-							<dd>
-								<mm_input v-model="form.major" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>身份证号</dt>
-							<dd>
-								<mm_input v-model="form.idcard" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>公司地址</dt>
-							<dd>
-								<mm_input v-model="form.company_address" :minlength="0" :maxlength="0" placeholder="用户当前就职的公司地址" />
-							</dd>
-							<dt>详细地址</dt>
-							<dd>
-								<mm_input v-model="form.address" :minlength="0" :maxlength="0" placeholder="用户居住地的详细地址" />
-							</dd>
-							<dt>工作范围</dt>
-							<dd>
-								<mm_input v-model="form.job_scope" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>公司经营范围</dt>
-							<dd>
-								<mm_input v-model="form.company_business" :minlength="0" :maxlength="0" placeholder="" />
-							</dd>
-							<dt>身份证图片</dt>
-							<dd>
-								<mm_upload_img width="10rem" height="10rem" name="idcard_img" type="text" v-model="form.idcard_img" />
-							</dd>
-						</dl>
-					</div>
-					<div class="foot">
-						<div class="mm_group">
-							<button class="btn_default" type="button" @click="cancel">取消</button>
-							<button class="btn_primary" type="button" @click="submit()">提交</button>
-						</div>
-					</div>
-				</mm_form>
-			</mm_col>
-		</mm_row>
+					<mm_col>
+						<mm_card>
+							<div class="card_head arrow">
+								<h5>{{ form[field] ? '修改' : '创建' }}用户信息</h5>
+							</div>
+							<div class="card_body">
+								<mm_form>
+									<dl>
+										<dt>性别</dt>
+										<dd>
+											<mm_select v-model="form.sex" :options="$to_kv(arr_sex)" />
+										</dd>
+										<dt>身份实名认证</dt>
+										<dd>
+											<mm_select v-model="form.idcard_state" :options="$to_kv(arr_idcard_state)" />
+										</dd>
+										<dt>年龄</dt>
+										<dd>
+											<mm_number v-model="form.age" :min="0" :max="150" />
+										</dd>
+										<dt>省份</dt>
+										<dd>
+											<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name')" />
+										</dd>
+										<dt>所在城市</dt>
+										<dd>
+											<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name')" />
+										</dd>
+										<dt>生日</dt>
+										<dd>
+											<mm_time v-model="form.birthday" type="date" />
+										</dd>
+										<dt>姓名</dt>
+										<dd>
+											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>职业</dt>
+										<dd>
+											<mm_input v-model="form.job" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>毕业学校</dt>
+										<dd>
+											<mm_input v-model="form.school" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>所学专业</dt>
+										<dd>
+											<mm_input v-model="form.major" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>身份证号</dt>
+										<dd>
+											<mm_input v-model="form.idcard" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>公司地址</dt>
+										<dd>
+											<mm_input v-model="form.company_address" :minlength="0" :maxlength="0" placeholder="用户当前就职的公司地址" />
+										</dd>
+										<dt>详细地址</dt>
+										<dd>
+											<mm_input v-model="form.address" :minlength="0" :maxlength="0" placeholder="用户居住地的详细地址" />
+										</dd>
+										<dt>工作范围</dt>
+										<dd>
+											<mm_input v-model="form.job_scope" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>公司经营范围</dt>
+										<dd>
+											<mm_input v-model="form.company_business" :minlength="0" :maxlength="0" placeholder="" />
+										</dd>
+										<dt>身份证图片</dt>
+										<dd>
+											<mm_upload_img width="10rem" height="10rem" name="idcard_img" type="text" v-model="form.idcard_img" />
+										</dd>
+									</dl>
+								</mm_form>
+							</div>
+							<div class="card_foot">
+								<div class="mm_group">
+									<button class="btn_default" type="button" @click="cancel">取消</button>
+									<button class="btn_primary" type="button" @click="submit()">提交</button>
+								</div>
+							</div>
+						</mm_card>
+					</mm_col>
+				</mm_row>
 			</mm_container>
 		</mm_warp>
 	</main>

@@ -3,37 +3,39 @@
 		<mm_warp>
 			<mm_container>
 				<mm_row>
-			<mm_col width="33">
-				<mm_form class="card">
-					<div class="head arrow">
-						<h5>{{ form[field] ? '修改' : '创建' }}城市</h5>
-					</div>
-					<div class="body">
-						<dl>
-							<dt class="required">城市名称</dt>
-							<dd>
-								<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
-								 :required="true" />
-							</dd>
-							<dt>所属省份</dt>
-							<dd>
-								<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name')" />
-							</dd>
-							<dt>显示位置</dt>
-							<dd>
-								<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
-							</dd>
-						</dl>
-					</div>
-					<div class="foot">
-						<div class="mm_group">
-							<button class="btn_default" type="button" @click="cancel">取消</button>
-							<button class="btn_primary" type="button" @click="submit()">提交</button>
-						</div>
-					</div>
-				</mm_form>
-			</mm_col>
-		</mm_row>
+					<mm_col>
+						<mm_card>
+							<div class="card_head arrow">
+								<h5>{{ form[field] ? '修改' : '创建' }}城市</h5>
+							</div>
+							<div class="card_body">
+								<mm_form>
+									<dl>
+										<dt class="required">城市名称</dt>
+										<dd>
+											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
+											 :required="true" />
+										</dd>
+										<dt>所属省份</dt>
+										<dd>
+											<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name')" />
+										</dd>
+										<dt>显示位置</dt>
+										<dd>
+											<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
+										</dd>
+									</dl>
+								</mm_form>
+							</div>
+							<div class="card_foot">
+								<div class="mm_group">
+									<button class="btn_default" type="button" @click="cancel">取消</button>
+									<button class="btn_primary" type="button" @click="submit()">提交</button>
+								</div>
+							</div>
+						</mm_card>
+					</mm_col>
+				</mm_row>
 			</mm_container>
 		</mm_warp>
 	</main>

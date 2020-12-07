@@ -3,85 +3,87 @@
 		<mm_warp>
 			<mm_container>
 				<mm_row>
-			<mm_col width="33">
-				<mm_form class="card">
-					<div class="head arrow">
-						<h5>{{ form[field] ? '修改' : '创建' }}${api.title}</h5>
-					</div>
-					<div class="body">
-						<dl>
-							<!--{loop field v idx}-->
-							<!--{if idx > 0}-->
-							<!--{if(v.required)}-->
-							<dt class="required">${v.title}</dt>
-							<!--{else}-->
-							<dt>${v.title}</dt>
-							<!--{/if}-->
-							<!--{if(v.dataType === 'tinyint')}-->
-							<dd>
-								<mm_switch v-model="form.${v.name}" />
-							</dd>
-							<!--{else if(v.format)}-->
-							<!--{if(v.format.table)}-->
-							<dd>
-								<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
-							</dd>
-							<!--{else}-->
-							<dd>
-								<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
-							</dd>
-							<!--{/if}-->
-							<!--{else if(v.dataType === 'date')}-->
-							<dd>
-								<mm_time v-model="form.${v.name}" type="date" />
-							</dd>
-							<!--{else if(v.dataType === 'time')}-->
-							<dd>
-								<mm_time v-model="form.${v.name}" type="time" />
-							</dd>
-							<!--{else if(v.dataType.indexOf('time') !== -1)}-->
-							<dd>
-								<mm_time v-model="form.${v.name}" type="datetime-local" />
-							</dd>
-							<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1)}-->
-							<dd>
-								<mm_upload_img width="10rem" height="10rem" name="${v.name}" type="text" v-model="form.${v.name}" />
-							</dd>
-							<!--{else if(v.dataType.indexOf('text') !== -1)}-->
-							<dd>
-								<mm_textarea v-model="form.${v.name}" type="text" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
-							</dd>
-							<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
-							<dd>
-								<!--{if(v.number.range && v.number.range.length)}-->
-								<mm_number v-model="form.${v.name}" :min="${v.number.range[0]}" :max="${v.number.range[1]}" />
-								<!--{else}-->
-								<mm_number v-model="form.${v.name}" :min="${v.number ? v.number.min : 0}" :max="${v.number ? v.number.max : 0}" />
-								<!--{/if}-->
-							</dd>
-							<!--{else}-->
-							<dd>
-								<!--{if(v.required)}-->
-								<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-								 :required="true" />
-								<!--{else}-->
-								<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
-								<!--{/if}-->
-							</dd>
-							<!--{/if}-->
-							<!--{/if}-->
-							<!--{/loop}-->
-						</dl>
-					</div>
-					<div class="foot">
-						<div class="mm_group">
-							<button class="btn_default" type="button" @click="cancel">取消</button>
-							<button class="btn_primary" type="button" @click="submit()">提交</button>
-						</div>
-					</div>
-				</mm_form>
-			</mm_col>
-		</mm_row>
+					<mm_col>
+						<mm_card>
+							<div class="card_head arrow">
+								<h5>{{ form[field] ? '修改' : '创建' }}${api.title}</h5>
+							</div>
+							<div class="card_body">
+								<mm_form>
+									<dl>
+										<!--{loop field v idx}-->
+										<!--{if idx > 0}-->
+										<!--{if(v.required)}-->
+										<dt class="required">${v.title}</dt>
+										<!--{else}-->
+										<dt>${v.title}</dt>
+										<!--{/if}-->
+										<!--{if(v.dataType === 'tinyint')}-->
+										<dd>
+											<mm_switch v-model="form.${v.name}" />
+										</dd>
+										<!--{else if(v.format)}-->
+										<!--{if(v.format.table)}-->
+										<dd>
+											<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+										</dd>
+										<!--{else}-->
+										<dd>
+											<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
+										</dd>
+										<!--{/if}-->
+										<!--{else if(v.dataType === 'date')}-->
+										<dd>
+											<mm_time v-model="form.${v.name}" type="date" />
+										</dd>
+										<!--{else if(v.dataType === 'time')}-->
+										<dd>
+											<mm_time v-model="form.${v.name}" type="time" />
+										</dd>
+										<!--{else if(v.dataType.indexOf('time') !== -1)}-->
+										<dd>
+											<mm_time v-model="form.${v.name}" type="datetime-local" />
+										</dd>
+										<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1)}-->
+										<dd>
+											<mm_upload_img width="10rem" height="10rem" name="${v.name}" type="text" v-model="form.${v.name}" />
+										</dd>
+										<!--{else if(v.dataType.indexOf('text') !== -1)}-->
+										<dd>
+											<mm_textarea v-model="form.${v.name}" type="text" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
+										</dd>
+										<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
+										<dd>
+											<!--{if(v.number.range && v.number.range.length)}-->
+											<mm_number v-model="form.${v.name}" :min="${v.number.range[0]}" :max="${v.number.range[1]}" />
+											<!--{else}-->
+											<mm_number v-model="form.${v.name}" :min="${v.number ? v.number.min : 0}" :max="${v.number ? v.number.max : 0}" />
+											<!--{/if}-->
+										</dd>
+										<!--{else}-->
+										<dd>
+											<!--{if(v.required)}-->
+											<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
+											 :required="true" />
+											<!--{else}-->
+											<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
+											<!--{/if}-->
+										</dd>
+										<!--{/if}-->
+										<!--{/if}-->
+										<!--{/loop}-->
+									</dl>
+								</mm_form>
+							</div>
+							<div class="card_foot">
+								<div class="mm_group">
+									<button class="btn_default" type="button" @click="cancel">取消</button>
+									<button class="btn_primary" type="button" @click="submit()">提交</button>
+								</div>
+							</div>
+						</mm_card>
+					</mm_col>
+				</mm_row>
 			</mm_container>
 		</mm_warp>
 	</main>

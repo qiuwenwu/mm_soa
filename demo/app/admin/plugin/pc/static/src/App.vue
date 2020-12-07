@@ -45,13 +45,16 @@
 				</mm_warp>
 			</header>
 
-			<router-view id="main" :style="'width: calc(100% -' + width + 'px)'"></router-view>
+			<router-view :style="'width: calc(100% -' + width + 'px)'"></router-view>
 			<footer :style="'width: calc(100% -' + width + 'px)'">
-				<div class="mm_warp">
+				<div class="mm_warp" id="copyright">
 					<div class="mm_container">
 						<div class="mm_row">
-							<div class="mm_col">
-								页脚
+							<div class="mm_col col-12">
+								<div class="info">
+									<div class="fl"><a target="_blank" href="http://bbs.elins.cn">开发者: 超级美眉工作室</a></div>
+									<div class="fr"><a href="tencent://message/?uin=573242395">升级维护联系：573242395@qq.com</a></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -164,69 +167,114 @@
 		overflow-x: auto;
 		background: #fff;
 	}
-	
+
 	.mm_page>header~main {
 		margin-top: 4.5rem;
 	}
-	
+
 	.card_body {
-	    position: relative;
-	    padding: var(--padding_mini) var(--padding_base);
+		position: relative;
+		padding: var(--padding_mini) var(--padding_base);
 	}
-	
+
 	.mm_filter {
-	    display: flex;
+		display: flex;
 		padding-bottom: .5rem;
 		margin-bottom: 1rem;
-		border-bottom: 1px solid rgba(51,136,255,.25);
+		border-bottom: 1px solid rgba(51, 136, 255, .25);
 	}
-	
-	 .mm_filter .mm_list {
-		 align-items:center;
-	 }
+
+	.mm_filter .mm_list {
+		align-items: center;
+	}
+
 	.mm_filter .mm_item {
 		min-width: 20rem;
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 	}
+
 	.mm_filter>.title {
-	    flex: 1;
-	    position: relative;
-	    border-right: 2px solid #DBDBDB;
-	    background: #f3f9ff;
+		flex: 1;
+		position: relative;
+		border-right: 2px solid #DBDBDB;
+		background: #f3f9ff;
 		min-width: 7rem;
-	    max-width: 7rem;
+		max-width: 7rem;
 		text-align: center;
 		min-height: 2rem;
 	}
-	
+
 	.mm_filter>.title h5 {
-	    position: absolute;
+		position: absolute;
 		width: 100%;
 		left: 0;
-	    top: 50%;
-	    transform: translateY(-50%);
-	    white-space: nowrap;
+		top: 50%;
+		transform: translateY(-50%);
+		white-space: nowrap;
 	}
-	
+
 	.pager_now {
 		padding: 0;
 		width: 3rem;
 		min-width: auto !important;
 	}
-	
+
 	.mm_filter button:first-child {
-	    margin-left: 1rem;
+		margin-left: 1rem;
 	}
-	
+
 	@media (max-width: 576px) {
 		.mm_filter {
 			display: block;
 		}
+
+		.mm_pager,
+		[class*=mm_pager_] {
+			float: none;
+			clear: both;
+			padding: 0.5rem 0;
+		}
+	}
+
+	.mm_action {
+		margin: 1rem 0 .5rem 0;
+	}
+
+	.mm_action>h5 {
+		float: left;
+		line-height: 2rem;
+	}
+
+	.mm_action>div {
+		float: right;
+	}
+
+	.mm_action::before,
+	.mm_action::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	.mm_page>footer .mm_warp {
+		line-height: 2rem;
+	}
+
+	#copyright {
+		font-size: 0.75rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		color: var(--color_default);
 	}
 	
-	.mm_action {margin:1rem 0 .5rem 0; }
-	.mm_action>h5 {float:left; line-height: 2rem;}
-	.mm_action>div {float:right;}
-	.mm_action::before,.mm_action::after {content:"";display:block;clear:both;}
+	#copyright a:hover {
+		color: var(--color_info);
+	}
+	
+	@media (max-width: 576px) {
+		#copyright {
+			display: none;
+		}
+	}
 </style>

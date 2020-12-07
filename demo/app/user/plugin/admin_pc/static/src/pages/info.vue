@@ -10,7 +10,9 @@
 							</div>
 							<div class="card_body">
 								<mm_form class="mm_filter">
-									<div class="title"><h5><span>筛选条件</span></h5></div>
+									<div class="title">
+										<h5><span>筛选条件</span></h5>
+									</div>
 									<mm_list col="3">
 										<mm_item>
 											<mm_input v-model="query.keyword" title="关键词" desc="姓名"
@@ -43,7 +45,7 @@
 									</div>
 								</div>
 								<mm_table type="2">
-									<thead>
+									<thead class="table-sm">
 										<tr>
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
@@ -157,7 +159,9 @@
 								</mm_table>
 							</div>
 							<div class="card_foot">
-								<mm_select v-model="query.size" :options="$to_size()" @change="search()" />
+								<div class="fl">
+									<mm_select v-model="query.size" :options="$to_size()" @change="search()" />
+								</div>
 								<div class="fr">
 									<span class="mr">共 {{ count }} 条</span>
 									<span>当前</span>
@@ -172,7 +176,7 @@
 			</mm_container>
 		</mm_warp>
 		<mm_modal v-model="show" mask="true">
-			<mm_card class="card bg_no">
+			<mm_card class="card">
 				<div class="card_head">
 					<h5>批量修改</h5>
 				</div>
