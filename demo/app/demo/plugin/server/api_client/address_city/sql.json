@@ -1,11 +1,12 @@
 {
-    "name": "sys_address_city2",
+    "name": "demo_address_city",
     "title": "城市",
-    "table": "sys_address_city",
+    "table": "demo_address_city",
     "key": "city_id",
-    "orderby_default": "`city_id` desc",
+    "orderby_default": "`display` asc",
     "field_obj": "`city_id`,`show`,`province_id`,`name`",
     "field_default": "`city_id`,`show`,`display`,`province_id`,`name`",
+    "method": "get get_obj",
     "query": {
         "show_min": "`show` >= {0}",
         "show_max": "`show` <= {0}",
@@ -14,6 +15,7 @@
         "name": "`name` like '%{0}%'",
         "keyword": "(`name` like '%{0}%')"
     },
+    "query_default": {},
     "update": {
         "show_add": "`show` = `show` + {0}",
         "display_add": "`display` = `display` + {0}"
@@ -34,6 +36,5 @@
             "table": "sys_address_province",
             "name": "name"
         }
-    ],
-    "field_hide": []
+    ]
 }

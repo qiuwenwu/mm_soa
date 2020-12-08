@@ -1,7 +1,7 @@
 {
-    "name": "sys_address_city2",
+    "name": "demo_address_city2",
     "title": "城市",
-    "table": "sys_address_city",
+    "table": "demo_address_city",
     "key": "city_id",
     "orderby_default": "`city_id` desc",
     "field_obj": "`city_id`,`show`,`province_id`,`name`",

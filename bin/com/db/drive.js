@@ -439,8 +439,9 @@ Drive.prototype.update_app = async function(cover) {
 		f = this.dir + cg.table.replace(scope + '_', '') + '.db.json';
 		this.filename = f;
 	} else {
-		f = this.filename;
+		f = this.filename + '.db.json';
 	}
+	
 	if (f) {
 		if (!this.dir) {
 			this.dir = f.dirname();
@@ -514,7 +515,7 @@ Drive.prototype.update_api = async function(dir, cover) {
 	if (!fs.existsSync(manage)) {
 		fs.mkdirSync(manage);
 	}
-
+	console.log(client, manage, cover);
 	this.new_sql(client, manage, cover);
 	await this.new_param(client, manage, cover);
 	this.new_api(client, manage, cover);

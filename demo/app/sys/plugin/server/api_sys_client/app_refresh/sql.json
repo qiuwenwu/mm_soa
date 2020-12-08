@@ -15,20 +15,8 @@
         "appid": "`appid` like '%{0}%'",
         "refresh_token": "`refresh_token` like '%{0}%'"
     },
-    "query_default": {
-        "user_id": "`user_id` = {user_id}"
-    },
+    "query_default": {},
     "update": {},
-    "filter": {
-        "table": "table",
-        "page": "page",
-        "size": "size",
-        "method": "method",
-        "orderby": "orderby",
-        "field": "field",
-        "count_ret": "count_ret",
-        "user_id": "user_id"
-    },
     "format": [
         {
             "key": "user_id",

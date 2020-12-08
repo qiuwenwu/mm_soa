@@ -1,8 +1,8 @@
 {
-    "name": "sys_config2",
-    "title": "系统配置",
+    "name": "sys_message_manage",
+    "title": "系统消息",
     "description": "",
-    "path": "/apis/sys/config",
+    "path": "/apis/sys/message",
     "method": "ALL",
     "cache": 0,
     "client_cache": false,

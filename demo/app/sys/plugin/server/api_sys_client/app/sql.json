@@ -33,25 +33,13 @@
         "users": "`users` like '%{0}%'",
         "keyword": "(`name` like '%{0}%')"
     },
-    "query_default": {
-        "user_id": "`user_id` = {user_id}"
-    },
+    "query_default": {},
     "update": {
         "encrypt_add": "`encrypt` = `encrypt` + {0}",
         "times_allow_add": "`times_allow` = `times_allow` + {0}",
         "times_today_add": "`times_today` = `times_today` + {0}",
         "max_age_add": "`max_age` = `max_age` + {0}",
         "times_count_add": "`times_count` = `times_count` + {0}"
-    },
-    "filter": {
-        "table": "table",
-        "page": "page",
-        "size": "size",
-        "method": "method",
-        "orderby": "orderby",
-        "field": "field",
-        "count_ret": "count_ret",
-        "user_id": "user_id"
     },
     "format": [
         {

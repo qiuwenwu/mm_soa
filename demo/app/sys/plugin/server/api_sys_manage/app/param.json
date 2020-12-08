@@ -375,9 +375,7 @@
             "description": "用于用户登录时显示",
             "type": "string",
             "dataType": "text",
-            "string": {
-                "max": 0
-            }
+            "string": {}
         },
         {
             "name": "url",

@@ -1,17 +1,17 @@
 {
-    "title": "地区",
+    "title": "城市",
     "description": "",
-    "name": "sys_address_area",
-    "table": "sys_address_area",
-    "key": "area_id",
+    "name": "demo_address_city",
+    "table": "demo_address_city",
+    "key": "city_id",
     "fields": [
         {
-            "name": "area_id",
-            "title": "地区ID",
+            "name": "city_id",
+            "title": "鍩庡競ID锛歔1,8388607]",
             "description": "",
             "type": "mediumint",
             "key": true,
-            "auto": "",
+            "auto": "auto_increment",
             "symbol": false,
             "fill_zero": false,
             "not_null": 1,
@@ -28,7 +28,7 @@
         },
         {
             "name": "show",
-            "title": "是否可见",
+            "title": "显示位置",
             "description": "",
             "type": "smallint",
             "key": false,
@@ -69,8 +69,8 @@
             "position": []
         },
         {
-            "name": "city_id",
-            "title": "所属城市ID",
+            "name": "province_id",
+            "title": "所属省份ID",
             "description": "",
             "type": "mediumint",
             "key": false,
@@ -84,14 +84,14 @@
             "max": 8388607,
             "decimal": 0,
             "default": "0",
-            "map": "sys_address_city",
+            "map": "sys_address_province",
             "join_in": [],
             "join_out": [],
             "position": []
         },
         {
             "name": "name",
-            "title": "地区名称",
+            "title": "城市名称",
             "description": "",
             "type": "varchar",
             "key": false,

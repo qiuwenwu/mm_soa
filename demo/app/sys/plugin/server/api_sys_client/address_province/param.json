@@ -3,8 +3,8 @@
     "title": "省份",
     "add": {
         "body": [
-            "display",
-            "show"
+            "show",
+            "display"
         ],
         "body_required": [
             "name"
@@ -18,78 +18,38 @@
     },
     "set": {
         "query": [
-            "display_min",
-            "display_max",
-            "name",
             "province_id",
             "show_min",
             "show_max",
+            "display_min",
+            "display_max",
+            "name",
             "keyword"
         ],
         "query_required": [],
         "body": [
+            "show",
+            "show_add",
             "display",
             "display_add",
-            "name",
-            "show",
-            "show_add"
+            "name"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
-            "display_min",
-            "display_max",
-            "name",
             "province_id",
             "show_min",
             "show_max",
+            "display_min",
+            "display_max",
+            "name",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
-        {
-            "name": "display",
-            "title": "显示顺序",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_min",
-            "title": "显示顺序——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_max",
-            "title": "显示顺序——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "name",
-            "title": "省份名称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
         {
             "name": "province_id",
             "title": "省份ID",
@@ -131,6 +91,46 @@
             "dataType": "smallint",
             "number": {
                 "max": 2
+            }
+        },
+        {
+            "name": "display",
+            "title": "显示顺序",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "name",
+            "title": "省份名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
             }
         },
         {

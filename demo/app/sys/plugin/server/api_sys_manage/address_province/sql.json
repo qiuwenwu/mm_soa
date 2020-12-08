@@ -4,8 +4,8 @@
     "table": "sys_address_province",
     "key": "province_id",
     "orderby_default": "`province_id` desc",
-    "field_obj": "`name`,`province_id`,`show`",
-    "field_default": "`display`,`name`,`province_id`,`show`",
+    "field_obj": "`province_id`,`show`,`name`",
+    "field_default": "`province_id`,`show`,`display`,`name`",
     "query": {
         "show_min": "`show` >= {0}",
         "show_max": "`show` <= {0}",
@@ -18,7 +18,6 @@
         "show_add": "`show` = `show` + {0}",
         "display_add": "`display` = `display` + {0}"
     },
-    "field_hide": [],
     "format": [
         {
             "key": "show",
@@ -29,5 +28,6 @@
                 "均可见"
             ]
         }
-    ]
+    ],
+    "field_hide": []
 }

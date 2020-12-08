@@ -1,0 +1,141 @@
+{
+    "name": "sys_message2",
+    "title": "系统消息",
+    "add": {
+        "body": [
+            "title",
+            "content",
+            "phone",
+            "email",
+            "name"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "message_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "message_id",
+            "title",
+            "content",
+            "phone_min",
+            "phone_max",
+            "name",
+            "keyword"
+        ],
+        "query_required": [],
+        "body": [
+            "title",
+            "content",
+            "phone",
+            "phone_add",
+            "email",
+            "name"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "message_id",
+            "title",
+            "content",
+            "phone_min",
+            "phone_max",
+            "name",
+            "keyword"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "message_id",
+            "title": "消息ID",
+            "description": "用于记录和识别消息",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "title",
+            "title": "留言标题",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "content",
+            "title": "留言内容",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "phone",
+            "title": "留言者手机",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "phone_min",
+            "title": "留言者手机——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "phone_max",
+            "title": "留言者手机——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "email",
+            "title": "留言者邮箱",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "format": "email"
+            }
+        },
+        {
+            "name": "name",
+            "title": "留言者姓名",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索留言标题(title)、留言内容(content)、留言者姓名(name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

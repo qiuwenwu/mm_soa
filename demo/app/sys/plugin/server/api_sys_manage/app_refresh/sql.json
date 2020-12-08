@@ -15,7 +15,6 @@
         "refresh_token": "`refresh_token` like '%{0}%'"
     },
     "update": {},
-    "field_hide": [],
     "format": [
         {
             "key": "user_id",
@@ -23,5 +22,6 @@
             "table": "user_account",
             "name": "nickname"
         }
-    ]
+    ],
+    "field_hide": []
 }

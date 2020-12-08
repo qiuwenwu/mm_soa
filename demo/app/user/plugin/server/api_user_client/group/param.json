@@ -277,9 +277,7 @@
             "description": "用于标识用户组",
             "type": "string",
             "dataType": "text",
-            "string": {
-                "max": 0
-            }
+            "string": {}
         },
         {
             "name": "keyword",

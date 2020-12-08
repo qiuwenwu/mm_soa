@@ -39,7 +39,6 @@
         "max_age_add": "`max_age` = `max_age` + {0}",
         "times_count_add": "`times_count` = `times_count` + {0}"
     },
-    "field_hide": [],
     "format": [
         {
             "key": "available",
@@ -65,5 +64,6 @@
             "table": "user_account",
             "name": "nickname"
         }
-    ]
+    ],
+    "field_hide": []
 }

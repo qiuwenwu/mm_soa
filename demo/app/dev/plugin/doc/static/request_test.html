@@ -25,17 +25,20 @@
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/clipboard.min.js" async></script>
 		<script src="/js/vue.js"></script>
-		<script src="/js/mm_sdk.js" ></script>
+		<script src="/js/mm_sdk.js"></script>
 		<title>接口明细</title>
 		<style>
-			body { background: #fff; }
+			body {
+				background: #fff;
+			}
+
 			#app {
 				padding: 2rem;
 			}
 
 			#app h4 {
 				padding-bottom: 0.5rem;
-				border-bottom: 1px solid rgba(125,125,125,0.25);
+				border-bottom: 1px solid rgba(125, 125, 125, 0.25);
 				margin-bottom: 1rem;
 			}
 
@@ -110,14 +113,14 @@
 			.mm_tabs {
 				margin-top: 2rem;
 				margin-bottom: 2rem;
-				border: 1px solid rgba(125,125,125,0.25);
+				border: 1px solid rgba(125, 125, 125, 0.25);
 			}
 
 			.mm_tabs a,
 			.mm_tabs span {
 				display: inline-block;
 				padding: 0.25rem 0.5rem;
-				border-right: 1px solid rgba(125,125,125,0.25);
+				border-right: 1px solid rgba(125, 125, 125, 0.25);
 			}
 
 			.mm_tabs a:hover {
@@ -280,285 +283,29 @@
 				el: '#app',
 				data() {
 					return {
-						url: "/api/dev/api?",
-						query: {
-							scope: "client",
-							name: ""
-						},
-						config: {
-							cache: 0,
-							check_param: true,
-							client_cache: true,
-							description: "用户获取api接口",
-							method: "",
-							name: "",
-							oauth: {
-								signIn: false,
-								gm: 0,
-								mc: 0,
-								vip: 0,
-								user_group: [],
-								user_admin: []
-							},
-							param_path: "",
-							path: "",
-							type: "",
-							sql_path: "",
-							title: "测试获取API接口"
-						},
-						param: {
-							add: {
-								body: [],
-								body_required: []
-							},
-							del: {
-								query: [],
-								query_required: []
-							},
-							set: {
-								query: [],
-								query_required: [],
-								body: [],
-								body_required: []
-							},
-							get: {
-								query: [],
-								query_required: []
-							},
-							post: {
-								query: [],
-								query_required: [],
-								body: [],
-								body_required: []
-							},
-							list: []
-						},
-						error: {
-							code: 0,
-							message: ""
-						},
-						tabs: [],
-						index: 0
+						method: "POST",
+						url: "",
+						body: ""
 					}
 				},
 				methods: {
-					copyModel() {
-						// this.param.list;
-						var lt = [];
-						var arr = this.list_body;
-						if (arr.length > 0) {
-							lt = this.arr;
-						} else {
-							lt = this.list_query;
+					submit() {
+						if (method === "POST") {
+							$.http.post(this.url, this.body, (res) => {
+								console.log(res);
+							});
 						}
-
-						var list = [];
-						var len = lt.length;
-						for (var i = 0; i < len; i++) {
-							var o = $.copy(lt[i]);
-							delete o.description;
-							delete o.dataType;
-							const p = o.type;
-							if (p === 'number') {
-								delete o.string;
-								for (var k in o.number) {
-									if (!o.number[k]) {
-										delete o.number[k]
-									}
-								}
-							} else if (p === 'string') {
-								delete o.number;
-								for (var k in o.string) {
-									if (!o.string[k]) {
-										delete o.string[k]
-									}
-								}
-							} else {
-								delete o.string;
-								delete o.number;
-							}
-							list.push(o);
+						else {
+							$.http.get(this.url, null, (res) => {
+								console.log(res);
+							});
 						}
-						var code = JSON.stringify(list, null, 4);
-						$.copyText(code);
-						alert('复制成功');
-					},
-					copy(type) {
-						var arr = this['list_' + type];
-						if (arr) {
-							var code = "{";
-							var len = arr.length;
-							for (var i = 0; i < len; i++) {
-								var o = arr[i];
-								var val = '';
-								var p = o.type;
-								if (p === "number") {
-									val = 0;
-								} else if (p === 'date') {
-									val = '"1970-01-01"'
-								} else if (p === 'datetime') {
-									val = '"1970-01-01 00:00:00"'
-								} else if (p === 'ime') {
-									val = '"00:00:00"'
-								} else {
-									val = '""'
-								}
-								code += '\r\n	// ' + o.title;
-								code += '\r\n	"' + o.name + '":' + val + ","
-							}
-							$.copyText(code.substring(0, code.length - 1) + '\r\n}');
-							alert('复制成功');
-						} else {
-							alert('复制失败');
-						}
-					},
-					toMethod(method) {
-						var m = method.toLocaleUpperCase()
-						if (m === 'ALL') {
-							return 'GET / POST'
-						}
-						return m;
-					},
-					get_obj() {
-						var _this = this;
-						$.http.get(this.url + $.toUrl(this.query), function(json, status) {
-							_this.get_obj_after(json);
-						});
-					},
-					get_obj_after(json) {
-						if (json.result) {
-							$.clear(this.config);
-							$.push(this.config, json.result.config);
-							var cg = {};
-							if (json.result.param) {
-								cg = json.result.param.config;
-								$.clear(this.param);
-								$.push(this.param, cg);
-							}
-
-							var m = "";
-							var sql = json.result.sql;
-							if (sql) {
-								m = sql.config.method;
-							}
-							if (!m) {
-								var config = this.config;
-								m = config.method ? config.method.toLowerCase() : 'get';
-								if (m === 'all') {
-									m = "get post"
-								}
-							}
-							var list = this.tabs;
-							list.clear();
-							list.addList(m.split(' '));
-							var len = list.length;
-							for (var i = 0; i < len; i++) {
-								if (list[i] === 'get') {
-									this.index = i;
-									break;
-								}
-							}
-						} else if (json.error) {
-							$.push(this.error, json.error);
-						}
-					},
-					set_list(list, arr, required) {
-						if (arr) {
-							var params = this.param.list;
-							var len = arr.length;
-							for (var i = 0; i < len; i++) {
-								var k = arr[i];
-								var o = params.getObj({
-									name: k
-								});
-								if (o) {
-									o.required = required;
-									list.push(o);
-								}
-							}
-						};
 					}
 				},
 				computed: {
-					contentType() {
-						var type = "";
-						var cg = this.config;
-						if (cg.contentType) {
-							type = cg.contentType;
-						} else if (cg.type === "web") {
-							type = "HTML"
-						} else {
-							type = 'JSON';
-						}
-						return type
-					},
-					oauth() {
-						var badge = '';
-						var o = this.config.oauth;
-						if (o.signIn) {
-							if (o.vip || o.gm || o.mc || o.user_group.length || o.user_admin.length) {
-								badge = "需要权限"
-							} else {
-								badge = "需要登录"
-							}
-						}
-						return badge;
-					},
-					list_headers() {
-						var list = [];
-						var cg = this.config.oauth;
-						if (cg) {
-							if (cg.signIn) {
-								list.push({
-									name: "x-oauth-token",
-									type: "string",
-									required: false,
-									title: "临时访问牌"
-								});
-							};
-						}
-						return list;
-					},
-					list_body() {
-						var list = [];
-						var method = this.tabs[this.index];
-						var obj = this.param[method];
-						if (obj) {
-							if (obj.body_required) {
-								this.set_list(list, obj.body_required, true)
-							};
-							if (obj.body) {
-								this.set_list(list, obj.body)
-							};
-						}
-						return list;
-					},
-					list_query() {
-						var list = [];
-						var method = this.tabs[this.index];
-						var obj = this.param[method];
-						if (obj) {
-							if (obj.query_required) {
-								this.set_list(list, obj.query_required, true)
-							};
-							if (obj.query) {
-								this.set_list(list, obj.query)
-							};
-						}
-						return list;
-					},
+
 				},
-				created() {
-					var arr = location.search.replace('?', '').split("&");
-					var len = arr.length;
-					for (var i = 0; i < len; i++) {
-						var ar = arr[i].split("=");
-						if (ar.length > 1) {
-							this.query[ar[0]] = ar[1];
-						}
-					}
-					this.get_obj();
-				}
+				created() {}
 			});
 		</script>
 	</body>

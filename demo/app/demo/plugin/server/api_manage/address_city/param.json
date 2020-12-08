@@ -1,5 +1,5 @@
 {
-    "name": "sys_address_city",
+    "name": "demo_address_city2",
     "title": "城市",
     "add": {
         "body": [
@@ -54,7 +54,7 @@
     "list": [
         {
             "name": "city_id",
-            "title": "城市ID",
+            "title": "鍩庡競ID锛歔1,8388607]",
             "description": "",
             "type": "number",
             "dataType": "mediumint",
