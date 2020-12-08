@@ -33,6 +33,7 @@
 	}
 	header h3 {
 		line-height: 2.5rem;
+		padding: 0 0.5rem;
 	}
 	header h3 .fr {
 		font-weight: normal;
