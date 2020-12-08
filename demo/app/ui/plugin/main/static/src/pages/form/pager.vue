@@ -20,7 +20,7 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">
 									<h5 @click="$copy(code_1)">样式一</h5>
@@ -30,7 +30,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">
 									<h5 @click="$copy(code_2)">样式二</h5>
@@ -40,7 +40,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">
 									<h5 @click="$copy(code_3)">样式三</h5>
@@ -50,7 +50,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">
 									<h5 @click="$copy(code_4)">样式四</h5>

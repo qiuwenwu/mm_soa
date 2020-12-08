@@ -1,13 +1,13 @@
 <template>
-	<mm_nav_top id="nav_top">
+	<mm_nav_top id="nav_top" v-model="show">
 		<div class="item">
-			<a href="javascript:void(0)">
+			<a href="javascript:void(0)" @click="show = false">
 				<mm_icon src="<i class='fa-search'></i>"></mm_icon>
 				<span>搜索</span>
 			</a>
 		</div>
 		<div class="item">
-			<router-link to="/">
+			<router-link to="/" @click="show = false">
 				<span>消息</span>
 				<span class="msg">{{ msg_count }}</span>
 			</router-link>
@@ -18,7 +18,7 @@
 			</mm_select>
 		</div>
 		<div class="item">
-			<router-link to="/config">
+			<router-link to="/config" @click="show = false">
 				<mm_icon src="<i class='fa-ellipsis-v'></i>"></mm_icon>
 			</router-link>
 		</div>
@@ -32,6 +32,7 @@
 				nav: this.$store.state.web.nav,
 				user: this.$store.state.user,
 				msg_count: 19,
+				show: false,
 				option: "",
 				options: [{
 						name: "基本资料",
@@ -59,6 +60,7 @@
 				} else {
 					this.$router.push(value);
 				}
+				this.show = false;
 			}
 		}
 	};

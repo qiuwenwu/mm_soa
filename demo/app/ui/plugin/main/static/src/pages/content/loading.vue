@@ -20,7 +20,7 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="20">
+						<mm_col class="col-6 col-md-3">
 							<mm_card>
 								<div class="card_head">样式一</div>
 								<div class="card_body">
@@ -28,7 +28,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="20">
+						<mm_col class="col-6 col-md-3">
 							<mm_card>
 								<div class="card_head">样式二</div>
 								<div class="card_body">
@@ -36,7 +36,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="20">
+						<mm_col class="col-6 col-md-3">
 							<mm_card>
 								<div class="card_head">样式三</div>
 								<div class="card_body">
@@ -44,7 +44,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="20">
+						<mm_col class="col-6 col-md-3">
 							<mm_card>
 								<div class="card_head">样式四</div>
 								<div class="card_body">
@@ -52,7 +52,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="20">
+						<mm_col class="col-6 col-md-3">
 							<mm_card>
 								<div class="card_head">样式五</div>
 								<div class="card_body">

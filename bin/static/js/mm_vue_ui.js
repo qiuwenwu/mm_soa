@@ -1701,7 +1701,7 @@ define(['jquery'], function(jquery) {
 		template: "<div class=\"mm_main\"><slot></slot></div>"
 	};
 	var mm_modal = {
-		template: "<div class=\"mm_modal\" v-bind:class=\"{ 'show' : show }\"><div v-bind:class=\"'popup from_' + display\"><slot></slot></div><div class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></div></div>",
+		template: "<div class=\"mm_modal\" v-bind:class=\"{ 'show' : show }\"><div v-bind:class=\"'from_' + display\"><slot></slot></div><div class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></div></div>",
 		props: {
 			display: {
 				type: String,
@@ -1847,14 +1847,19 @@ define(['jquery'], function(jquery) {
 	};
 
 	var mm_nav_top = {
-		template: "<div class=\"mm_nav_top\" :class=\"{show: show}\"><button class=\"btn_link\" @click=\"show = !show\"><i class=\"fa fa-bars\"></i></button><div class=\"nav_warp\"><nav><slot></slot></nav><div class=\"mask\" @click=\"show = false\"></div></div></div>",
-		props: {
-
+		template: "<div class=\"mm_nav_top\" :class=\"{show: show}\"><button class=\"btn_link\" @click=\"$emit('change', !show)\"><i class=\"fa fa-bars\"></i></button><div class=\"nav_warp\"><nav><slot></slot></nav><div class=\"mask\" @click=\"$emit('change', false)\"></div></div></div>",
+		model: {
+			prop: 'show',
+			event: 'change'
 		},
-		data: function() {
-			return {
+		props: {
+			show: {
+				type: Boolean,
 				show: false
 			}
+		},
+		data: function() {
+			return {}
 		}
 	};
 

@@ -812,9 +812,3 @@ section h3 {
 	padding-bottom: .25rem;
 	border-bottom: 1px solid var(--color_border);
 }
-
-@media (max-width:576px) {
-	select~input {
-		margin-top: var(--margin_mini);
-	}
-}

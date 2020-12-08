@@ -20,7 +20,7 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">带复制</div>
 								<div class="card_body">
@@ -30,7 +30,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">不带复制</div>
 								<div class="card_body">

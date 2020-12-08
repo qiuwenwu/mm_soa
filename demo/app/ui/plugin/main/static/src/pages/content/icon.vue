@@ -20,7 +20,7 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="33">
+						<mm_col class="col-12 col-md-33">
 							<mm_card>
 								<div class="card_head">字体图标</div>
 								<div class="card_body">
@@ -1347,7 +1347,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="33">
+						<mm_col class="col-12 col-md-33">
 							<mm_card>
 								<div class="card_head">字体图标（镂空）</div>
 								<div class="card_body">
@@ -2673,7 +2673,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="33">
+						<mm_col class="col-12 col-md-33">
 							<mm_card>
 								<div class="card_head">图片图标</div>
 								<div class="card_body">

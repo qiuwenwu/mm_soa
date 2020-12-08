@@ -37,7 +37,7 @@
 			</mm_warp>
 		</main>
 		<mm_modal v-model="show1" mask="true" :display="value">
-			<mm_card class="card">
+			<mm_card>
 				<div class="card_head">块头</div>
 				<div class="card_body">
 					<p>&nbsp;</p>内容主体<p>&nbsp;</p>
@@ -46,7 +46,7 @@
 			</mm_card>
 		</mm_modal>
 		<mm_modal v-model="show2" :display="value">
-			<mm_card class="card">
+			<mm_card>
 				<div class="card_head">块头 <a class="fr btn-link" href="javascript:void(0)" @click="show2 = false">×</a></div>
 				<div class="card_body">
 					<p>&nbsp;</p>内容主体<p>&nbsp;</p>

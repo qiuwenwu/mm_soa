@@ -20,29 +20,32 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">扫码跳转（基础）</div>
 								<div class="card_body">
 									<mm_qrcode :url="url"></mm_qrcode>
 								</div>
 							</mm_card>
-							<mm_card style="margin-top: 10rem;">
+						</mm_col>
+						<mm_col class="col-12 col-md-6">
+							<mm_card>
 								<div class="card_head">二维码（内容）</div>
 								<div class="card_body">
 									<mm_qrcode :value="value"></mm_qrcode>
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col width="50">
+						<mm_col class="col-12 col-md-6">
 							<mm_card>
 								<div class="card_head">扫码跳转（带图标和大小参数）</div>
 								<div class="card_body">
 									<mm_qrcode :url="url" :icon="icon" :width="220"></mm_qrcode>
 								</div>
 							</mm_card>
-
-							<mm_card style="margin-top: 10rem;">
+						</mm_col>
+						<mm_col class="col-12 col-md-6">
+							<mm_card>
 								<div class="card_head">扫码跳转（带图标和颜色参数）</div>
 								<div class="card_body">
 									<mm_qrcode :url="url" :icon="icon" foreground="blue" :width="220"></mm_qrcode>

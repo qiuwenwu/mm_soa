@@ -33,305 +33,377 @@
 		<link rel="stylesheet" type="text/css" href="/css/swiper.min.css" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="./css/mm_base.css" />
+		<link rel="stylesheet" type="text/css" href="./css/mm_layout.css" />
 		<link rel="stylesheet" type="text/css" href="./css/mm_common.css" />
 		<link rel="stylesheet" type="text/css" href="./css/mm_component.css" />
-		<link rel="stylesheet" type="text/css" href="/css/mm_theme.css" />
+		<link rel="stylesheet" type="text/css" href="./theme/default/index.css" />
 		<style>
-			main { padding: 2.5rem 0; }
-			main .mm_col>.mm_view,main [class*=mm_col_]>.mm_view { background: #fff; border-radius: .25rem; box-shadow: 0 0.25rem 0.5rem 0 rgba(7,17,27,0.1);}
-		</style>
+			main .mm_col>.mm_view { background: #fff; border-radius: .25rem; box-shadow: 0 0.25rem 0.5rem 0 rgba(7,17,27,0.1); margin: 0.5rem;}
+			#logo {
+				float: left;
+			}
+			#logo img{
+				width: 1.5rem;
+			}
+			
+			article {
+				padding: 1rem;
+			}
+			
+			/* 列表 */
+			#ad_right {border-radius:0.25rem;}
+			#list_about ul {list-style-type:none;padding:0 1rem;margin-bottom:1rem;}
+			#list_about li {width:100%;padding:.5rem 0;border-top:1px dashed rgba(125,125,125,0.25);}
+			#list_about .time {float:right;}
+			#list_hot ol {display:block;margin-bottom:1rem;}
+			#list_hot li {width:100%;padding:.5rem 0;border-top:1px dashed rgba(125,125,125,0.25);}
+			#list_hot .hot {float:right;}
+			#list_hot li:first-child {border:none;}
+			#list_about li:first-child {border:none;}
+			
+			main .mm_col>*~* {
+			    margin-top: 1rem;
+			}
+	</style>
 	</head>
 	<body>
-		<div class="mm_page" id="page_index">
-			<header class="fixed">
-				<div class="mm_grid">
-					<div class="mm_col_75">
-						<div id="logo"><a class="div-lr" href="#">
-								<figure>
-									<img src="img/logo.png" alt="超级美眉LOGO" />
-								</figure>
-								<h5><span>超级美眉</span></h5>
-							</a></div>
-						<nav id="nav_top">
-							<a href="#">
-								<span>首页</span>
-							</a>
-							<a href="#">
-								<span>文档</span>
-							</a>
-							<a href="#">
-								<span>社区</span>
-							</a>
-							<a href="#">
-								<span>模板</span>
-							</a>
-							<a href="#">
-								<span>应用</span>
-							</a>
-							<a href="#">
-								<span>工作台</span>
-							</a>
-						</nav>
-					</div>
-					<div class="mm_col_25">
-						<nav id="bar_user">
-							<a href="/sign_up"><span>注册</span></a>
-							<a href="/sign_in"><span>登录</span></a>
-						</nav>
-					</div>
-				</div>
-			</header>
-			<main>
-				<div class="mm_grid">
-					<div class="mm_col_100">
-						<div class="mm_view" id="slide_top">
-							<a class="mm_item" href="#">
-								<figure><img src="/img/banner_2.png" alt="轮播" /></figure>
-							</a>
+		<div id="app">
+			<div class="mm_page" id="page_index">
+				<header>
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12">
+									<div class="mm_view">
+										<div id="logo">
+											<a href="#">
+												<img src="img/logo.png" alt="超级美眉LOGO" />
+												<span>超级美眉</span>
+											</a>
+										</div>
+
+										<nav class="fr" id="bar_user">
+											<a href="/sign_up"><span>注册</span></a>
+											<a href="/sign_in"><span>登录</span></a>
+										</nav>
+										<nav id="nav_top">
+											<a href="#">
+												<span>首页</span>
+											</a>
+											<a href="#">
+												<span>文档</span>
+											</a>
+											<a href="#">
+												<span>社区</span>
+											</a>
+											<a href="#">
+												<span>模板</span>
+											</a>
+											<a href="#">
+												<span>应用</span>
+											</a>
+											<a href="#">
+												<span>工作台</span>
+											</a>
+										</nav>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="mm_col_100">
-						<nav id="nav_path">
-							<a href="/"><span>首页</span></a>
-							<a href="#"><span>文档</span></a>
-							<a href="#"><span>前端开发</span></a>
-						</nav>
-					</div>
-					<div class="mm_col_75">
-						<div class="mm_view card">
-							<div class="head center pt-5">
-								<h2><span>极速高效前端开发技巧</span></h2>
-								<p><span class="time">2020-02-14 17:28:53</span></p>
+				</header>
+				<main>
+					<!-- 轮播图 -->
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12">
+									<div class="mm_view">
+										<figure><img src="/img/banner_2.png" alt="轮播" /></figure>
+									</div>
+								</div>
 							</div>
-							<div class="body">
-								<article>
-									<section>
-										<h3>第一个章节</h3>
-										<p>测试文章效果更看看看吗</p>
-										<blockquote>
-											<p>测试blockquote标签</p>
-											请注意，浏览器在 blockquote 元素前后添加了换行，并增加了外边距。
-										</blockquote>
-									</section>
-									<section>
-										<h3>第二个章节</h3>
-										<h4>一、喜欢的运动</h4>
-										<ul>
-											<li>羽毛球</li>
-											<li>滑轮</li>
-											<li>游泳</li>
-										</ul>
-										<h4>二、喜欢的水果</h4>
-										<ul>
-											<li>哈密瓜</li>
-											<li>西瓜</li>
-											<li>芒果</li>
-										</ul>
-									</section>
-									<section>
-										<h3>第三个章节</h3>
-										<h4>常见问题</h4>
-										<ol>
-											<li>超人是什么练成的？</li>
-											<li>外星人真的存在吗？</li>
-											<li>AI能否代替人类？</li>
-										</ol>
-									</section>
-									<section>
-										<h3>第四个章节</h3>
-										<h4>代码展示</h4>
-										<figure class="mm_code">
-											<pre><code>
+						</div>
+					</div>
+
+					<!-- 面包屑导航 -->
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12">
+									<nav id="nav_path">
+										<a href="/"><span>首页</span></a>
+										<a href="#"><span>文档</span></a>
+										<a href="#"><span>前端开发</span></a>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 面包屑导航 -->
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12 col-md-9">
+									<div class="mm_card">
+										<div class="card_head center pt-5">
+											<h2><span>极速高效前端开发技巧</span></h2>
+											<p><span class="time">2020-02-14 17:28:53</span></p>
+										</div>
+										<div class="card_body">
+											<article>
+												<section>
+													<h3>第一个章节</h3>
+													<p>测试文章效果更看看看吗</p>
+													<blockquote>
+														<p>测试blockquote标签</p>
+														请注意，浏览器在 blockquote 元素前后添加了换行，并增加了外边距。
+													</blockquote>
+												</section>
+												<section>
+													<h3>第二个章节</h3>
+													<h4>一、喜欢的运动</h4>
+													<ul>
+														<li>羽毛球</li>
+														<li>滑轮</li>
+														<li>游泳</li>
+													</ul>
+													<h4>二、喜欢的水果</h4>
+													<ul>
+														<li>哈密瓜</li>
+														<li>西瓜</li>
+														<li>芒果</li>
+													</ul>
+												</section>
+												<section>
+													<h3>第三个章节</h3>
+													<h4>常见问题</h4>
+													<ol>
+														<li>超人是什么练成的？</li>
+														<li>外星人真的存在吗？</li>
+														<li>AI能否代替人类？</li>
+													</ol>
+												</section>
+												<section>
+													<h3>第四个章节</h3>
+													<h4>代码展示</h4>
+													<figure class="mm_code">
+														<pre><code>
 	public static void main(String[] args){
 		System.out.println("hellow world"):
 	}
-								</code></pre>
-										</figure>
-									</section>
-								</article>
-							</div>
-							<div class="foot pa">
-								<div class="fl">
-									<button><span>阅读 10万+</span></button>
-									<button><span>点赞 9999+</span></button>
+															</code></pre>
+													</figure>
+												</section>
+											</article>
+										</div>
+										<div class="card_foot pa">
+											<div class="fl">
+												<button><span>阅读 10万+</span></button>
+												<button><span>点赞 9999+</span></button>
+											</div>
+											<div class="fr">
+												<button><i class="fa-heart-o"></i> <span>收藏</span></button>
+												<button><i class="fa-edit"></i> <span>评论</span></button>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="fr">
-									<button><i class="fa-heart-o"></i> <span>收藏</span></button>
-									<button><i class="fa-edit"></i> <span>评论</span></button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="mm_col_25">
-						<div class="mm_view card" id="list_hot">
-							<div class="head">
-								<h5>热门文章</h5>
-							</div>
-							<div class="body">
-								<ol class="mm_list">
-									<li>
-										<a href="#"><span class="title">前端开发技巧</span><span class="hot">9999+</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">后端开发技巧</span><span class="hot">2301</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">UI设计规范</span><span class="hot">123123</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">前端页面结构</span><span class="hot">3121</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">插件开发示例</span><span class="hot">3121</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">数据库设计规范</span><span class="hot">3121</span></a>
-									</li>
-								</ol>
-							</div>
-						</div>
-						<div class="mm_view" id="ad_right">
-							<a class="mm_item" href="#">
-								<figure><img src="/img/web.png" alt="广告图" /></figure>
-							</a>
-						</div>
-						<div class="mm_view card" id="list_about">
-							<div class="head">
-								<h5>相关文章</h5>
-							</div>
-							<div class="body">
-								<ul>
-									<li>
-										<a href="#"><span class="title">前端开发技巧</span><span class="time">2020-02-15</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">后端开发技巧</span><span class="time">2020-02-13</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">UI设计规范</span><span class="time">2020-02-12</span></a>
-									</li>
-									<li>
-										<a href="#"><span class="title">前端页面结构</span><span class="time">2020-02-11</span></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="mm_col_100">
-						<div class="mm_view card">
-							<div class="head">
-								<h5>计算属性</h5>
-							</div>
-							<div class="body pa">
-								<table>
-									<thead>
-										<tr>
-											<th>列1</th>
-											<th>列2</th>
-											<th>列3</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Data</td>
-											<td>Data</td>
-											<td>Data</td>
-										</tr>
-										<tr>
-											<td>Data</td>
-											<td>Data</td>
-											<td>Data</td>
-										</tr>
-										<tr>
-											<td>Data</td>
-											<td>Data</td>
-											<td>Data</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td>Data</td>
-											<td>Data</td>
-											<td>Data</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-							<div class="foot">
-								<nav id="nav_pager">
-									<a href="#"><i class="fa-chevron-left"></i></a>
-									<a href="#1"><span>1</span></a>
-									<a href="#2"><span>2</span></a>
-									<a href="#3"><span>3</span></a>
-									<a href="#4"><span>4</span></a>
-									<a href="#"><i class="fa-chevron-right"></i></a>
-								</nav>
-							</div>
-						</div>
-					</div>
-					<div class="mm_col w-50">
-						<form class="card">
-							<div class="head arrow">
-								<h5>表单</h5>
-							</div>
-							<div class="body">
-								<dl>
-									<dt>姓名</dt>
-									<dd>
-										<label>
-											<input type="text" name="name" placeholder="由2-16个字符组成" />
-										</label>
-									</dd>
-									<dt>年龄</dt>
-									<dd><input type="number" name="age" placeholder="由2-16个字符组成" /></dd>
-								</dl>
-							</div>
-							<div class="foot bn">
-								<div class="mm_group"><button type="reset">重置</button><button type="button">发送</button><button type="submit">提交</button></div>
-							</div>
-						</form>
-					</div>
-					<div class="mm_col w-50">
-						<form class="card">
-							<div class="head arrow active">
-								<h5>表单</h5>
-							</div>
-							<div class="body">
-								<dl>
-									<dt>姓名</dt>
-									<dd>
-										<label>
-											<input type="text" name="name" placeholder="由2-16个字符组成" />
-										</label>
-									</dd>
-									<dt>年龄</dt>
-									<dd><input type="number" name="age" placeholder="由2-16个字符组成" /></dd>
-								</dl>
-							</div>
-							<div class="foot bn">
-								<div class="mm_group">
-									<button type="reset">重置</button>
-									<button type="submit">提交</button>
+								<div class="mm_col col-12 col-md-3">
+									<div class="mm_view card" id="list_hot">
+										<div class="card_head">
+											<h5>热门文章</h5>
+										</div>
+										<div class="card_body">
+											<ol class="mm_list">
+												<li>
+													<a href="#"><span class="title">前端开发技巧</span><span class="hot">9999+</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">后端开发技巧</span><span class="hot">2301</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">UI设计规范</span><span class="hot">123123</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">前端页面结构</span><span class="hot">3121</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">插件开发示例</span><span class="hot">3121</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">数据库设计规范</span><span class="hot">3121</span></a>
+												</li>
+											</ol>
+										</div>
+									</div>
+									<div class="mm_view" id="ad_right">
+										<a class="mm_item" href="#">
+											<figure><img src="/img/web.png" alt="广告图" /></figure>
+										</a>
+									</div>
+									<div class="mm_view card" id="list_about">
+										<div class="card_head">
+											<h5>相关文章</h5>
+										</div>
+										<div class="card_body">
+											<ul>
+												<li>
+													<a href="#"><span class="title">前端开发技巧</span><span class="time">2020-02-15</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">后端开发技巧</span><span class="time">2020-02-13</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">UI设计规范</span><span class="time">2020-02-12</span></a>
+												</li>
+												<li>
+													<a href="#"><span class="title">前端页面结构</span><span class="time">2020-02-11</span></a>
+												</li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</div>
-						</form>
+						</div>
 					</div>
-				</div>
-			</main>
-			<footer class="fixed">
-				<div class="mm_grid">
-					<div class="mm_col_100">
-						<nav id="nav_bottom">
-							<a href="#about">关于我们</a>
-							<a href="#join">加入我们</a>
-							<a href="#address">联系方式</a>
-							<a href="#business">合作企业</a>
-							<a href="#help">帮助中心</a>
-							<a href="#fliend">友情链接</a>
-						</nav>
+
+
+					<!-- 表格 -->
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12">
+									<div class="mm_card">
+										<div class="card_head">
+											<h5>计算属性</h5>
+										</div>
+										<div class="card_body pa">
+											<table>
+												<thead>
+													<tr>
+														<th>列1</th>
+														<th>列2</th>
+														<th>列3</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Data</td>
+														<td>Data</td>
+														<td>Data</td>
+													</tr>
+													<tr>
+														<td>Data</td>
+														<td>Data</td>
+														<td>Data</td>
+													</tr>
+													<tr>
+														<td>Data</td>
+														<td>Data</td>
+														<td>Data</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td>Data</td>
+														<td>Data</td>
+														<td>Data</td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+										<div class="card_foot">
+											<div class="">
+												<nav id="nav_pager">
+													<a href="#"><i class="fa-chevron-left"></i></a>
+													<a href="#1"><span>1</span></a>
+													<a href="#2"><span>2</span></a>
+													<a href="#3"><span>3</span></a>
+													<a href="#4"><span>4</span></a>
+													<a href="#"><i class="fa-chevron-right"></i></a>
+												</nav>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-			</footer>
+
+					<!-- 表单 -->
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12 col-md-6">
+									<form class="mm_card">
+										<div class="card_head arrow">
+											<h5>表单</h5>
+										</div>
+										<div class="card_body">
+											<dl>
+												<dt>姓名</dt>
+												<dd>
+													<label>
+														<input type="text" name="name" placeholder="由2-16个字符组成" />
+													</label>
+												</dd>
+												<dt>年龄</dt>
+												<dd><input type="number" name="age" placeholder="由2-16个字符组成" /></dd>
+											</dl>
+										</div>
+										<div class="card_foot">
+											<div class="mm_group"><button type="reset">重置</button><button type="button">发送</button><button type="submit">提交</button></div>
+										</div>
+									</form>
+								</div>
+								<div class="mm_col col-12 col-md-6">
+									<form class="mm_card">
+										<div class="card_head arrow active">
+											<h5>表单</h5>
+										</div>
+										<div class="card_body">
+											<dl>
+												<dt>姓名</dt>
+												<dd>
+													<label>
+														<input type="text" name="name" placeholder="由2-16个字符组成" />
+													</label>
+												</dd>
+												<dt>年龄</dt>
+												<dd><input type="number" name="age" placeholder="由2-16个字符组成" /></dd>
+											</dl>
+										</div>
+										<div class="card_foot">
+											<div class="mm_group"><button type="reset">重置</button><button type="button">发送</button><button type="submit">提交</button></div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+
+				<footer>
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col">
+									<nav id="nav_bottom">
+										<a href="#about">关于我们</a>
+										<a href="#join">加入我们</a>
+										<a href="#address">联系方式</a>
+										<a href="#business">合作企业</a>
+										<a href="#help">帮助中心</a>
+										<a href="#fliend">友情链接</a>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
 		</div>
 	</body>
 </html>

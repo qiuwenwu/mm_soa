@@ -1,7 +1,7 @@
 <template>
 	<main id="${id}">
 		<mm_grid>
-			<mm_col width="33">
+			<mm_col>
 				<mm_form class="card">
 					<header class="arrow">
 						<h5>{{ form[field] ? '修改' : '创建' }}${api.title}</h5>
