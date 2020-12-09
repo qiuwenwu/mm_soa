@@ -36,8 +36,7 @@
         "money_min": "`money` >= {0}",
         "money_max": "`money` <= {0}",
         "coin_min": "`coin` >= {0}",
-        "coin_max": "`coin` <= {0}",
-        "keyword": "`user_id` in (select `user_id` from `user_account` where `username` like '%{0}%' || `nickname` like '%{0}%')"
+        "coin_max": "`coin` <= {0}"
     },
     "update": {
         "level_add": "`level` = `level` + {0}",
@@ -56,6 +55,6 @@
         "money_add": "`money` = `money` + {0}",
         "coin_add": "`coin` = `coin` + {0}"
     },
-    "field_hide": [],
-    "format": []
+    "format": [],
+    "field_hide": []
 }

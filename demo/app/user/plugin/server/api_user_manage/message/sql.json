@@ -1,7 +1,7 @@
 {
-    "name": "sys_message2",
-    "title": "系统消息",
-    "table": "sys_message",
+    "name": "user_message2",
+    "title": "用户留言",
+    "table": "user_message",
     "key": "message_id",
     "orderby_default": "`message_id` desc",
     "field_obj": "`message_id`,`title`,`content`,`phone`,`email`,`name`",

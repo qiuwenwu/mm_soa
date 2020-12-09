@@ -85,7 +85,7 @@ class Drive extends Item {
 		 * 定义rpc 方法
 		 */
 		this.methods = {};
-		
+
 		/**
 		 * 定义当前RPC文件路径
 		 */
@@ -111,15 +111,13 @@ Drive.prototype.new_config = function(file) {
 			var api_name = arr[arr.length - 3];
 			console.log(api_name);
 			var scope = api_name.replace('_manage', '').replace('_client', '').replace('api_', '');
-			if(api_name.indexOf('_manage') !== -1){
+			if (api_name.indexOf('_manage') !== -1) {
 				text = text.replaceAll('{path}', `/apis/${scope}/${name}`);
 				text = text.replaceAll('{name}', `${scope}_${name}_manage`);
-			}
-			else if(api_name.indexOf('_client') !== -1){
+			} else if (api_name.indexOf('_client') !== -1) {
 				text = text.replaceAll('{path}', `/api/${scope}/${name}`);
 				text = text.replaceAll('{name}', `${scope}_${name}`);
-			}
-			else {
+			} else {
 				text = text.replaceAll('{path}', `/api/${scope}/${name}`);
 				text = text.replaceAll('{name}', `${scope}_${name}`);
 			}
@@ -347,11 +345,8 @@ Drive.prototype.run = async function(ctx, db) {
 		if (md !== req.method && md !== "ALL") {
 			return null;
 		}
-		var ret;
-		var error = await this.check(ctx);
-		if (error) {
-			ret = $.ret.body(null, error);
-		} else {
+		var ret = await this.check(ctx);
+		if (!ret) {
 			ret = await this.main(ctx, db);
 		}
 		var res = ctx.response;
@@ -485,9 +480,15 @@ Drive.prototype.body = function(ret, res, t) {
  */
 Drive.prototype.checkParam = function(query, body, method) {
 	if (this.param) {
-		var ret = this.param.check(query, body, method);
-		if (ret) {
-			return ret;
+		var msg = this.param.check(query, body, method);
+		if (msg) {
+			var code;
+			if (msg.indexOf("必须") !== -1 || msg.indexOf("为空") !== -1) {
+				code = 30001;
+			} else {
+				code = 30002;
+			}
+			return $.ret.error(code, msg);
 		}
 	}
 	return null;

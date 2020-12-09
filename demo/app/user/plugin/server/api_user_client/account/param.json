@@ -322,7 +322,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 6,
+                "notEmpty": true
             }
         },
         {
@@ -332,7 +333,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 8,
+                "notEmpty": true
             }
         },
         {
@@ -342,6 +344,7 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
+                "max": 11,
                 "format": "phone"
             }
         },
@@ -382,7 +385,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 16,
+                "notEmpty": true
             }
         },
         {
@@ -391,7 +395,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "password",
@@ -400,7 +406,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 32,
+                "notEmpty": true
             }
         },
         {
@@ -410,6 +417,7 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
+                "max": 64,
                 "format": "email"
             }
         },
@@ -449,7 +457,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 128
+            }
         },
         {
             "name": "signature",
@@ -457,7 +467,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "avatar",
@@ -465,7 +477,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "friends",

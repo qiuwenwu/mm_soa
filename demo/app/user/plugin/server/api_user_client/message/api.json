@@ -1,8 +1,8 @@
 {
-    "name": "sys_address_city",
-    "title": "城市",
-    "description": "",
-    "path": "/api/sys/address_city",
+    "name": "user_message",
+    "title": "用户留言",
+    "description": "用于记录用提交的留言信息",
+    "path": "/api/user/message",
     "method": "GET",
     "cache": 0,
     "client_cache": false,

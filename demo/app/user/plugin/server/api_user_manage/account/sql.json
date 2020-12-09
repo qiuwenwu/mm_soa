@@ -20,24 +20,21 @@
         "salt": "`salt` like '%{0}%'",
         "invite_code": "`invite_code` like '%{0}%'",
         "phone": "`phone` like '%{0}%'",
+        "phone_state_min": "`phone_state` >= {0}",
+        "phone_state_max": "`phone_state` <= {0}",
         "username": "`username` like '%{0}%'",
         "nickname": "`nickname` like '%{0}%'",
         "password": "`password` like '%{0}%'",
         "email": "`email` like '%{0}%'",
-        "user_group": "`user_group` like '%{0}%'",
-        "user_admin": "`user_admin` like '%{0}%'",
+        "email_state_min": "`email_state` >= {0}",
+        "email_state_max": "`email_state` <= {0}",
         "login_ip": "`login_ip` like '%{0}%'",
         "signature": "`signature` like '%{0}%'",
         "avatar": "`avatar` like '%{0}%'",
         "friends": "`friends` like '%{0}%'",
-        "admin_group": "`admin_group` like '%{0}%'",
         "create_time_min": "`create_time` >= '{0}'",
         "create_time_max": "`create_time` <= '{0}'",
-        "keyword": "(`username` like '%{0}%' || `nickname` like '%{0}%')",
-        "phone_state_min": "`phone_state` >= {0}",
-        "phone_state_max": "`phone_state` <= {0}",
-        "email_state_min": "`email_state` >= {0}",
-        "email_state_max": "`email_state` <= {0}"
+        "keyword": "(`username` like '%{0}%' || `nickname` like '%{0}%')"
     },
     "update": {
         "state_add": "`state` = `state` + {0}",
@@ -47,7 +44,6 @@
         "phone_state_add": "`phone_state` = `phone_state` + {0}",
         "email_state_add": "`email_state` = `email_state` + {0}"
     },
-    "field_hide": [],
     "format": [
         {
             "key": "state",
@@ -97,5 +93,6 @@
                 "已认证"
             ]
         }
-    ]
+    ],
+    "field_hide": []
 }

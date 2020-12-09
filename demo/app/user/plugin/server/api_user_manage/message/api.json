@@ -1,8 +1,8 @@
 {
-    "name": "sys_address_area_manage",
-    "title": "地区",
-    "description": "",
-    "path": "/apis/sys/address_area",
+    "name": "user_message_manage",
+    "title": "用户留言",
+    "description": "用于记录用提交的留言信息",
+    "path": "/apis/user/message",
     "method": "ALL",
     "cache": 0,
     "client_cache": false,

@@ -251,7 +251,9 @@
             "description": "用于区分用户组使用范围，cms内容管理系统、bbs社区、mall商城",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 12
+            }
         },
         {
             "name": "name",
@@ -260,7 +262,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 16,
+                "notEmpty": true
             }
         },
         {
@@ -269,7 +272,9 @@
             "description": "描述该用户组的特点或权限范围",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "icon",
@@ -277,9 +282,7 @@
             "description": "用于标识用户组",
             "type": "string",
             "dataType": "text",
-            "string": {
-                "max": 0
-            }
+            "string": {}
         },
         {
             "name": "keyword",

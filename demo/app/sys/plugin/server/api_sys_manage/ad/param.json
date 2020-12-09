@@ -374,7 +374,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 16,
+                "notEmpty": true
             }
         },
         {
@@ -383,7 +384,9 @@
             "description": "text文字、img图片、video视频、flash交互动画",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "location",
@@ -391,7 +394,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "fee_way",
@@ -399,7 +404,9 @@
             "description": "click点击付费、show展现付费、user访客付费",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "app",
@@ -407,7 +414,9 @@
             "description": "将在指定的应用下才展现广告",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "trade",
@@ -415,7 +424,9 @@
             "description": "可以根据不同的行业定制不同的投放",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 24
+            }
         },
         {
             "name": "title",
@@ -423,7 +434,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 32
+            }
         },
         {
             "name": "description",
@@ -431,7 +444,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "img",
@@ -439,7 +454,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "url",
@@ -448,6 +465,7 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
+                "max": 255,
                 "format": "url"
             }
         },
@@ -457,7 +475,9 @@
             "description": "在出现于关键词相关的情况下才打广告，多个关键词用空格分隔",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "keyword",

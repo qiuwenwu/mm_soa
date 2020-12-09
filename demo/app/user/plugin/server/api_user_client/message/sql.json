@@ -1,12 +1,12 @@
 {
-    "name": "sys_message",
-    "title": "系统消息",
-    "table": "sys_message",
+    "name": "user_message",
+    "title": "用户留言",
+    "table": "user_message",
     "key": "message_id",
     "orderby_default": "`message_id` desc",
     "field_obj": "`message_id`,`title`,`content`,`phone`,`email`,`name`",
     "field_default": "`message_id`,`title`,`phone`,`email`,`name`",
-    "method": "get get_obj add",
+    "method": "get get_obj",
     "query": {
         "title": "`title` like '%{0}%'",
         "content": "`content` like '%{0}%'",

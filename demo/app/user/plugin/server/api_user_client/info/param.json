@@ -261,7 +261,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "school",
@@ -269,7 +271,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "major",
@@ -277,7 +281,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "idcard",
@@ -285,7 +291,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 64
+            }
         },
         {
             "name": "company_address",
@@ -293,7 +301,9 @@
             "description": "用户当前就职的公司地址",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 125
+            }
         },
         {
             "name": "address",
@@ -301,7 +311,9 @@
             "description": "用户居住地的详细地址",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "job_scope",
@@ -309,7 +321,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "company_business",
@@ -317,7 +331,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "idcard_img",

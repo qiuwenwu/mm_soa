@@ -59,6 +59,7 @@
         "money_add": "`money` = `money` + {0}",
         "coin_add": "`coin` = `coin` + {0}"
     },
+    "format": [],
     "filter": {
         "table": "table",
         "page": "page",
@@ -68,6 +69,5 @@
         "field": "field",
         "count_ret": "count_ret",
         "user_id": "user_id"
-    },
-    "format": []
+    }
 }

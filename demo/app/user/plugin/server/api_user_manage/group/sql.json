@@ -30,7 +30,6 @@
         "discount_add": "`discount` = `discount` + {0}",
         "bonus_add": "`bonus` = `bonus` + {0}"
     },
-    "field_hide": [],
     "format": [
         {
             "key": "next_group_id",
@@ -39,5 +38,6 @@
             "name": "name",
             "id": "group_id"
         }
-    ]
+    ],
+    "field_hide": []
 }

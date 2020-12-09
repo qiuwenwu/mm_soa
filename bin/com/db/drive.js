@@ -515,7 +515,6 @@ Drive.prototype.update_api = async function(dir, cover) {
 	if (!fs.existsSync(manage)) {
 		fs.mkdirSync(manage);
 	}
-	console.log(client, manage, cover);
 	this.new_sql(client, manage, cover);
 	await this.new_param(client, manage, cover);
 	this.new_api(client, manage, cover);
@@ -795,9 +794,9 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			var range = (o.min_length && o.max_length) ? [o.min_length, o.max_length] : [];
 			if (range.length > 0) {
 				m.string.range = range;
-			} else if (o.min) {
+			} else if (o.min_length) {
 				m.string.min = o.min_length;
-			} else if (o.max) {
+			} else if (o.max_length) {
 				m.string.max = o.max_length;
 			}
 
@@ -815,7 +814,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				m.string.format = "email"
 			}
 			if (o.not_null) {
-				m.string.notEmpty = o.not_null;
+				m.string.notEmpty = !!o.not_null;
 				cm.add.body_required.push(n);
 			} else {
 				cm.add.body.push(n);

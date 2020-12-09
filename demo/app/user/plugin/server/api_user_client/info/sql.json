@@ -36,16 +36,6 @@
         "idcard_state_add": "`idcard_state` = `idcard_state` + {0}",
         "age_add": "`age` = `age` + {0}"
     },
-    "filter": {
-        "table": "table",
-        "page": "page",
-        "size": "size",
-        "method": "method",
-        "orderby": "orderby",
-        "field": "field",
-        "count_ret": "count_ret",
-        "user_id": "user_id"
-    },
     "format": [
         {
             "key": "sex",
@@ -78,5 +68,15 @@
             "table": "sys_address_city",
             "name": "name"
         }
-    ]
+    ],
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
 }

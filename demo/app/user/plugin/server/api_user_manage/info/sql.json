@@ -32,7 +32,6 @@
         "idcard_state_add": "`idcard_state` = `idcard_state` + {0}",
         "age_add": "`age` = `age` + {0}"
     },
-    "field_hide": [],
     "format": [
         {
             "key": "sex",
@@ -65,5 +64,6 @@
             "table": "sys_address_city",
             "name": "name"
         }
-    ]
+    ],
+    "field_hide": []
 }

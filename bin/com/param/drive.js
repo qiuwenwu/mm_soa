@@ -22,7 +22,7 @@ class Drive extends Item {
 			// 参数过滤
 			"filter": true,
 			// 默认监听方法, 当查询参数中出现监听的关键词时,选择以该键值作为请求方式，否则默认为get
-			"method": "get",
+			"method": "method",
 			// 增
 			"add": {
 				// body参数
@@ -58,18 +58,18 @@ class Drive extends Item {
 				"query_required": []
 			},
 			// 提交
-			"post": {
-				// url中的query参数
-				"query": [],
-				// query中的必填参数
-				"query_required": [],
-				// body参数
-				"body": [],
-				// body中的必填参数
-				"body_required": [],
-				// 不包含参数
-				"body_not": []
-			},
+			// "post": {
+			// 	// url中的query参数
+			// 	"query": [],
+			// 	// query中的必填参数
+			// 	"query_required": [],
+			// 	// body参数
+			// 	"body": [],
+			// 	// body中的必填参数
+			// 	"body_required": [],
+			// 	// 不包含参数
+			// 	"body_not": []
+			// },
 			// 验证参数集
 			"list": [],
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
@@ -272,7 +272,7 @@ Drive.prototype.check = function(query, body, method) {
 	if (!arr || arr.length === 0) {
 		arr = [];
 		for (var k in query) {
-			if (arr.indexOf(k) == -1) {
+			if (arr.indexOf(k) === -1) {
 				arr.push(k);
 			}
 		}
@@ -294,7 +294,7 @@ Drive.prototype.check = function(query, body, method) {
 		if (!arr || arr.length === 0) {
 			arr = [];
 			for (var k in query) {
-				if (arr.indexOf(k) == -1) {
+				if (arr.indexOf(k) === -1) {
 					arr.push(k);
 				}
 			}

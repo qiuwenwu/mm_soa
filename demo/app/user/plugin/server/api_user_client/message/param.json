@@ -1,6 +1,6 @@
 {
-    "name": "sys_message2",
-    "title": "系统消息",
+    "name": "user_message",
+    "title": "用户留言",
     "add": {
         "body": [
             "title",
@@ -71,7 +71,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "content",
@@ -118,6 +120,7 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
+                "max": 125,
                 "format": "email"
             }
         },
@@ -127,7 +130,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "keyword",
