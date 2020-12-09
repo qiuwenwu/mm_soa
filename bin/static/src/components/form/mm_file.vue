@@ -2,6 +2,7 @@
 	<div class="mm_file">
 		<label>
 			<input :type="file" :accept="accept" hidden="hidden" @change="$emit('change', event)">
+			<slot></slot>
 		</label>
 	</div>
 </template>
