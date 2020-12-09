@@ -17,7 +17,7 @@
 										</dd>
 										<dt class="required">刷新令牌</dt>
 										<dd>
-											<mm_input v-model="form.refresh_token" :minlength="0" :maxlength="0" placeholder="用来刷新访问牌，保留30天"
+											<mm_input v-model="form.refresh_token" :minlength="0" :maxlength="32" placeholder="用来刷新访问牌，保留30天"
 											 :required="true" />
 										</dd>
 										<dt>用户</dt>

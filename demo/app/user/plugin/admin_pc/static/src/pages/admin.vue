@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="名称 / 描述"
+											<mm_input v-model="query.keyword" title="关键词" desc="描述 / 名称"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -29,7 +29,9 @@
 								</mm_form>
 								<div class="mm_action">
 									<h5><span>操作</span></h5>
-									<div class="">
+									<div class="btns">
+										<input type="file" accept=".xls,.xlsx,.csv" class="mm_btn btn_primary-x" @click="import_db()">导入</input>
+										<mm_btn class="btn_primary-x" @click.native="export_db()">导出</mm_btn>
 										<mm_btn class="btn_primary-x" url="./admin_form">添加</mm_btn>
 										<mm_btn @click.native="show = true" class="btn_primary-x" v-bind:class="{ 'disabled': !selects }">批量修改</mm_btn>
 									</div>
@@ -40,19 +42,19 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="上级" v-model="query.orderby" field="father_id" :func="search"></mm_reverse>
+												<mm_reverse title="部门" v-model="query.orderby" field="department" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="显示顺序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
 											</th>
 											<th>
+												<mm_reverse title="上级" v-model="query.orderby" field="father_id" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="部门" v-model="query.orderby" field="department" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -65,19 +67,19 @@
 												<span>{{ o.admin_id }}</span>
 											</td>
 											<td>
-												<span>{{ get_name(list_admin, o.father_id, 'admin_id', 'name') }}</span>
+												<span>{{ o.department }}</span>
+											</td>
+											<td>
+												<span>{{ o.description }}</span>
 											</td>
 											<td>
 												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
+												<span>{{ get_name(list_admin, o.father_id, 'admin_id', 'name') }}</span>
+											</td>
+											<td>
 												<span>{{ o.name }}</span>
-											</td>
-											<td>
-												<span>{{ o.department }}</span>
-											</td>
-											<td>
-												<span>{{ o.description }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./admin_form?admin_id=' + o[field]">修改</mm_btn>
@@ -152,14 +154,14 @@
 					size: 10,
 					// 管理组ID
 					'admin_id': 0,
+					// 描述
+					'description': '',
 					// 显示顺序——最小值
 					'display_min': 0,
 					// 显示顺序——最大值
 					'display_max': 0,
 					// 名称
 					'name': '',
-					// 描述
-					'description': '',
 					// 关键词
 					'keyword': '',
 					//排序

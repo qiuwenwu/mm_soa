@@ -109,9 +109,14 @@ Drive.prototype.new_config = function(file) {
 			var app_name = arr[1];
 			var name = arr[arr.length - 2];
 			var api_name = arr[arr.length - 3];
-			console.log(api_name);
 			var scope = api_name.replace('_manage', '').replace('_client', '').replace('api_', '');
-			if (api_name.indexOf('_manage') !== -1) {
+			if (api_name === "api_client") {
+				text = text.replaceAll('{path}', `/api/${name}`);
+				text = text.replaceAll('{name}', `${scope}_${name}`);
+			} else if (api_name === "api_manage") {
+				text = text.replaceAll('{path}', `/apis/${name}`);
+				text = text.replaceAll('{name}', `${scope}_${name}_manage`);
+			} else if (api_name.indexOf('_manage') !== -1) {
 				text = text.replaceAll('{path}', `/apis/${scope}/${name}`);
 				text = text.replaceAll('{name}', `${scope}_${name}_manage`);
 			} else if (api_name.indexOf('_client') !== -1) {

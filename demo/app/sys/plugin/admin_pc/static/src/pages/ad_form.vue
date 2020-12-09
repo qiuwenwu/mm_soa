@@ -13,7 +13,7 @@
 									<dl>
 										<dt>展现应用</dt>
 										<dd>
-											<mm_input v-model="form.app" :minlength="0" :maxlength="0" placeholder="将在指定的应用下才展现广告" />
+											<mm_input v-model="form.app" :minlength="0" :maxlength="16" placeholder="将在指定的应用下才展现广告" />
 										</dd>
 										<dt>投放地区</dt>
 										<dd>
@@ -25,7 +25,7 @@
 										</dd>
 										<dt>广告描述</dt>
 										<dd>
-											<mm_input v-model="form.description" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="" />
 										</dd>
 										<dt>费用</dt>
 										<dd>
@@ -41,7 +41,7 @@
 										</dd>
 										<dt>付费方式</dt>
 										<dd>
-											<mm_input v-model="form.fee_way" :minlength="0" :maxlength="0" placeholder="click点击付费 / show展现付费 / user访客付费" />
+											<mm_input v-model="form.fee_way" :minlength="0" :maxlength="16" placeholder="click点击付费 / show展现付费 / user访客付费" />
 										</dd>
 										<dt>广告图</dt>
 										<dd>
@@ -49,15 +49,15 @@
 										</dd>
 										<dt>关键词</dt>
 										<dd>
-											<mm_input v-model="form.keywords" :minlength="0" :maxlength="0" placeholder="在出现于关键词相关的情况下才打广告，多个关键词用空格分隔" />
+											<mm_input v-model="form.keywords" :minlength="0" :maxlength="255" placeholder="在出现于关键词相关的情况下才打广告，多个关键词用空格分隔" />
 										</dd>
 										<dt>投放位置</dt>
 										<dd>
-											<mm_input v-model="form.location" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.location" :minlength="0" :maxlength="16" placeholder="" />
 										</dd>
 										<dt class="required">广告名称</dt>
 										<dd>
-											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
+											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder=""
 											 :required="true" />
 										</dd>
 										<dt>点击量</dt>
@@ -78,19 +78,19 @@
 										</dd>
 										<dt>广告标题</dt>
 										<dd>
-											<mm_input v-model="form.title" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.title" :minlength="0" :maxlength="32" placeholder="" />
 										</dd>
 										<dt>所属行业</dt>
 										<dd>
-											<mm_input v-model="form.trade" :minlength="0" :maxlength="0" placeholder="可以根据不同的行业定制不同的投放" />
+											<mm_input v-model="form.trade" :minlength="0" :maxlength="24" placeholder="可以根据不同的行业定制不同的投放" />
 										</dd>
 										<dt>广告类型</dt>
 										<dd>
-											<mm_input v-model="form.type" :minlength="0" :maxlength="0" placeholder="text文字 / img图片 / video视频 / flash交互动画" />
+											<mm_input v-model="form.type" :minlength="0" :maxlength="16" placeholder="text文字 / img图片 / video视频 / flash交互动画" />
 										</dd>
 										<dt>跳转链接</dt>
 										<dd>
-											<mm_input v-model="form.url" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.url" :minlength="0" :maxlength="255" placeholder="" />
 										</dd>
 										<dt>广告主</dt>
 										<dd>

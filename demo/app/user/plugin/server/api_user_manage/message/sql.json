@@ -4,20 +4,17 @@
     "table": "user_message",
     "key": "message_id",
     "orderby_default": "`message_id` desc",
-    "field_obj": "`message_id`,`title`,`content`,`phone`,`email`,`name`",
-    "field_default": "`message_id`,`title`,`phone`,`email`,`name`",
+    "field_obj": "`content`,`email`,`message_id`,`name`,`phone`,`title`",
+    "field_default": "`email`,`message_id`,`name`,`phone`,`title`",
     "query": {
-        "title": "`title` like '%{0}%'",
         "content": "`content` like '%{0}%'",
-        "phone_min": "`phone` >= {0}",
-        "phone_max": "`phone` <= {0}",
         "email": "`email` like '%{0}%'",
         "name": "`name` like '%{0}%'",
-        "keyword": "(`title` like '%{0}%' || `name` like '%{0}%')"
+        "phone": "`phone` like '%{0}%'",
+        "title": "`title` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%' || `title` like '%{0}%')"
     },
-    "update": {
-        "phone_add": "`phone` = `phone` + {0}"
-    },
+    "update": {},
     "format": [],
     "field_hide": []
 }

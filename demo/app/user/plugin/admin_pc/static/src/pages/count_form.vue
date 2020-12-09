@@ -11,14 +11,6 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
-										<dt>等级</dt>
-										<dd>
-											<mm_number v-model="form.level" :min="0" :max="1000" />
-										</dd>
-										<dt>IQ智商</dt>
-										<dd>
-											<mm_number v-model="form.iq" :min="80" :max="200" />
-										</dd>
 										<dt>信用度</dt>
 										<dd>
 											<mm_number v-model="form.credit" :min="0" :max="2147483647" />
@@ -63,13 +55,21 @@
 										<dd>
 											<mm_number v-model="form.extcredits8" :min="0" :max="2147483647" />
 										</dd>
+										<dt>IQ智商</dt>
+										<dd>
+											<mm_number v-model="form.iq" :min="80" :max="200" />
+										</dd>
+										<dt>等级</dt>
+										<dd>
+											<mm_number v-model="form.level" :min="0" :max="1000" />
+										</dd>
 										<dt>钱</dt>
 										<dd>
 											<mm_number v-model="form.money" :min="0" :max="0" />
 										</dd>
-										<dt>货币</dt>
+										<dt>用户ID</dt>
 										<dd>
-											<mm_number v-model="form.coin" :min="0" :max="0" />
+											<mm_input v-model="form.user_id" :minlength="0" :maxlength="0" placeholder="" />
 										</dd>
 									</dl>
 								</mm_form>
@@ -104,9 +104,7 @@
 					"user_id": 0
 				},
 				form: {
-					"user_id": 0,
-					"level": 0,
-					"iq": 0,
+					"coin": 0,
 					"credit": 0,
 					"credit_points": 0,
 					"exp": 0,
@@ -118,8 +116,10 @@
 					"extcredits6": 0,
 					"extcredits7": 0,
 					"extcredits8": 0,
+					"iq": 0,
+					"level": 0,
 					"money": 0,
-					"coin": 0,
+					"user_id": 0,
 				},
 			}
 		},

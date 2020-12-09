@@ -3,11 +3,8 @@
     "title": "系统消息",
     "add": {
         "body": [
-            "title",
-            "content",
-            "phone",
-            "email",
-            "name"
+            "note",
+            "title"
         ],
         "body_required": []
     },
@@ -21,17 +18,12 @@
         "query": [
             "message_id",
             "title",
-            "content",
-            "name",
             "keyword"
         ],
         "query_required": [],
         "body": [
-            "title",
-            "content",
-            "phone",
-            "email",
-            "name"
+            "note",
+            "title"
         ],
         "body_required": [],
         "body_not": []
@@ -40,8 +32,6 @@
         "query": [
             "message_id",
             "title",
-            "content",
-            "name",
             "keyword"
         ],
         "query_required": []
@@ -58,6 +48,14 @@
             }
         },
         {
+            "name": "note",
+            "title": "留言内容",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
             "name": "title",
             "title": "留言标题",
             "description": "",
@@ -68,49 +66,9 @@
             }
         },
         {
-            "name": "content",
-            "title": "留言内容",
-            "description": "",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
-            "name": "phone",
-            "title": "留言者手机",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 11,
-                "format": "phone"
-            }
-        },
-        {
-            "name": "email",
-            "title": "留言者邮箱",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 125,
-                "format": "email"
-            }
-        },
-        {
-            "name": "name",
-            "title": "留言者姓名",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 16
-            }
-        },
-        {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索留言标题(title)、留言内容(content)、留言者姓名(name)",
+            "description": "用于搜索留言标题(title)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

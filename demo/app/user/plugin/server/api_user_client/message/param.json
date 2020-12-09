@@ -3,11 +3,11 @@
     "title": "用户留言",
     "add": {
         "body": [
-            "title",
             "content",
-            "phone",
             "email",
-            "name"
+            "name",
+            "phone",
+            "title"
         ],
         "body_required": []
     },
@@ -19,62 +19,34 @@
     },
     "set": {
         "query": [
-            "message_id",
-            "title",
             "content",
-            "phone_min",
-            "phone_max",
+            "message_id",
             "name",
+            "title",
             "keyword"
         ],
         "query_required": [],
         "body": [
-            "title",
             "content",
-            "phone",
-            "phone_add",
             "email",
-            "name"
+            "name",
+            "phone",
+            "title"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
-            "message_id",
-            "title",
             "content",
-            "phone_min",
-            "phone_max",
+            "message_id",
             "name",
+            "title",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
-        {
-            "name": "message_id",
-            "title": "消息ID",
-            "description": "用于记录和识别消息",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
-            }
-        },
-        {
-            "name": "title",
-            "title": "留言标题",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
-            }
-        },
         {
             "name": "content",
             "title": "留言内容",
@@ -82,36 +54,6 @@
             "type": "string",
             "dataType": "text",
             "string": {}
-        },
-        {
-            "name": "phone",
-            "title": "留言者手机",
-            "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "phone_min",
-            "title": "留言者手机——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "phone_max",
-            "title": "留言者手机——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
         },
         {
             "name": "email",
@@ -125,6 +67,16 @@
             }
         },
         {
+            "name": "message_id",
+            "title": "消息ID",
+            "description": "用于记录和识别消息",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
             "name": "name",
             "title": "留言者姓名",
             "description": "",
@@ -135,9 +87,30 @@
             }
         },
         {
+            "name": "phone",
+            "title": "留言者手机",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 11,
+                "format": "phone"
+            }
+        },
+        {
+            "name": "title",
+            "title": "留言标题",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255
+            }
+        },
+        {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索留言标题(title)、留言内容(content)、留言者姓名(name)",
+            "description": "用于搜索留言内容(content)、留言者姓名(name)、留言标题(title)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

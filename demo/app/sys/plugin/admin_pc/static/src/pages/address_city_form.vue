@@ -13,7 +13,7 @@
 									<dl>
 										<dt class="required">城市名称</dt>
 										<dd>
-											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
+											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder=""
 											 :required="true" />
 										</dd>
 										<dt>所属省份</dt>

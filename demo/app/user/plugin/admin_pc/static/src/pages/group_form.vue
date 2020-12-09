@@ -11,42 +11,42 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
-										<dt>等级划分</dt>
+										<dt>奖励比例</dt>
 										<dd>
-											<mm_number v-model="form.level" :min="0" :max="1000" />
+											<mm_number v-model="form.bonus" :min="0" :max="0" />
 										</dd>
-										<dt>下级用户组</dt>
+										<dt>描述</dt>
 										<dd>
-											<mm_select v-model="form.next_group_id" :options="$to_kv(list_group, 'group_id', 'name')" />
-										</dd>
-										<dt>升级所需经验</dt>
-										<dd>
-											<mm_number v-model="form.exp" :min="0" :max="2147483647" />
+											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="描述该用户组的特点或权限范围" />
 										</dd>
 										<dt>折扣</dt>
 										<dd>
 											<mm_number v-model="form.discount" :min="0" :max="0" />
 										</dd>
-										<dt>奖励比例</dt>
+										<dt>升级所需经验</dt>
 										<dd>
-											<mm_number v-model="form.bonus" :min="0" :max="0" />
+											<mm_number v-model="form.exp" :min="0" :max="2147483647" />
 										</dd>
-										<dt>应用</dt>
+										<dt>用户组ID</dt>
 										<dd>
-											<mm_input v-model="form.app" :minlength="0" :maxlength="0" placeholder="用于区分用户组使用范围，cms内容管理系统 / bbs社区 / mall商城" />
-										</dd>
-										<dt class="required">名称</dt>
-										<dd>
-											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
-											 :required="true" />
-										</dd>
-										<dt>描述</dt>
-										<dd>
-											<mm_input v-model="form.description" :minlength="0" :maxlength="0" placeholder="描述该用户组的特点或权限范围" />
+											<mm_input v-model="form.group_id" :minlength="0" :maxlength="0" placeholder="" />
 										</dd>
 										<dt>图标</dt>
 										<dd>
 											<mm_upload_img width="10rem" height="10rem" name="icon" type="text" v-model="form.icon" />
+										</dd>
+										<dt>等级划分</dt>
+										<dd>
+											<mm_number v-model="form.level" :min="0" :max="1000" />
+										</dd>
+										<dt class="required">名称</dt>
+										<dd>
+											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder=""
+											 :required="true" />
+										</dd>
+										<dt>下级用户组</dt>
+										<dd>
+											<mm_select v-model="form.next_group_id" :options="$to_kv(list_group, 'group_id', 'name')" />
 										</dd>
 									</dl>
 								</mm_form>
@@ -81,16 +81,16 @@
 					"group_id": 0
 				},
 				form: {
-					"group_id": 0,
-					"level": 0,
-					"next_group_id": 0,
-					"exp": 0,
-					"discount": 0,
-					"bonus": 0,
 					"app": '',
-					"name": '',
+					"bonus": 0,
 					"description": '',
+					"discount": 0,
+					"exp": 0,
+					"group_id": 0,
 					"icon": '',
+					"level": 0,
+					"name": '',
+					"next_group_id": 0,
 				},
 				// 下级用户组
 				'list_group': [ ],

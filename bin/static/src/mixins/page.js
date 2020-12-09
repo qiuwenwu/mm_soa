@@ -987,6 +987,18 @@ define(function() {
 				// 	this.set(o1);
 				// 	this.set(o2);
 				// }
+			},
+			/**
+			 * 导入数据
+			 */
+			import_db: function import_db(){
+				
+			},
+			/**
+			 * 导出数据
+			 */
+			export_db: function export_db(){
+				
 			}
 		},
 		computed: {
