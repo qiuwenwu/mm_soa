@@ -1,11 +1,11 @@
 {
-    "name": "demo_address_city2",
-    "title": "城市",
+    "name": "sys_address_area2",
+    "title": "地区",
     "add": {
         "body": [
             "show",
             "display",
-            "province_id"
+            "city_id"
         ],
         "body_required": [
             "name"
@@ -14,12 +14,12 @@
     "del": {
         "query": [],
         "query_required": [
-            "city_id"
+            "area_id"
         ]
     },
     "set": {
         "query": [
-            "city_id",
+            "area_id",
             "show_min",
             "show_max",
             "display_min",
@@ -33,7 +33,7 @@
             "show_add",
             "display",
             "display_add",
-            "province_id",
+            "city_id",
             "name"
         ],
         "body_required": [],
@@ -41,7 +41,7 @@
     },
     "get": {
         "query": [
-            "city_id",
+            "area_id",
             "show_min",
             "show_max",
             "display_min",
@@ -53,18 +53,21 @@
     },
     "list": [
         {
-            "name": "city_id",
-            "title": "鍩庡競ID锛歔1,8388607]",
+            "name": "area_id",
+            "title": "地区ID",
             "description": "",
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "max": 8388607
+                "range": [
+                    1,
+                    8388607
+                ]
             }
         },
         {
             "name": "show",
-            "title": "显示位置",
+            "title": "是否可见",
             "description": "(0仅表单可见|1表单和搜索可见|2均可见)",
             "type": "number",
             "dataType": "smallint",
@@ -74,7 +77,7 @@
         },
         {
             "name": "show_min",
-            "title": "显示位置——最小值",
+            "title": "是否可见——最小值",
             "description": "(0仅表单可见|1表单和搜索可见|2均可见)",
             "type": "number",
             "dataType": "smallint",
@@ -84,7 +87,7 @@
         },
         {
             "name": "show_max",
-            "title": "显示位置——最大值",
+            "title": "是否可见——最大值",
             "description": "(0仅表单可见|1表单和搜索可见|2均可见)",
             "type": "number",
             "dataType": "smallint",
@@ -123,9 +126,9 @@
             }
         },
         {
-            "name": "province_id",
-            "title": "所属省份ID",
-            "description": "(sys_address_province)",
+            "name": "city_id",
+            "title": "所属城市ID",
+            "description": "(sys_address_city)",
             "type": "number",
             "dataType": "mediumint",
             "number": {
@@ -137,7 +140,7 @@
         },
         {
             "name": "name",
-            "title": "城市名称",
+            "title": "地区名称",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -149,7 +152,7 @@
         {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索城市名称(name)",
+            "description": "用于搜索地区名称(name)",
             "type": "string",
             "dataType": "varchar",
             "string": {}
