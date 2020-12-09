@@ -130,8 +130,8 @@ Drive.prototype.model = function(fields) {
 		}
 		map = desc.between("(", ")");
 	}
-	if (min === 0 && name.indexOf('_id') !== -1) {
-		min = 1;
+	if (min < 0 && name.indexOf('_id') !== -1) {
+		min = 0;
 	}
 	if (max === 0) {
 		switch (tp) {
