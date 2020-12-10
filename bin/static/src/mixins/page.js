@@ -22,6 +22,10 @@ define(function() {
 				url_submit: "",
 				// 上传提交地址
 				url_upload: "",
+				// 导入数据地址
+				url_import: "",
+				// 导出数据地址
+				url_export: "",
 				// 获取的列表
 				list: [],
 				// 视图&验证模型
@@ -205,8 +209,8 @@ define(function() {
 			 */
 			set_before: function set_before(param, includeZero) {
 				var pm = $.delete(param, includeZero);
-				for(var k in pm){
-					if(k.toLocaleLowerCase().indexOf('time') !== -1 && pm[k].indexOf('T') !== -1){
+				for (var k in pm) {
+					if (k.toLocaleLowerCase().indexOf('time') !== -1 && pm[k].indexOf('T') !== -1) {
 						pm[k] = new Date(pm[k]).toStr('yyyy-MM-dd 00:00:00');
 					}
 				}
@@ -493,7 +497,7 @@ define(function() {
 							for (var k in o) {
 								if (k.indexOf('time') !== -1) {
 									var val = o[k];
-									if(val && val.indexOf('T') !== -1){
+									if (val && val.indexOf('T') !== -1) {
 										var v = new Date(o[k]);
 										o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
 									}
@@ -568,19 +572,19 @@ define(function() {
 					$.push(this.query, query);
 				}
 				var url = this.url ? this.url : this.url_get_list;
-				if(url){
+				if (url) {
 					this.query.page = 1;
 					this.count = 0;
 					$.route.push("?" + this.toUrl(this.query));
 					this.first(query, func);
 				}
 			},
-			get_create: function get_create(query, func){
+			get_create: function get_create(query, func) {
 				if (query) {
 					$.push(this.query, query);
 				}
 				var url = this.url ? this.url : this.url_get_list;
-				if(url){
+				if (url) {
 					this.count = 0;
 					$.route.push("?" + this.toUrl(this.query));
 					this.first(query, func);
@@ -928,7 +932,7 @@ define(function() {
 			 * @param {String} span 分隔符
 			 */
 			get_name(list, arr_str, key, name, span) {
-				if(!name){
+				if (!name) {
 					name = "name";
 				}
 				var value = "";
@@ -969,7 +973,7 @@ define(function() {
 			 * 排序改变事件
 			 * @param {Object} e 事件对象
 			 */
-			sort_change: function sort_change(e){
+			sort_change: function sort_change(e) {
 				console.log(e);
 				// var key = this.sort_key;
 				// var obj = e.moved.element;
@@ -990,14 +994,28 @@ define(function() {
 			},
 			/**
 			 * 导入数据
+			 * @param {Object} file 文件
 			 */
-			import_db: function import_db(){
-				
+			import_db: function import_db(file) {
+				if (file) {
+					var _this = this;
+					$.confirm("是否导入 " + file.name, "导入数据", function() {
+						$.http.upload(_this.url_import, file, function(json) {
+							if (json.result) {
+								$.prompt(json.result.tip);
+							} else if (json.error) {
+								$.confirm(json.error.message);
+							} else {
+								$.confirm("服务器连接失败！");
+							}
+						});
+					});
+				}
 			},
 			/**
 			 * 导出数据
 			 */
-			export_db: function export_db(){
+			export_db: function export_db() {
 				
 			}
 		},

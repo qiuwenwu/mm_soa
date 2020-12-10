@@ -77,17 +77,25 @@
 .modal-inner {
 	background: #fff;
 	border-radius: .25rem .25rem 0 0;
-	padding: .75rem;
 	position: relative;
 }
 
+.modal-inner::before,
+.modal-inner::after
+{
+	content: "";
+	display: block;
+	float: none;
+	clear: both;
+	height: 1px;
+}
+
 .modal-title {
-	font-size: 1rem;
+	font-size: 0.875rem;
 	font-weight: 500;
-	padding: .25rem;
-	text-align: center;
+	padding: .5rem .75rem;
+	text-align: left;
 	border-bottom: 1px solid rgba(125,125,125,0.25);
-	margin-bottom: 0.5rem;
 }
 
 .modal-buttons {
@@ -298,9 +306,9 @@ input.modal-text-input {
 	font-family: inherit;
 	font-size: .7rem;
 	height: 1.5rem;
-	margin: .75rem 0 0;
+	margin: .75rem;
 	padding: 0 .25rem;
-	width: 100%;
+	width: calc(100% - 1.5rem);
 }
 
 input.modal-text-input.modal-text-input-double {
@@ -377,7 +385,6 @@ html.with-statusbar-overlay .popup-overlay {
 	float: right;
 }
 
-.modal-inner::after,
 .modal-buttons-vertical .modal-button::after {
 	-webkit-transform-origin: 50% 100%;
 	background-color: #fff;
@@ -423,21 +430,6 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
 	z-index: 10999;
 }
 
-.modal-inner::after {
-	-webkit-transform-origin: 50% 100%;
-	background-color: #e5e5e5;
-	bottom: 0;
-	content: '';
-	display: block;
-	height: 1px;
-	left: 0;
-	position: absolute;
-	right: auto;
-	top: auto;
-	transform-origin: 50% 100%;
-	width: 100%;
-	z-index: 15;
-}
 
 .modal-button:first-child:last-child {
 	border-radius: 0 0 .25rem .25rem;
@@ -482,11 +474,14 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
 	transition-duration: .4s;
 }
 
+.modal-text {
+	padding: 0.75rem;
+}
+
 .modal-title+.modal-text,
 input.modal-text-input+input.modal-text-input,
 .modal-title+.modal-text,
 input.modal-text-input+input.modal-text-input {
-	margin-top: .25rem;
 	color: #666;
 }
 
@@ -539,8 +534,6 @@ input.modal-text-input+input.modal-text-input {
 }
 
 @media only screen and -webkit-min-device-pixel-ratio2 {
-
-	.modal-inner::after,
 	.modal-button::after,
 	.modal-buttons-vertical .modal-button::after,
 	.actions-modal-button::after,
@@ -559,8 +552,6 @@ input.modal-text-input+input.modal-text-input {
 }
 
 @media only screen and -webkit-min-device-pixel-ratio3 {
-
-	.modal-inner::after,
 	.modal-button::after,
 	.modal-buttons-vertical .modal-button::after,
 	.actions-modal-button::after,
@@ -601,7 +592,6 @@ all and max-width629px {
 }
 
 @media only screen and -webkit-min-device-pixel-ratio2 {
-	.modal-inner::after,
 	.modal-button::after,
 	.modal-buttons-vertical .modal-button::after,
 	.actions-modal-button::after,
@@ -612,8 +602,6 @@ all and max-width629px {
 }
 
 @media only screen and -webkit-min-device-pixel-ratio3 {
-
-	.modal-inner::after,
 	.modal-button::after,
 	.modal-buttons-vertical .modal-button::after,
 	.actions-modal-button::after,

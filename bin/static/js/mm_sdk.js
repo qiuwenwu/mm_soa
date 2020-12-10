@@ -43,8 +43,7 @@ function sleep(milliSeconds, obj, key) {
  * @return {Boolean} 相似返回true，否则返回false
  */
 function as(obj, query, all) {
-	if(obj)
-	{
+	if (obj) {
 		var bl = true;
 		var type = typeof(obj);
 		if (type !== typeof(query)) {
@@ -83,8 +82,7 @@ function as(obj, query, all) {
 			}
 		}
 		return bl;
-	}
-	else {
+	} else {
 		return false;
 	}
 }
@@ -681,7 +679,7 @@ if (typeof($) === "undefined") {
 		});
 		return obj;
 	};
-	
+
 	/**
 	 * @description 将url参数转为对象
 	 * @return {Object} 对象
@@ -689,15 +687,14 @@ if (typeof($) === "undefined") {
 	String.prototype.toQuery = function() {
 		var str = this + "";
 		var index = str.indexOf("?");
-		if(index !== -1){
+		if (index !== -1) {
 			str = str.substring(index + 1);
-		}
-		else {
+		} else {
 			return {};
 		}
 		return str.toUrl();
 	};
-	
+
 	/**
 	 * @description 删除首字符
 	 * @param {String} str  要删除的字符, 默认删除空字符
@@ -1994,7 +1991,7 @@ if (typeof($) === "undefined") {
 		 * @param {Object} param 请求参数
 		 * @param {Function} fun 回调函数
 		 * @param {Object} headers 协议头
-		 * @param {String} type 协议头
+		 * @param {String} type 内容类型
 		 * @return {Object} 同步请求返回请求结果，否则返回undefined
 		 */
 		post: function post(url, param, fun, headers, type) {
@@ -2022,6 +2019,57 @@ if (typeof($) === "undefined") {
 				data: pm,
 				dataType: "json",
 				contentType: contentType,
+				success: function success(data, status) {
+					if (fun) {
+						fun(data, status);
+					} else {
+						json = {
+							data: data,
+							status: status
+						};
+					}
+				},
+				error: function error(data, status) {
+					if (fun) {
+						fun(data, status);
+					} else {
+						json = {
+							data: data,
+							status: status
+						};
+					}
+				},
+				complete: function complete(XHR, TS) {
+					XHR = null;
+				}
+			};
+			if (headers) {
+				hp.headers = headers;
+			}
+			$.ajax(hp);
+			return json;
+		},
+		/**
+		 * @description 上传文件
+		 * @param {String} url 请求地址
+		 * @param {Object} file input file文件
+		 * @param {Function} fun 回调函数
+		 * @param {Object} headers 协议头
+		 * @return {Object} 同步请求返回请求结果，否则返回undefined
+		 */
+		upload: function upload(url, file, fun, headers) {
+			console.log(url, file, fun, headers);
+			var form = new FormData();
+			form.append("file", file);
+			var json;
+			var hp = {
+				type: 'POST',
+				url: url,
+				async: fun !== null,
+				data: form,
+				dataType: "json",
+				contentType: false,
+				processData: false,
 				success: function success(data, status) {
 					if (fun) {
 						fun(data, status);

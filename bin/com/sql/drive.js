@@ -399,7 +399,7 @@ Drive.prototype.add_main = async function(db, body) {
 			ret = $.ret.bl(true, '添加成功！');
 		}
 	} else {
-		ret = $.ret.error(70000, '参数不能为空');
+		ret = $.ret.error(30001, '参数不能为空');
 	}
 	if (cg.log) {
 		$.log.debug('添加SQL语句', db.sql)
@@ -478,7 +478,7 @@ Drive.prototype.addOrSet_main = async function(db, query, body) {
 			ret = $.ret.bl(true, '操作成功！');
 		}
 	} else {
-		ret = $.ret.error(70000, '参数不能为空');
+		ret = $.ret.error(30001, '参数不能为空');
 	}
 	if (cg.log) {
 		$.log.debug('添加或修改SQL语句', db.sql)
@@ -581,7 +581,7 @@ Drive.prototype.import_main = async function(db, file) {
 	var format = await this.get_format(db);
 	file = file.fullname($.config.path.user || $.config.path.static);
 	if (!file.hasFile()) {
-		return $.ret.error(30000, file + "文件不存在！");
+		return $.ret.error(30001, file + "文件不存在！");
 	}
 	var excel = new Excel({
 		file,
@@ -620,7 +620,7 @@ Drive.prototype.import_main = async function(db, file) {
 Drive.prototype.import = async function(db, query, body) {
 	var params = Object.assign({}, query, body);
 	if (!params.file) {
-		return $.ret.error(70000, '文件名（file）参数不能为空');
+		return $.ret.error(60000, '文件名（file）参数不能为空');
 	}
 	return await this.import_main(db, params.file);
 };
@@ -781,7 +781,7 @@ Drive.prototype.main = async function(params, db) {
 			if (table) {
 				db.table = cg.table.replace("{0}", table);
 			} else {
-				return $.ret.error(70000, '表名不能为空');
+				return $.ret.error(30001, '表名不能为空');
 			}
 		} else {
 			db.table = cg.table + '';

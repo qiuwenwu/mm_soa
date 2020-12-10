@@ -1872,7 +1872,7 @@ define(['jquery'], function(jquery) {
 			}
 		}
 	};
-	
+
 	var mm_warp = {
 		template: "<div class=\"mm_warp\"><slot></slot></div>"
 	};
@@ -2419,6 +2419,46 @@ define(['jquery'], function(jquery) {
 		}
 	};
 
+	var mm_file = {
+		template: "<label class='mm_btn'><input type=\"file\" :id=\"file_id\" :accept=\"accept\" class=\"mm_btn btn_primary-x\" @change=\"change\" hidden /><slot>导入</slot></label>",
+		mixins: [form_mixin],
+		props: {
+			accept: {
+				type: String,
+				// default: ".xls,.xlsx,.csv",
+				default: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,.csv"
+			}
+		},
+		data: function data() {
+			var id = this.id;
+
+			if (!id) {
+				id = "mm_file" + parseInt(Math.random() * 1000 + 1, 10);
+			}
+
+			return {
+				file_id: id
+			};
+		},
+		methods: {
+			change: function change(e) {
+				var _this = this;
+				var src,
+					url = window.URL || window.webkitURL || window.mozURL,
+					files = e.target.files;
+				if (files.length > 0) {
+					var file = files[0];
+					this.$emit('change', file);
+
+					if (this.func) {
+						this.func(file);
+					}
+				}
+				$("#" + this.file_id).val("");
+			}
+		}
+	};
+
 	return {
 		install: function install(Vue, options) {
 			Vue.component("mm_icon", mm_icon);
@@ -2457,6 +2497,7 @@ define(['jquery'], function(jquery) {
 			Vue.component("mm_reverse", mm_reverse);
 			Vue.component("mm_select", mm_select);
 			Vue.component("mm_switch", mm_switch);
+			Vue.component("mm_file", mm_file);
 			Vue.component("mm_nav", mm_nav);
 			Vue.component("mm_nav_top", mm_nav_top);
 			Vue.component("mm_upload_img", mm_upload_img);

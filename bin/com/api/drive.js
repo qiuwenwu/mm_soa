@@ -1,3 +1,5 @@
+const path = require('path');
+const fs = require('fs');
 const Item = require('mm_machine').Item;
 const Param = require('../param/drive.js'); // 是MM自带的参数机制，可以不使用
 const Sql = require('../sql/drive.js'); // 是MM自带的参数机制，可以不使用
@@ -9,6 +11,9 @@ if (!$.dict) {
 		$.dict.session_id = "mm:uuid";
 	}
 }
+
+var dir = '/app/sys/static/doc/';
+var url_path = "/sys/doc/";
 
 /**
  * Api接口驱动类
@@ -314,6 +319,43 @@ Drive.prototype.loadOauth = function() {
 	}
 };
 
+/**
+ * 保存文件
+ * @param {Object} files 上传的文件
+ */
+Drive.prototype.save_file = function(files) {
+	var file;
+	var url;
+	if (files.file) {
+		var f = files.file;
+		// 创建可读流
+		const render = fs.createReadStream(f.path);
+		var stamp = Date.now();
+		var name = f.name;
+		file = path.join($.runPath, dir, name);
+		const fileDir = path.join($.runPath, dir);
+		if (!fs.existsSync(fileDir)) {
+			fs.mkdirSync(fileDir, err => {
+				console.log(err)
+				console.log('创建失败')
+			});
+		}
+		// 创建写入流
+		try {
+			const upStream = fs.createWriteStream(file);
+			render.pipe(upStream);
+			url = url_path + name;
+		} catch (e) {
+			fs.closeSync(file);
+			console.log(e);
+		}
+	}
+	return {
+		file,
+		url
+	}
+};
+
 /* 回调函数集 */
 /**
  * 主要函数
@@ -328,6 +370,13 @@ Drive.prototype.main = async function(ctx, db) {
 		if (user) {
 			db.user = user;
 		}
+		// 获取文件
+		if(req.files){
+			var fobj = this.save_file(req.files);
+			req.body.file = fobj.file;
+			req.body.url = fobj.url;
+		}
+		
 		var ret = await this.sql.run(req.query, req.body, db);
 		return ret;
 	} else {

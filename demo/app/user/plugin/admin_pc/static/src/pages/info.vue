@@ -40,8 +40,8 @@
 								<div class="mm_action">
 									<h5><span>操作</span></h5>
 									<div class="btns">
-										<input type="file" accept=".xls,.xlsx,.csv" class="mm_btn btn_primary-x" @click="import_db()">导入</input>
-										<mm_btn class="btn_primary-x" @click.native="export_db()">导出</mm_btn>
+										<mm_file type="excel" :func="import_db" v-if="url_import"></mm_file>
+										<mm_btn class="btn_primary-x" @click.native="export_db()" v-if="url_export">导出</mm_btn>
 										<mm_btn class="btn_primary-x" url="./info_form">添加</mm_btn>
 										<mm_btn @click.native="show = true" class="btn_primary-x" v-bind:class="{ 'disabled': !selects }">批量修改</mm_btn>
 									</div>
@@ -224,6 +224,8 @@
 				url_get_list: "/apis/user/info",
 				url_del: "/apis/user/info?method=del&",
 				url_set: "/apis/user/info?method=set&",
+				url_import: "/apis/user/info?method=import&",
+				url_export: "/apis/user/info?method=export&",
 				field: "user_id",
 				query_set: {
 					"user_id": ""

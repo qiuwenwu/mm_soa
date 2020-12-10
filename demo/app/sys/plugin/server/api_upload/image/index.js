@@ -48,7 +48,6 @@ async function main(ctx, db) {
 		var file = path.join($.runPath, dir, name);
 		try {
 			fs.writeFileSync(file, bf);
-			console.log('成了');
 			url = url_path + name;
 		} catch (e) {
 			fs.closeSync(file);
