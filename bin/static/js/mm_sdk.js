@@ -2058,7 +2058,6 @@ if (typeof($) === "undefined") {
 		 * @return {Object} 同步请求返回请求结果，否则返回undefined
 		 */
 		upload: function upload(url, file, fun, headers) {
-			console.log(url, file, fun, headers);
 			var form = new FormData();
 			form.append("file", file);
 			var json;

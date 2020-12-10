@@ -1,6 +1,9 @@
 const Item = require('mm_machine').Item;
 const Excel = require('mm_excel');
 
+var save_dir = '/app/sys/static/doc/';
+var url_path = "/sys/doc/";
+
 /**
  * Sql操作驱动类
  * @extends {Item}
@@ -563,7 +566,7 @@ Drive.prototype.get_format = async function(db) {
 		if (o.table) {
 			if (!o.list || o.list.length == 0) {
 				dbs.table = o.table;
-				o.list = await dbs.getSql(o.where, null, o.id + "," + o.name);
+				o.list = await dbs.getSql(o.where, null, o.key + "," + o.name);
 			}
 		}
 	}
@@ -648,12 +651,10 @@ Drive.prototype.export_main = async function(db, query, body) {
 		fields
 	} = body;
 	var table = db.table || this.config.table;
+	var date = new Date();
+	var name = table + "_" + date.stamp() + '.xlsx';
 	if (!file) {
-		var uid = 0;
-		if (db.user) {
-			uid = db.user.user_id;
-		}
-		file = './user/' + uid + '/' + table + '.xlsx';
+		file = save_dir + name;
 		file.addDir($.config.path.user || $.config.path.static);
 	}
 	if (!fields && query.field) {
@@ -673,8 +674,9 @@ Drive.prototype.export_main = async function(db, query, body) {
 	});
 	var list = by.result.list;
 	file = await excel.save(list);
-	var body = $.ret.bl(file == true, file ? '导出成功!' : '导出失败!');
+	var body = $.ret.bl(!!file, file ? '导出成功!' : '导出失败!');
 	body.result.file = file;
+	body.result.url = url_path + name;
 	if (message) {
 		body.result.message = message;
 	}
@@ -730,7 +732,7 @@ Drive.prototype.del_repeat_main = async function(db, params) {
 			}
 		}
 	} else {
-		msg = '没有重复号码。';
+		msg = '没有重复项。';
 	}
 	// console.log(list);
 	return $.ret.bl(!msg, msg ? '去重失败!原因：' + msg : '去重成功!');

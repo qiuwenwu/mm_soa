@@ -30,10 +30,12 @@
 								<div class="mm_action">
 									<h5><span>操作</span></h5>
 									<div class="btns">
-										<mm_file type="excel" :func="import_db" v-if="url_import"></mm_file>
-										<mm_btn class="btn_primary-x" @click.native="export_db()" v-if="url_export">导出</mm_btn>
 										<mm_btn class="btn_primary-x" url="./group_form">添加</mm_btn>
 										<mm_btn @click.native="show = true" class="btn_primary-x" v-bind:class="{ 'disabled': !selects }">批量修改</mm_btn>
+									</div>
+									<div class="btn_small">
+										<mm_file class="btn_default-x" type="excel" :func="import_db" v-if="url_import"></mm_file>
+										<mm_btn class="btn_default-x" @click.native="export_db()" v-if="url_export">导出</mm_btn>
 									</div>
 								</div>
 								<mm_table type="2">

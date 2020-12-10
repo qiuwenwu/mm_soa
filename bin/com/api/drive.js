@@ -561,6 +561,11 @@ Drive.prototype.check = async function(ctx) {
 	}
 	if (!error) {
 		error = await this.checkOauth(ctx);
+		if(error){
+			error = {
+				error
+			}
+		}
 	}
 	return error;
 };

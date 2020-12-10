@@ -858,7 +858,7 @@ define(function() {
 					this.selects = '';
 				} else {
 					var s = '';
-					var list = this.list;;
+					var list = this.list;
 					for (var i = 0; i < list.length; i++) {
 						s += '|' + list[i][this.field];
 					}
@@ -1002,7 +1002,9 @@ define(function() {
 					$.confirm("是否导入 " + file.name, "导入数据", function() {
 						$.http.upload(_this.url_import, file, function(json) {
 							if (json.result) {
-								$.prompt(json.result.tip);
+								$.confirm(json.result.tip, function(){
+									_this.get();
+								});
 							} else if (json.error) {
 								$.confirm(json.error.message);
 							} else {
@@ -1016,7 +1018,24 @@ define(function() {
 			 * 导出数据
 			 */
 			export_db: function export_db() {
-				
+				var _this = this;
+				if (this.selects) {
+					var query = {};
+					query[this.field] = this.selects;
+					this.$get(_this.url_export, query, function(json) {
+						var res = json.result;
+						if(res && res.bl){
+							window.location.href = res.url;
+						}
+					});
+				} else {
+					this.$get(_this.url_export, this.query, function(json) {
+						var res = json.result;
+						if(res && res.bl){
+							window.location.href = res.url;
+						}
+					});
+				}
 			}
 		},
 		computed: {

@@ -529,7 +529,7 @@ form textarea {
 	height: auto;
 }
 
-label {
+form label {
 	margin-right: var(--margin_base);
 }
 
