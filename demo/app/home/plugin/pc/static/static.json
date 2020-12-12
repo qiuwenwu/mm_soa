@@ -4,5 +4,5 @@
 	"immutable": false,
 	"brotli": true,
 	"gzip": true,
-	"convert_amd": true
+	"convert_amd": false
 }

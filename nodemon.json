@@ -4,7 +4,7 @@
 		".git",
 		".svn",
 		"node_modules/**/node_modules",
-		"*/static/*/*.json",
+		"*/static/**",
 		"*/static/*.js"
 	],
 	"verbose": true,
