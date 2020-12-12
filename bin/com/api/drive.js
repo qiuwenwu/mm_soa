@@ -329,7 +329,7 @@ Drive.prototype.save_file = function(files) {
 	if (files.file) {
 		var f = files.file;
 		// 创建可读流
-		const render = fs.createReadStream(f.path);
+		const readStream = fs.createReadStream(f.path);
 		var stamp = Date.now();
 		var name = f.name;
 		file = path.join($.runPath, dir, name);
@@ -342,13 +342,14 @@ Drive.prototype.save_file = function(files) {
 		}
 		// 创建写入流
 		try {
-			const upStream = fs.createWriteStream(file);
-			render.pipe(upStream);
+			const writeStream = fs.createWriteStream(file);
+			readStream.pipe(writeStream);
+			// writeStream.close();
 			url = url_path + name;
 		} catch (e) {
-			fs.closeSync(file);
 			console.log(e);
 		}
+		// readStream.close();
 	}
 	return {
 		file,
@@ -371,12 +372,12 @@ Drive.prototype.main = async function(ctx, db) {
 			db.user = user;
 		}
 		// 获取文件
-		if(req.files){
+		if (req.files) {
 			var fobj = this.save_file(req.files);
 			req.body.file = fobj.file;
 			req.body.url = fobj.url;
 		}
-		
+
 		var ret = await this.sql.run(req.query, req.body, db);
 		return ret;
 	} else {
@@ -561,7 +562,7 @@ Drive.prototype.check = async function(ctx) {
 	}
 	if (!error) {
 		error = await this.checkOauth(ctx);
-		if(error){
+		if (error) {
 			error = {
 				error
 			}

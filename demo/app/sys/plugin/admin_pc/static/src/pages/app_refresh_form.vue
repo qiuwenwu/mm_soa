@@ -11,10 +11,6 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
-										<dt>用户</dt>
-										<dd>
-											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
-										</dd>
 										<dt class="required">应用ID</dt>
 										<dd>
 											<mm_input v-model="form.appid" :minlength="0" :maxlength="16" placeholder=""
@@ -24,6 +20,10 @@
 										<dd>
 											<mm_input v-model="form.refresh_token" :minlength="0" :maxlength="32" placeholder="用来刷新访问牌，保留30天"
 											 :required="true" />
+										</dd>
+										<dt>用户</dt>
+										<dd>
+											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
 										</dd>
 									</dl>
 								</mm_form>
@@ -58,10 +58,10 @@
 					"refresh_id": 0
 				},
 				form: {
-					"refresh_id": 0,
-					"user_id": 0,
 					"appid": '',
+					"refresh_id": 0,
 					"refresh_token": '',
+					"user_id": 0,
 				},
 				// 用户
 				'list_account': [ ],

@@ -11,6 +11,10 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
+										<dt>详细地址</dt>
+										<dd>
+											<mm_input v-model="form.address" :minlength="0" :maxlength="255" placeholder="用户居住地的详细地址" />
+										</dd>
 										<dt>年龄</dt>
 										<dd>
 											<mm_number v-model="form.age" :min="0" :max="150" />
@@ -70,10 +74,6 @@
 										<dt>性别</dt>
 										<dd>
 											<mm_select v-model="form.sex" :options="$to_kv(arr_sex)" />
-										</dd>
-										<dt>用户ID</dt>
-										<dd>
-											<mm_input v-model="form.user_id" :minlength="0" :maxlength="0" placeholder="" />
 										</dd>
 									</dl>
 								</mm_form>

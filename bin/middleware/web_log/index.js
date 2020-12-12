@@ -40,7 +40,7 @@ var formatRes = function(ctx, resTime = new Date()) {
 	logText += 'status: ' + ctx.status + '\n';
 
 	// 响应内容
-	logText += 'body: ' + '\n' + JSON.stringify(ctx.body) + '\n';
+	// logText += 'body: ' + '\n' + JSON.stringify(ctx.body) + '\n';
 	
 	// 服务器响应时间
 	logText += 'res time: ' + resTime + '\n';

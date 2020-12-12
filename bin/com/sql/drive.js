@@ -525,7 +525,7 @@ Drive.prototype.get_params = async function(fields) {
 				arr.map((name) => {
 					for (var i = 0; i < list.length; i++) {
 						var o = list[i];
-						if (name == o.name) {
+						if (name === o.name) {
 							lt.push(o);
 						}
 					}
@@ -541,10 +541,11 @@ Drive.prototype.get_params = async function(fields) {
 		var lt = [];
 		var arr = field.split(',');
 		for (var i = 0; i < arr.length; i++) {
-			var name = arr[i].replace(/`/g, '');
-			params.push({
+			var o = arr[i];
+			var name = o.replace(/`/g, '');
+			lt.push({
 				name,
-				title: name
+				title: name,
 			});
 		}
 		params = lt;
@@ -591,7 +592,16 @@ Drive.prototype.import_main = async function(db, file) {
 		params,
 		format
 	});
-	var jarr = await excel.load();
+	var jarr = [];
+	try {
+		jarr = await excel.load();
+	} catch (e) {
+		console.log(e);
+	} finally {
+		excel.clear();
+		excel = null;
+	}
+
 	var list = [];
 	var errors = [];
 	db.table = db.table || this.config.table;
@@ -673,7 +683,15 @@ Drive.prototype.export_main = async function(db, query, body) {
 		format
 	});
 	var list = by.result.list;
-	file = await excel.save(list);
+	try {
+		file = await excel.save(list);
+	} catch (e) {
+		console.log(e);
+	} finally {
+		excel.clear();
+		excel = null;
+	}
+
 	var body = $.ret.bl(!!file, file ? '导出成功!' : '导出失败!');
 	body.result.file = file;
 	body.result.url = url_path + name;

@@ -50,46 +50,46 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="是否可用" v-model="query.orderby" field="available" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="加解密方式" v-model="query.orderby" field="encrypt" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="每日允许请求次数" v-model="query.orderby" field="times_allow" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="今日请求次数" v-model="query.orderby" field="times_today" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="有效期时长" v-model="query.orderby" field="max_age" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="持有者" v-model="query.orderby" field="user_id" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="请求总次数" v-model="query.orderby" field="times_count" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="上次使用时间" v-model="query.orderby" field="time_update" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="应用名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
-											</th>
-											<th>
 												<mm_reverse title="应用ID" v-model="query.orderby" field="appid" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="消息访问令牌" v-model="query.orderby" field="token" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="消息加密钥匙" v-model="query.orderby" field="encoding_aes_key" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="应用密钥" v-model="query.orderby" field="appsecret" :func="search"></mm_reverse>
 											</th>
 											<th>
+												<mm_reverse title="是否可用" v-model="query.orderby" field="available" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="消息加密钥匙" v-model="query.orderby" field="encoding_aes_key" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="加解密方式" v-model="query.orderby" field="encrypt" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="有效期时长" v-model="query.orderby" field="max_age" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="应用名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="上次使用时间" v-model="query.orderby" field="time_update" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="每日允许请求次数" v-model="query.orderby" field="times_allow" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="请求总次数" v-model="query.orderby" field="times_count" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="今日请求次数" v-model="query.orderby" field="times_today" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="消息访问令牌" v-model="query.orderby" field="token" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="消息访问地址" v-model="query.orderby" field="url" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="持有者" v-model="query.orderby" field="user_id" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -98,50 +98,48 @@
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
-											<td>
-												<span>{{ o.app_id }}</span>
-											</td>
-											<td>
-												<mm_switch v-model="o.available" @click.native="set(o)" />
-											</td>
-											<td>
-												<span>{{arr_encrypt[o.encrypt] }}</span>
-											</td>
-											<td>
-												<span>{{ o.times_allow }}</span>
-											</td>
-											<td>
-												<span>{{ o.times_today }}</span>
-											</td>
-											<td>
-												<span>{{ o.max_age }}</span>
-											</td>
-											<td>
-												<span>{{ get_name(list_account, o.user_id, 'user_id', 'nickname') }}</span>
-											</td>
-											<td>
-												<span>{{ o.times_count }}</span>
-											</td>
-											<td>
-												<span>{{ $to_time(o.time_update, 'yyyy-MM-dd hh:mm') }}</span>
-											</td>
-											<td>
-												<span>{{ o.name }}</span>
-											</td>
+											<td>{{ o[field] }}</td>
 											<td>
 												<span>{{ o.appid }}</span>
-											</td>
-											<td>
-												<span>{{ o.token }}</span>
-											</td>
-											<td>
-												<span>{{ o.encoding_aes_key }}</span>
 											</td>
 											<td>
 												<span>{{ o.appsecret }}</span>
 											</td>
 											<td>
+												<mm_switch v-model="o.available" @click.native="set(o)" />
+											</td>
+											<td>
+												<span>{{ o.encoding_aes_key }}</span>
+											</td>
+											<td>
+												<span>{{arr_encrypt[o.encrypt] }}</span>
+											</td>
+											<td>
+												<span>{{ o.max_age }}</span>
+											</td>
+											<td>
+												<span>{{ o.name }}</span>
+											</td>
+											<td>
+												<span>{{ $to_time(o.time_update, 'yyyy-MM-dd hh:mm') }}</span>
+											</td>
+											<td>
+												<span>{{ o.times_allow }}</span>
+											</td>
+											<td>
+												<span>{{ o.times_count }}</span>
+											</td>
+											<td>
+												<span>{{ o.times_today }}</span>
+											</td>
+											<td>
+												<span>{{ o.token }}</span>
+											</td>
+											<td>
 												<span>{{ o.url }}</span>
+											</td>
+											<td>
+												<span>{{ get_name(list_account, o.user_id, 'user_id', 'nickname') }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./app_form?app_id=' + o[field]">修改</mm_btn>
@@ -232,28 +230,28 @@
 					'encrypt_min': '',
 					// 加解密方式——最大值
 					'encrypt_max': '',
-					// 每日允许请求次数——最小值
-					'times_allow_min': 0,
-					// 每日允许请求次数——最大值
-					'times_allow_max': 0,
-					// 今日请求次数——最小值
-					'times_today_min': 0,
-					// 今日请求次数——最大值
-					'times_today_max': 0,
 					// 有效期时长——最小值
 					'max_age_min': 0,
 					// 有效期时长——最大值
 					'max_age_max': 0,
-					// 请求总次数——最小值
-					'times_count_min': 0,
-					// 请求总次数——最大值
-					'times_count_max': 0,
+					// 应用名称
+					'name': '',
 					// 上次使用时间——开始时间
 					'time_update_min': '',
 					// 上次使用时间——结束时间
 					'time_update_max': '',
-					// 应用名称
-					'name': '',
+					// 每日允许请求次数——最小值
+					'times_allow_min': 0,
+					// 每日允许请求次数——最大值
+					'times_allow_max': 0,
+					// 请求总次数——最小值
+					'times_count_min': 0,
+					// 请求总次数——最大值
+					'times_count_max': 0,
+					// 今日请求次数——最小值
+					'times_today_min': 0,
+					// 今日请求次数——最大值
+					'times_today_max': 0,
 					// 关键词
 					'keyword': '',
 					//排序

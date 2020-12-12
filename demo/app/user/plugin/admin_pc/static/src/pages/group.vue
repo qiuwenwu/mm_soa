@@ -44,6 +44,9 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
+												<mm_reverse title="应用" v-model="query.orderby" field="app" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="奖励比例" v-model="query.orderby" field="bonus" :func="search"></mm_reverse>
 											</th>
 											<th>
@@ -57,9 +60,6 @@
 											</th>
 											<th>
 												<mm_reverse title="升级所需经验" v-model="query.orderby" field="exp" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="用户组ID" v-model="query.orderby" field="group_id" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="等级划分" v-model="query.orderby" field="level" :func="search"></mm_reverse>
@@ -77,6 +77,7 @@
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<td>{{ o[field] }}</td>
 											<td>
 												<span>{{ o.app }}</span>
 											</td>
@@ -94,9 +95,6 @@
 											</td>
 											<td>
 												<span>{{ o.exp }}</span>
-											</td>
-											<td>
-												<span>{{ o.group_id }}</span>
 											</td>
 											<td>
 												<span>{{ o.level }}</span>

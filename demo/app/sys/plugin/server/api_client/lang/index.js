@@ -15,7 +15,7 @@ async function main(ctx, db) {
 	var arr = await db.get({}, "", "`key`" + ",`" + type + "`");
 	var dict = {};
 	if (arr.length) {
-		ctx.cookies.set('lang_type', type);
+		ctx.cookies.set('sys_lang', type);
 		for (var i = 0; i < arr.length; i++) {
 			var o = arr[i];
 			dict[o.key] = o[type];

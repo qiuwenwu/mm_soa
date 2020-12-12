@@ -37,8 +37,10 @@
 		<link rel="stylesheet" type="text/css" href="./css/mm_common.css" />
 		<link rel="stylesheet" type="text/css" href="./css/mm_component.css" />
 		<link rel="stylesheet" type="text/css" href="./theme/default/index.css" />
+		<script src="/js/vue.js"></script>
+
 		<style>
-			main .mm_col>.mm_view { background: #fff; border-radius: .25rem; box-shadow: 0 0.25rem 0.5rem 0 rgba(7,17,27,0.1); margin: 0.5rem;}
+			main .mm_col>.mm_view { background: #fff; border-radius: .25rem; border: 1px solid var(--color_border); box-shadow: 0 0.25rem 0.5rem 0 rgba(7,17,27,0.1); margin: 0.5rem 0.5rem 1rem 0.5rem;}
 			#logo {
 				float: left;
 			}
@@ -64,6 +66,35 @@
 			main .mm_col>*~* {
 			    margin-top: 1rem;
 			}
+			
+			body {
+				background: #fff;
+			}
+			#nav_bottom a { padding: 0 1rem;}
+			
+			header {
+				line-height: 2.5rem;
+			}
+			#logo {
+				padding: 0 .5rem;
+			}
+			
+			#nav_top {
+				float: left;
+				margin: 0 1rem;
+			}
+			#nav_top a {
+				padding: 0 0.5rem;
+			}
+			#bar_user {
+				float: right;
+				font-size: 0.875rem;
+			}
+			#bar_user a { 
+				padding: 0 .5rem;
+			}
+			
+			
 	</style>
 	</head>
 	<body>
@@ -82,30 +113,49 @@
 											</a>
 										</div>
 
-										<nav class="fr" id="bar_user">
+										<nav id="bar_user">
 											<a href="/sign_up"><span>注册</span></a>
 											<a href="/sign_in"><span>登录</span></a>
 										</nav>
-										<nav id="nav_top">
-											<a href="#">
-												<span>首页</span>
-											</a>
-											<a href="#">
-												<span>文档</span>
-											</a>
-											<a href="#">
-												<span>社区</span>
-											</a>
-											<a href="#">
-												<span>模板</span>
-											</a>
-											<a href="#">
-												<span>应用</span>
-											</a>
-											<a href="#">
-												<span>工作台</span>
-											</a>
-										</nav>
+
+										<div class="mm_nav_top" :class="{ show: show }" id="nav_top">
+											<button class="btn_link" @click="show = !show"><i class="fa fa-bars"></i></button>
+											<div class="nav_warp">
+												<nav>
+													<div class="item">
+														<a href="#">
+															<span>首页</span>
+														</a>
+													</div>
+													<div class="item">
+														<a href="#">
+															<span>文档</span>
+														</a>
+													</div>
+													<div class="item">
+														<a href="#">
+															<span>社区</span>
+														</a>
+													</div>
+													<div class="item">
+														<a href="#">
+															<span>模板</span>
+														</a>
+													</div>
+													<div class="item">
+														<a href="#">
+															<span>应用</span>
+														</a>
+													</div>
+													<div class="item">
+														<a href="#">
+															<span>工作台</span>
+														</a>
+													</div>
+												</nav>
+												<div class="mask" @click="show = false"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -131,7 +181,7 @@
 						<div class="mm_container">
 							<div class="mm_row">
 								<div class="mm_col col-12">
-									<nav id="nav_path">
+									<nav class="mm_nav_path" id="nav_path">
 										<a href="/"><span>首页</span></a>
 										<a href="#"><span>文档</span></a>
 										<a href="#"><span>前端开发</span></a>
@@ -145,7 +195,7 @@
 					<div class="mm_warp">
 						<div class="mm_container">
 							<div class="mm_row">
-								<div class="mm_col col-12 col-md-9">
+								<div class="mm_col col-12 col-lg-9">
 									<div class="mm_card">
 										<div class="card_head center pt-5">
 											<h2><span>极速高效前端开发技巧</span></h2>
@@ -210,7 +260,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="mm_col col-12 col-md-3">
+								<div class="mm_col col-12 col-lg-3">
 									<div class="mm_view card" id="list_hot">
 										<div class="card_head">
 											<h5>热门文章</h5>
@@ -315,14 +365,10 @@
 											</table>
 										</div>
 										<div class="card_foot">
-											<div class="">
-												<nav id="nav_pager">
-													<a href="#"><i class="fa-chevron-left"></i></a>
-													<a href="#1"><span>1</span></a>
-													<a href="#2"><span>2</span></a>
-													<a href="#3"><span>3</span></a>
-													<a href="#4"><span>4</span></a>
-													<a href="#"><i class="fa-chevron-right"></i></a>
+											<!-- 分页器 -->
+											<div class="mm_pager">
+												<nav>
+													<a href="javascript:void(0);" class="previous disabled"><span>&lt;</span></a><a href="javascript:void(0);" class="active">1</a><a href="javascript:void(0);" class="">2</a><a href="javascript:void(0);" class="">3</a><a href="javascript:void(0);" class="">4</a><a href="javascript:void(0);" class="">5</a><a href="javascript:void(0);" class="next"><span>&gt;</span></a>
 												</nav>
 											</div>
 										</div>
@@ -336,7 +382,7 @@
 					<div class="mm_warp">
 						<div class="mm_container">
 							<div class="mm_row">
-								<div class="mm_col col-12 col-md-6">
+								<div class="mm_col col-12 col-lg-6">
 									<form class="mm_card">
 										<div class="card_head arrow">
 											<h5>表单</h5>
@@ -358,7 +404,7 @@
 										</div>
 									</form>
 								</div>
-								<div class="mm_col col-12 col-md-6">
+								<div class="mm_col col-12 col-lg-6">
 									<form class="mm_card">
 										<div class="card_head arrow active">
 											<h5>表单</h5>
@@ -390,14 +436,16 @@
 						<div class="mm_container">
 							<div class="mm_row">
 								<div class="mm_col">
-									<nav id="nav_bottom">
-										<a href="#about">关于我们</a>
-										<a href="#join">加入我们</a>
-										<a href="#address">联系方式</a>
-										<a href="#business">合作企业</a>
-										<a href="#help">帮助中心</a>
-										<a href="#fliend">友情链接</a>
-									</nav>
+									<div class="mm_view">
+										<nav id="nav_bottom">
+											<a href="#about">关于我们</a>
+											<a href="#join">加入我们</a>
+											<a href="#address">联系方式</a>
+											<a href="#business">合作企业</a>
+											<a href="#help">帮助中心</a>
+											<a href="#fliend">友情链接</a>
+										</nav>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -405,5 +453,16 @@
 				</footer>
 			</div>
 		</div>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: function() {
+					return {
+						show: false
+					}
+				}
+			});
+		</script>
 	</body>
 </html>

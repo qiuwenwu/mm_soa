@@ -11,6 +11,10 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
+										<dt>应用</dt>
+										<dd>
+											<mm_input v-model="form.app" :minlength="0" :maxlength="12" placeholder="用于区分用户组使用范围，cms内容管理系统 / bbs社区 / mall商城" />
+										</dd>
 										<dt>奖励比例</dt>
 										<dd>
 											<mm_number v-model="form.bonus" :min="0" :max="0" />
@@ -26,10 +30,6 @@
 										<dt>升级所需经验</dt>
 										<dd>
 											<mm_number v-model="form.exp" :min="0" :max="2147483647" />
-										</dd>
-										<dt>用户组ID</dt>
-										<dd>
-											<mm_input v-model="form.group_id" :minlength="0" :maxlength="0" placeholder="" />
 										</dd>
 										<dt>图标</dt>
 										<dd>

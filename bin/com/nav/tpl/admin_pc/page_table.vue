@@ -60,7 +60,7 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
-											<!--{if(idx > 0)}-->
+											<!--{if(v.name !== sql.key)}-->
 											<th>
 												<mm_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></mm_reverse>
 											</th>
@@ -73,7 +73,9 @@
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<td>{{ o[field] }}</td>
 											<!--{loop field v idx}-->
+											<!--{if(v.name !== sql.key)}-->
 											<td>
 												<!--{if(v.dataType === 'tinyint')}-->
 												<mm_switch v-model="o.${v.name}" @click.native="set(o)" />
@@ -99,6 +101,7 @@
 												<span>{{ o.${v.name} }}</span>
 												<!--{/if}-->
 											</td>
+											<!--{/if}-->
 											<!--{/loop}-->
 											<td>
 												<mm_btn class="btn_primary" :url="'./${name}_form?${sql.key}=' + o[field]">修改</mm_btn>

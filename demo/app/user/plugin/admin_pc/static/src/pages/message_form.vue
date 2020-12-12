@@ -11,13 +11,13 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
+										<dt>留言内容</dt>
+										<dd>
+											<mm_textarea v-model="form.content" type="text" placeholder="" />
+										</dd>
 										<dt>留言者邮箱</dt>
 										<dd>
 											<mm_input v-model="form.email" :minlength="0" :maxlength="125" placeholder="" />
-										</dd>
-										<dt>消息ID</dt>
-										<dd>
-											<mm_input v-model="form.message_id" :minlength="0" :maxlength="0" placeholder="用于记录和识别消息" />
 										</dd>
 										<dt>留言者姓名</dt>
 										<dd>

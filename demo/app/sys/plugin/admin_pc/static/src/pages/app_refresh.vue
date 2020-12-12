@@ -40,7 +40,10 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="用户" v-model="query.orderby" field="user_id" :func="search"></mm_reverse>
+												<mm_reverse title="应用ID" v-model="query.orderby" field="appid" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="刷新令牌" v-model="query.orderby" field="refresh_token" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="创建时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
@@ -49,10 +52,7 @@
 												<mm_reverse title="更新时间" v-model="query.orderby" field="time_update" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="应用ID" v-model="query.orderby" field="appid" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="刷新令牌" v-model="query.orderby" field="refresh_token" :func="search"></mm_reverse>
+												<mm_reverse title="用户" v-model="query.orderby" field="user_id" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -61,11 +61,12 @@
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<td>{{ o[field] }}</td>
 											<td>
-												<span>{{ o.refresh_id }}</span>
+												<span>{{ o.appid }}</span>
 											</td>
 											<td>
-												<span>{{ get_name(list_account, o.user_id, 'user_id', 'nickname') }}</span>
+												<span>{{ o.refresh_token }}</span>
 											</td>
 											<td>
 												<span>{{ $to_time(o.time_create, 'yyyy-MM-dd hh:mm') }}</span>
@@ -74,10 +75,7 @@
 												<span>{{ $to_time(o.time_update, 'yyyy-MM-dd hh:mm') }}</span>
 											</td>
 											<td>
-												<span>{{ o.appid }}</span>
-											</td>
-											<td>
-												<span>{{ o.refresh_token }}</span>
+												<span>{{ get_name(list_account, o.user_id, 'user_id', 'nickname') }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./app_refresh_form?refresh_id=' + o[field]">修改</mm_btn>

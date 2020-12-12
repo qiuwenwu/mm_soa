@@ -4,10 +4,16 @@
 		${@view('./common/head.html')}
 	</head>
 	<body>
-		${@view('./common/header.html')}
-		<main>
-			首页
-		</main>
-		${@view('./common/footer.html')}
+		<div id="app">
+			<div class="mm_page">
+				${@view('./common/header.html')}
+				<main>
+					<div class="mm_warp"></div>
+				</main>
+				${@view('./common/footer.html')}
+			</div>
+		</div>
+		
+		<script src="/home/pc/js/common.js"></script>
 	</body>
 </html>

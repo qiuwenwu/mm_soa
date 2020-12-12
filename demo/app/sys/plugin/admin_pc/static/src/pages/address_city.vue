@@ -19,11 +19,11 @@
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
-											<mm_select v-model="query.show" title="显示位置" :options="$to_kv(arr_show)" @change="search()" />
-										</mm_item>
-										<mm_item>
 											<mm_select v-model="query.province_id" title="所属省份" :options="$to_kv(list_address_province, 'province_id', 'name')"
 											 @change="search()" />
+										</mm_item>
+										<mm_item>
+											<mm_select v-model="query.show" title="显示位置" :options="$to_kv(arr_show)" @change="search()" />
 										</mm_item>
 										<mm_item>
 											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
@@ -47,16 +47,16 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="显示位置" v-model="query.orderby" field="show" :func="search"></mm_reverse>
+												<mm_reverse title="显示顺序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="显示顺序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
+												<mm_reverse title="城市名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="所属省份" v-model="query.orderby" field="province_id" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="城市名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
+												<mm_reverse title="显示位置" v-model="query.orderby" field="show" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -65,20 +65,18 @@
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
-											<td>
-												<span>{{ o.city_id }}</span>
-											</td>
-											<td>
-												<span>{{arr_show[o.show] }}</span>
-											</td>
+											<td>{{ o[field] }}</td>
 											<td>
 												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
+											</td>
+											<td>
+												<span>{{ o.name }}</span>
 											</td>
 											<td>
 												<span>{{ get_name(list_address_province, o.province_id, 'province_id', 'name') }}</span>
 											</td>
 											<td>
-												<span>{{ o.name }}</span>
+												<span>{{arr_show[o.show] }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./address_city_form?city_id=' + o[field]">修改</mm_btn>
@@ -113,13 +111,13 @@
 				</div>
 				<div class="card_body">
 					<dl>
-						<dt>显示位置</dt>
-						<dd>
-							<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
-						</dd>
 						<dt>所属省份</dt>
 						<dd>
 							<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name')" />
+						</dd>
+						<dt>显示位置</dt>
+						<dd>
+							<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
 						</dd>
 					</dl>
 				</div>
@@ -159,16 +157,16 @@
 					size: 10,
 					// 城市ID
 					'city_id': 0,
-					// 显示位置——最小值
-					'show_min': '',
-					// 显示位置——最大值
-					'show_max': '',
 					// 显示顺序——最小值
 					'display_min': 0,
 					// 显示顺序——最大值
 					'display_max': 0,
 					// 城市名称
 					'name': '',
+					// 显示位置——最小值
+					'show_min': '',
+					// 显示位置——最大值
+					'show_max': '',
 					// 关键词
 					'keyword': '',
 					//排序
@@ -177,10 +175,10 @@
 				form: {},
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
-				// 显示位置
-				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],
 				// 所属省份
 				'list_address_province': [ ],
+				// 显示位置
+				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],
 				// 视图模型
 				vm: {}
 			}

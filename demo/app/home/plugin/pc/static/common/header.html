@@ -1,3 +1,55 @@
 <header>
-	页眉
+	<div class="mm_warp">
+		<div class="mm_container">
+			<div class="mm_row">
+				<div class="mm_col col-12">
+					<div class="mm_view">
+						<ul id="contact">
+							<li><i class="fa-phone"></i><span>18813868813</span></li>
+							<li class="hide_phone"><i class="fa-envelope-o"></i><span>31772309@qq.com</span></li>
+						</ul>
+
+						<ul id="user_action">
+							<li><a href="/account/sign_in"><span>${lang.sign_in}</span></a></li>
+							<li><a href="/account/sign_up"><span>${lang.sign_up}</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mm_warp" id="head_main">
+		<div class="mm_container">
+			<div class="mm_row">
+				<div class="mm_col col-12">
+					<!-- logo -->
+					<div id="logo"><a href="#"><img src="img/logo.png" alt="超级美眉LOGO"> <span>超级美眉</span></a></div>
+					<!-- 主导航 -->
+					<div class="mm_nav_top" :class="{ show: nav_top_show }" id="nav_top">
+						<button class="btn_link" @click="nav_top_show = !nav_top_show"><i class="fa fa-bars"></i></button>
+						<div class="nav_warp">
+							<nav>
+								<!--{loop nav.top o i}-->
+								<div class="item">
+									<a href="o.url">
+										<span>${ o.name }</span>
+									</a>
+								</div>
+								<!--{/loop}-->
+
+								<!-- 搜索栏 -->
+								<div class="item">
+									<div class="mm_search">
+										<input placeholder="搜索服务或文档..." />
+										<button class="btn btn-search" type="button"><i class="fa-search"></i></button>
+									</div>
+								</div>
+							</nav>
+							<div class="mask" @click="nav_top_show = false"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </header>

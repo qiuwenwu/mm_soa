@@ -11,22 +11,22 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
+										<dt>英文</dt>
+										<dd>
+											<mm_input v-model="form.en" :minlength="0" :maxlength="255" placeholder="" />
+										</dd>
 										<dt>日文</dt>
 										<dd>
 											<mm_input v-model="form.ja" :minlength="0" :maxlength="255" placeholder="" />
 										</dd>
-										<dt class="required">键名</dt>
+										<dt class="required">主键</dt>
 										<dd>
-											<mm_input v-model="form.key" :minlength="0" :maxlength="16" placeholder="用于获取对应语言值"
+											<mm_input v-model="form.key" :minlength="0" :maxlength="32" placeholder=""
 											 :required="true" />
 										</dd>
 										<dt>韩文</dt>
 										<dd>
 											<mm_input v-model="form.ko" :minlength="0" :maxlength="255" placeholder="" />
-										</dd>
-										<dt>语言ID</dt>
-										<dd>
-											<mm_input v-model="form.lang_id" :minlength="0" :maxlength="0" placeholder="" />
 										</dd>
 										<dt>简体中文</dt>
 										<dd>

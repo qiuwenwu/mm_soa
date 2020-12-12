@@ -12,7 +12,7 @@
 								<mm_form>
 									<dl>
 										<!--{loop field v idx}-->
-										<!--{if idx > 0}-->
+										<!--{if(v.name !== sql.key)}-->
 										<!--{if(v.required)}-->
 										<dt class="required">${v.title}</dt>
 										<!--{else}-->

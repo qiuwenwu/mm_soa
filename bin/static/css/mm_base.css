@@ -529,8 +529,8 @@ form textarea {
 	height: auto;
 }
 
-form label {
-	margin-right: var(--margin_base);
+form label ~ label {
+	margin-left: var(--margin_base);
 }
 
 optgroup {
@@ -573,7 +573,7 @@ dd>span {
 
 dd {
 	display: block;
-	padding: var(--padding_small) .75rem;
+	padding: var(--padding_small);
 	float: left;
 }
 
@@ -599,6 +599,7 @@ ol::before,
 ol::after {
 	content: "";
 	display: block;
+	float: none;
 	clear: both;
 }
 

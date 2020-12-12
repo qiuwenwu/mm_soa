@@ -36,6 +36,9 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
+												<mm_reverse title="货币" v-model="query.orderby" field="coin" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="信用度" v-model="query.orderby" field="credit" :func="search"></mm_reverse>
 											</th>
 											<th>
@@ -77,9 +80,6 @@
 											<th>
 												<mm_reverse title="钱" v-model="query.orderby" field="money" :func="search"></mm_reverse>
 											</th>
-											<th>
-												<mm_reverse title="用户ID" v-model="query.orderby" field="user_id" :func="search"></mm_reverse>
-											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
 									</thead>
@@ -87,6 +87,7 @@
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<td>{{ o[field] }}</td>
 											<td>
 												<span>{{ o.coin }}</span>
 											</td>
@@ -131,9 +132,6 @@
 											</td>
 											<td>
 												<span>{{ o.money }}</span>
-											</td>
-											<td>
-												<span>{{ o.user_id }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./count_form?user_id=' + o[field]">修改</mm_btn>

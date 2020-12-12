@@ -43,13 +43,13 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="是否可见" v-model="query.orderby" field="show" :func="search"></mm_reverse>
-											</th>
-											<th>
 												<mm_reverse title="显示顺序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="省份名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="是否可见" v-model="query.orderby" field="show" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -58,17 +58,15 @@
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
-											<td>
-												<span>{{ o.province_id }}</span>
-											</td>
-											<td>
-												<span>{{arr_show[o.show] }}</span>
-											</td>
+											<td>{{ o[field] }}</td>
 											<td>
 												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
 												<span>{{ o.name }}</span>
+											</td>
+											<td>
+												<span>{{arr_show[o.show] }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./address_province_form?province_id=' + o[field]">修改</mm_btn>
@@ -143,18 +141,18 @@
 					page: 1,
 					//页面大小
 					size: 10,
-					// 省份ID
-					'province_id': 0,
-					// 是否可见——最小值
-					'show_min': '',
-					// 是否可见——最大值
-					'show_max': '',
 					// 显示顺序——最小值
 					'display_min': 0,
 					// 显示顺序——最大值
 					'display_max': 0,
 					// 省份名称
 					'name': '',
+					// 省份ID
+					'province_id': 0,
+					// 是否可见——最小值
+					'show_min': '',
+					// 是否可见——最大值
+					'show_max': '',
 					// 关键词
 					'keyword': '',
 					//排序

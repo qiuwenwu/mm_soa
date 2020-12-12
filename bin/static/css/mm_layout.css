@@ -200,6 +200,10 @@ footer.hide {
 	justify-items: stretch;
 }
 
+.mm_col {
+	max-width: 100%;
+}
+
 /**
  * 卡片
  */

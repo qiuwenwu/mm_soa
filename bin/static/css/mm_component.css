@@ -903,6 +903,8 @@ table .mm_reverse .title {
 		clear: both;
 		float: none;
 		position: relative;
+		padding: 0;
+		transition: padding 0.3s ease-in-out;
 	}
 
 	.mm_nav_top .item>* {
@@ -912,7 +914,10 @@ table .mm_reverse .title {
 	.mm_nav_top.show .mask {
 		display: block;
 	}
-	
+	.mm_nav_top.show nav {
+		padding: 1rem 0;
+	}
+
 	.show .nav_warp {
 		height: 100vh;
 	}
@@ -1183,14 +1188,14 @@ table .mm_reverse .title {
 }
 
 table .mm_btn {
-    border-radius: .25rem;
-    display: inline-block;
-    height: 1.5rem;
-    line-height: 1.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    margin-right: .5rem;
-    font-size: .75rem;
+	border-radius: .25rem;
+	display: inline-block;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+	margin-right: .5rem;
+	font-size: .75rem;
 }
 
 .td_display {
@@ -1199,20 +1204,64 @@ table .mm_btn {
 	border-radius: var(--radius_small);
 	border: 1px solid var(--color_border);
 }
-.th_id {min-width: 4rem;}
-.th_uin {min-width:12rem}
-.th_name {min-width:8rem}
-.th_type {min-width:6rem}
-.th_address {min-width:15rem}
-.th_username {min-width:10rem}
-.th_nickname {min-width:10rem}
-.th_phone {min-width:9rem}
-.th_email,.th_time {min-width:10rem}
-.th_num {min-width:8rem}
-.th_score,.th_state {min-width:5.5rem}
-.th_handle {min-width:10rem}
-.th_title {width:15rem}
-.th_desc {width:20rem}
+
+.th_id {
+	min-width: 4rem;
+}
+
+.th_uin {
+	min-width: 12rem
+}
+
+.th_name {
+	min-width: 8rem
+}
+
+.th_type {
+	min-width: 6rem
+}
+
+.th_address {
+	min-width: 15rem
+}
+
+.th_username {
+	min-width: 10rem
+}
+
+.th_nickname {
+	min-width: 10rem
+}
+
+.th_phone {
+	min-width: 9rem
+}
+
+.th_email,
+.th_time {
+	min-width: 10rem
+}
+
+.th_num {
+	min-width: 8rem
+}
+
+.th_score,
+.th_state {
+	min-width: 5.5rem
+}
+
+.th_handle {
+	min-width: 10rem
+}
+
+.th_title {
+	width: 15rem
+}
+
+.th_desc {
+	width: 20rem
+}
 
 /* 图片上传 */
 .mm_upload_img {
@@ -1281,4 +1330,15 @@ table .mm_btn {
 .upload_add .mm_icon::after {
 	width: .125rem;
 	height: 1rem;
+}
+
+.mm_nav_path {
+	margin: 0 0.5rem;
+}
+
+.mm_nav_path a~a::before {
+	content: "\\";
+	color: var(--color_border);
+	margin-left: .125rem;
+	margin-right: .5rem;
 }

@@ -21,16 +21,30 @@ async function main(ctx, db) {
 			return;
 		}
 
-		// 获取当前的语言包
-		var type = ctx.cookies.get("lang_type") || 'en';
-		db.table = "sys_lang";
+		// 获取系统配置
+		db.table = "sys_config";
 		db.size = 0;
-		var arr = await db.get({}, "", "`key`" + ",`" + type + "`");
+		var arr_config = await db.get({}, "", "`name`,`value`");
+		var config = {};
+		if (arr_config.length) {
+			for (var i = 0; i < arr_config.length; i++) {
+				var o = arr_config[i];
+				config[o.name] = o.value;
+			}
+		}
+
+		var theme_style = ctx.cookies.get("theme_style") || config.theme_style || 'default';
+		var theme_color = ctx.cookies.get("theme_color") || config.theme_color || 'blue';
+
+		// 获取当前的语言包
+		var sys_lang = ctx.cookies.get("sys_lang") || config.lang || 'zh';
+		db.table = "sys_lang";
+		var arr_lang = await db.get({}, "", "`key`" + ",`" + sys_lang + "`");
 		var lang = {};
-		if (arr.length) {
-			for (var i = 0; i < arr.length; i++) {
-				var o = arr[i];
-				lang[o.key] = o[type];
+		if (arr_lang.length) {
+			for (var i = 0; i < arr_lang.length; i++) {
+				var o = arr_lang[i];
+				lang[o.key] = o[sys_lang];
 			}
 		}
 
@@ -42,14 +56,6 @@ async function main(ctx, db) {
 		if (!seo) {
 			seo = {};
 		}
-
-		// 获取系统配置
-		db.table = "sys_config";
-		var config = await db.get();
-		if (!config) {
-			config = {};
-		}
-
 
 		var query = Object.assign({}, ctx.request.query);
 		var list = [];
@@ -74,18 +80,48 @@ async function main(ctx, db) {
 			app: "home",
 			plugin: "pc",
 			site_name: "elins.cn",
-			congfig: Object.assign(config, $.config),
+			config: Object.assign(config, $.config),
 			seo: Object.assign({
 				title: $.config.sys.title + "门户",
 				keywords: "mm home pc",
 				description: "",
 				content: "",
 			}, seo),
+			theme_style,
+			theme_color,
+			sys_lang,
 			list,
 			obj,
 			lang,
-			view: function(file, m){
+			view: function(file, m) {
 				return db.tpl.view(file.fullname(tpl_dir), Object.assign({}, model, m));
+			},
+			nav: {
+				top: [{
+						name: "home",
+						title: "首页",
+						url: "/",
+						target: ""
+					},
+					{
+						name: "about",
+						title: "关于我们",
+						url: "/about",
+						target: ""
+					},
+					{
+						name: "service",
+						title: "开发服务",
+						url: "/service",
+						target: ""
+					},
+					{
+						name: "contact",
+						title: "联系方式",
+						url: "/contact",
+						target: ""
+					}
+				]
 			}
 		};
 
