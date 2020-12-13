@@ -37,7 +37,7 @@ async function main(ctx, db) {
 		var theme_color = ctx.cookies.get("theme_color") || config.theme_color || 'blue';
 
 		// 获取当前的语言包
-		var sys_lang = ctx.cookies.get("sys_lang") || config.lang || 'zh';
+		var sys_lang = ctx.cookies.get("sys_lang") || config.sys_lang || 'zh_cn';
 		db.table = "sys_lang";
 		var arr_lang = await db.get({}, "", "`key`" + ",`" + sys_lang + "`");
 		var lang = {};

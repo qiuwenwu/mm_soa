@@ -4,8 +4,8 @@
     "table": "user_sns",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
-    "field_obj": "`baidu`,`baidu_state`,`mm`,`mm_state`,`qq`,`qq_state`,`taobao`,`taobao_state`,`user_id`,`wechat`,`wechat_state`",
-    "field_default": "`baidu`,`baidu_state`,`mm`,`mm_state`,`qq`,`qq_state`,`taobao`,`taobao_state`,`user_id`,`wechat`,`wechat_state`",
+    "field_obj": "`user_id`,`qq`,`qq_state`,`wechat`,`wechat_state`,`mm`,`mm_state`,`baidu`,`baidu_state`,`taobao`,`taobao_state`",
+    "field_default": "`user_id`,`qq`,`qq_state`,`wechat`,`wechat_state`,`mm`,`mm_state`,`baidu`,`baidu_state`,`taobao`,`taobao_state`",
     "query": {
         "baidu": "`baidu` like '%{0}%'",
         "mm": "`mm` like '%{0}%'",
@@ -16,8 +16,16 @@
     "update": {},
     "format": [
         {
-            "key": "baidu_state",
-            "title": "百度认证",
+            "key": "qq_state",
+            "title": "QQ认证",
+            "list": [
+                "未认证",
+                "已认证"
+            ]
+        },
+        {
+            "key": "wechat_state",
+            "title": "微信认证",
             "list": [
                 "未认证",
                 "已认证"
@@ -32,8 +40,8 @@
             ]
         },
         {
-            "key": "qq_state",
-            "title": "QQ认证",
+            "key": "baidu_state",
+            "title": "百度认证",
             "list": [
                 "未认证",
                 "已认证"
@@ -42,14 +50,6 @@
         {
             "key": "taobao_state",
             "title": "淘宝认证",
-            "list": [
-                "未认证",
-                "已认证"
-            ]
-        },
-        {
-            "key": "wechat_state",
-            "title": "微信认证",
             "list": [
                 "未认证",
                 "已认证"

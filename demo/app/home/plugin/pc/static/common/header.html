@@ -10,8 +10,8 @@
 						</ul>
 
 						<ul id="user_action">
-							<li><a href="/account/sign_in"><span>${lang.sign_in}</span></a></li>
-							<li><a href="/account/sign_up"><span>${lang.sign_up}</span></a></li>
+							<li><a href="/account/sign_up"><span>${lang.btn_sign_up}</span></a></li>
+							<li><a href="/account/sign_in"><span>${lang.btn_sign_in}</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -23,7 +23,7 @@
 			<div class="mm_row">
 				<div class="mm_col col-12">
 					<!-- logo -->
-					<div id="logo"><a href="#"><img src="img/logo.png" alt="超级美眉LOGO"> <span>超级美眉</span></a></div>
+					<div id="logo"><a href="#"><img src="img/logo.png" alt="${lang.web_name}LOGO"> <span>${lang.web_name}</span></a></div>
 					<!-- 主导航 -->
 					<div class="mm_nav_top" :class="{ show: nav_top_show }" id="nav_top">
 						<button class="btn_link" @click="nav_top_show = !nav_top_show"><i class="fa fa-bars"></i></button>
@@ -32,7 +32,7 @@
 								<!--{loop nav.top o i}-->
 								<div class="item">
 									<a href="o.url">
-										<span>${ o.name }</span>
+										<span>${ lang["nav_" + o.name] }</span>
 									</a>
 								</div>
 								<!--{/loop}-->
