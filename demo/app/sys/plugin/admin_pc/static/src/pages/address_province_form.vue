@@ -11,14 +11,14 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
+										<dt>是否可见</dt>
+										<dd>
+											<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
+										</dd>
 										<dt class="required">省份名称</dt>
 										<dd>
 											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder=""
 											 :required="true" />
-										</dd>
-										<dt>是否可见</dt>
-										<dd>
-											<mm_select v-model="form.show" :options="$to_kv(arr_show)" />
 										</dd>
 									</dl>
 								</mm_form>
@@ -53,9 +53,9 @@
 					"province_id": 0
 				},
 				form: {
-					"name": '',
 					"province_id": 0,
 					"show": 0,
+					"name": '',
 				},
 				// 是否可见
 				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],

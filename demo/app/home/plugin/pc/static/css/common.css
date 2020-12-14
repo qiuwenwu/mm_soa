@@ -39,7 +39,7 @@
 	padding: 0 1rem;
 }
 
-#logo img { 
+#logo img {
 	width: 2rem;
 	margin-right: .25rem;
 }
@@ -62,11 +62,13 @@
 	line-height: 2rem;
 	height: 2rem;
 }
+
 .mm_search {
 	position: relative;
 	display: inline-block !important;
 	margin-left: 10rem;
 }
+
 .mm_search input {
 	height: 2.5rem;
 	line-height: 2.5rem;
@@ -77,7 +79,7 @@
 
 .mm_search button {
 	position: absolute;
-	top:50%;
+	top: 50%;
 	right: 1rem;
 	transform: translateY(-50%);
 	font-size: 1rem;
@@ -88,7 +90,114 @@
 	#nav_top a {
 		color: #fff;
 	}
+
 	.mm_search {
-		 margin-left: 0;
+		margin-left: 0;
 	}
+}
+
+
+#lang_select li {
+	float: none !important;
+}
+
+#config {
+	list-style: none;
+	padding: 0;
+	float: left;
+}
+
+#config>li {
+	float: left;
+	line-height: 2.5rem;
+	padding: 0 0.5rem;
+	height: 2.5rem;
+}
+
+#lang li {
+	color: var(--color_base);
+	white-space: nowrap;
+}
+
+#lang li:hover {
+	color: #fff !important;
+	background: var(--color_primary) !important;
+}
+
+#lang img {
+	height: 1rem;
+	margin-right: 0.25rem;
+	position: relative;
+	top: -1px;
+}
+
+#lang .selected {
+	border: none;
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+
+#lang .active {
+	color: #fff;
+	background: var(--color_primary);
+}
+
+#lang ul:hover .active {
+	color: var(--color_base);
+	background: #fff;
+}
+
+#lang .mm_box {
+	min-width: 8rem;
+}
+
+#colors i {
+	display: block;
+	width: 1rem;
+	height: 1rem;
+}
+
+#colors .selected i {
+	background: #fff;
+	position: relative;
+	top: 0.5rem;
+	float: left;
+	margin-right: 0.25rem;
+}
+
+#colors .mm_box {
+	width: 17rem;
+	padding: 1rem;
+}
+
+#colors .selected {
+	border: none;
+}
+
+#colors li {
+	float: left;
+	width: auto;
+	padding: 0.25rem;
+	border: 1px solid #fff;
+}
+
+#colors li~li {
+	margin-left: 1rem;
+}
+
+#colors li:hover {
+	border: 1px solid var(--color_border);
+}
+
+#colors .active {
+	border: 1px solid var(--color_border);
+}
+
+#nav_top .active {
+	color: var(--color_primary);
+	font-weight: 600;
+}
+
+.mm_page>header~main {
+	margin-top: 6.125rem;
 }

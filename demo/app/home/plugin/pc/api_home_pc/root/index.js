@@ -50,13 +50,50 @@ async function main(ctx, db) {
 
 		// 获取seo配置
 		db.table = "sys_seo";
-		var seo = await db.getObj({
-			path
-		});
-		if (!seo) {
-			seo = {};
+		var arr_seo = await db.get({});
+		var seo = {};
+		if (arr_seo.length) {
+			for (var i = 0; i < arr_seo.length; i++) {
+				var o = arr_seo[i];
+				if (path === o.path || (path !== '/' && path.indexOf(o.path) !== -1)) {
+					seo = o;
+				}
+			}
 		}
-
+		
+		
+		// 获取导航
+		db.table = "sys_nav";
+		var sys_nav = await db.get({});
+		var nav = {};
+		if (sys_nav.length) {
+			for (var i = 0; i < sys_nav.length; i++) {
+				var o = sys_nav[i];
+				if(o.position){
+					if(!nav[o.position]){
+						nav[o.position] = [];
+					} 
+					nav[o.position].push(o);
+				}
+			}
+		}
+		
+		// 获取广告
+		db.table = "sys_ad";
+		var sys_ad = await db.get({});
+		var ad = {};
+		if (sys_ad.length) {
+			for (var i = 0; i < sys_ad.length; i++) {
+				var o = sys_ad[i];
+				if(o.type){
+					if(!ad[o.type]){
+						ad[o.type] = [];
+					} 
+					ad[o.type].push(o);
+				}
+			}
+		}
+		
 		var query = Object.assign({}, ctx.request.query);
 		var list = [];
 		var obj = {};
@@ -74,6 +111,24 @@ async function main(ctx, db) {
 			obj = await db.getObj(query);
 		}
 
+		var sys_language;
+		switch (sys_lang) {
+			case "zh_tw":
+				sys_language = "繁體中文";
+				break;
+			case "ja":
+				sys_language = "日本語";
+				break;
+			case "ko":
+				sys_language = "한글";
+				break;
+			case "en":
+				sys_language = "English";
+				break;
+			default:
+				sys_language = "简体中文";
+				break;
+		}
 		// 创建与view视图通讯的模型
 		var model = {
 			os: "mm",
@@ -87,41 +142,18 @@ async function main(ctx, db) {
 				description: "",
 				content: "",
 			}, seo),
+			path,
+			nav,
+			ad,
 			theme_style,
 			theme_color,
 			sys_lang,
+			sys_language,
 			list,
 			obj,
 			lang,
 			view: function(file, m) {
 				return db.tpl.view(file.fullname(tpl_dir), Object.assign({}, model, m));
-			},
-			nav: {
-				top: [{
-						name: "home",
-						title: "首页",
-						url: "/",
-						target: ""
-					},
-					{
-						name: "about",
-						title: "关于我们",
-						url: "/about",
-						target: ""
-					},
-					{
-						name: "service",
-						title: "开发服务",
-						url: "/service",
-						target: ""
-					},
-					{
-						name: "contact",
-						title: "联系方式",
-						url: "/contact",
-						target: ""
-					}
-				]
 			}
 		};
 

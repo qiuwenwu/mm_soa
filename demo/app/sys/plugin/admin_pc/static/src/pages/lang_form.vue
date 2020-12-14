@@ -69,11 +69,11 @@
 					"lang_id": 0
 				},
 				form: {
+					"lang_id": 0,
 					"en": '',
 					"ja": '',
 					"key": '',
 					"ko": '',
-					"lang_id": 0,
 					"zh_cn": '',
 					"zh_tw": '',
 				},

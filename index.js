@@ -76,7 +76,7 @@ class Soa extends Base {
 				 * 监听端口
 				 * @type {Number}
 				 */
-				"port": 5000,
+				"port": 8000,
 				/**
 				 * 是否输出操作日志
 				 * @type {Boolean}

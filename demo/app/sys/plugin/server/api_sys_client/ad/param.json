@@ -19,6 +19,7 @@
             "app",
             "trade",
             "title",
+            "device",
             "description",
             "img",
             "url",
@@ -83,6 +84,7 @@
             "app",
             "trade",
             "title",
+            "device",
             "description",
             "img",
             "url",
@@ -424,6 +426,16 @@
             "dataType": "varchar",
             "string": {
                 "max": 32
+            }
+        },
+        {
+            "name": "device",
+            "title": "呈现设备",
+            "description": "在什么设备上展示，web_pc、web_pad、web_phone、app_pad、app_phone，多个设备用逗号隔开",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 125
             }
         },
         {

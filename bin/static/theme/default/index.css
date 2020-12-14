@@ -33,7 +33,9 @@
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
 }
-.mm_table,[class*=table-] {
+
+.mm_table,
+[class*=table-] {
 	background: #fff;
 }
 
@@ -162,21 +164,36 @@ ol.mm_list li:nth-child(3)::before {
 	border-color: var(--color_dark);
 }
 
-.bg_grey,
+.bg_grey {
+	background: var(--color_grey) !important;
+	color: var(--color_white);
+	border-color: var(--color_grey);
+}
+
 .bg_default {
 	background: var(--color_default) !important;
 	color: var(--color_white);
 	border-color: var(--color_default);
 }
 
-.bg_red,
+.bg_red {
+	background: var(--color_red) !important;
+	color: var(--color_white);
+	border-color: var(--color_red);
+}
+
 .bg_error {
 	background: var(--color_error) !important;
 	color: var(--color_white);
 	border-color: var(--color_error);
 }
 
-.bg_yellow,
+.bg_yellow {
+	background: var(--color_yellow) !important;
+	color: var(--color_white);
+	border-color: var(--color_yellow);
+}
+
 .bg_danger,
 .bg_warning {
 	background: var(--color_warning) !important;
@@ -184,21 +201,36 @@ ol.mm_list li:nth-child(3)::before {
 	border-color: var(--color_warning);
 }
 
-.bg_green,
+.bg_green {
+	background: var(--color_green) !important;
+	color: var(--color_white);
+	border-color: var(--color_green);
+}
+
 .bg_success {
 	background: var(--color_success) !important;
 	color: var(--color_white);
 	border-color: var(--color_success);
 }
 
-.bg_cyan,
+.bg_cyan {
+	background: var(--color_cyan) !important;
+	color: var(--color_white);
+	border-color: var(--color_cyan);
+}
+
 .bg_info {
 	background: var(--color_info) !important;
 	color: var(--color_white);
 	border-color: var(--color_info);
 }
 
-.bg_blue,
+.bg_blue {
+	background: var(--color_blue) !important;
+	color: var(--color_white);
+	border-color: var(--color_blue);
+}
+
 .bg_primary {
 	background: var(--color_primary) !important;
 	color: var(--color_white);
@@ -300,7 +332,7 @@ ol.mm_list li:nth-child(3)::before {
 
 .btn_error-x {
 	color: var(--color_error);
-	border-color:var(--color_error);
+	border-color: var(--color_error);
 }
 
 .btn_success-x {
@@ -314,10 +346,9 @@ ol.mm_list li:nth-child(3)::before {
 }
 
 .btn_danger-x,
-.btn_warning-x
-{
+.btn_warning-x {
 	color: var(--color_warning);
-	border-color:var(--color_warning);
+	border-color: var(--color_warning);
 }
 
 .btn_info-x {

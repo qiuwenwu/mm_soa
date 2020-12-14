@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="变量描述 / 变量名 / 变量标题"
+											<mm_input v-model="query.keyword" title="关键词" desc="变量名 / 变量标题 / 变量描述"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -40,19 +40,19 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="变量描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
-											</th>
-											<th>
 												<mm_reverse title="变量名" v-model="query.orderby" field="name" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="变量标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="数据类型" v-model="query.orderby" field="type" :func="search"></mm_reverse>
 											</th>
 											<th>
+												<mm_reverse title="变量标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="变量值" v-model="query.orderby" field="value" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="变量描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -63,19 +63,19 @@
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
-												<span>{{ o.description }}</span>
-											</td>
-											<td>
 												<span>{{ o.name }}</span>
-											</td>
-											<td>
-												<span>{{ o.title }}</span>
 											</td>
 											<td>
 												<span>{{ o.type }}</span>
 											</td>
 											<td>
+												<span>{{ o.title }}</span>
+											</td>
+											<td>
 												<span>{{ o.value }}</span>
+											</td>
+											<td>
+												<span>{{ o.description }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./config_form?config_id=' + o[field]">修改</mm_btn>
@@ -148,12 +148,12 @@
 					size: 10,
 					// 配置ID
 					'config_id': 0,
-					// 变量描述
-					'description': '',
 					// 变量名
 					'name': '',
 					// 变量标题
 					'title': '',
+					// 变量描述
+					'description': '',
 					// 关键词
 					'keyword': '',
 					//排序

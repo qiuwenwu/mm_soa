@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="描述 / 名称"
+											<mm_input v-model="query.keyword" title="关键词" desc="名称 / 描述"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -44,31 +44,31 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="应用" v-model="query.orderby" field="app" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="奖励比例" v-model="query.orderby" field="bonus" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="折扣" v-model="query.orderby" field="discount" :func="search"></mm_reverse>
-											</th>
-											<th>
 												<mm_reverse title="显示顺序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="升级所需经验" v-model="query.orderby" field="exp" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="等级划分" v-model="query.orderby" field="level" :func="search"></mm_reverse>
 											</th>
 											<th>
+												<mm_reverse title="下级用户组" v-model="query.orderby" field="next_group_id" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="升级所需经验" v-model="query.orderby" field="exp" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="折扣" v-model="query.orderby" field="discount" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="奖励比例" v-model="query.orderby" field="bonus" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="应用" v-model="query.orderby" field="app" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="下级用户组" v-model="query.orderby" field="next_group_id" :func="search"></mm_reverse>
+												<mm_reverse title="描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -79,31 +79,31 @@
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
-												<span>{{ o.app }}</span>
-											</td>
-											<td>
-												<span>{{ o.bonus }}</span>
-											</td>
-											<td>
-												<span>{{ o.description }}</span>
-											</td>
-											<td>
-												<span>{{ o.discount }}</span>
-											</td>
-											<td>
 												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
-											</td>
-											<td>
-												<span>{{ o.exp }}</span>
 											</td>
 											<td>
 												<span>{{ o.level }}</span>
 											</td>
 											<td>
+												<span>{{ get_name(list_group, o.next_group_id, 'group_id', 'name') }}</span>
+											</td>
+											<td>
+												<span>{{ o.exp }}</span>
+											</td>
+											<td>
+												<span>{{ o.discount }}</span>
+											</td>
+											<td>
+												<span>{{ o.bonus }}</span>
+											</td>
+											<td>
+												<span>{{ o.app }}</span>
+											</td>
+											<td>
 												<span>{{ o.name }}</span>
 											</td>
 											<td>
-												<span>{{ get_name(list_group, o.next_group_id, 'group_id', 'name') }}</span>
+												<span>{{ o.description }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./group_form?group_id=' + o[field]">修改</mm_btn>
@@ -178,32 +178,32 @@
 					page: 1,
 					//页面大小
 					size: 10,
-					// 奖励比例——最小值
-					'bonus_min': 0,
-					// 奖励比例——最大值
-					'bonus_max': 0,
-					// 描述
-					'description': '',
-					// 折扣——最小值
-					'discount_min': 0,
-					// 折扣——最大值
-					'discount_max': 0,
+					// 用户组ID
+					'group_id': 0,
 					// 显示顺序——最小值
 					'display_min': 0,
 					// 显示顺序——最大值
 					'display_max': 0,
-					// 升级所需经验——最小值
-					'exp_min': 0,
-					// 升级所需经验——最大值
-					'exp_max': 0,
-					// 用户组ID
-					'group_id': 0,
 					// 等级划分——最小值
 					'level_min': 0,
 					// 等级划分——最大值
 					'level_max': 0,
+					// 升级所需经验——最小值
+					'exp_min': 0,
+					// 升级所需经验——最大值
+					'exp_max': 0,
+					// 折扣——最小值
+					'discount_min': 0,
+					// 折扣——最大值
+					'discount_max': 0,
+					// 奖励比例——最小值
+					'bonus_min': 0,
+					// 奖励比例——最大值
+					'bonus_max': 0,
 					// 名称
 					'name': '',
+					// 描述
+					'description': '',
 					// 关键词
 					'keyword': '',
 					//排序

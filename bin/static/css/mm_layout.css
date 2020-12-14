@@ -58,10 +58,12 @@ main {
 }
 
 .mm_view {
-	overflow-x: auto;
-	overflow-y: hidden;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+}
+
+main .mm_view {
+	overflow-x: auto;
 }
 
 .mm_view::-webkit-scrollbar {
@@ -211,6 +213,7 @@ footer.hide {
 	border-radius: var(--radius_small);
 	height: calc(100% - var(--margin_small) * 2);
 	margin: var(--margin_small);
+	overflow: hidden;
 }
 
 .card_head::before,
@@ -673,4 +676,8 @@ ol.mm_list li::before {
 
 .value label {
 	margin-right: var(--margin_base);
+}
+
+.mm_table img {
+	max-height: 5rem;
 }
