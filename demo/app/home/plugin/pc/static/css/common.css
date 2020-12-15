@@ -66,7 +66,6 @@
 .mm_search {
 	position: relative;
 	display: inline-block !important;
-	margin-left: 10rem;
 }
 
 .mm_search input {
@@ -86,13 +85,25 @@
 	border: none;
 }
 
+#nav_top {
+	min-width: 46.875rem;
+}
+
+#nav_top nav .item:last-child {
+	float: right;
+}
+
 @media (max-width: 576px) {
+	#nav_top {
+		min-width: auto;
+	}
+
 	#nav_top a {
 		color: #fff;
 	}
 
-	.mm_search {
-		margin-left: 0;
+	#nav_top nav .item:last-child {
+		float: none;
 	}
 }
 
@@ -200,4 +211,9 @@
 
 .mm_page>header~main {
 	margin-top: 6.125rem;
+	margin-bottom: 0;
+}
+
+.mm_page>footer {
+	position: relative;
 }

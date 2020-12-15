@@ -11,7 +11,7 @@
  Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 14/12/2020 18:44:54
+ Date: 15/12/2020 18:32:45
 */
 
 SET NAMES utf8mb4;
@@ -46,7 +46,7 @@ CREATE TABLE `sys_ad`  (
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '跳转链接：[0,255]',
   `keywords` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '关键词：[0,255]在出现于关键词相关的情况下才打广告，多个关键词用空格分隔',
   PRIMARY KEY (`ad_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 39 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '广告信息：' ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '广告信息：' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_ad
@@ -192,7 +192,7 @@ CREATE TABLE `sys_lang`  (
   `ko` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '韩文',
   `ja` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '日文',
   PRIMARY KEY (`lang_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统语言：用于开发站点多国语' ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统语言：用于开发站点多国语' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_lang
@@ -221,7 +221,28 @@ INSERT INTO `sys_lang` VALUES (21, 'desc_framework', 'Have mature program archit
 INSERT INTO `sys_lang` VALUES (22, 'title_welcome', 'Welcome to our website', '欢迎来到我们网站', '', '', '');
 INSERT INTO `sys_lang` VALUES (23, 'content_welcome_1', 'Maybe you\'ve met a lot of development companies to come to us, but when you see us, you will find that we are your best choice', '也许你看到过许多的开发公司才找到我们，但是当你看到我们之后就会发现，我们就是你最好的选择。', '', '', '');
 INSERT INTO `sys_lang` VALUES (24, 'content_welcome_2', 'Reasonable price is only a feature. What\'s more, our development framework superior to the market after use makes it easier for you to upgrade your application and innovate with the market at any time', '合理的价格只是一个特点。更重要的是，我们的开发框架在使用后优于市场，使您更容易升级应用程序，并随时与市场一起创新', '', '', '');
-INSERT INTO `sys_lang` VALUES (25, 'title_preferential', 'Apply for preferential price', '申请优惠价', '', '', '');
+INSERT INTO `sys_lang` VALUES (25, 'title_apply', 'Apply for preferential price', '申请优惠价', '', '', '');
+INSERT INTO `sys_lang` VALUES (26, 'input_desc_search', 'Search service or document...', '搜索服务或文档...', '', '', '');
+INSERT INTO `sys_lang` VALUES (27, 'desc_apply', 'Officially start activities in 2021', '2021年正式启动活动', '', '', '');
+INSERT INTO `sys_lang` VALUES (28, 'content_apply', 'If you are our regular customers or introduced by customers, we will give you more favorable prices and give you valuable marketing services', '如果你是我们的老客户，或者是客户介绍过来的，我们将给你更加优惠的价格和赠送你超值的营销服务', '', '', '');
+INSERT INTO `sys_lang` VALUES (29, 'title_form_need', 'Demand consultation', '需求咨询', '', '', '');
+INSERT INTO `sys_lang` VALUES (30, 'desc_form_need', 'Free needs analysis for you', '免费为您分析需求', '', '', '');
+INSERT INTO `sys_lang` VALUES (31, 'btn_submit', 'Submit', '提交', '', '', '');
+INSERT INTO `sys_lang` VALUES (32, 'input_desc_name', 'Please enter your name', '请输入您的姓名', '', '', '');
+INSERT INTO `sys_lang` VALUES (33, 'input_desc_phone', 'Please enter your phone', '请输入您的手机号码', '', '', '');
+INSERT INTO `sys_lang` VALUES (34, 'dev_web', 'Complete DIY<br />Official website', '完成定制<br />企业官网', '', '', '');
+INSERT INTO `sys_lang` VALUES (35, 'dev_blockchain', 'Complete a<br />blockchain app', '完成一款<br />区块链应用', '', '', '');
+INSERT INTO `sys_lang` VALUES (36, 'dev_mall', 'Complete the whole<br />e-commerce platform', '完成整套<br />电商平台', '', '', '');
+INSERT INTO `sys_lang` VALUES (37, 'dev_app', 'Complete large-scale<br />commercial app', '完成大型<br />商业应用', '', '', '');
+INSERT INTO `sys_lang` VALUES (38, 'dev_sns', 'SNS', '社交软件', '', '', '');
+INSERT INTO `sys_lang` VALUES (39, 'dev_platform', 'Electronic platform', '电商平台', '', '', '');
+INSERT INTO `sys_lang` VALUES (40, 'dev_code', 'Code up', '源码升级', '', '', '');
+INSERT INTO `sys_lang` VALUES (41, 'dev_science', 'Science', '科学实验', '', '', '');
+INSERT INTO `sys_lang` VALUES (42, 'dev_finance', 'Finance', '金融理财', '', '', '');
+INSERT INTO `sys_lang` VALUES (43, 'dev_block_chain', 'Block chain', '区块链应用', '', '', '');
+INSERT INTO `sys_lang` VALUES (44, 'dev_manage_system', 'Manage system', '管理系统', '', '', '');
+INSERT INTO `sys_lang` VALUES (45, 'dev_web_ui', 'Web UI', '网页设计', '', '', '');
+INSERT INTO `sys_lang` VALUES (46, 'title_profile', 'Company Profile', ' 企业简介', '', '', '');
 
 -- ----------------------------
 -- Table structure for sys_message
@@ -281,7 +302,7 @@ CREATE TABLE `sys_nav`  (
   `device` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '呈现设备：[0,125]在什么设备上展示，web_pc、web_pad、web_phone、app_pad、app_phone，多个设备用逗号隔开',
   `father_id` smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT '上级ID：[0,10000]在频道列表操作时，当上级导航展开时，才显示该导航(sys_nav.name.nav_id)',
   PRIMARY KEY (`nav_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '导航：用于管理员自定义应用的导航' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '导航：用于管理员自定义应用的导航' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_nav
@@ -326,7 +347,7 @@ CREATE TABLE `user_account`  (
 -- ----------------------------
 -- Records of user_account
 -- ----------------------------
-INSERT INTO `user_account` VALUES (1, 1, 14, 5, 5, 1, 1, 0, '2020-12-09 17:47:58', 'mm2020', '', NULL, 0, 'admin', '管理员', '0cf6066acc83160a6c65282835399c40', '', 0, '127.0.0.1', NULL, NULL, NULL, '2020-11-11 11:10:28');
+INSERT INTO `user_account` VALUES (1, 1, 14, 5, 5, 1, 1, 0, '2020-12-15 15:31:30', 'mm2020', '', NULL, 0, 'admin', '管理员', '0cf6066acc83160a6c65282835399c40', '', 0, '192.168.0.134', NULL, NULL, NULL, '2020-11-11 11:10:28');
 INSERT INTO `user_account` VALUES (2, 1, 0, 0, 0, 0, 0, 0, '2020-11-11 11:11:14', '', '', '', 0, 'qiuwenwu', '文武', '', '', 0, '', '', '', '', '2020-11-11 11:10:45');
 
 -- ----------------------------

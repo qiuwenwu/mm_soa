@@ -89,6 +89,15 @@
 
 
 /* 栅格 */
+.row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+}
+
 .row-auto>* {
 	flex: 1;
 }
@@ -2517,15 +2526,17 @@
 .disabled {
 	pointer-events: none;
 	cursor: not-allowed;
-/* 	-webkit-filter: grayscale(100%);
+	/* 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%); */
 	border: none !important;
 	background: rgba(250, 250, 250, 1);
 	color: var(--color_default) !important;
 }
+
 .required {
 	position: relative;
 }
+
 .required::before {
 	position: absolute;
 	content: "*";

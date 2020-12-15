@@ -2,96 +2,7 @@
 <html lang="zh-hans">
 	<head>
 		${@view('./common/head.html')}
-		<style>
-			.swiper-container {
-				width: 100%;
-				height: 100%;
-			}
-
-			.swiper-slide {
-				text-align: center;
-
-				/* Center slide text vertically */
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: -webkit-flex;
-				display: flex;
-				-webkit-box-pack: center;
-				-ms-flex-pack: center;
-				-webkit-justify-content: center;
-				justify-content: center;
-				-webkit-box-align: center;
-				-ms-flex-align: center;
-				-webkit-align-items: center;
-				align-items: center;
-				min-height: 37.5rem;
-				background: no-repeat center top;
-				background-size: 100% auto;
-			}
-
-			#banner h1 {
-				width: 53rem;
-				font-size: 3.75rem;
-				font-weight: 600;
-				line-height: 4.25rem;
-				color: var(--color_white);
-				position: absolute;
-				left: 50%;
-				top: 40%;
-				transform: translate(-50%, -50%);
-			}
-
-			#banner .mm_btn {
-				position: absolute;
-				left: 50%;
-				top: 62%;
-				transform: translate(-50%, 0);
-			}
-
-			#banner .swiper-slide>div {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0, 0, 0, 0.5);
-				text-align: center;
-			}
-
-			#recommend {
-				text-align: center;
-				margin-top: -9rem;
-				position: relative;
-				z-index: 2;
-			}
-
-			#recommend .mm_card {
-				padding: 2.5rem 1.875rem;
-			}
-
-			#recommend .mm_card i {
-				font-size: 2.25rem;
-				color: var(--color_primary);
-			}
-
-			#recommend h4,
-			#recommend p {
-				margin-bottom: 1rem;
-			}
-			
-			#image_text .mm_view {
-				padding: 1rem;
-				padding-right: 3rem;
-			}
-			
-			#image_text h4 {
-				font-size: 2rem;
-				margin-bottom: 1rem;
-			}
-			
-			#image_text p {
-				color: var(--color_grey);
-				margin-bottom: 1rem;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="/home/pc/css/index.css" async />
 	</head>
 	<body>
 		<div id="app">
@@ -107,7 +18,7 @@
 								<!--{loop ad.banner o i}-->
 								<!--{if(o.device === '' || o.device === 'web_pc')}-->
 								<div class="swiper-slide" style="background-image: url(${@o.img});">
-									<div>
+									<div class="mask">
 										<h1>${@(lang[o.title] || o.title)}</h1>
 										<button class="mm_btn btn_primary">${lang.btn_read_more}</button>
 									</div>
@@ -153,8 +64,8 @@
 							</div>
 						</div>
 					</div>
-					
-					
+
+
 					<!-- 图文介绍 -->
 					<div class="mm_warp" id="image_text">
 						<div class="mm_container">
@@ -175,21 +86,197 @@
 							</div>
 						</div>
 					</div>
+
+					<!-- 申请优惠 -->
+					<div class="mm_warp" id="apply">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12">
+									<div class="mm_view">
+										<h2>${lang.title_apply}</h2>
+										<h4>${lang.desc_apply}</h4>
+										<p>${lang.content_apply}</p>
+										<a href="/article/view?article_id=12" class="mm_btn btn_primary">${lang.btn_read_more}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- 经营范围 -->
+					<div class="mm_warp" id="business">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12 col-md-4">
+									<div class="mm_view" id="need">
+										<h2>${lang.title_form_need}</h2>
+										<p>${lang.desc_form_need}</p>
+										<div class="mm_input">
+											<input type="text" v-model="form.name" placeholder="${lang.input_desc_name}" />
+										</div>
+										<div class="mm_input">
+											<input type="text" v-model="form.phone" placeholder="${lang.input_desc_phone}" />
+										</div>
+										<button class="mm_btn btn_primary">${lang.btn_submit}</button>
+									</div>
+								</div>
+								<div class="mm_col col-12 col-md-8">
+									<div class="mm_view">
+										<div class="row">
+											<div class="col-md-3 col-sm-6 col-6">
+												<div class="item">
+													<i class="fa-male"></i>
+													<p>
+														${@lang.dev_sns}
+													</p>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-6 col-6">
+												<div class="item">
+													<i class="fa-suitcase"></i>
+													<p>
+														${@lang.dev_platform}
+													</p>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-6 col-6">
+												<div class="item">
+													<i class="fa-code"></i>
+													<p>
+														${@lang.dev_code}
+													</p>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-6 col-6">
+												<div class="item">
+													<i class="fa-flask"></i>
+													<p>
+														${@lang.dev_science}
+													</p>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-6 col-6">
+												<div class="item">
+													<i class="fa-money"></i>
+													<p>
+														${@lang.dev_finance}
+													</p>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-6 col-6">
+												<div class="item">
+													<i class="fa-gg"></i>
+													<p>
+														${@lang.dev_block_chain}
+													</p>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-6 col-6">
+												<a href="services.html">
+													<div class="item">
+														<i class="fa-desktop"></i>
+														<p>
+															${@lang.dev_manage_system}
+														</p>
+													</div>
+												</a>
+											</div>
+											<div class="col-md-3 col-sm-6 col-6">
+												<div class="item">
+													<i class="fa-mouse-pointer"></i>
+													<p>
+														${@lang.dev_web_ui}
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- 信息统计 -->
+					<div class="mm_warp" id="count">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-6 col-md-3">
+									<div class="mm_view">
+										<h2>10</h2>
+										<p>${@lang.dev_web}</p>
+									</div>
+								</div>
+								<div class="mm_col col-6 col-md-3">
+									<div class="mm_view">
+										<h2>18</h2>
+										<p>${@lang.dev_blockchain}</p>
+									</div>
+								</div>
+								<div class="mm_col col-6 col-md-3">
+									<div class="mm_view">
+										<h2>34</h2>
+										<p>${@lang.dev_blockchain}</p>
+									</div>
+								</div>
+								<div class="mm_col col-6 col-md-3">
+									<div class="mm_view">
+										<h2>60</h2>
+										<p>${@lang.dev_app}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- 企业简介 -->
+					<div class="mm_warp" id="introduce">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12 col-md-6">
+									<div class="mm_view">
+										<h2>${lang.title_profile}</h2>
+										<p>${lang.content_profile_1}</p>
+										<p>${lang.content_profile_2}</p>
+									</div>
+								</div>
+								<div class="mm_col col-12 col-md-6">
+									<div class="mm_view">
+										<div><img src=""></div>
+										<h4>${lang.title_}</h4>
+										<h5>${lang.desc_introduce_1}</h5>
+										<p>${lang.content_introduce_2}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</main>
 				${@view('./common/footer.html')}
 			</div>
 		</div>
-
 		<!-- 公共js -->
 		<script src="/home/pc/js/common.js"></script>
+
 		<!-- 实例化VUE业务 -->
 		<script>
 			var app = new Vue({
 				el: "#app",
 				mixins: [mixin_page],
+				data() {
+					return {
+						form: {
+							name: "",
+							phone: ""
+						}
+					}
+				},
 				mounted() {
 					var swiper = new Swiper('.swiper-container', {
 						loop: true,
+						autoplay: 3000,
 						navigation: {
 							nextEl: '.swiper-button-next',
 							prevEl: '.swiper-button-prev',
