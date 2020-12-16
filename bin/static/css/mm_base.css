@@ -380,7 +380,6 @@ input[type=color] {
 }
 
 input[type=range] {
-	min-width: 13.25rem;
 	margin-top: 0.75rem;
 	margin-bottom: 0.875rem;
 	/*上部分的填充值*/
@@ -423,7 +422,6 @@ input[type=week] {
 	border-radius: var(--radius_small);
 	border: 1px solid var(--color_border);
 	padding-left: var(--padding_small);
-	min-width: 13.25rem;
 }
 
 input[type=text],

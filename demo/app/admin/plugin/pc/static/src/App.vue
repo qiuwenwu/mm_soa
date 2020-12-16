@@ -291,5 +291,9 @@
 		#copyright {
 			display: none;
 		}
+		
+		.col-mm-12 .mm_form input {
+			width: 100%;
+		}
 	}
 </style>

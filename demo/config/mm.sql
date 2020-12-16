@@ -11,11 +11,141 @@
  Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 15/12/2020 18:32:45
+ Date: 16/12/2020 18:34:39
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for cms_article
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_article`;
+CREATE TABLE `cms_article`  (
+  `article_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文章id：[1,8388607]',
+  `available` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否启用：[0,1]启用后前台才会显示该文章(0否|1是)',
+  `state` smallint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '状态：[1,5](1正常|2推荐|3认证|4违规|5官方)',
+  `type_id` smallint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '文章分类ID：[1,1000]用来搜索指定类型的文章(cms_article_type)',
+  `display` smallint(5) UNSIGNED NOT NULL DEFAULT 100 COMMENT '排序：[0,10000]决定文章显示的顺序',
+  `channel_id` smallint(5) UNSIGNED NOT NULL DEFAULT 1 COMMENT '频道ID：[1,10000]该文章所属频道，仅该频道列表可以看到该文章(cms_article_channel)',
+  `user_id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户ID：[1,8388607]编辑这篇文章到本站的用户ID(user_account.nickname)',
+  `city_id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT '所属城市ID：[1,8388607]对于一些地方文章，可以通过该ID筛看(sys_address_city)',
+  `hot` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '热度：[0,1000000000]访问这篇文章的人次',
+  `praise` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '点赞次数：[0,1000000000]',
+  `collect_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '采集规则ID：[1,1000000000]如果文章是通过采集的方式获得，那么具有采集ID',
+  `time_create` datetime NOT NULL DEFAULT '1997-01-01 00:00:00' COMMENT '创建时间：',
+  `time_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间：',
+  `lang` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'zh_cn' COMMENT '语言：默认zh_cn(1zh_cn|2en|3zh_tw|4ko|5ja)',
+  `author` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者：[0,16]写出该文章的人',
+  `title` varchar(125) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '标题：[0,125]用于文章和html的title标签中',
+  `keywords` varchar(125) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关键词：[0,125]用于搜索引擎收录',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述：[0,255]用于文章提纲和搜索引擎收录',
+  `source` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '来源：[0,255]文章的出处',
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '来源地址：[0,255]用于跳转到发布该文章的网站',
+  `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标签：[0,255]用于标注文章所属相关内容，多个标签用空格隔开',
+  `img` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '封面图：用于显示于文章列表页，多个封面图用换行分隔',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '正文：文章的主体内容',
+  `collecter` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '收藏者：多个收藏者用”,“分隔',
+  PRIMARY KEY (`article_id`, `title`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章：用于内容管理系统的文章' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of cms_article
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for cms_article_channel
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_article_channel`;
+CREATE TABLE `cms_article_channel`  (
+  `channel_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '频道ID：[1,10000]',
+  `available` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否启用：[0,1]启用后才可以看到该频道。(0否|1是)',
+  `hide` tinyint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '是否隐藏：[0,1]隐藏非管理员该频道无法查看。(0否|1是)',
+  `can_comment` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否可评论：[0,1]不可评论则用户只能看，无法点评。(0否|1是)',
+  `display` smallint(4) UNSIGNED NOT NULL DEFAULT 100 COMMENT '显示顺序：[0,1000]决定频道显示的先后顺序',
+  `father_id` smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT '上级ID：[1,10000]在频道列表操作时，当上级频道展开时，才显示该频道(cms_article_channel.name.channel_id)',
+  `city_id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT '所属城市：[1,8388607]一些地方频道，可以通过该条判断是否可查看。(sys_address_city)',
+  `name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '频道名称：[2,16]',
+  `template` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '风格模板：[0,64]频道和文章都使用的样式',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述：[0,255]描述该频道的作用',
+  `icon` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '频道图标：[0,255]',
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '外链地址：[0,255]如果该频道是跳转到其他网站的情况下，就在该URL上设置',
+  PRIMARY KEY (`channel_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章频道：用于汇总浏览文章，在不同频道下展示不同文章。' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of cms_article_channel
+-- ----------------------------
+INSERT INTO `cms_article_channel` VALUES (2, 1, 1, 0, 100, 0, 0, 'info', '', '企业信息', '', '');
+INSERT INTO `cms_article_channel` VALUES (3, 1, 0, 0, 100, 0, 0, 'help', '', '操作帮助', '', '');
+INSERT INTO `cms_article_channel` VALUES (4, 1, 0, 0, 100, 0, 0, 'product', '', '产品展示', '', '');
+INSERT INTO `cms_article_channel` VALUES (5, 1, 0, 0, 100, 4, 0, 'ui', '', 'UI类产品展示', '', '');
+INSERT INTO `cms_article_channel` VALUES (6, 1, 0, 0, 100, 4, 0, 'front_end', '', '前端产品展示', '', '');
+INSERT INTO `cms_article_channel` VALUES (7, 1, 0, 0, 100, 4, 0, 'after_end', '', '后端产品展示', '', '');
+INSERT INTO `cms_article_channel` VALUES (8, 1, 0, 0, 100, 0, 0, 'doc', '', '开发文档', '', '');
+INSERT INTO `cms_article_channel` VALUES (9, 1, 0, 0, 100, 8, 0, 'doc_front_end', '', '前端开发文档', '', '');
+INSERT INTO `cms_article_channel` VALUES (10, 1, 0, 0, 100, 8, 0, 'doc_after_end', '', '后端开发文档', '', '');
+INSERT INTO `cms_article_channel` VALUES (11, 1, 0, 0, 100, 4, 0, 'package', '', '完整应用展示', '', '');
+INSERT INTO `cms_article_channel` VALUES (12, 1, 0, 0, 100, 2, 0, 'events', '', '历史事件', '', '');
+
+-- ----------------------------
+-- Table structure for cms_article_comment
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_article_comment`;
+CREATE TABLE `cms_article_comment`  (
+  `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '评论id：[1,2147483647]',
+  `available` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否启用：[0,1]启用则显示该评论(0否|1是)',
+  `score` smallint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '评分：[0,5]最低1分、最多5分',
+  `display` smallint(4) UNSIGNED NOT NULL DEFAULT 100 COMMENT '显示排序：[0,1000]决定显示的顺序',
+  `article_id` mediumint(8) UNSIGNED NOT NULL DEFAULT 1 COMMENT '所属文章id：[1,8388607](cms_article.title)',
+  `user_id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户ID：[1,8388607]编辑评论的用户ID(user_account.nickname)',
+  `name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '留言者姓名：[2,16]用于实名回复',
+  `tag` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标签：[0,64]评论人给的标签，多个标签用空格隔开',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '正文：评论内容',
+  `reply` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '评论回复：对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔',
+  PRIMARY KEY (`comment_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章评论：用于记录读者对某文章的评论' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of cms_article_comment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for cms_article_section
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_article_section`;
+CREATE TABLE `cms_article_section`  (
+  `section_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '章节模块ID：[1,2147483647]',
+  `display` smallint(5) UNSIGNED NOT NULL DEFAULT 100 COMMENT '排序：[0,10000]决定文章显示的顺序',
+  `article_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '对应文章ID：[1,2147483647](cms_article.title)',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '章节标题：[0,255]',
+  `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '章节标签：[0,255]',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '章节内容：',
+  `img` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '章节图片：',
+  PRIMARY KEY (`section_id`, `title`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章章节：文章的正文是单独一块保存的，一个个章节保存' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of cms_article_section
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for cms_article_type
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_article_type`;
+CREATE TABLE `cms_article_type`  (
+  `type_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文章分类ID：[1,30000]',
+  `display` smallint(4) UNSIGNED NOT NULL DEFAULT 100 COMMENT '显示顺序：[0,1000]',
+  `father_id` smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT '上级分类ID：[1,32767](cms_article_type.name.type_id)',
+  `name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类名称：[0,16]',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类描述：[0,255]',
+  `icon` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '分类图标：[0,255]',
+  PRIMARY KEY (`type_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章分类：将文章归类，可选看不同类型的文章' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of cms_article_type
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sys_ad
@@ -192,12 +322,12 @@ CREATE TABLE `sys_lang`  (
   `ko` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '韩文',
   `ja` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '日文',
   PRIMARY KEY (`lang_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统语言：用于开发站点多国语' ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 52 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统语言：用于开发站点多国语' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_lang
 -- ----------------------------
-INSERT INTO `sys_lang` VALUES (1, 'web_name', 'mm', '超级美眉', '', '', '');
+INSERT INTO `sys_lang` VALUES (1, 'web_name', 'MM', '超级美眉', '', '', '');
 INSERT INTO `sys_lang` VALUES (2, 'btn_sign_in', 'SignIn', '登录', '', '', '');
 INSERT INTO `sys_lang` VALUES (3, 'btn_sign_up', 'SignUp', '注册', '', '', '');
 INSERT INTO `sys_lang` VALUES (4, 'nav_home', 'Home', '首页', '', '', '');
@@ -242,7 +372,12 @@ INSERT INTO `sys_lang` VALUES (42, 'dev_finance', 'Finance', '金融理财', '',
 INSERT INTO `sys_lang` VALUES (43, 'dev_block_chain', 'Block chain', '区块链应用', '', '', '');
 INSERT INTO `sys_lang` VALUES (44, 'dev_manage_system', 'Manage system', '管理系统', '', '', '');
 INSERT INTO `sys_lang` VALUES (45, 'dev_web_ui', 'Web UI', '网页设计', '', '', '');
-INSERT INTO `sys_lang` VALUES (46, 'title_profile', 'Company Profile', ' 企业简介', '', '', '');
+INSERT INTO `sys_lang` VALUES (46, 'title_profile', 'Company Profile', '企业简介', '', '', '');
+INSERT INTO `sys_lang` VALUES (47, 'content_profile_1', '', '深圳图灵魔方信息科技有限公司专注于科技信息咨询和移动应用开发领域，主要开发电商、社交、区块链相关应用。“图灵魔方”在应用设计和开发领域是为数不多的拥有自主研发框架和高级技术，能够在业内中更快速开发出优质应用。', '', '', '');
+INSERT INTO `sys_lang` VALUES (48, 'content_profile_2', '', '原来我们只是为其他开发公司所服务，现在我们直接为需求方服务，不仅价格实惠，还更能实现理想的应用效果。', '', '', '');
+INSERT INTO `sys_lang` VALUES (49, 'title_framework', 'MM', '超级美眉', '', '', '');
+INSERT INTO `sys_lang` VALUES (50, 'desc_framework', 'Framework', '应用框架', '', '', '');
+INSERT INTO `sys_lang` VALUES (51, 'content_framework', '', '这是用JavaScript编程语言开发的商业级应用框架，适用于大型商城、中小型游戏、社交软件开发，框架简化了对函数和数据的调用，让开发应用变得更加轻松、灵活。全新的架构体让多人协作开发和升级维护更加容易，是未来理想的选择。', '', '', '');
 
 -- ----------------------------
 -- Table structure for sys_message
@@ -298,7 +433,7 @@ CREATE TABLE `sys_nav`  (
   `style` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '风格样式：[0,255]自定义css样式',
   `class` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '样式类型：[0,32]绑定的css class',
   `target` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '跳转方式：[0,32]_blank表示新窗口跳转',
-  `position` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '展现位置：[0,125]top顶部、bottom底部、side侧边，main主要，quick快捷，menu菜单，多个位置用逗号隔开',
+  `position` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'top' COMMENT '展现位置：[0,125]top顶部、bottom底部、side侧边，main主要，quick快捷，menu菜单，多个位置用逗号隔开',
   `device` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '呈现设备：[0,125]在什么设备上展示，web_pc、web_pad、web_phone、app_pad、app_phone，多个设备用逗号隔开',
   `father_id` smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT '上级ID：[0,10000]在频道列表操作时，当上级导航展开时，才显示该导航(sys_nav.name.nav_id)',
   PRIMARY KEY (`nav_id`) USING BTREE
@@ -336,7 +471,7 @@ CREATE TABLE `user_account`  (
   `password` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '密码：[0,32]用户登录所需的密码，由6-16位数字或英文组成',
   `email` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '邮箱：[0,64]用户的邮箱，用于找回密码时或登录时',
   `email_state` smallint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '邮箱认证：[0,1](0未认证|1审核中|2已认证)',
-  `login_ip` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上次登录时的IP地址：[0,128]',
+  `login_ip` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上次登录IP：[0,128]',
   `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '个性签名：[0,255]',
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像地址：[0,255]',
   `friends` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '好友：多个好友ID用“,”分隔',
@@ -347,7 +482,7 @@ CREATE TABLE `user_account`  (
 -- ----------------------------
 -- Records of user_account
 -- ----------------------------
-INSERT INTO `user_account` VALUES (1, 1, 14, 5, 5, 1, 1, 0, '2020-12-15 15:31:30', 'mm2020', '', NULL, 0, 'admin', '管理员', '0cf6066acc83160a6c65282835399c40', '', 0, '192.168.0.134', NULL, NULL, NULL, '2020-11-11 11:10:28');
+INSERT INTO `user_account` VALUES (1, 1, 14, 5, 5, 1, 1, 0, '2020-12-16 11:50:10', 'mm2020', '000000', NULL, 0, 'admin', '管理员', '0cf6066acc83160a6c65282835399c40', '', 0, '127.0.0.1', NULL, NULL, NULL, '2020-11-11 11:10:28');
 INSERT INTO `user_account` VALUES (2, 1, 0, 0, 0, 0, 0, 0, '2020-11-11 11:11:14', '', '', '', 0, 'qiuwenwu', '文武', '', '', 0, '', '', '', '', '2020-11-11 11:10:45');
 
 -- ----------------------------
@@ -460,43 +595,44 @@ CREATE TABLE `user_message`  (
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '留言者手机',
   `email` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '留言者邮箱',
   `name` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '留言者姓名',
+  `time_create` timestamp NULL DEFAULT NULL COMMENT '留言时间',
   PRIMARY KEY (`message_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户留言' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_message
 -- ----------------------------
-INSERT INTO `user_message` VALUES (1, NULL, '你好', NULL, NULL, NULL);
-INSERT INTO `user_message` VALUES (2, NULL, '你好', NULL, NULL, NULL);
-INSERT INTO `user_message` VALUES (3, NULL, '111', '18823759846', NULL, NULL);
-INSERT INTO `user_message` VALUES (4, NULL, '你好', NULL, NULL, NULL);
-INSERT INTO `user_message` VALUES (5, NULL, '你好', '15817188815', NULL, NULL);
-INSERT INTO `user_message` VALUES (6, NULL, '111', '18823759846', NULL, NULL);
-INSERT INTO `user_message` VALUES (7, NULL, '你好', '15817188815', NULL, NULL);
-INSERT INTO `user_message` VALUES (8, NULL, '111', '18823759846', NULL, NULL);
-INSERT INTO `user_message` VALUES (9, NULL, '111', '18823759846', NULL, NULL);
-INSERT INTO `user_message` VALUES (10, NULL, '111', '18823759846', NULL, NULL);
-INSERT INTO `user_message` VALUES (11, NULL, '111', '18823759846', NULL, NULL);
-INSERT INTO `user_message` VALUES (12, NULL, '111', '18823759846', NULL, NULL);
-INSERT INTO `user_message` VALUES (13, '', 'fdsfgsdf', '18823759846', '', '');
-INSERT INTO `user_message` VALUES (14, '', 'ngfnfgngfn', '18823759846', '', '');
-INSERT INTO `user_message` VALUES (15, '', 'ngfnfgngfn', '18823759846', '', '');
-INSERT INTO `user_message` VALUES (16, '', '321132', '12312313245', '', '');
-INSERT INTO `user_message` VALUES (17, '', '123123132', '18079307448', '', '');
-INSERT INTO `user_message` VALUES (18, '', '12132312132', '18079307448', '', '');
-INSERT INTO `user_message` VALUES (19, '', 'DERER', '15817188815', '', '');
-INSERT INTO `user_message` VALUES (20, '', 'DERER', '15817188815', '', '');
-INSERT INTO `user_message` VALUES (21, '', 'DERER', '15817188815', '', '');
-INSERT INTO `user_message` VALUES (22, '', 'DERER', '15817188815', '', '');
-INSERT INTO `user_message` VALUES (23, '', 'DEEE', '12312133331', '', '');
-INSERT INTO `user_message` VALUES (24, '', '12132312312312312321321312312321', '18079307448', '', '');
-INSERT INTO `user_message` VALUES (25, '', '213123132132', '18079307448', '', '');
-INSERT INTO `user_message` VALUES (26, '', '123123123', '18079307448', '', '');
-INSERT INTO `user_message` VALUES (27, '', '132123', '12312312312', '', '');
-INSERT INTO `user_message` VALUES (28, NULL, '123312312', '18079307448', NULL, NULL);
-INSERT INTO `user_message` VALUES (29, NULL, '12213213213', '18079307448', NULL, NULL);
-INSERT INTO `user_message` VALUES (30, NULL, '123231213', '18079307448', NULL, NULL);
-INSERT INTO `user_message` VALUES (31, NULL, '4444', NULL, '22121@qq.com', NULL);
+INSERT INTO `user_message` VALUES (1, NULL, '你好', NULL, NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (2, NULL, '你好', NULL, NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (3, NULL, '111', '18823759846', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (4, NULL, '你好', NULL, NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (5, NULL, '你好', '15817188815', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (6, NULL, '111', '18823759846', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (7, NULL, '你好', '15817188815', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (8, NULL, '111', '18823759846', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (9, NULL, '111', '18823759846', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (10, NULL, '111', '18823759846', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (11, NULL, '111', '18823759846', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (12, NULL, '111', '18823759846', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (13, '', 'fdsfgsdf', '18823759846', '', '', NULL);
+INSERT INTO `user_message` VALUES (14, '', 'ngfnfgngfn', '18823759846', '', '', NULL);
+INSERT INTO `user_message` VALUES (15, '', 'ngfnfgngfn', '18823759846', '', '', NULL);
+INSERT INTO `user_message` VALUES (16, '', '321132', '12312313245', '', '', NULL);
+INSERT INTO `user_message` VALUES (17, '', '123123132', '18079307448', '', '', NULL);
+INSERT INTO `user_message` VALUES (18, '', '12132312132', '18079307448', '', '', NULL);
+INSERT INTO `user_message` VALUES (19, '', 'DERER', '15817188815', '', '', NULL);
+INSERT INTO `user_message` VALUES (20, '', 'DERER', '15817188815', '', '', NULL);
+INSERT INTO `user_message` VALUES (21, '', 'DERER', '15817188815', '', '', NULL);
+INSERT INTO `user_message` VALUES (22, '', 'DERER', '15817188815', '', '', NULL);
+INSERT INTO `user_message` VALUES (23, '', 'DEEE', '12312133331', '', '', NULL);
+INSERT INTO `user_message` VALUES (24, '', '12132312312312312321321312312321', '18079307448', '', '', NULL);
+INSERT INTO `user_message` VALUES (25, '', '213123132132', '18079307448', '', '', NULL);
+INSERT INTO `user_message` VALUES (26, '', '123123123', '18079307448', '', '', NULL);
+INSERT INTO `user_message` VALUES (27, '', '132123', '12312312312', '', '', NULL);
+INSERT INTO `user_message` VALUES (28, NULL, '123312312', '18079307448', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (29, NULL, '12213213213', '18079307448', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (30, NULL, '123231213', '18079307448', NULL, NULL, NULL);
+INSERT INTO `user_message` VALUES (31, NULL, '4444', NULL, '22121@qq.com', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for user_sns

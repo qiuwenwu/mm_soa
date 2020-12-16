@@ -1,12 +1,11 @@
 {
-    "name": "cms_article",
+    "name": "cms_article2",
     "title": "文章",
     "table": "cms_article",
     "key": "article_id",
-    "orderby_default": "`display` asc",
-    "field_obj": "`article_id`,`available`,`state`,`type_id`,`channel_id`,`user_id`,`city_id`,`hot`,`praise`,`collect_id`,`time_create`,`time_update`,`author`,`title`,`keywords`,`description`,`source`,`url`,`tag`,`img`,`content`,`collecter`",
-    "field_default": "`article_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`user_id`,`city_id`,`hot`,`praise`,`collect_id`,`time_create`,`time_update`,`author`,`title`,`keywords`,`description`,`source`,`url`,`tag`",
-    "method": "get get_obj",
+    "orderby_default": "`article_id` desc",
+    "field_obj": "`article_id`,`available`,`state`,`type_id`,`channel_id`,`user_id`,`city_id`,`hot`,`praise`,`collect_id`,`lang`,`author`,`title`,`keywords`,`description`,`source`,`url`,`tag`,`img`,`content`,`collecter`",
+    "field_default": "`article_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`user_id`,`city_id`,`hot`,`praise`,`collect_id`,`time_create`,`time_update`,`lang`,`author`,`title`,`keywords`,`description`,`source`,`url`,`tag`",
     "query": {
         "state_min": "`state` >= {0}",
         "state_max": "`state` <= {0}",
@@ -20,6 +19,7 @@
         "time_create_max": "`time_create` <= '{0}'",
         "time_update_min": "`time_update` >= '{0}'",
         "time_update_max": "`time_update` <= '{0}'",
+        "lang": "`lang` like '%{0}%'",
         "author": "`author` like '%{0}%'",
         "title": "`title` like '%{0}%'",
         "keywords": "`keywords` like '%{0}%'",
@@ -32,7 +32,6 @@
         "collecter": "`collecter` like '%{0}%'",
         "keyword": "(`title` like '%{0}%' || `keywords` like '%{0}%' || `description` like '%{0}%' || `tag` like '%{0}%')"
     },
-    "query_default": {},
     "update": {
         "state_add": "`state` = `state` + {0}",
         "display_add": "`display` = `display` + {0}",
@@ -83,6 +82,19 @@
             "title": "所属城市",
             "table": "sys_address_city",
             "name": "name"
+        },
+        {
+            "key": "lang",
+            "title": "语言",
+            "list": [
+                "",
+                "zh_cn",
+                "en",
+                "zh_tw",
+                "ko",
+                "ja"
+            ]
         }
-    ]
+    ],
+    "field_hide": []
 }

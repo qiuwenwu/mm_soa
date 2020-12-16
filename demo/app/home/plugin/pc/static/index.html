@@ -243,11 +243,77 @@
 									</div>
 								</div>
 								<div class="mm_col col-12 col-md-6">
+									<div class="mm_view center">
+										<div><img src="/img/mm.jpg"></div>
+										<h4>${lang.title_framework}</h4>
+										<h5>${lang.desc_framework}</h5>
+										<p>${lang.content_framework}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- 文章列表 -->
+					<div class="mm_warp" id="list">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12 col-md-6">
 									<div class="mm_view">
-										<div><img src=""></div>
-										<h4>${lang.title_}</h4>
-										<h5>${lang.desc_introduce_1}</h5>
-										<p>${lang.content_introduce_2}</p>
+										<nav class="list_img item-ltb mm_list list-1">
+											<a href="/ui/" class="mm_item router-link-active" url="/">
+												<div class="mm_img">
+													<div class="media">
+														<figure class="mm_icon" style="background-image: url(&quot;/img/default.png&quot;);"><img src="/img/default.png"
+															 alt="图片" mode="mode">
+															<figcaption></figcaption>
+														</figure>
+													</div>
+													<div class="doc">
+														<div class="title">测试1</div>
+														<div class="content">这是一个图片的描述，为了方便演示排版而写</div>
+													</div>
+												</div>
+											</a>
+											<a href="/ui/" class="mm_item router-link-active" url="/">
+												<div class="mm_img">
+													<div class="media">
+														<figure class="mm_icon" style="background-image: url(&quot;/img/default.png&quot;);"><img src="/img/default.png"
+															 alt="图片" mode="mode">
+															<figcaption></figcaption>
+														</figure>
+													</div>
+													<div class="doc">
+														<div class="title">测试2</div>
+														<div class="content">这是一个图片的描述，为了方便演示排版而写</div>
+													</div>
+												</div>
+											</a>
+										</nav>
+									</div>
+								</div>
+								<div class="mm_col col-12 col-md-6">
+									<div class="mm_view">
+										<nav class="latest_product item-ltb mm_list list-1">
+											<!-- {loop list_article o idx} -->
+											<!-- if(idx < 3) -->
+											<a href="/ui/" class="mm_item " url="/">
+												<div class="mm_article">
+													<div class="media">
+														<figure class="mm_icon" style="background-image: url(&quot;/img/default.png&quot;);">
+															<img src="/img/default.png" alt="图片" mode="mode">
+														</figure>
+													</div>
+													<div class="doc">
+														<div class="title">测试1</div>
+														<div class="content">这是一个图片的描述，为了方便演示排版而写</div>
+													</div>
+												</div>
+											</a>
+											<!-- {/if} -->
+											<!-- {/loop} -->
+										</nav>
 									</div>
 								</div>
 							</div>

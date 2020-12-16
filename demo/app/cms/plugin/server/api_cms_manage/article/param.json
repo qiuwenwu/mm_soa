@@ -1,5 +1,5 @@
 {
-    "name": "cms_article",
+    "name": "cms_article2",
     "title": "文章",
     "add": {
         "body": [
@@ -13,6 +13,7 @@
             "hot",
             "praise",
             "collect_id",
+            "lang",
             "author",
             "keywords",
             "description",
@@ -68,6 +69,7 @@
             "praise",
             "praise_add",
             "collect_id",
+            "lang",
             "author",
             "title",
             "keywords",
@@ -115,10 +117,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -177,10 +176,7 @@
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "range": [
-                    1,
-                    1000
-                ]
+                "max": 1000
             }
         },
         {
@@ -220,10 +216,7 @@
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "range": [
-                    1,
-                    10000
-                ]
+                "max": 10000
             }
         },
         {
@@ -233,10 +226,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -246,10 +236,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -319,10 +306,7 @@
             "type": "number",
             "dataType": "int",
             "number": {
-                "range": [
-                    1,
-                    1000000000
-                ]
+                "max": 1000000000
             }
         },
         {
@@ -392,6 +376,16 @@
             }
         },
         {
+            "name": "lang",
+            "title": "语言",
+            "description": "默认zh_cn(1zh_cn|2en|3zh_tw|4ko|5ja)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 16
+            }
+        },
+        {
             "name": "author",
             "title": "作者",
             "description": "写出该文章的人",
@@ -404,7 +398,7 @@
         {
             "name": "title",
             "title": "标题",
-            "description": "用于文章和html的<title>标签中",
+            "description": "用于文章和html的title标签中",
             "type": "string",
             "dataType": "varchar",
             "string": {
@@ -450,8 +444,7 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "max": 255,
-                "format": "url"
+                "max": 255
             }
         },
         {

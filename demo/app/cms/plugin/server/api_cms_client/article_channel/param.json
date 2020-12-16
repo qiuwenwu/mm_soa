@@ -1,17 +1,17 @@
 {
-    "name": "cms_article_channel2",
+    "name": "cms_article_channel",
     "title": "文章频道",
     "add": {
         "body": [
             "available",
-            "hide",
             "can_comment",
+            "city_id",
+            "description",
             "display",
             "father_id",
-            "city_id",
-            "template",
-            "description",
+            "hide",
             "icon",
+            "template",
             "url"
         ],
         "body_required": [
@@ -26,29 +26,29 @@
     },
     "set": {
         "query": [
-            "channel_id",
             "available",
-            "hide",
             "can_comment",
+            "channel_id",
+            "description",
             "display_min",
             "display_max",
+            "hide",
             "name",
-            "description",
             "keyword"
         ],
         "query_required": [],
         "body": [
             "available",
-            "hide",
             "can_comment",
+            "city_id",
+            "description",
             "display",
             "display_add",
             "father_id",
-            "city_id",
+            "hide",
+            "icon",
             "name",
             "template",
-            "description",
-            "icon",
             "url"
         ],
         "body_required": [],
@@ -56,46 +56,23 @@
     },
     "get": {
         "query": [
-            "channel_id",
             "available",
-            "hide",
             "can_comment",
+            "channel_id",
+            "description",
             "display_min",
             "display_max",
+            "hide",
             "name",
-            "description",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
         {
-            "name": "channel_id",
-            "title": "频道ID",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    1,
-                    10000
-                ]
-            }
-        },
-        {
             "name": "available",
             "title": "是否启用",
             "description": "启用后才可以看到该频道。(0否|1是)",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
-        },
-        {
-            "name": "hide",
-            "title": "是否隐藏",
-            "description": "隐藏非管理员该频道无法查看。(0否|1是)",
             "type": "number",
             "dataType": "tinyint",
             "number": {
@@ -110,6 +87,36 @@
             "dataType": "tinyint",
             "number": {
                 "max": 1
+            }
+        },
+        {
+            "name": "channel_id",
+            "title": "频道ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所属城市",
+            "description": "一些地方频道，可以通过该条判断是否可查看。(sys_address_city)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "description",
+            "title": "描述",
+            "description": "描述该频道的作用",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255
             }
         },
         {
@@ -149,24 +156,26 @@
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "range": [
-                    1,
-                    10000
-                ]
+                "max": 10000
             }
         },
         {
-            "name": "city_id",
-            "title": "所属城市",
-            "description": "一些地方频道，可以通过该条判断是否可查看。(sys_address_city)",
+            "name": "hide",
+            "title": "是否隐藏",
+            "description": "隐藏非管理员该频道无法查看。(0否|1是)",
             "type": "number",
-            "dataType": "mediumint",
+            "dataType": "tinyint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 1
             }
+        },
+        {
+            "name": "icon",
+            "title": "频道图标",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
         },
         {
             "name": "name",
@@ -193,24 +202,6 @@
             }
         },
         {
-            "name": "description",
-            "title": "描述",
-            "description": "描述该频道的作用",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
-            }
-        },
-        {
-            "name": "icon",
-            "title": "频道图标",
-            "description": "",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
             "name": "url",
             "title": "外链地址",
             "description": "如果该频道是跳转到其他网站的情况下，就在该URL上设置",
@@ -224,7 +215,7 @@
         {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索频道名称(name)、描述(description)",
+            "description": "用于搜索描述(description)、频道名称(name)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

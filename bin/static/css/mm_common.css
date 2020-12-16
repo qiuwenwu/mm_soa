@@ -2542,6 +2542,5 @@
 	content: "*";
 	color: var(--color_error);
 	left: 0;
-	top: 50%;
-	transform: translateY(-37.5%);
+	top: 1rem;
 }

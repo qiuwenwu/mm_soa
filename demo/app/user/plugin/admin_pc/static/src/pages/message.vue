@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="留言内容 / 留言者姓名 / 留言标题"
+											<mm_input v-model="query.keyword" title="关键词" desc="留言标题 / 留言内容 / 留言者姓名"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -40,16 +40,19 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
+												<mm_reverse title="留言标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="留言者手机" v-model="query.orderby" field="phone" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="留言者邮箱" v-model="query.orderby" field="email" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="留言者姓名" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="留言者手机" v-model="query.orderby" field="phone" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="留言标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
+												<mm_reverse title="留言时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -60,16 +63,19 @@
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
+												<span>{{ o.title }}</span>
+											</td>
+											<td>
+												<span>{{ o.phone }}</span>
+											</td>
+											<td>
 												<span>{{ o.email }}</span>
 											</td>
 											<td>
 												<span>{{ o.name }}</span>
 											</td>
 											<td>
-												<span>{{ o.phone }}</span>
-											</td>
-											<td>
-												<span>{{ o.title }}</span>
+												<span>{{ $to_time(o.time_create, 'yyyy-MM-dd hh:mm') }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./message_form?message_id=' + o[field]">修改</mm_btn>
@@ -140,14 +146,18 @@
 					page: 1,
 					//页面大小
 					size: 10,
-					// 留言内容
-					'content': '',
 					// 消息ID
 					'message_id': 0,
-					// 留言者姓名
-					'name': '',
 					// 留言标题
 					'title': '',
+					// 留言内容
+					'content': '',
+					// 留言者姓名
+					'name': '',
+					// 留言时间——开始时间
+					'time_create_min': '',
+					// 留言时间——结束时间
+					'time_create_max': '',
 					// 关键词
 					'keyword': '',
 					//排序

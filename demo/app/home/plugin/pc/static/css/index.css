@@ -235,7 +235,7 @@
 	position: relative;
 	z-index: 1;
 	padding: 3rem 0;
-	margin-bottom: 1rem;
+	margin-bottom: 5rem;
 }
 
 #introduce h2 {
@@ -257,6 +257,23 @@
 
 #introduce .mm_view {
 	padding: 1rem;
+}
+
+
+#introduce p {
+	margin-top: 1rem;
+}
+
+#introduce img {
+	display: inline-block;
+	border-radius: 50%;
+	border: 4px solid #fff;
+}
+
+#introduce h4 {
+	font-size: 1.25rem;
+	color: var(--color_primary);
+	margin-top: 1rem;
 }
 
 @media (max-width:576px) {

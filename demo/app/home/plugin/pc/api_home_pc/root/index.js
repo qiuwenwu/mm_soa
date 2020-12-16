@@ -1,16 +1,8 @@
 const tpl_dir = "../../static/".fullname(__dirname);
 const tpl_file = tpl_dir + '{0}.html';
 
-/**
- * @description 接口主函数
- * @param {Object} ctx HTTP上下文
- * @param {Object} db 数据管理器,如: { next: async function{}, ret: {} }
- * @return {Object} 执行结果
- */
-async function main(ctx, db) {
-	var path = ctx.path;
-	if (path.indexOf('.') === -1) {
-
+$.home = {
+	model(ctx, path) {
 		// 抽取文件名
 		var name = path.replace("/", "");
 		if (!name) {
@@ -60,8 +52,8 @@ async function main(ctx, db) {
 				}
 			}
 		}
-		
-		
+
+
 		// 获取导航
 		db.table = "sys_nav";
 		var sys_nav = await db.get({});
@@ -69,15 +61,15 @@ async function main(ctx, db) {
 		if (sys_nav.length) {
 			for (var i = 0; i < sys_nav.length; i++) {
 				var o = sys_nav[i];
-				if(o.position){
-					if(!nav[o.position]){
+				if (o.position) {
+					if (!nav[o.position]) {
 						nav[o.position] = [];
-					} 
+					}
 					nav[o.position].push(o);
 				}
 			}
 		}
-		
+
 		// 获取广告
 		db.table = "sys_ad";
 		var sys_ad = await db.get({});
@@ -85,15 +77,15 @@ async function main(ctx, db) {
 		if (sys_ad.length) {
 			for (var i = 0; i < sys_ad.length; i++) {
 				var o = sys_ad[i];
-				if(o.type){
-					if(!ad[o.type]){
+				if (o.type) {
+					if (!ad[o.type]) {
 						ad[o.type] = [];
-					} 
+					}
 					ad[o.type].push(o);
 				}
 			}
 		}
-		
+
 		var query = Object.assign({}, ctx.request.query);
 		var list = [];
 		var obj = {};
@@ -157,6 +149,20 @@ async function main(ctx, db) {
 			}
 		};
 
+		return model
+	}
+}
+
+/**
+ * @description 接口主函数
+ * @param {Object} ctx HTTP上下文
+ * @param {Object} db 数据管理器,如: { next: async function{}, ret: {} }
+ * @return {Object} 执行结果
+ */
+async function main(ctx, db) {
+	var path = ctx.path;
+	if (path.indexOf('.') === -1) {
+		var model = $.home.model(ctx, path);
 		// return model;
 		// art模板引擎
 		return db.tpl.view(file, model);
