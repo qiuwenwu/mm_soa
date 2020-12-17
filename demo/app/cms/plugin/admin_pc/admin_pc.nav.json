@@ -128,7 +128,7 @@
         {
             "title": "内容管理",
             "name": "cms",
-            "icon": "<i class=\"fa-cog\"></i>",
+            "icon": "<i class=\"fa-file-text-o\"></i>",
             "url": "/cms",
             "display": 0,
             "sub": [

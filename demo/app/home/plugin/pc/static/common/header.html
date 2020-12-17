@@ -14,16 +14,26 @@
 											</div>
 											<div class="mm_box">
 												<ul>
+													<!-- ${if(config.sys_lang_list.indexOf('zh_cn') !== -1)} -->
 													<li class="${ sys_lang == 'zh_cn' ? 'active' : '' }" @click="set_lang('zh_cn')"><img src="/home/pc/img/lang/zh_cn.jpg"
 														 alt="简体中文"><span>简体中文</span></li>
+													<!-- ${/if} -->
+													<!-- ${if(config.sys_lang_list.indexOf('zh_tw') !== -1)} -->
 													<li class="${ sys_lang == 'zh_tw' ? 'active' : '' }" @click="set_lang('zh_tw')"><img src="/home/pc/img/lang/zh_tw.jpg"
 														 alt="繁體中文"><span>繁體中文</span></li>
+													<!-- ${/if} -->
+													<!-- ${if(config.sys_lang_list.indexOf('en') !== -1)} -->
 													<li class="${ sys_lang == 'en' ? 'active' : '' }" @click="set_lang('en')"><img src="/home/pc/img/lang/en.jpg"
 														 alt="English"><span>English</span></li>
+													<!-- ${/if} -->
+													<!-- ${if(config.sys_lang_list.indexOf('ko') !== -1)} -->
 													<li class="${ sys_lang == 'ko' ? 'active' : '' }" @click="set_lang('ko')"><img src="/home/pc/img/lang/ko.jpg"
 														 alt="한글"><span>한글</span></li>
+													<!-- ${/if} -->
+													<!-- ${if(config.sys_lang_list.indexOf('ja') !== -1)} -->
 													<li class="${ sys_lang == 'ja' ? 'active' : '' }" @click="set_lang('ja')"><img src="/home/pc/img/lang/ja.jpg"
 														 alt="日本語"><span>日本語</span></li>
+													<!-- ${/if} -->
 												</ul>
 											</div>
 										</a>

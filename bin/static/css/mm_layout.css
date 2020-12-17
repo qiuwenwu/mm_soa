@@ -632,11 +632,6 @@ ol.mm_list li::before {
 	line-height: 1;
 }
 
-.mm_form .value {
-	overflow: hidden;
-}
-
-
 @media (max-width:576px) {
 	.mm_side.hide .mm_warp {
 		left: -100%;

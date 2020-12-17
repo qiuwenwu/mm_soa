@@ -85,7 +85,7 @@
 					"channel_id": 0
 				},
 				form: {
-					"available": 0,
+					"available": 1,
 					"can_comment": 0,
 					"channel_id": 0,
 					"city_id": 0,

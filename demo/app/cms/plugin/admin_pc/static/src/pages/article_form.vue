@@ -49,7 +49,7 @@
 										</dd>
 										<dt>语言</dt>
 										<dd>
-											<mm_select v-model="form.lang" :options="$to_kv(arr_lang)" />
+											<mm_select v-model="form.lang" :options="$to_kv(arr_lang, 'name', 'value')" />
 										</dd>
 										<dt>作者</dt>
 										<dd>
@@ -57,8 +57,7 @@
 										</dd>
 										<dt class="required">标题</dt>
 										<dd>
-											<mm_input v-model="form.title" :minlength="0" :maxlength="125" placeholder="用于文章和html的title标签中"
-											 :required="true" />
+											<mm_input v-model="form.title" :minlength="0" :maxlength="125" placeholder="用于文章和html的title标签中" :required="true" />
 										</dd>
 										<dt>关键词</dt>
 										<dd>
@@ -126,8 +125,8 @@
 				},
 				form: {
 					"article_id": 0,
-					"available": 0,
-					"state": 0,
+					"available": 1,
+					"state": 1,
 					"type_id": 0,
 					"channel_id": 0,
 					"user_id": 0,
@@ -135,7 +134,7 @@
 					"hot": 0,
 					"praise": 0,
 					"collect_id": 0,
-					"lang": '',
+					"lang": 'zh_cn',
 					"author": '',
 					"title": '',
 					"keywords": '',
@@ -148,19 +147,37 @@
 					"collecter": '',
 				},
 				// 是否启用
-				'arr_available': [ '否' , '是' ],
+				'arr_available': ['否', '是'],
 				// 状态
-				'arr_state': [ '' , '正常' , '推荐' , '认证' , '违规' , '官方' ],
+				'arr_state': ['', '正常', '推荐', '认证', '违规', '官方'],
 				// 文章分类
-				'list_article_type': [ ],
+				'list_article_type': [],
 				// 频道
-				'list_article_channel': [ ],
+				'list_article_channel': [],
 				// 用户
-				'list_account': [ ],
+				'list_account': [],
 				// 所属城市
-				'list_address_city': [ ],
+				'list_address_city': [],
 				// 语言
-				'arr_lang': [ '' , 'zh_cn' , 'en' , 'zh_tw' , 'ko' , 'ja' ],
+				'arr_lang': [{
+					name: '',
+					value: ""
+				}, {
+					name: 'zh_cn',
+					value: "zh_cn"
+				}, {
+					name: 'en',
+					value: "en"
+				}, {
+					name: 'zh_tw',
+					value: "zh_tw"
+				}, {
+					name: 'ko',
+					value: "ko"
+				}, {
+					name: 'ja',
+					value: "ja"
+				}]
 			}
 		},
 		methods: {
@@ -177,8 +194,8 @@
 				}
 				this.$get('~/apis/cms/article_type?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article_type .clear();
-						_this.list_article_type .addList(json.result.list)
+						_this.list_article_type.clear();
+						_this.list_article_type.addList(json.result.list)
 					}
 				});
 			},
@@ -195,8 +212,8 @@
 				}
 				this.$get('~/apis/cms/article_channel?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article_channel .clear();
-						_this.list_article_channel .addList(json.result.list)
+						_this.list_article_channel.clear();
+						_this.list_article_channel.addList(json.result.list)
 					}
 				});
 			},
@@ -213,8 +230,8 @@
 				}
 				this.$get('~/apis/user/account?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_account .clear();
-						_this.list_account .addList(json.result.list)
+						_this.list_account.clear();
+						_this.list_account.addList(json.result.list)
 					}
 				});
 			},
@@ -231,8 +248,8 @@
 				}
 				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_city .clear();
-						_this.list_address_city .addList(json.result.list)
+						_this.list_address_city.clear();
+						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},
