@@ -49,7 +49,7 @@ tinymce.addI18n('zh_CN',{
 "Blockquote": "引用",
 "Inline": "文本",
 "Blocks": "区块",
-"Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off.": "当前为纯文本粘贴模式，再次点击可以回到普通粘贴模式。",
+"Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle thisoption off.": "当前为纯文本粘贴模式，再次点击可以回到普通粘贴模式。",
 "Fonts": "字体",
 "Font Sizes": "字号",
 "Class": "Class",

@@ -140,11 +140,11 @@
 					"users": '',
 				},
 				// 是否可用
-				'arr_available': [ '否' , '是' ],
+				'arr_available':["否","是"],
 				// 加解密方式
-				'arr_encrypt': [ '' , '明文模式' , '兼容模式' , '安全模式' ],
+				'arr_encrypt':["","明文模式","兼容模式","安全模式"],
 				// 持有者
-				'list_account': [ ],
+				'list_account':[],
 			}
 		},
 		methods: {
@@ -161,8 +161,8 @@
 				}
 				this.$get('~/apis/user/account?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_account .clear();
-						_this.list_account .addList(json.result.list)
+						_this.list_account.clear();
+						_this.list_account.addList(json.result.list)
 					}
 				});
 			},

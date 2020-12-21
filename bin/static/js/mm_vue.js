@@ -64,7 +64,7 @@ define(["Vue"], function(Vue) {
 			 */
 			Vue.prototype.$to_kv = function(arr, key, name) {
 				var list = [];
-				if(arr.length > 0){
+				if (arr.length > 0) {
 					if (key) {
 						var n = name ? name : 'name';
 						for (var i = 0; i < arr.length; i++) {
@@ -74,11 +74,21 @@ define(["Vue"], function(Vue) {
 								value: o[key]
 							});
 						}
-						if(arr[0].name !== ''){
-							list.unshift({ name: '', value: '' });
-						}
-						else {
+						if (arr[0].name !== '') {
+							list.unshift({
+								name: '',
+								value: ''
+							});
+						} else {
 							list[0].value = '';
+						}
+					} else if (arr.length && typeof(arr[0]) === "object") {
+						list = arr;
+						if (arr[0].name !== '') {
+							list.unshift({
+								name: '',
+								value: ''
+							});
 						}
 					} else {
 						for (var i = 0; i < arr.length; i++) {
@@ -88,25 +98,26 @@ define(["Vue"], function(Vue) {
 								value: i
 							})
 						}
-						if(arr[0] !== ''){
-							list.unshift({ name: '', value: '' });
-						}
-						else {
+						if (arr[0] !== '') {
+							list.unshift({
+								name: '',
+								value: ''
+							});
+						} else {
 							list[0].value = '';
 						}
 					}
 				}
 				return list;
 			};
-			
+
 			/**
 			 * 转换时间
 			 * @param {String} datetime 
 			 * @param {String} format
 			 */
 			Vue.prototype.$to_time = function(datetime, format) {
-				if(!format)
-				{
+				if (!format) {
 					format = 'yyyy-MM-dd hh:mm';
 				}
 				return new Date(datetime).toStr(format);
@@ -116,17 +127,20 @@ define(["Vue"], function(Vue) {
 			 * @param {Object} arr
 			 */
 			Vue.prototype.$to_size = function(arr) {
-				if(!arr || arr.length == 0){
+				if (!arr || arr.length == 0) {
 					arr = [10, 30, 50, 100, 200];
 				}
-				var list =[];
-				for(var i = 0; i < arr.length; i++){
+				var list = [];
+				for (var i = 0; i < arr.length; i++) {
 					var n = arr[i];
-					list.push({name: n + "条/页", value: n});
+					list.push({
+						name: n + "条/页",
+						value: n
+					});
 				}
 				return list;
 			};
-			
+
 			/**
 			 * @description 取host地址
 			 * @param {String} pathAndQuery 路径和参数 例如：'/app/test?name=123'

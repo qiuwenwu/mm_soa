@@ -173,7 +173,7 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 上级
-				'list_admin': [ ],
+				'list_admin':[],
 				// 视图模型
 				vm: {}
 			}
@@ -192,8 +192,8 @@
 				}
 				this.$get('~/apis/user/admin?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_admin .clear();
-						_this.list_admin .addList(json.result.list)
+						_this.list_admin.clear();
+						_this.list_admin.addList(json.result.list)
 					}
 				});
 			},

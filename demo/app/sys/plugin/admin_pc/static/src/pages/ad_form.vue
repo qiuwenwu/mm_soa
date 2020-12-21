@@ -158,11 +158,11 @@
 					"user_id": 0,
 				},
 				// 投放地区
-				'list_address_area': [ ],
+				'list_address_area':[],
 				// 投放城市
-				'list_address_city': [ ],
+				'list_address_city':[],
 				// 广告主
-				'list_account': [ ],
+				'list_account':[],
 			}
 		},
 		methods: {
@@ -179,8 +179,8 @@
 				}
 				this.$get('~/apis/sys/address_area?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_area .clear();
-						_this.list_address_area .addList(json.result.list)
+						_this.list_address_area.clear();
+						_this.list_address_area.addList(json.result.list)
 					}
 				});
 			},
@@ -197,8 +197,8 @@
 				}
 				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_city .clear();
-						_this.list_address_city .addList(json.result.list)
+						_this.list_address_city.clear();
+						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},
@@ -215,8 +215,8 @@
 				}
 				this.$get('~/apis/user/account?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_account .clear();
-						_this.list_account .addList(json.result.list)
+						_this.list_account.clear();
+						_this.list_account.addList(json.result.list)
 					}
 				});
 			},

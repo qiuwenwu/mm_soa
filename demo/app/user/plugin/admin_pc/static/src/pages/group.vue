@@ -213,7 +213,7 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 下级用户组
-				'list_group': [ ],
+				'list_group':[],
 				// 视图模型
 				vm: {}
 			}
@@ -232,8 +232,8 @@
 				}
 				this.$get('~/apis/user/group?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_group .clear();
-						_this.list_group .addList(json.result.list)
+						_this.list_group.clear();
+						_this.list_group.addList(json.result.list)
 					}
 				});
 			},

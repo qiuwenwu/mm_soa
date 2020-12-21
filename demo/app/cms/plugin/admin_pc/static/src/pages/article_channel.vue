@@ -238,15 +238,15 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 是否启用
-				'arr_available': [ '否' , '是' ],
+				'arr_available':["否","是"],
 				// 是否可评论
-				'arr_can_comment': [ '否' , '是' ],
+				'arr_can_comment':["否","是"],
 				// 所属城市
-				'list_address_city': [ ],
+				'list_address_city':[],
 				// 上级
-				'list_article_channel': [ ],
+				'list_article_channel':[],
 				// 是否隐藏
-				'arr_hide': [ '否' , '是' ],
+				'arr_hide':["否","是"],
 				// 视图模型
 				vm: {}
 			}
@@ -265,8 +265,8 @@
 				}
 				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_city .clear();
-						_this.list_address_city .addList(json.result.list)
+						_this.list_address_city.clear();
+						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},
@@ -283,8 +283,8 @@
 				}
 				this.$get('~/apis/cms/article_channel?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article_channel .clear();
-						_this.list_article_channel .addList(json.result.list)
+						_this.list_article_channel.clear();
+						_this.list_article_channel.addList(json.result.list)
 					}
 				});
 			},

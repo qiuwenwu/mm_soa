@@ -208,11 +208,11 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 是否启用
-				'arr_available': [ '否' , '是' ],
+				'arr_available':["否","是"],
 				// 所属文章
-				'list_article': [ ],
+				'list_article':[],
 				// 用户
-				'list_account': [ ],
+				'list_account':[],
 				// 视图模型
 				vm: {}
 			}
@@ -231,8 +231,8 @@
 				}
 				this.$get('~/apis/cms/article?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article .clear();
-						_this.list_article .addList(json.result.list)
+						_this.list_article.clear();
+						_this.list_article.addList(json.result.list)
 					}
 				});
 			},
@@ -249,8 +249,8 @@
 				}
 				this.$get('~/apis/user/account?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_account .clear();
-						_this.list_account .addList(json.result.list)
+						_this.list_account.clear();
+						_this.list_account.addList(json.result.list)
 					}
 				});
 			},

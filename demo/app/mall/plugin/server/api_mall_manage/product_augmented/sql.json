@@ -1,0 +1,21 @@
+{
+    "name": "mall_product_augmented2",
+    "title": "",
+    "table": "mall_product_augmented",
+    "key": "augmented_id",
+    "orderby_default": "`augmented_id` desc",
+    "field_obj": "`augmented_id`,`group`,`name`,`price`,`shop_id`",
+    "field_default": "`augmented_id`,`group`,`name`,`price`,`shop_id`",
+    "query": {
+        "group": "`group` like '%{0}%'",
+        "name": "`name` like '%{0}%'",
+        "price_min": "`price` >= {0}",
+        "price_max": "`price` <= {0}",
+        "keyword": "(`name` like '%{0}%')"
+    },
+    "update": {
+        "price_add": "`price` = `price` + {0}"
+    },
+    "format": [],
+    "field_hide": []
+}

@@ -93,7 +93,7 @@
 					"father_id": 0,
 				},
 				// 上级
-				'list_nav': [ ],
+				'list_nav':[],
 			}
 		},
 		methods: {
@@ -110,8 +110,8 @@
 				}
 				this.$get('~/apis/sys/nav?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_nav .clear();
-						_this.list_nav .addList(json.result.list)
+						_this.list_nav.clear();
+						_this.list_nav.addList(json.result.list)
 					}
 				});
 			},

@@ -264,8 +264,8 @@
 										<!-- 最近产品 -->
 										<h2>${lang.title_latest_product}</h2>
 										<nav class="latest_product mm_list list-1">
-											<!-- ${loop list_product_latest o idx} -->
-											<a href="/article/view?article_id=${o.article_id}" class="mm_item router-link-active" url="/">
+											<!--{loop list_product_latest o idx}-->
+											<a href="/article/view?article_id=${o.article_id}" class="mm_item router-link-active">
 												<div class="mm_article">
 													<div class="media">
 														<figure class="mm_icon" style="background-image: url(${o.img || '/img/default.png'});">
@@ -280,9 +280,9 @@
 													</div>
 												</div>
 											</a>
-											<!-- ${/loop} -->
+											<!--{/loop}-->
 										</nav>
-										<a href="/article/view?article_id=12" class="mm_btn btn_primary">${lang.btn_view_all}</a>
+										<a href="/article/list?channel_id=4" class="mm_btn btn_primary">${lang.btn_view_all}</a>
 									</div>
 								</div>
 								<div class="mm_col col-12 col-md-6">
@@ -290,24 +290,35 @@
 										<!-- 最近事件 -->
 										<h2>${lang.title_latest_event}</h2>
 										<nav class="latest_event item-ltb mm_list list-1">
-											<!-- {loop list_article o idx} -->
-											<!-- if(idx < 3) -->
-											<a href="/ui/" class="mm_item " url="/">
+											<!--{loop list_event_latest o idx}-->
+											<!--{ if(idx < 3) }-->
+											<a href="/article/view?article_id=${o.article_id}" class="mm_item">
 												<div class="mm_article">
 													<div class="media">
-														<figure class="mm_icon" style="background-image: url(&quot;/img/default.png&quot;);">
-															<img src="/img/default.png" alt="图片" mode="mode">
+														<figure class="mm_icon">
+															<div class="icon">
+																<h3>20</h3>
+																<p>Nov</p>
+															</div>
+															<figcaption>
+																<span>2020</span>
+															</figcaption>
 														</figure>
 													</div>
 													<div class="doc">
-														<div class="title">测试1</div>
-														<div class="content">这是一个图片的描述，为了方便演示排版而写</div>
+														<div class="title">${@o.title}</div>
+														<div class="content">
+															<div class="desc">${@o.description || ''}</div>
+															<div class="time">${@o.time_create.toStr('hh:mm:ss')}</div>
+															<div class="author">${@o.author}</div>
+														</div>
 													</div>
 												</div>
 											</a>
-											<!-- {/if} -->
-											<!-- {/loop} -->
+											<!--{/if}-->
+											<!--{/loop}-->
 										</nav>
+										<a href="/article/list?channel_id=12" class="mm_btn btn_primary">${lang.btn_view_all}</a>
 									</div>
 								</div>
 							</div>
@@ -347,7 +358,6 @@
 				methods: {
 					submit() {
 						$.http.post("/api/user/message?method=add", this.form, function(res) {
-							console.log(res);
 							if (res.result) {
 								$.toast(res.result.tip);
 							} else if (res.error) {

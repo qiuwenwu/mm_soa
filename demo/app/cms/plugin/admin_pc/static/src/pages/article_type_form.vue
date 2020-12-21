@@ -67,7 +67,7 @@
 					"icon": '',
 				},
 				// 上级分类
-				'list_article_type': [ ],
+				'list_article_type':[],
 			}
 		},
 		methods: {
@@ -84,8 +84,8 @@
 				}
 				this.$get('~/apis/cms/article_type?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article_type .clear();
-						_this.list_article_type .addList(json.result.list)
+						_this.list_article_type.clear();
+						_this.list_article_type.addList(json.result.list)
 					}
 				});
 			},

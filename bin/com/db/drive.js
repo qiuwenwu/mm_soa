@@ -34,10 +34,10 @@ class Drive extends Item {
 
 		// 是否设置以下字段为getObj查对象SQL时不可见
 		this.getObj_not = ['password', 'salt', 'display'];
-		
+
 		// 是否设置默认该表仅用户可访问
 		this.query_default_table = ['user'];
-		
+
 		/**
 		 * 配置参数
 		 */
@@ -96,7 +96,7 @@ Drive.prototype.model = function(fields) {
 	var min = 0;
 	var max = 0;
 
-	var note = note.replace("：", ":").replace('（', '(').replace('）',')');
+	var note = note.replace("：", ":").replace('（', '(').replace('）', ')');
 	var title = note.left(":", true).trim();
 	var desc = note.right(":");
 	var description = "";
@@ -383,7 +383,7 @@ Drive.prototype.update_db = async function(db) {
 				}
 			}
 			note += o.description;
-			if(o.map){
+			if (o.map) {
 				note += '(' + o.map + ')'
 			}
 			var sql = "`{1}` {2} {3} {4} COMMENT '{5}'";
@@ -441,7 +441,7 @@ Drive.prototype.update_app = async function(cover) {
 	} else {
 		f = this.filename + '.db.json';
 	}
-	
+
 	if (f) {
 		if (!this.dir) {
 			this.dir = f.dirname();
@@ -554,31 +554,38 @@ Drive.prototype.new_event = async function(dir, path, scope) {
  * @param {Object} obj
  * @return {Object} 返回格式
  */
-Drive.prototype.get_format = async function(obj){
+Drive.prototype.get_format = async function(obj) {
 	var map = obj.map;
 	var format = {
 		key: obj.name,
 		title: obj.title.replace('ID', '').replace('id', '')
 	};
-	if(map.indexOf('|') !== -1){
+	if (map.indexOf('|') !== -1) {
 		var list = map.split('|');
-		if(map.indexOf('0') !== 0){
-			list.unshift('');
+		if (/^[0-9]+/.test(map)) {
+			if (map.indexOf('0') !== 0) {
+				list.unshift('');
+			}
+			format.list = list.map((value) => {
+				return value.replace(/[0-9]+/, '')
+			})
+		} else {
+			format.list = list.map((value) => {
+				return {
+					name: value,
+					value
+				}
+			});
 		}
-		format.list = list.map((value) => {
-			return value.replace(/[0-9]+/, '')
-		})
-	}
-	else {
-		if(map.indexOf('.') !== -1){
+	} else {
+		if (map.indexOf('.') !== -1) {
 			var arr = obj.map.split('.');
 			format.table = arr[0];
 			format.name = arr[1];
-			if(arr.length > 2){
+			if (arr.length > 2) {
 				format.id = arr[2];
 			}
-		}
-		else {
+		} else {
 			format.table = obj.map;
 			format.name = 'name';
 		}
@@ -640,9 +647,9 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 				query_default[n] = "`" + n + "` = {" + uid + "}";
 			}
 		}
-		if(o.map){
+		if (o.map) {
 			var fmt = await this.get_format(o);
-			if(fmt){
+			if (fmt) {
 				format.push(fmt);
 			}
 		}
@@ -690,7 +697,8 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		delete m.method;
 		m.field_hide = [];
 		m.name += 2;
-		m.field_obj = m.field_obj.replace(",`time_create`", "").replace(",`time_update`", "").replace(",`create_time`", "").replace(",`update_time`", "");
+		m.field_obj = m.field_obj.replace(",`time_create`", "").replace(",`time_update`", "").replace(",`create_time`", "")
+			.replace(",`update_time`", "");
 		delete m.query_default;
 		this.save_file(manage + '/sql.json', m, cover);
 	}
@@ -852,7 +860,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			m_max.name = n + "_max";
 			m_max.title += "——结束时间";
 			cm.list.push(m_max);
-			
+
 			if (n.indexOf('create') !== -1 && n.indexOf('update') !== -1) {
 				cm.add.body.push(n);
 				cm.set.body.push(n);
@@ -969,7 +977,7 @@ Drive.prototype.isSet = function(name, arr) {
  * @return {Boolean} 是否可以
  */
 Drive.prototype.isCan = function(name, arr, type) {
-	if(type === 'text'){
+	if (type === 'text') {
 		return false;
 	}
 	var bl = false;

@@ -115,7 +115,7 @@
 				},
 				/*[loop js.data v idx]*/
 				// ${' ' + v.title}
-				'${v.name}': [ /*[loop v.value a idx]*/ /*[if idx == 0]*/ '${a}' /*[else]*/ , '${a}' /*[/if]*/ /*[/loop]*/ ],
+				'${v.name}': ${@JSON.stringify(v.value)},
 				/*[/loop]*/
 			}
 		},
@@ -135,8 +135,8 @@
 				}
 				this.$get('~${v.path}', query, function(json) {
 					if (json.result) {
-						_this /*['.' + v.name]*/ .clear();
-						_this /*['.' + v.name]*/ .addList(json.result.list)
+						_this/*['.' + v.name]*/.clear();
+						_this/*['.' + v.name]*/.addList(json.result.list)
 					}
 				});
 			},

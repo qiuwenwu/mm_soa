@@ -265,13 +265,13 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 性别
-				'arr_sex': [ '未设置' , '男' , '女' ],
+				'arr_sex':["未设置","男","女"],
 				// 身份实名认证
-				'arr_idcard_state': [ '' , '未认证' , '认证中' , '认证通过' ],
+				'arr_idcard_state':["","未认证","认证中","认证通过"],
 				// 省份
-				'list_address_province': [ ],
+				'list_address_province':[],
 				// 所在城市
-				'list_address_city': [ ],
+				'list_address_city':[],
 				// 视图模型
 				vm: {}
 			}
@@ -290,8 +290,8 @@
 				}
 				this.$get('~/apis/sys/address_province?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_province .clear();
-						_this.list_address_province .addList(json.result.list)
+						_this.list_address_province.clear();
+						_this.list_address_province.addList(json.result.list)
 					}
 				});
 			},
@@ -308,8 +308,8 @@
 				}
 				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_city .clear();
-						_this.list_address_city .addList(json.result.list)
+						_this.list_address_city.clear();
+						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},

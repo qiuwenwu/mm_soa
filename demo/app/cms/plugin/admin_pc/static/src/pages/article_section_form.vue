@@ -74,7 +74,7 @@
 					"img": '',
 				},
 				// 对应文章
-				'list_article': [ ],
+				'list_article':[],
 			}
 		},
 		methods: {
@@ -91,8 +91,8 @@
 				}
 				this.$get('~/apis/cms/article?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article .clear();
-						_this.list_article .addList(json.result.list)
+						_this.list_article.clear();
+						_this.list_article.addList(json.result.list)
 					}
 				});
 			},

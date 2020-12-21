@@ -169,7 +169,7 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 对应文章
-				'list_article': [ ],
+				'list_article':[],
 				// 视图模型
 				vm: {}
 			}
@@ -188,8 +188,8 @@
 				}
 				this.$get('~/apis/cms/article?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article .clear();
-						_this.list_article .addList(json.result.list)
+						_this.list_article.clear();
+						_this.list_article.addList(json.result.list)
 					}
 				});
 			},

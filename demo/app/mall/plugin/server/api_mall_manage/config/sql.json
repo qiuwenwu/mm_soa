@@ -1,0 +1,21 @@
+{
+    "name": "mall_config2",
+    "title": "商城配置",
+    "table": "mall_config",
+    "key": "config_id",
+    "orderby_default": "`config_id` desc",
+    "field_obj": "`config_id`,`description`,`model`,`name`,`title`,`type`,`value`",
+    "field_default": "`config_id`,`description`,`name`,`title`,`type`,`value`",
+    "query": {
+        "name": "`name` like '%{0}%'",
+        "type": "`type` like '%{0}%'",
+        "title": "`title` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "value": "`value` like '%{0}%'",
+        "model": "`model` like '%{0}%'",
+        "keyword": "(`description` like '%{0}%' || `name` like '%{0}%' || `title` like '%{0}%')"
+    },
+    "update": {},
+    "format": [],
+    "field_hide": []
+}

@@ -93,7 +93,7 @@
 					"icon": '',
 				},
 				// 下级用户组
-				'list_group': [ ],
+				'list_group':[],
 			}
 		},
 		methods: {
@@ -110,8 +110,8 @@
 				}
 				this.$get('~/apis/user/group?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_group .clear();
-						_this.list_group .addList(json.result.list)
+						_this.list_group.clear();
+						_this.list_group.addList(json.result.list)
 					}
 				});
 			},

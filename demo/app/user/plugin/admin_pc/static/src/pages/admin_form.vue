@@ -73,7 +73,7 @@
 					"icon": '',
 				},
 				// 上级
-				'list_admin': [ ],
+				'list_admin':[],
 			}
 		},
 		methods: {
@@ -90,8 +90,8 @@
 				}
 				this.$get('~/apis/user/admin?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_admin .clear();
-						_this.list_admin .addList(json.result.list)
+						_this.list_admin.clear();
+						_this.list_admin.addList(json.result.list)
 					}
 				});
 			},

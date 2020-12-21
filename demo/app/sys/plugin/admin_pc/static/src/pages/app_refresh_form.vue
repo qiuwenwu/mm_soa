@@ -64,7 +64,7 @@
 					"refresh_token": '',
 				},
 				// 用户
-				'list_account': [ ],
+				'list_account':[],
 			}
 		},
 		methods: {
@@ -81,8 +81,8 @@
 				}
 				this.$get('~/apis/user/account?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_account .clear();
-						_this.list_account .addList(json.result.list)
+						_this.list_account.clear();
+						_this.list_account.addList(json.result.list)
 					}
 				});
 			},

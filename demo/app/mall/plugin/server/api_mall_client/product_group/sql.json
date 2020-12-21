@@ -1,0 +1,30 @@
+{
+    "name": "mall_product_group",
+    "title": "商品分组",
+    "table": "mall_product_group",
+    "key": "group_id",
+    "orderby_default": "`display` asc",
+    "field_obj": "`description`,`group_id`,`icon`,`name`,`shop_id`",
+    "field_default": "`description`,`display`,`group_id`,`name`,`shop_id`",
+    "method": "get get_obj",
+    "query": {
+        "description": "`description` like '%{0}%'",
+        "display_min": "`display` >= {0}",
+        "display_max": "`display` <= {0}",
+        "icon": "`icon` like '%{0}%'",
+        "name": "`name` like '%{0}%'",
+        "keyword": "(`description` like '%{0}%' || `name` like '%{0}%')"
+    },
+    "query_default": {},
+    "update": {
+        "display_add": "`display` = `display` + {0}"
+    },
+    "format": [
+        {
+            "key": "shop_id",
+            "title": "店铺",
+            "table": "mall_shop",
+            "name": "name"
+        }
+    ]
+}

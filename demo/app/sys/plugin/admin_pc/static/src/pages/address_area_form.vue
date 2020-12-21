@@ -63,9 +63,9 @@
 					"name": '',
 				},
 				// 是否可见
-				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],
+				'arr_show':["仅表单可见","表单和搜索可见","均可见"],
 				// 所属城市
-				'list_address_city': [ ],
+				'list_address_city':[],
 			}
 		},
 		methods: {
@@ -82,8 +82,8 @@
 				}
 				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_city .clear();
-						_this.list_address_city .addList(json.result.list)
+						_this.list_address_city.clear();
+						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},

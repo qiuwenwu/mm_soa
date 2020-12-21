@@ -478,6 +478,7 @@ Drive.prototype.create_vue = async function(file, route) {
 	$.log.debug('更新vue文件：', file);
 	var m = Object.assign(model, this.get_api(app, route));
 	var vm = await viewModel.run(m);
+	vm.JSON = JSON;
 	var vue = tpl.view(f, vm);
 	if(vue)
 	{

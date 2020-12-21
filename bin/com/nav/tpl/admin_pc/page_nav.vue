@@ -202,7 +202,7 @@
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				/*[loop js.data v idx]*/
 				// ${' ' + v.title}
-				'${v.name}': [ /*[loop v.value a idx]*/ /*[if idx == 0]*/ '${a}' /*[else]*/ , '${a}' /*[/if]*/ /*[/loop]*/ ],
+				'${v.name}': ${@JSON.stringify(v.value)},
 				/*[/loop]*/
 				// 视图模型
 				vm: {}
@@ -224,8 +224,8 @@
 				}
 				this.$get('~${v.path}', query, function(json) {
 					if (json.result) {
-						_this /*['.' + v.name]*/ .clear();
-						_this /*['.' + v.name]*/ .addList(json.result.list)
+						_this/*['.' + v.name]*/.clear();
+						_this/*['.' + v.name]*/.addList(json.result.list)
 					}
 				});
 			},

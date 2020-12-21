@@ -144,17 +144,17 @@
 					"friends": '',
 				},
 				// 账户状态
-				'arr_state': [ '' , '可用' , '异常' , '已冻结' , '已注销' ],
+				'arr_state':["","可用","异常","已冻结","已注销"],
 				// 所在用户组
-				'list_group': [ ],
+				'list_group':[],
 				// 所在管理组
-				'list_admin': [ ],
+				'list_admin':[],
 				// 推荐人
-				'list_account': [ ],
+				'list_account':[],
 				// 手机认证
-				'arr_phone_state': [ '未认证' , '审核中' , '已认证' ],
+				'arr_phone_state':["未认证","审核中","已认证"],
 				// 邮箱认证
-				'arr_email_state': [ '未认证' , '审核中' , '已认证' ],
+				'arr_email_state':["未认证","审核中","已认证"],
 			}
 		},
 		methods: {
@@ -171,8 +171,8 @@
 				}
 				this.$get('~/apis/user/group?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_group .clear();
-						_this.list_group .addList(json.result.list)
+						_this.list_group.clear();
+						_this.list_group.addList(json.result.list)
 					}
 				});
 			},
@@ -189,8 +189,8 @@
 				}
 				this.$get('~/apis/user/admin?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_admin .clear();
-						_this.list_admin .addList(json.result.list)
+						_this.list_admin.clear();
+						_this.list_admin.addList(json.result.list)
 					}
 				});
 			},
@@ -207,8 +207,8 @@
 				}
 				this.$get('~/apis/user/account?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_account .clear();
-						_this.list_account .addList(json.result.list)
+						_this.list_account.clear();
+						_this.list_account.addList(json.result.list)
 					}
 				});
 			},

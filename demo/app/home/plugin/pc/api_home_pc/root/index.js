@@ -182,7 +182,7 @@ async function main(ctx, db) {
 			// console.log("产品相关频道ID", ids);
 			if(ids){
 				ids = ids.replace(",", "");
-				model.list_product_latest = await db.run(`select * from cms_article where channel_id in (${ids})`);
+				model.list_product_latest = await db.run(`select * from cms_article where channel_id in (${ids}) AND lang = '${model.sys_lang}'`);
 			}
 
 			// 获取最近事件
@@ -194,7 +194,7 @@ async function main(ctx, db) {
 			if(channel_id){
 				db.table = "cms_article";
 				model.list_event_latest = await db.get({
-					lang: model.lang,
+					lang: model.sys_lang,
 					channel_id
 				});
 			}
@@ -202,7 +202,6 @@ async function main(ctx, db) {
 			model.list_product_latest = [];
 			model.list_event_latest = [];
 		}
-		
 		return db.tpl.view(file, model);
 	}
 	return null;

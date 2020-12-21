@@ -162,7 +162,7 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 是否可见
-				'arr_show': [ '仅表单可见' , '表单和搜索可见' , '均可见' ],
+				'arr_show':["仅表单可见","表单和搜索可见","均可见"],
 				// 视图模型
 				vm: {}
 			}

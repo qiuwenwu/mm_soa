@@ -325,11 +325,11 @@
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 投放地区
-				'list_address_area': [ ],
+				'list_address_area':[],
 				// 投放城市
-				'list_address_city': [ ],
+				'list_address_city':[],
 				// 广告主
-				'list_account': [ ],
+				'list_account':[],
 				// 视图模型
 				vm: {}
 			}
@@ -348,8 +348,8 @@
 				}
 				this.$get('~/apis/sys/address_area?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_area .clear();
-						_this.list_address_area .addList(json.result.list)
+						_this.list_address_area.clear();
+						_this.list_address_area.addList(json.result.list)
 					}
 				});
 			},
@@ -366,8 +366,8 @@
 				}
 				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_city .clear();
-						_this.list_address_city .addList(json.result.list)
+						_this.list_address_city.clear();
+						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},
@@ -384,8 +384,8 @@
 				}
 				this.$get('~/apis/user/account?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_account .clear();
-						_this.list_account .addList(json.result.list)
+						_this.list_account.clear();
+						_this.list_account.addList(json.result.list)
 					}
 				});
 			},

@@ -36,8 +36,8 @@
 		// 调用方式
 		"method": "method"
 	},
-	// 调用方式 add增 del删 set改 get查 import导入 export导出, 支持什么方式就传什么值，支持多个用空格分隔
-	"method": "add del set get import export",
+	// 调用方式 add增 del删 set改 get查 get_obj查一条 import导入 export导出, 支持什么方式就传什么值，支持多个用空格分隔
+	"method": "add del set get get_obj import export del_repeat",
 	// 查询条件转换
 	"query": {
 		// 当username=xx时，转为`username` like '%xxx%'的SQL语法

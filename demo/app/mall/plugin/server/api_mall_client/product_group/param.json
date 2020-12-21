@@ -1,0 +1,140 @@
+{
+    "name": "mall_product_group",
+    "title": "商品分组",
+    "add": {
+        "body": [
+            "description",
+            "display",
+            "icon",
+            "name",
+            "shop_id"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "group_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "description",
+            "display_min",
+            "display_max",
+            "group_id",
+            "name",
+            "keyword"
+        ],
+        "query_required": [],
+        "body": [
+            "description",
+            "display",
+            "display_add",
+            "icon",
+            "name",
+            "shop_id"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "description",
+            "display_min",
+            "display_max",
+            "group_id",
+            "name",
+            "keyword"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "description",
+            "title": "分组描述",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255
+            }
+        },
+        {
+            "name": "display",
+            "title": "显示顺序",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "group_id",
+            "title": "产品分组ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 30000
+            }
+        },
+        {
+            "name": "icon",
+            "title": "分组图标",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "name",
+            "title": "分组名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 16
+            }
+        },
+        {
+            "name": "shop_id",
+            "title": "店铺ID",
+            "description": "对应每个商家店铺(mall_shop.name)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索分组描述(description)、分组名称(name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

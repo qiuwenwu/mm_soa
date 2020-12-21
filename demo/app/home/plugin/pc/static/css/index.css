@@ -279,6 +279,7 @@
 #latest_product {
 	padding: 1rem;
 }
+
 #latest_product nav {
 	background-color: #fff;
 	border-radius: 0.25rem;
@@ -290,9 +291,11 @@
 	margin: 0 1rem;
 	padding: 1rem 0;
 }
+
 #latest_product .mm_item:last-child {
 	border-bottom: none;
 }
+
 #latest_product .mm_icon {
 	width: 10rem;
 	height: 6.875rem;
@@ -323,6 +326,43 @@
 	float: right;
 }
 
+#latest_event .mm_article {
+	background-color: #ffffff;
+	padding: 1.25rem;
+	overflow: hidden;
+}
+
+#latest_event .mm_icon {
+	text-align: center;
+	background: var(--color_primary);
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
+
+#latest_event .icon {
+	width: 6.25rem;
+	padding-top: 0.875rem;
+}
+
+#latest_event h3 {
+	font-size: 2rem;
+	line-height: 2.375rem;
+}
+
+#latest_event .icon p {
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+	line-height: 1.5rem;
+}
+
+#latest_event figcaption {
+	background-color: #002147;
+	line-height: 2.5;
+	height: 2.5rem;
+	display: block;
+	color: #fff;
+}
+
 @media (max-width:576px) {
 	#apply .mm_btn {
 		position: initial;
@@ -340,12 +380,13 @@
 	#recommend {
 		margin-top: 0;
 	}
-	
+
 	#latest_product .media {
 		float: none;
 		width: 100%;
 		padding: 0;
 	}
+
 	#latest_product .mm_icon {
 		width: 100%;
 		background-size: 100% auto;
