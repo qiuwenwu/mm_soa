@@ -2,7 +2,7 @@
     "name": "nav",
     "title": "导航信息",
     "description": "获取指定app的导航链接和路由信息",
-    "path": "/api/nav*",
+    "path": "/api/sys/nav*",
     "type": "api",
     "func_file": "./index.js",
     "func_name": "",
