@@ -4,16 +4,16 @@
     "table": "mall_product_group",
     "key": "group_id",
     "orderby_default": "`display` asc",
-    "field_obj": "`description`,`group_id`,`icon`,`name`,`shop_id`",
-    "field_default": "`description`,`display`,`group_id`,`name`,`shop_id`",
+    "field_obj": "`group_id`,`name`,`icon`,`description`,`shop_id`",
+    "field_default": "`group_id`,`display`,`name`,`description`,`shop_id`",
     "method": "get get_obj",
     "query": {
-        "description": "`description` like '%{0}%'",
         "display_min": "`display` >= {0}",
         "display_max": "`display` <= {0}",
-        "icon": "`icon` like '%{0}%'",
         "name": "`name` like '%{0}%'",
-        "keyword": "(`description` like '%{0}%' || `name` like '%{0}%')"
+        "icon": "`icon` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%' || `description` like '%{0}%')"
     },
     "query_default": {},
     "update": {

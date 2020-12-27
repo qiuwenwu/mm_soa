@@ -4,8 +4,8 @@
     "table": "mall_product",
     "key": "product_id",
     "orderby_default": "`display` asc",
-    "field_obj": "`available`,`brand`,`channel_id`,`city_id`,`collecter`,`content`,`description`,`hot`,`img`,`keywords`,`praise`,`price`,`price_old`,`product_id`,`shop_id`,`state`,`tag`,`time_create`,`time_update`,`title`,`type_id`",
-    "field_default": "`available`,`brand`,`channel_id`,`city_id`,`description`,`display`,`hot`,`keywords`,`praise`,`price`,`price_old`,`product_id`,`shop_id`,`state`,`tag`,`time_create`,`time_update`,`title`,`type_id`",
+    "field_obj": "`product_id`,`available`,`state`,`type_id`,`channel_id`,`shop_id`,`group_id`,`city_id`,`hot`,`praise`,`sales`,`price`,`price_old`,`time_create`,`time_update`,`title`,`keywords`,`description`,`tag`,`img`,`content`,`collecter`,`brand`",
+    "field_default": "`product_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`shop_id`,`group_id`,`city_id`,`hot`,`praise`,`sales`,`price`,`price_old`,`time_create`,`time_update`,`title`,`keywords`,`description`,`tag`,`brand`",
     "method": "get get_obj",
     "query": {
         "state_min": "`state` >= {0}",
@@ -16,6 +16,8 @@
         "hot_max": "`hot` <= {0}",
         "praise_min": "`praise` >= {0}",
         "praise_max": "`praise` <= {0}",
+        "sales_min": "`sales` >= {0}",
+        "sales_max": "`sales` <= {0}",
         "price_min": "`price` >= {0}",
         "price_max": "`price` <= {0}",
         "price_old_min": "`price_old` >= {0}",
@@ -32,7 +34,7 @@
         "content": "`content` like '%{0}%'",
         "collecter": "`collecter` like '%{0}%'",
         "brand": "`brand` like '%{0}%'",
-        "keyword": "(`description` like '%{0}%' || `keywords` like '%{0}%' || `tag` like '%{0}%' || `title` like '%{0}%')"
+        "keyword": "(`title` like '%{0}%' || `keywords` like '%{0}%' || `description` like '%{0}%' || `tag` like '%{0}%')"
     },
     "query_default": {},
     "update": {
@@ -40,6 +42,7 @@
         "display_add": "`display` = `display` + {0}",
         "hot_add": "`hot` = `hot` + {0}",
         "praise_add": "`praise` = `praise` + {0}",
+        "sales_add": "`sales` = `sales` + {0}",
         "price_add": "`price` = `price` + {0}",
         "price_old_add": "`price_old` = `price_old` + {0}"
     },
@@ -51,24 +54,6 @@
                 "否",
                 "是"
             ]
-        },
-        {
-            "key": "channel_id",
-            "title": "频道",
-            "table": "mall_product_channel",
-            "name": "name"
-        },
-        {
-            "key": "city_id",
-            "title": "所属城市",
-            "table": "sys_address_city",
-            "name": "name"
-        },
-        {
-            "key": "shop_id",
-            "title": "店铺",
-            "table": "mall_shop",
-            "name": "name"
         },
         {
             "key": "state",
@@ -86,6 +71,30 @@
             "key": "type_id",
             "title": "产品分类",
             "table": "mall_product_type",
+            "name": "name"
+        },
+        {
+            "key": "channel_id",
+            "title": "频道",
+            "table": "mall_product_channel",
+            "name": "name"
+        },
+        {
+            "key": "shop_id",
+            "title": "店铺",
+            "table": "mall_shop",
+            "name": "name"
+        },
+        {
+            "key": "group_id",
+            "title": "分组",
+            "table": "mall_product_group",
+            "name": "name"
+        },
+        {
+            "key": "city_id",
+            "title": "所属城市",
+            "table": "sys_address_city",
             "name": "name"
         }
     ]

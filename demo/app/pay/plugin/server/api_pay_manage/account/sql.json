@@ -36,7 +36,7 @@
         },
         {
             "key": "bank_state",
-            "title": "微信认证",
+            "title": "网银认证",
             "list": [
                 "未认证",
                 "已认证"
@@ -52,7 +52,7 @@
         },
         {
             "key": "alipay_state",
-            "title": "微信认证",
+            "title": "支付宝认证",
             "list": [
                 "未认证",
                 "已认证"

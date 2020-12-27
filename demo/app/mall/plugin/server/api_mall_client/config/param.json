@@ -3,10 +3,10 @@
     "title": "商城配置",
     "add": {
         "body": [
-            "description",
-            "model",
             "title",
-            "value"
+            "description",
+            "value",
+            "model"
         ],
         "body_required": [
             "name",
@@ -22,19 +22,19 @@
     "set": {
         "query": [
             "config_id",
-            "description",
             "name",
             "title",
+            "description",
             "keyword"
         ],
         "query_required": [],
         "body": [
-            "description",
-            "model",
             "name",
-            "title",
             "type",
-            "value"
+            "title",
+            "description",
+            "value",
+            "model"
         ],
         "body_required": [],
         "body_not": []
@@ -42,9 +42,9 @@
     "get": {
         "query": [
             "config_id",
-            "description",
             "name",
             "title",
+            "description",
             "keyword"
         ],
         "query_required": []
@@ -61,27 +61,20 @@
             }
         },
         {
-            "name": "description",
-            "title": "变量描述",
-            "description": "描述该变量的作用",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
-            }
-        },
-        {
-            "name": "model",
-            "title": "数据模型",
-            "description": "json格式，用于单选、多选模式",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
             "name": "name",
             "title": "变量名",
             "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 16,
+                "notEmpty": true
+            }
+        },
+        {
+            "name": "type",
+            "title": "数据类型",
+            "description": "string文本型、number数字型、boolean布尔型",
             "type": "string",
             "dataType": "varchar",
             "string": {
@@ -100,14 +93,13 @@
             }
         },
         {
-            "name": "type",
-            "title": "数据类型",
-            "description": "string文本型、number数字型、boolean布尔型",
+            "name": "description",
+            "title": "变量描述",
+            "description": "描述该变量的作用",
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "max": 16,
-                "notEmpty": true
+                "max": 255
             }
         },
         {
@@ -121,9 +113,17 @@
             }
         },
         {
+            "name": "model",
+            "title": "数据模型",
+            "description": "json格式，用于单选、多选模式",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索变量描述(description)、变量名(name)、变量标题(title)",
+            "description": "用于搜索变量名(name)、变量标题(title)、变量描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

@@ -91,10 +91,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -133,7 +130,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 32
+            }
         },
         {
             "name": "bank_name",
@@ -141,11 +140,13 @@
             "description": "含支行",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "bank_state",
-            "title": "微信认证",
+            "title": "网银认证",
             "description": "(0未认证|1已认证)",
             "type": "number",
             "dataType": "tinyint",
@@ -159,7 +160,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 32
+            }
         },
         {
             "name": "wechat_state",
@@ -177,11 +180,13 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 32
+            }
         },
         {
             "name": "alipay_state",
-            "title": "微信认证",
+            "title": "支付宝认证",
             "description": "(0未认证|1已认证)",
             "type": "number",
             "dataType": "tinyint",
@@ -195,7 +200,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "btc_state",
@@ -213,7 +220,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "eth_state",
@@ -231,7 +240,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "eos_state",
@@ -249,7 +260,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "mm_state",

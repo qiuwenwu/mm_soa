@@ -15,7 +15,10 @@ class Oauth {
  * 授权链接
  */
 Oauth.prototype.connect = async function(query, db, dict) {
-
+	console.log('connect');
+	return $.ret.body = {
+		url: dict.url_code
+	}
 };
 
 /**

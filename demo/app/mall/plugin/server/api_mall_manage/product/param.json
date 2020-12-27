@@ -4,24 +4,26 @@
     "add": {
         "body": [
             "available",
-            "brand",
-            "channel_id",
-            "city_id",
-            "collecter",
-            "content",
-            "description",
+            "state",
+            "type_id",
             "display",
+            "channel_id",
+            "shop_id",
+            "group_id",
+            "city_id",
             "hot",
-            "img",
-            "keywords",
             "praise",
+            "sales",
             "price",
             "price_old",
-            "shop_id",
-            "state",
-            "tag",
             "title",
-            "type_id"
+            "keywords",
+            "description",
+            "tag",
+            "img",
+            "content",
+            "collecter",
+            "brand"
         ],
         "body_required": []
     },
@@ -33,88 +35,105 @@
     },
     "set": {
         "query": [
+            "product_id",
             "available",
-            "content",
-            "description",
+            "state_min",
+            "state_max",
             "display_min",
             "display_max",
             "hot_min",
             "hot_max",
-            "keywords",
             "praise_min",
             "praise_max",
+            "sales_min",
+            "sales_max",
             "price_min",
             "price_max",
             "price_old_min",
             "price_old_max",
-            "product_id",
-            "state_min",
-            "state_max",
-            "tag",
             "title",
+            "keywords",
+            "description",
+            "tag",
+            "content",
             "keyword"
         ],
         "query_required": [],
         "body": [
             "available",
-            "brand",
-            "channel_id",
-            "city_id",
-            "collecter",
-            "content",
-            "description",
+            "state",
+            "state_add",
+            "type_id",
             "display",
             "display_add",
+            "channel_id",
+            "shop_id",
+            "group_id",
+            "city_id",
             "hot",
             "hot_add",
-            "img",
-            "keywords",
             "praise",
             "praise_add",
+            "sales",
+            "sales_add",
             "price",
             "price_add",
             "price_old",
             "price_old_add",
-            "shop_id",
-            "state",
-            "state_add",
-            "tag",
             "title",
-            "type_id"
+            "keywords",
+            "description",
+            "tag",
+            "img",
+            "content",
+            "collecter",
+            "brand"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
+            "product_id",
             "available",
-            "content",
-            "description",
+            "state_min",
+            "state_max",
             "display_min",
             "display_max",
             "hot_min",
             "hot_max",
-            "keywords",
             "praise_min",
             "praise_max",
+            "sales_min",
+            "sales_max",
             "price_min",
             "price_max",
             "price_old_min",
             "price_old_max",
-            "product_id",
-            "state_min",
-            "state_max",
-            "tag",
             "time_create_min",
             "time_create_max",
             "time_update_min",
             "time_update_max",
             "title",
+            "keywords",
+            "description",
+            "tag",
+            "content",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
+        {
+            "name": "product_id",
+            "title": "产品id",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
         {
             "name": "available",
             "title": "是否启用",
@@ -126,59 +145,43 @@
             }
         },
         {
-            "name": "brand",
-            "title": "品牌",
-            "description": "商品的品牌",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 18
-            }
-        },
-        {
-            "name": "channel_id",
-            "title": "频道ID",
-            "description": "该产品所属频道，该频道列表可以看到该产品(mall_product_channel.name)",
+            "name": "state",
+            "title": "状态",
+            "description": "(1出售中|2预售中|3已下架|4已删除|5已违规)",
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "max": 10000
+                "max": 5
             }
         },
         {
-            "name": "city_id",
-            "title": "所属城市ID",
-            "description": "对于一些地方产品，可以通过该ID筛看(sys_address_city)",
+            "name": "state_min",
+            "title": "状态——最小值",
+            "description": "(1出售中|2预售中|3已下架|4已删除|5已违规)",
             "type": "number",
-            "dataType": "mediumint",
+            "dataType": "smallint",
             "number": {
-                "max": 8388607
+                "max": 5
             }
         },
         {
-            "name": "collecter",
-            "title": "收藏者",
-            "description": "多个收藏者用”,“分隔",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
+            "name": "state_max",
+            "title": "状态——最大值",
+            "description": "(1出售中|2预售中|3已下架|4已删除|5已违规)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 5
+            }
         },
         {
-            "name": "content",
-            "title": "正文",
-            "description": "产品的主体内容",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
-            "name": "description",
-            "title": "描述",
-            "description": "用于产品提纲和搜索引擎收录",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
+            "name": "type_id",
+            "title": "产品分类ID",
+            "description": "用来搜索指定类型的产品(mall_product_type.name)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
             }
         },
         {
@@ -212,6 +215,46 @@
             }
         },
         {
+            "name": "channel_id",
+            "title": "频道ID",
+            "description": "该产品所属频道，该频道列表可以看到该产品(mall_product_channel.name)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "shop_id",
+            "title": "店铺ID",
+            "description": "该商品所属的店铺(mall_shop.name)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "group_id",
+            "title": "分组ID",
+            "description": "该商品在店铺的分组(mall_product_group.name)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所属城市ID",
+            "description": "对于一些地方产品，可以通过该ID筛看(sys_address_city)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
             "name": "hot",
             "title": "热度",
             "description": "访问这篇产品的人次",
@@ -242,24 +285,6 @@
             }
         },
         {
-            "name": "img",
-            "title": "封面图",
-            "description": "用于显示于产品列表页，多个封面图用换行分隔",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
-            "name": "keywords",
-            "title": "关键词",
-            "description": "用于搜索引擎收录",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 125
-            }
-        },
-        {
             "name": "praise",
             "title": "点赞次数",
             "description": "",
@@ -282,6 +307,36 @@
         {
             "name": "praise_max",
             "title": "点赞次数——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "sales",
+            "title": "销量",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "sales_min",
+            "title": "销量——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "sales_max",
+            "title": "销量——最大值",
             "description": "",
             "type": "number",
             "dataType": "int",
@@ -347,66 +402,6 @@
             "dataType": "double",
             "number": {
                 "min": 1
-            }
-        },
-        {
-            "name": "product_id",
-            "title": "产品id",
-            "description": "",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "max": 8388607
-            }
-        },
-        {
-            "name": "shop_id",
-            "title": "店铺ID",
-            "description": "该商品所属的店铺(mall_shop.name)",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "max": 8388607
-            }
-        },
-        {
-            "name": "state",
-            "title": "状态",
-            "description": "(1出售中|2预售中|3已下架|4已删除|5已违规)",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 5
-            }
-        },
-        {
-            "name": "state_min",
-            "title": "状态——最小值",
-            "description": "(1出售中|2预售中|3已下架|4已删除|5已违规)",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 5
-            }
-        },
-        {
-            "name": "state_max",
-            "title": "状态——最大值",
-            "description": "(1出售中|2预售中|3已下架|4已删除|5已违规)",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 5
-            }
-        },
-        {
-            "name": "tag",
-            "title": "标签",
-            "description": "用于标注产品所属相关内容，多个标签用空格隔开",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
             }
         },
         {
@@ -486,19 +481,73 @@
             }
         },
         {
-            "name": "type_id",
-            "title": "产品分类ID",
-            "description": "用来搜索指定类型的产品(mall_product_type.name)",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
+            "name": "keywords",
+            "title": "关键词",
+            "description": "用于搜索引擎收录",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 125
+            }
+        },
+        {
+            "name": "description",
+            "title": "描述",
+            "description": "用于产品提纲和搜索引擎收录",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255
+            }
+        },
+        {
+            "name": "tag",
+            "title": "标签",
+            "description": "用于标注产品所属相关内容，多个标签用空格隔开",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255
+            }
+        },
+        {
+            "name": "img",
+            "title": "封面图",
+            "description": "用于显示于产品列表页，多个封面图用换行分隔",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "content",
+            "title": "正文",
+            "description": "产品的主体内容",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "collecter",
+            "title": "收藏者",
+            "description": "多个收藏者用”,“分隔",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "brand",
+            "title": "品牌",
+            "description": "商品的品牌",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 18
             }
         },
         {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索正文(content)、描述(description)、关键词(keywords)、标签(tag)、标题(title)",
+            "description": "用于搜索标题(title)、关键词(keywords)、描述(description)、标签(tag)、正文(content)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

@@ -1,8 +1,8 @@
 {
 	// 路由路径
-	"path": "/api/user/oath*",
+	"path": "/api/user/oauth*",
 	// 名称, 用于动态增删改API配置
-	"name": "user_oath",
+	"name": "user_oauth",
 	// 标题, 用于开发文档显示
 	"title": "第三方登录",
 	// 描述, 用于介绍该路由的作用

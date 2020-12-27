@@ -4,8 +4,8 @@
     "table": "mall_product_comment",
     "key": "comment_id",
     "orderby_default": "`comment_id` desc",
-    "field_obj": "`available`,`comment_id`,`content`,`name`,`product_id`,`reply`,`score`,`tag`,`user_id`",
-    "field_default": "`available`,`comment_id`,`display`,`name`,`product_id`,`score`,`tag`,`user_id`",
+    "field_obj": "`comment_id`,`available`,`score`,`product_id`,`user_id`,`name`,`tag`,`content`,`reply`",
+    "field_default": "`comment_id`,`available`,`score`,`display`,`product_id`,`user_id`,`name`,`tag`",
     "query": {
         "score_min": "`score` >= {0}",
         "score_max": "`score` <= {0}",

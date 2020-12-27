@@ -1,8 +1,8 @@
 {
-    "name": "pay_trade_manage",
-    "title": "交易信息",
-    "description": "",
-    "path": "/apis/pay/trade",
+    "name": "user_address_manage",
+    "title": "收货地址",
+    "description": "用于保存用户的收件信息",
+    "path": "/apis/user/address",
     "method": "ALL",
     "cache": 0,
     "client_cache": false,

@@ -230,7 +230,7 @@
             "min": 0,
             "max": 0,
             "decimal": 0,
-            "default": "1997-01-01 00:00:00",
+            "default": "CURRENT_TIMESTAMP",
             "map": "",
             "join_in": [],
             "join_out": [],

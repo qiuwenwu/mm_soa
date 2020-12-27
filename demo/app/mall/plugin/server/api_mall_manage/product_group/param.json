@@ -3,10 +3,10 @@
     "title": "商品分组",
     "add": {
         "body": [
-            "description",
             "display",
-            "icon",
             "name",
+            "icon",
+            "description",
             "shop_id"
         ],
         "body_required": []
@@ -19,20 +19,20 @@
     },
     "set": {
         "query": [
-            "description",
+            "group_id",
             "display_min",
             "display_max",
-            "group_id",
             "name",
+            "description",
             "keyword"
         ],
         "query_required": [],
         "body": [
-            "description",
             "display",
             "display_add",
-            "icon",
             "name",
+            "icon",
+            "description",
             "shop_id"
         ],
         "body_required": [],
@@ -40,24 +40,24 @@
     },
     "get": {
         "query": [
-            "description",
+            "group_id",
             "display_min",
             "display_max",
-            "group_id",
             "name",
+            "description",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
         {
-            "name": "description",
-            "title": "分组描述",
+            "name": "group_id",
+            "title": "产品分组ID",
             "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 30000
             }
         },
         {
@@ -91,13 +91,13 @@
             }
         },
         {
-            "name": "group_id",
-            "title": "产品分组ID",
+            "name": "name",
+            "title": "分组名称",
             "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 30000
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 16
             }
         },
         {
@@ -109,13 +109,13 @@
             "string": {}
         },
         {
-            "name": "name",
-            "title": "分组名称",
+            "name": "description",
+            "title": "分组描述",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "max": 16
+                "max": 255
             }
         },
         {
@@ -131,7 +131,7 @@
         {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索分组描述(description)、分组名称(name)",
+            "description": "用于搜索分组名称(name)、分组描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

@@ -88,17 +88,17 @@
             "amount_max",
             "fee_min",
             "fee_max",
-            "pay_time_min",
-            "pay_time_max",
+            "time_create_min",
+            "time_create_max",
+            "time_pay_min",
+            "time_pay_max",
+            "time_end_min",
+            "time_end_max",
+            "time_update_min",
+            "time_update_max",
             "title",
             "description",
             "content",
-            "create_time_min",
-            "create_time_max",
-            "end_time_min",
-            "end_time_max",
-            "update_time_min",
-            "update_time_max",
             "keyword"
         ],
         "query_required": []
@@ -111,10 +111,7 @@
             "type": "number",
             "dataType": "int",
             "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
+                "max": 2147483647
             }
         },
         {
@@ -154,10 +151,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -167,10 +161,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -180,10 +171,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -259,7 +247,40 @@
             "number": {}
         },
         {
-            "name": "pay_time",
+            "name": "time_create",
+            "title": "订单创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_min",
+            "title": "订单创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_max",
+            "title": "订单创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_pay",
             "title": "转账支付时间",
             "description": "",
             "type": "string",
@@ -270,7 +291,7 @@
             }
         },
         {
-            "name": "pay_time_min",
+            "name": "time_pay_min",
             "title": "转账支付时间——开始时间",
             "description": "",
             "type": "string",
@@ -281,11 +302,77 @@
             }
         },
         {
-            "name": "pay_time_max",
+            "name": "time_pay_max",
             "title": "转账支付时间——结束时间",
             "description": "",
             "type": "string",
             "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end",
+            "title": "付款到账时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end_min",
+            "title": "付款到账时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end_max",
+            "title": "付款到账时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update",
+            "title": "最后编辑时间",
+            "description": "用于判断订单是否异常",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_min",
+            "title": "最后编辑时间——开始时间",
+            "description": "用于判断订单是否异常",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_max",
+            "title": "最后编辑时间——结束时间",
+            "description": "用于判断订单是否异常",
+            "type": "string",
+            "dataType": "timestamp",
             "string": {
                 "notEmpty": true,
                 "format": "datetime"
@@ -297,7 +384,9 @@
             "description": "pc电脑版网站、moblie移动版网站、wechat微信公众号、app手机应用",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 12
+            }
         },
         {
             "name": "way",
@@ -305,7 +394,9 @@
             "description": "third第三方支付、bank网银、digiccy数字货币",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 12
+            }
         },
         {
             "name": "app",
@@ -313,7 +404,9 @@
             "description": "cms内容管理系统、mall商城、bbs论坛，可自定义",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "institution",
@@ -321,7 +414,9 @@
             "description": "第三方填支付宝、微信，银行填银行名称例如建设银行，数字货币填数字货币名称，例如比特币",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "title",
@@ -329,7 +424,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "transaction_id",
@@ -338,8 +435,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "min": 0,
-                "notEmpty": 1
+                "max": 32,
+                "notEmpty": true
             }
         },
         {
@@ -348,7 +445,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 67
+            }
         },
         {
             "name": "from_user",
@@ -356,7 +455,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 128
+            }
         },
         {
             "name": "to_user",
@@ -364,7 +465,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 128
+            }
         },
         {
             "name": "description",
@@ -372,7 +475,9 @@
             "description": "告知用户付款的原因",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "note",
@@ -380,7 +485,9 @@
             "description": "付款完成后的用户备注信息，便于用户查询",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "content",
@@ -389,105 +496,6 @@
             "type": "string",
             "dataType": "text",
             "string": {}
-        },
-        {
-            "name": "create_time",
-            "title": "订单创建时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "create_time_min",
-            "title": "订单创建时间——开始时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "create_time_max",
-            "title": "订单创建时间——结束时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "end_time",
-            "title": "付款到账时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "end_time_min",
-            "title": "付款到账时间——开始时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "end_time_max",
-            "title": "付款到账时间——结束时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time",
-            "title": "最后编辑时间",
-            "description": "用于判断订单是否异常",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time_min",
-            "title": "最后编辑时间——开始时间",
-            "description": "用于判断订单是否异常",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time_max",
-            "title": "最后编辑时间——结束时间",
-            "description": "用于判断订单是否异常",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
         },
         {
             "name": "keyword",
