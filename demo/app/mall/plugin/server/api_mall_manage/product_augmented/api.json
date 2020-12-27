@@ -1,6 +1,6 @@
 {
     "name": "mall_product_augmented_manage",
-    "title": "",
+    "title": "附加商品",
     "description": "",
     "path": "/apis/mall/product_augmented",
     "method": "ALL",

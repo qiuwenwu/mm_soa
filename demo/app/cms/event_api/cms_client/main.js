@@ -1,5 +1,5 @@
 // 使用api管理器
-var api = $.api_admin('cms_client', 'cms_client');
+var api = $.api_admin('cms_client', '内容客户端');
 // 首次启动更新api接口;
 api.update();
 

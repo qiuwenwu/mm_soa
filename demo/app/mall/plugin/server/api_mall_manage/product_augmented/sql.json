@@ -1,11 +1,11 @@
 {
     "name": "mall_product_augmented2",
-    "title": "",
+    "title": "附加商品",
     "table": "mall_product_augmented",
     "key": "augmented_id",
     "orderby_default": "`augmented_id` desc",
-    "field_obj": "`augmented_id`,`group`,`name`,`price`,`shop_id`",
-    "field_default": "`augmented_id`,`group`,`name`,`price`,`shop_id`",
+    "field_obj": "`augmented_id`,`name`,`group`,`price`,`shop_id`",
+    "field_default": "`augmented_id`,`name`,`group`,`price`,`shop_id`",
     "query": {
         "group": "`group` like '%{0}%'",
         "name": "`name` like '%{0}%'",

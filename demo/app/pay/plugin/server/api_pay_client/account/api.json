@@ -1,0 +1,12 @@
+{
+    "name": "pay_account",
+    "title": "支付账户",
+    "description": "",
+    "path": "/api/pay/account",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

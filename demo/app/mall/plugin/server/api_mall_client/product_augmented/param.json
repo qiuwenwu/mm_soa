@@ -1,10 +1,10 @@
 {
     "name": "mall_product_augmented",
-    "title": "",
+    "title": "附加商品",
     "add": {
         "body": [
-            "group",
             "name",
+            "group",
             "price",
             "shop_id"
         ],
@@ -26,8 +26,8 @@
         ],
         "query_required": [],
         "body": [
-            "group",
             "name",
+            "group",
             "price",
             "price_add",
             "shop_id"
@@ -57,16 +57,6 @@
             }
         },
         {
-            "name": "group",
-            "title": "产品分组",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 32
-            }
-        },
-        {
             "name": "name",
             "title": "产品名称",
             "description": "",
@@ -74,6 +64,16 @@
             "dataType": "varchar",
             "string": {
                 "max": 255
+            }
+        },
+        {
+            "name": "group",
+            "title": "产品分组",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 32
             }
         },
         {
