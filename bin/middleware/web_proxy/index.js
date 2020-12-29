@@ -14,7 +14,7 @@ module.exports = function(server) {
 	if (options.targets) {
 		server.use(proxy(options, function(op, ctx, next) {
 			if (ctx.session && ctx.session.user) {
-				ctx.request.header[config.sys.name + '_user_id'] = ctx.session.user.user_id;
+				ctx.request.header['user_id'] = ctx.session.user.user_id;
 			}
 		}));
 	}

@@ -4,6 +4,6 @@
 	"description": "用于即时通讯",
 	"version": "1.0",
 	"type": "web",
-	"process_type": "common_before",
+	"process_type": "master",
 	"sort": 9
 }

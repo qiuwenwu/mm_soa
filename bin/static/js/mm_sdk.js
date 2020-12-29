@@ -92,7 +92,7 @@ function as(obj, query, all) {
  * @param {Function()} func 测试的函数
  * @param {Number} times = [value] 测试次数
  */
-function speed(func, times) {
+function speeds(func, times) {
 	if (!times) {
 		times = 1000000;
 	}
@@ -393,7 +393,7 @@ var funcs = {
 	// 延迟
 	sleep: sleep,
 	// 测试执行速度函数
-	speed: speed,
+	speeds: speeds,
 	// 判断对象是否相似
 	as: as,
 	// 添加对象

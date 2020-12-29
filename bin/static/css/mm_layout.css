@@ -75,20 +75,11 @@ main .mm_view {
 	max-height: 5rem;
 }
 
-/* 
-.mm_page>.hide~header,
-.mm_page>.hide~footer,
-.mm_page>.hide~main
-{
-	padding-left: 12rem;
-}
- */
-
-header.hide {
+header.hide-x {
 	top: -100%;
 }
 
-footer.hide {
+footer.hide-x {
 	bottom: -100%;
 }
 
@@ -108,7 +99,7 @@ footer.hide {
 	z-index: 31;
 }
 
-.hide .mask {
+.hide-x .mask {
 	width: 0;
 	height: 0;
 	opacity: 0;
@@ -633,7 +624,7 @@ ol.mm_list li::before {
 }
 
 @media (max-width:576px) {
-	.mm_side.hide .mm_warp {
+	.mm_side.hide-x .mm_warp {
 		left: -100%;
 	}
 	

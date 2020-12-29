@@ -2,7 +2,7 @@
     "name": "core_spa",
     "title": "跨域大型单页应用(spa)",
     "description": "这是调用1站外SPA的示例",
-    "path": "/dev123/*",
+    "path": "/demo/core/*",
     "type": "web",
     "contentType": "html",
     "func_file": "./index.js",

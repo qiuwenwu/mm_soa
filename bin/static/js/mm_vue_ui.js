@@ -1801,7 +1801,7 @@ define(['jquery'], function(jquery) {
 	}
 
 	var mm_side = {
-		template: "<div class=\"mm_side\" :class=\"{hide: hide, fold: fold}\" :id=\"side_id\"><slot></slot><div class=\"line\"></div><div class=\"mask\" @click=\"set_hide()\"></div></div>",
+		template: "<div class=\"mm_side\" :class=\"{'hide-x': hide, fold: fold}\" :id=\"side_id\"><slot></slot><div class=\"line\"></div><div class=\"mask\" @click=\"set_hide()\"></div></div>",
 		model: {
 			prop: "hide",
 			event: "change"

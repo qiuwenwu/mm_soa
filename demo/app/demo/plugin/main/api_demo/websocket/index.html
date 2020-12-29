@@ -45,6 +45,7 @@
 					</div>
 				</div>
 				<div id="chat_bar">
+					<input v-model="user.username" placeholder="发信人" style="width: 5rem;" />
 					<input v-model="content" @keydown.enter="send(content)" />
 					<button @click="send(content)">发送消息</button>
 				</div>
@@ -101,8 +102,8 @@
 					 * 创建连接
 					 */
 					connect: function() {
-						var host = window.location.host;
-						var url = 'ws://' + host + "/ws/chat";
+						var host = window.location.host.left(":", true) + ":10001";
+						var url = 'ws://' + host + "/ws/chat?diy=" + Math.ceil(Math.random() * 100);
 
 						// 连接名称
 						var name = 'test_chat';

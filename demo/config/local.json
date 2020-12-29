@@ -214,6 +214,13 @@
 				"header": {
 					"apikey": "bfd59291e825b5f2bbf1eb76569f8fe7"
 				}
+			},
+			"/ws(.*)": {
+				"target": "http://127.0.0.1:10001",
+				"changeOrigin": true,
+				"header": {
+					"apikey": "bfd59291e825b5f2bbf1eb76569f8fe7"
+				}
 			}
 		}
 	}
