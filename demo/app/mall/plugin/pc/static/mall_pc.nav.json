@@ -43,6 +43,11 @@
 			"path": "/config",
 			"component": "/mall/pc/src/pages/config.vue",
 			"level": 2
+		}, {
+			"name": "goods",
+			"path": "/goods",
+			"component": "/mall/pc/src/pages/goods/index.vue",
+			"level": 2
 		}
 	],
 	"top": [],

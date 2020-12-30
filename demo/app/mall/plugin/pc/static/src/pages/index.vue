@@ -10,7 +10,7 @@
 									<h5>超级美眉</h5>
 								</div>
 								<div class="card_body">
-
+									<router-link to="/goods">123123</router-link>
 								</div>
 							</mm_card>
 						</mm_col>

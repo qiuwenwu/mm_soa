@@ -113,7 +113,6 @@ Drive.prototype.getToken = async function(ctx) {
  */
 Drive.prototype.onmessage = async function(bodyStr, ctx, token) {
 	var ret = await this.run(bodyStr, ctx, token);
-	console.log("结果", ret);
 	if (ret) {
 		var ws = ctx.websocket;
 		if (typeof(ret) === "object") {
@@ -287,7 +286,10 @@ Drive.prototype.run = async function(bodyStr, ctx, token) {
 		token: token
 	});
 	if (json) {
-		var {id, method} = json;
+		var {
+			id,
+			method
+		} = json;
 		if (json.result && id) {
 			var lt = ws.list_msg;
 			var len = lt.length;
@@ -332,9 +334,10 @@ Drive.prototype.run = async function(bodyStr, ctx, token) {
 /**
  * 非定义函数时执行
  * @param {Object} body 请求正文
- * @param {Object} websocket 当前的服务
+ * @param {Object} params 参数
+ * @param {Object} ws Websocket服务
  * @param {Object} request 请求协议头
- * @return {Object} 返回响应结果
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.main = async function(body, websocket, request) {
 	return null;
@@ -353,12 +356,13 @@ Drive.prototype.init = async function init() {
 Drive.prototype.load_after = function() {
 	this.init();
 	var m = this.methods;
-	
+
 	/**
 	 * 获取所有方法
 	 * @param {Object} params 参数
 	 * @param {Object} ws Websocket服务
 	 * @param {Object} request 请求协议头
+	 * @return {Object} 返回执行结果
 	 */
 	m.get_method = async function(params, ws, request) {
 		return Object.keys(m);

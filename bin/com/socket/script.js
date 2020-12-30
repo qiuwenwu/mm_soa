@@ -1,9 +1,11 @@
 /**
  * 主函数, 用于处理未定义函数的消息
- * @param {Object} body 消息主体内容
- * @param {Object} ws websocket通讯器
+ * @param {Object} params 参数
+ * @param {Object} ws Websocket服务
+ * @param {Object} request 请求协议头
+ * @return {Object} 返回执行结果
  */
-exports.main = async function(body, ws) {
+exports.main = async function(body, ws, request) {
 	$.log.debug('收到客户端推送数据', body);
 };
 
@@ -20,7 +22,7 @@ exports.sync = async function(ws) {
  */
 exports.init = async function() {
 	var m = this.methods;
-	
+
 	/**
 	 * 获取所有方法
 	 * @param {Object} params 参数
@@ -29,7 +31,7 @@ exports.init = async function() {
 	m.get_method = function(params, ws) {
 		return Object.keys(m);
 	};
-	
+
 	/**
 	 * @param {Object} params 参数
 	 * @param {Object} ws Websocket服务
