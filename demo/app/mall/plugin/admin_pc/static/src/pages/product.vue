@@ -15,18 +15,21 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="正文 / 描述 / 关键词 / 标签 / 标题"
+											<mm_input v-model="query.keyword" title="关键词" desc="标题 / 关键词 / 描述 / 标签 / 正文"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
 											<mm_select v-model="query.available" title="是否启用" :options="$to_kv(arr_available)" @change="search()" />
 										</mm_item>
 										<mm_item>
-											<mm_select v-model="query.channel_id" title="频道" :options="$to_kv(list_product_channel, 'channel_id', 'name')"
+											<mm_select v-model="query.state" title="状态" :options="$to_kv(arr_state)" @change="search()" />
+										</mm_item>
+										<mm_item>
+											<mm_select v-model="query.type_id" title="产品分类" :options="$to_kv(list_product_type, 'type_id', 'name')"
 											 @change="search()" />
 										</mm_item>
 										<mm_item>
-											<mm_select v-model="query.city_id" title="所属城市" :options="$to_kv(list_address_city, 'city_id', 'name')"
+											<mm_select v-model="query.channel_id" title="频道" :options="$to_kv(list_product_channel, 'channel_id', 'name')"
 											 @change="search()" />
 										</mm_item>
 										<mm_item>
@@ -34,10 +37,11 @@
 											 @change="search()" />
 										</mm_item>
 										<mm_item>
-											<mm_select v-model="query.state" title="状态" :options="$to_kv(arr_state)" @change="search()" />
+											<mm_select v-model="query.group_id" title="分组" :options="$to_kv(list_product_group, 'group_id', 'name')"
+											 @change="search()" />
 										</mm_item>
 										<mm_item>
-											<mm_select v-model="query.type_id" title="产品分类" :options="$to_kv(list_product_type, 'type_id', 'name')"
+											<mm_select v-model="query.city_id" title="所属城市" :options="$to_kv(list_address_city, 'city_id', 'name')"
 											 @change="search()" />
 										</mm_item>
 										<mm_item>
@@ -65,43 +69,40 @@
 												<mm_reverse title="是否启用" v-model="query.orderby" field="available" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="品牌" v-model="query.orderby" field="brand" :func="search"></mm_reverse>
+												<mm_reverse title="状态" v-model="query.orderby" field="state" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="频道" v-model="query.orderby" field="channel_id" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="所属城市" v-model="query.orderby" field="city_id" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
+												<mm_reverse title="产品分类" v-model="query.orderby" field="type_id" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="排序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
 											</th>
 											<th>
+												<mm_reverse title="频道" v-model="query.orderby" field="channel_id" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="店铺" v-model="query.orderby" field="shop_id" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="分组" v-model="query.orderby" field="group_id" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="所属城市" v-model="query.orderby" field="city_id" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="热度" v-model="query.orderby" field="hot" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="关键词" v-model="query.orderby" field="keywords" :func="search"></mm_reverse>
+												<mm_reverse title="点赞次数" v-model="query.orderby" field="praise" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="点赞次数" v-model="query.orderby" field="praise" :func="search"></mm_reverse>
+												<mm_reverse title="销量" v-model="query.orderby" field="sales" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="卖价" v-model="query.orderby" field="price" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="原价" v-model="query.orderby" field="price_old" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="店铺" v-model="query.orderby" field="shop_id" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="状态" v-model="query.orderby" field="state" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="标签" v-model="query.orderby" field="tag" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="创建时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
@@ -113,7 +114,16 @@
 												<mm_reverse title="标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="产品分类" v-model="query.orderby" field="type_id" :func="search"></mm_reverse>
+												<mm_reverse title="关键词" v-model="query.orderby" field="keywords" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="标签" v-model="query.orderby" field="tag" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="品牌" v-model="query.orderby" field="brand" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -127,43 +137,40 @@
 												<mm_switch v-model="o.available" @click.native="set(o)" />
 											</td>
 											<td>
-												<span>{{ o.brand }}</span>
+												<span v-bind:class="arr_color[o.state]">{{arr_state[o.state] }}</span>
 											</td>
 											<td>
-												<span>{{ get_name(list_product_channel, o.channel_id, 'channel_id', 'name') }}</span>
-											</td>
-											<td>
-												<span>{{ get_name(list_address_city, o.city_id, 'city_id', 'name') }}</span>
-											</td>
-											<td>
-												<span>{{ o.description }}</span>
+												<span>{{ get_name(list_product_type, o.type_id, 'type_id', 'name') }}</span>
 											</td>
 											<td>
 												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
+												<span>{{ get_name(list_product_channel, o.channel_id, 'channel_id', 'name') }}</span>
+											</td>
+											<td>
+												<span>{{ get_name(list_shop, o.shop_id, 'shop_id', 'name') }}</span>
+											</td>
+											<td>
+												<span>{{ get_name(list_product_group, o.group_id, 'group_id', 'name') }}</span>
+											</td>
+											<td>
+												<span>{{ get_name(list_address_city, o.city_id, 'city_id', 'name') }}</span>
+											</td>
+											<td>
 												<span>{{ o.hot }}</span>
 											</td>
 											<td>
-												<span>{{ o.keywords }}</span>
+												<span>{{ o.praise }}</span>
 											</td>
 											<td>
-												<span>{{ o.praise }}</span>
+												<span>{{ o.sales }}</span>
 											</td>
 											<td>
 												<span>{{ o.price }}</span>
 											</td>
 											<td>
 												<span>{{ o.price_old }}</span>
-											</td>
-											<td>
-												<span>{{ get_name(list_shop, o.shop_id, 'shop_id', 'name') }}</span>
-											</td>
-											<td>
-												<span v-bind:class="arr_color[o.state]">{{arr_state[o.state] }}</span>
-											</td>
-											<td>
-												<span>{{ o.tag }}</span>
 											</td>
 											<td>
 												<span>{{ $to_time(o.time_create, 'yyyy-MM-dd hh:mm') }}</span>
@@ -175,7 +182,16 @@
 												<span>{{ o.title }}</span>
 											</td>
 											<td>
-												<span>{{ get_name(list_product_type, o.type_id, 'type_id', 'name') }}</span>
+												<span>{{ o.keywords }}</span>
+											</td>
+											<td>
+												<span>{{ o.description }}</span>
+											</td>
+											<td>
+												<span>{{ o.tag }}</span>
+											</td>
+											<td>
+												<span>{{ o.brand }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./product_form?product_id=' + o[field]">修改</mm_btn>
@@ -214,18 +230,6 @@
 						<dd>
 							<mm_select v-model="form.available" :options="$to_kv(arr_available)" />
 						</dd>
-						<dt>频道</dt>
-						<dd>
-							<mm_select v-model="form.channel_id" :options="$to_kv(list_product_channel, 'channel_id', 'name')" />
-						</dd>
-						<dt>所属城市</dt>
-						<dd>
-							<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name')" />
-						</dd>
-						<dt>店铺</dt>
-						<dd>
-							<mm_select v-model="form.shop_id" :options="$to_kv(list_shop, 'shop_id', 'name')" />
-						</dd>
 						<dt>状态</dt>
 						<dd>
 							<mm_select v-model="form.state" :options="$to_kv(arr_state)" />
@@ -233,6 +237,22 @@
 						<dt>产品分类</dt>
 						<dd>
 							<mm_select v-model="form.type_id" :options="$to_kv(list_product_type, 'type_id', 'name')" />
+						</dd>
+						<dt>频道</dt>
+						<dd>
+							<mm_select v-model="form.channel_id" :options="$to_kv(list_product_channel, 'channel_id', 'name')" />
+						</dd>
+						<dt>店铺</dt>
+						<dd>
+							<mm_select v-model="form.shop_id" :options="$to_kv(list_shop, 'shop_id', 'name')" />
+						</dd>
+						<dt>分组</dt>
+						<dd>
+							<mm_select v-model="form.group_id" :options="$to_kv(list_product_group, 'group_id', 'name')" />
+						</dd>
+						<dt>所属城市</dt>
+						<dd>
+							<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name')" />
 						</dd>
 					</dl>
 				</div>
@@ -270,12 +290,14 @@
 					page: 1,
 					//页面大小
 					size: 10,
+					// 产品id
+					'product_id': 0,
 					// 是否启用
 					'available': '',
-					// 正文
-					'content': '',
-					// 描述
-					'description': '',
+					// 状态——最小值
+					'state_min': '',
+					// 状态——最大值
+					'state_max': '',
 					// 排序——最小值
 					'display_min': 0,
 					// 排序——最大值
@@ -284,12 +306,14 @@
 					'hot_min': 0,
 					// 热度——最大值
 					'hot_max': 0,
-					// 关键词
-					'keywords': '',
 					// 点赞次数——最小值
 					'praise_min': 0,
 					// 点赞次数——最大值
 					'praise_max': 0,
+					// 销量——最小值
+					'sales_min': 0,
+					// 销量——最大值
+					'sales_max': 0,
 					// 卖价——最小值
 					'price_min': 0,
 					// 卖价——最大值
@@ -298,14 +322,6 @@
 					'price_old_min': 0,
 					// 原价——最大值
 					'price_old_max': 0,
-					// 产品id
-					'product_id': 0,
-					// 状态——最小值
-					'state_min': '',
-					// 状态——最大值
-					'state_max': '',
-					// 标签
-					'tag': '',
 					// 创建时间——开始时间
 					'time_create_min': '',
 					// 创建时间——结束时间
@@ -317,6 +333,14 @@
 					// 标题
 					'title': '',
 					// 关键词
+					'keywords': '',
+					// 描述
+					'description': '',
+					// 标签
+					'tag': '',
+					// 正文
+					'content': '',
+					// 关键词
 					'keyword': '',
 					//排序
 					orderby: ""
@@ -326,21 +350,41 @@
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				// 是否启用
 				'arr_available':["否","是"],
-				// 频道
-				'list_product_channel':[],
-				// 所属城市
-				'list_address_city':[],
-				// 店铺
-				'list_shop':[],
 				// 状态
 				'arr_state':["","出售中","预售中","已下架","已删除","已违规"],
 				// 产品分类
 				'list_product_type':[],
+				// 频道
+				'list_product_channel':[],
+				// 店铺
+				'list_shop':[],
+				// 分组
+				'list_product_group':[],
+				// 所属城市
+				'list_address_city':[],
 				// 视图模型
 				vm: {}
 			}
 		},
 		methods: {
+			/**
+			 * 获取产品分类
+			 * @param {query} 查询条件
+			 */
+			get_product_type(query) {
+				var _this = this;
+				if (!query) {
+					query = {
+						field: "type_id,name"
+					};
+				}
+				this.$get('~/apis/mall/product_type?size=0', query, function(json) {
+					if (json.result) {
+						_this.list_product_type.clear();
+						_this.list_product_type.addList(json.result.list)
+					}
+				});
+			},
 			/**
 			 * 获取频道
 			 * @param {query} 查询条件
@@ -356,24 +400,6 @@
 					if (json.result) {
 						_this.list_product_channel.clear();
 						_this.list_product_channel.addList(json.result.list)
-					}
-				});
-			},
-			/**
-			 * 获取所属城市
-			 * @param {query} 查询条件
-			 */
-			get_address_city(query) {
-				var _this = this;
-				if (!query) {
-					query = {
-						field: "city_id,name"
-					};
-				}
-				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
-					if (json.result) {
-						_this.list_address_city.clear();
-						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},
@@ -396,33 +422,53 @@
 				});
 			},
 			/**
-			 * 获取产品分类
+			 * 获取分组
 			 * @param {query} 查询条件
 			 */
-			get_product_type(query) {
+			get_product_group(query) {
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "type_id,name"
+						field: "group_id,name"
 					};
 				}
-				this.$get('~/apis/mall/product_type?size=0', query, function(json) {
+				this.$get('~/apis/mall/product_group?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_product_type.clear();
-						_this.list_product_type.addList(json.result.list)
+						_this.list_product_group.clear();
+						_this.list_product_group.addList(json.result.list)
+					}
+				});
+			},
+			/**
+			 * 获取所属城市
+			 * @param {query} 查询条件
+			 */
+			get_address_city(query) {
+				var _this = this;
+				if (!query) {
+					query = {
+						field: "city_id,name"
+					};
+				}
+				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
+					if (json.result) {
+						_this.list_address_city.clear();
+						_this.list_address_city.addList(json.result.list)
 					}
 				});
 			},
 		},
 		created() {
-			// 获取频道
-			this.get_product_channel();
-			// 获取所属城市
-			this.get_address_city();
-			// 获取店铺
-			this.get_shop();
 			// 获取产品分类
 			this.get_product_type();
+			// 获取频道
+			this.get_product_channel();
+			// 获取店铺
+			this.get_shop();
+			// 获取分组
+			this.get_product_group();
+			// 获取所属城市
+			this.get_address_city();
 		}
 	}
 </script>

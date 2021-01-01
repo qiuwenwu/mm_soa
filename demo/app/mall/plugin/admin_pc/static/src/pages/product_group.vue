@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="分组描述 / 分组名称"
+											<mm_input v-model="query.keyword" title="关键词" desc="分组名称 / 分组描述"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -44,13 +44,13 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="分组描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
-											</th>
-											<th>
 												<mm_reverse title="显示顺序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="分组名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="分组描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="店铺" v-model="query.orderby" field="shop_id" :func="search"></mm_reverse>
@@ -64,13 +64,13 @@
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
-												<span>{{ o.description }}</span>
-											</td>
-											<td>
 												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
 												<span>{{ o.name }}</span>
+											</td>
+											<td>
+												<span>{{ o.description }}</span>
 											</td>
 											<td>
 												<span>{{ get_name(list_shop, o.shop_id, 'shop_id', 'name') }}</span>
@@ -148,16 +148,16 @@
 					page: 1,
 					//页面大小
 					size: 10,
-					// 分组描述
-					'description': '',
+					// 产品分组ID
+					'group_id': 0,
 					// 显示顺序——最小值
 					'display_min': 0,
 					// 显示顺序——最大值
 					'display_max': 0,
-					// 产品分组ID
-					'group_id': 0,
 					// 分组名称
 					'name': '',
+					// 分组描述
+					'description': '',
 					// 关键词
 					'keyword': '',
 					//排序

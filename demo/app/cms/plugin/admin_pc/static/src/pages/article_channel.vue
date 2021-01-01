@@ -54,6 +54,7 @@
 								<mm_table type="2">
 									<thead class="table-sm">
 										<tr>
+											<th class="th_open"></th>
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
@@ -91,7 +92,10 @@
 									</thead>
 									<tbody>
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
-										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
+										<tr v-for="(o, idx) in list_new" :key="idx" :class="{'active': select == idx, sub: o[father_id], open: opens_has(o[field]), no_sub: !opens_has_sub(o[field]) }"
+										 @click="selected(idx)">
+											<th class="th_open"><button class="btn_open" :style="'margin-left:' + (1.5 * opens_lv(o[father_id])) + 'rem;'"
+												 @click="opens_change(o[field])"><i class="fa-caret-right"></i></button></th>
 											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
@@ -132,18 +136,6 @@
 									</tbody>
 									<!-- </draggable> -->
 								</mm_table>
-							</div>
-							<div class="card_foot">
-								<div class="fl">
-									<mm_select v-model="query.size" :options="$to_size()" @change="search()" />
-								</div>
-								<div class="fr">
-									<span class="mr">共 {{ count }} 条</span>
-									<span>当前</span>
-									<input type="number" class="pager_now" v-model.number="page_now" @blur="goTo(page_now)" @change="page_change" />
-									<span>/{{ page_count }}页</span>
-								</div>
-								<mm_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo" :icons="['首页', '上一页', '下一页', '尾页']"></mm_pager>
 							</div>
 						</mm_card>
 					</mm_col>
@@ -210,9 +202,9 @@
 				// 查询条件
 				query: {
 					//页码
-					page: 1,
+					page: 0,
 					//页面大小
-					size: 10,
+					size: 0,
 					// 是否启用
 					'available': '',
 					// 是否可评论
@@ -265,8 +257,8 @@
 				}
 				this.$get('~/apis/sys/address_city?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_address_city.clear();
-						_this.list_address_city.addList(json.result.list)
+						_this.list_address_city .clear();
+						_this.list_address_city .addList(json.result.list)
 					}
 				});
 			},
@@ -283,8 +275,8 @@
 				}
 				this.$get('~/apis/cms/article_channel?size=0', query, function(json) {
 					if (json.result) {
-						_this.list_article_channel.clear();
-						_this.list_article_channel.addList(json.result.list)
+						_this.list_article_channel .clear();
+						_this.list_article_channel .addList(json.result.list)
 					}
 				});
 			},
@@ -294,6 +286,20 @@
 			this.get_address_city();
 			// 获取上级
 			this.get_article_channel();
+		},
+		computed: {
+			list_new() {
+				var lt = this.list.toTree(this.field).toList();
+				var list = [];
+				var arr = this.opens;
+				for (var i = 0; i < lt.length; i++) {
+					var o = lt[i];
+					if (this.opens.indexOf(o[this.father_id]) !== -1) {
+						list.push(o);
+					}
+				}
+				return list;
+			}
 		}
 	}
 </script>

@@ -11,31 +11,31 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
-										<dt>变量描述</dt>
-										<dd>
-											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="描述该变量的作用" />
-										</dd>
-										<dt>数据模型</dt>
-										<dd>
-											<mm_textarea v-model="form.model" type="text" placeholder="json格式，用于单选 / 多选模式" />
-										</dd>
 										<dt class="required">变量名</dt>
 										<dd>
 											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder=""
 											 :required="true" />
-										</dd>
-										<dt>变量标题</dt>
-										<dd>
-											<mm_input v-model="form.title" :minlength="0" :maxlength="16" placeholder="可以用中文名" />
 										</dd>
 										<dt class="required">数据类型</dt>
 										<dd>
 											<mm_input v-model="form.type" :minlength="0" :maxlength="16" placeholder="string文本型 / number数字型 / boolean布尔型"
 											 :required="true" />
 										</dd>
+										<dt>变量标题</dt>
+										<dd>
+											<mm_input v-model="form.title" :minlength="0" :maxlength="16" placeholder="可以用中文名" />
+										</dd>
+										<dt>变量描述</dt>
+										<dd>
+											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="描述该变量的作用" />
+										</dd>
 										<dt>变量值</dt>
 										<dd>
 											<mm_input v-model="form.value" :minlength="0" :maxlength="255" placeholder="" />
+										</dd>
+										<dt>数据模型</dt>
+										<dd>
+											<mm_textarea v-model="form.model" type="text" placeholder="json格式，用于单选 / 多选模式"></mm_textarea>
 										</dd>
 									</dl>
 								</mm_form>
@@ -71,12 +71,12 @@
 				},
 				form: {
 					"config_id": 0,
-					"description": '',
-					"model": '',
 					"name": '',
-					"title": '',
 					"type": '',
+					"title": '',
+					"description": '',
 					"value": '',
+					"model": '',
 				},
 			}
 		},

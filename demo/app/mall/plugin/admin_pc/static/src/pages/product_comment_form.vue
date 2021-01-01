@@ -15,33 +15,33 @@
 										<dd>
 											<mm_switch v-model="form.available" />
 										</dd>
-										<dt>正文</dt>
+										<dt>评分</dt>
 										<dd>
-											<mm_textarea v-model="form.content" type="text" placeholder="评论内容" />
+											<mm_number v-model="form.score" :min="0" :max="5" />
+										</dd>
+										<dt>所属产品</dt>
+										<dd>
+											<mm_select v-model="form.product_id" :options="$to_kv(list_product, 'product_id', 'title', 0)" />
+										</dd>
+										<dt>用户</dt>
+										<dd>
+											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>留言者姓名</dt>
 										<dd>
 											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder="用于实名回复" />
 										</dd>
-										<dt>所属产品</dt>
-										<dd>
-											<mm_select v-model="form.product_id" :options="$to_kv(list_product, 'product_id', 'title')" />
-										</dd>
-										<dt>评论回复</dt>
-										<dd>
-											<mm_textarea v-model="form.reply" type="text" placeholder="对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔" />
-										</dd>
-										<dt>评分</dt>
-										<dd>
-											<mm_number v-model="form.score" :min="0" :max="5" />
-										</dd>
 										<dt>标签</dt>
 										<dd>
 											<mm_input v-model="form.tag" :minlength="0" :maxlength="64" placeholder="评论人给的标签，多个标签用空格隔开" />
 										</dd>
-										<dt>用户</dt>
+										<dt>正文</dt>
 										<dd>
-											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_rich v-model="form.content"></mm_rich>
+										</dd>
+										<dt>评论回复</dt>
+										<dd>
+											<mm_textarea v-model="form.reply" type="text" placeholder="对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔"></mm_textarea>
 										</dd>
 									</dl>
 								</mm_form>
@@ -76,15 +76,15 @@
 					"comment_id": 0
 				},
 				form: {
-					"available": 0,
 					"comment_id": 0,
-					"content": '',
-					"name": '',
-					"product_id": 0,
-					"reply": '',
+					"available": 0,
 					"score": 0,
-					"tag": '',
+					"product_id": 0,
 					"user_id": 0,
+					"name": '',
+					"tag": '',
+					"content": '',
+					"reply": '',
 				},
 				// 是否启用
 				'arr_available':["否","是"],

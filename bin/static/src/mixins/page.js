@@ -83,7 +83,11 @@ define(function() {
 				// 排序键，用于拖拽修改排序
 				sort_key: "display",
 				// 修改条件
-				query_set: {}
+				query_set: {},
+				// 展开的上级id
+				opens: [0],
+				// 上级ID: father_id
+				father_id: "father_id"
 			};
 		},
 		methods: {
@@ -503,7 +507,7 @@ define(function() {
 									}
 								}
 							}
-							$.push(_this.form, _this.obj);
+							_this.form = _this.obj;
 						}
 					} else if (json.error) {
 						console.log(json.error.message);
@@ -1002,7 +1006,7 @@ define(function() {
 					$.confirm("是否导入 " + file.name, "导入数据", function() {
 						$.http.upload(_this.url_import, file, function(json) {
 							if (json.result) {
-								$.confirm(json.result.tip, function(){
+								$.confirm(json.result.tip, function() {
 									_this.get();
 								});
 							} else if (json.error) {
@@ -1024,18 +1028,93 @@ define(function() {
 					query[this.field] = this.selects;
 					this.$get(_this.url_export, query, function(json) {
 						var res = json.result;
-						if(res && res.bl){
+						if (res && res.bl) {
 							window.location.href = res.url;
 						}
 					});
 				} else {
 					this.$get(_this.url_export, this.query, function(json) {
 						var res = json.result;
-						if(res && res.bl){
+						if (res && res.bl) {
 							window.location.href = res.url;
 						}
 					});
 				}
+			},
+			/**
+			 * 判断是否有下级
+			 * @param {Number} id 字段ID
+			 * @param {Object} list 数据列表
+			 * @return {Number} 返回级别
+			 */
+			opens_has_sub: function(id, list) {
+				if (!list) {
+					list = this.list;
+				}
+				var bl = false;
+				var father_id = this.father_id;
+				for (var i = 0; i < list.length; i++) {
+					var o = list[i];
+					if (o[father_id] === id) {
+						bl = true;
+						break;
+					}
+				}
+				return bl;
+			},
+			/**
+			 * 改变展开项
+			 * @param {Number} id 唯一主键
+			 */
+			opens_change: function opens_change(id) {
+				var index = this.opens.indexOf(id);
+				if (index !== -1) {
+					this.opens.splice(index, 1);
+				} else {
+					var bl = this.opens_has_sub(id);
+					if (bl) {
+						this.opens.push(id);
+					}
+				}
+			},
+			/**
+			 * 判断是否存在
+			 * @param {Number} id 唯一主键
+			 * @return {Boolean} 存在返回true, 否则返回false
+			 */
+			opens_has: function opens_has(id) {
+				return this.opens.indexOf(id) !== -1;
+			},
+			/**
+			 * 判断子孙级别, 最大支持5次分叉
+			 * @param {Number} fid 祖辈ID
+			 * @param {Object} list 数据列表
+			 * @return {Number} 返回级别
+			 */
+			opens_lv: function opens_lv(fid, list) {
+				if (!list) {
+					list = this.list;
+				}
+				var lv = 0;
+				var father_id = this.father_id;
+				var id = this.field;
+				var num = fid;
+				for (var n = 0; n < 5; n++) {
+					if (num === 0) {
+						break;
+					}
+					for (var i = 0; i < list.length; i++) {
+						var o = list[i];
+						if (o[id] === num) {
+							lv++;
+							num = o[father_id];
+							if (num === 0) {
+								break;
+							}
+						}
+					}
+				}
+				return lv;
 			}
 		},
 		computed: {

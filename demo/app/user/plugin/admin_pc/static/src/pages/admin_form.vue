@@ -13,7 +13,7 @@
 									<dl>
 										<dt>上级</dt>
 										<dd>
-											<mm_select v-model="form.father_id" :options="$to_kv(list_admin, 'admin_id', 'name')" />
+											<mm_select v-model="form.father_id" :options="$to_kv(list_admin, 'admin_id', 'name', 0)" />
 										</dd>
 										<dt class="required">名称</dt>
 										<dd>

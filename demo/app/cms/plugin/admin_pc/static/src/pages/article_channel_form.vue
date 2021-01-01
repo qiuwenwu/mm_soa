@@ -21,7 +21,7 @@
 										</dd>
 										<dt>所属城市</dt>
 										<dd>
-											<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name')" />
+											<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name', 0)" />
 										</dd>
 										<dt>描述</dt>
 										<dd>
@@ -29,7 +29,7 @@
 										</dd>
 										<dt>上级</dt>
 										<dd>
-											<mm_select v-model="form.father_id" :options="$to_kv(list_article_channel, 'channel_id', 'name')" />
+											<mm_select v-model="form.father_id" :options="$to_kv(list_article_channel, 'channel_id', 'name', 0)" />
 										</dd>
 										<dt>是否隐藏</dt>
 										<dd>

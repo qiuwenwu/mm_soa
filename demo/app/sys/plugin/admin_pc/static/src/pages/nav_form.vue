@@ -46,7 +46,7 @@
 										</dd>
 										<dt>上级</dt>
 										<dd>
-											<mm_select v-model="form.father_id" :options="$to_kv(list_nav, 'nav_id', 'name')" />
+											<mm_select v-model="form.father_id" :options="$to_kv(list_nav, 'nav_id', 'name', 0)" />
 										</dd>
 									</dl>
 								</mm_form>

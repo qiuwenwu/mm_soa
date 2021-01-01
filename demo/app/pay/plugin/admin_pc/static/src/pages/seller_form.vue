@@ -17,15 +17,15 @@
 										</dd>
 										<dt>商户持有人</dt>
 										<dd>
-											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>省份</dt>
 										<dd>
-											<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name')" />
+											<mm_select v-model="form.province_id" :options="$to_kv(list_address_province, 'province_id', 'name', 0)" />
 										</dd>
 										<dt>所在城市</dt>
 										<dd>
-											<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name')" />
+											<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name', 0)" />
 										</dd>
 										<dt class="required">商户名称</dt>
 										<dd>

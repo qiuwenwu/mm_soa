@@ -21,19 +21,19 @@
 										</dd>
 										<dt>店铺分类</dt>
 										<dd>
-											<mm_select v-model="form.type_id" :options="$to_kv(list_shop_type, 'type_id', 'name')" />
+											<mm_select v-model="form.type_id" :options="$to_kv(list_shop_type, 'type_id', 'name', 0)" />
 										</dd>
 										<dt>频道</dt>
 										<dd>
-											<mm_select v-model="form.channel_id" :options="$to_kv(list_shop_channel, 'channel_id', 'name')" />
+											<mm_select v-model="form.channel_id" :options="$to_kv(list_shop_channel, 'channel_id', 'name', 0)" />
 										</dd>
 										<dt>所属城市</dt>
 										<dd>
-											<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name')" />
+											<mm_select v-model="form.city_id" :options="$to_kv(list_address_city, 'city_id', 'name', 0)" />
 										</dd>
 										<dt>店铺所属人</dt>
 										<dd>
-											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>热度</dt>
 										<dd>
@@ -65,7 +65,7 @@
 										</dd>
 										<dt>收藏者</dt>
 										<dd>
-											<mm_textarea v-model="form.collecter" type="text" placeholder="多个收藏者用”,“分隔" />
+											<mm_textarea v-model="form.collecter" type="text" placeholder="多个收藏者用”,“分隔"></mm_textarea>
 										</dd>
 									</dl>
 								</mm_form>

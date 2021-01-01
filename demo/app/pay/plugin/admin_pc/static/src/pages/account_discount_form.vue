@@ -17,15 +17,15 @@
 										</dd>
 										<dt>收款人</dt>
 										<dd>
-											<mm_select v-model="form.to_user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_select v-model="form.to_user_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>商户</dt>
 										<dd>
-											<mm_select v-model="form.seller_id" :options="$to_kv(list_seller, 'seller_id', 'name')" />
+											<mm_select v-model="form.seller_id" :options="$to_kv(list_seller, 'seller_id', 'name', 0)" />
 										</dd>
 										<dt>审批人</dt>
 										<dd>
-											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_select v-model="form.user_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>提现金额</dt>
 										<dd>
@@ -73,7 +73,7 @@
 										</dd>
 										<dt>商户备注</dt>
 										<dd>
-											<mm_input v-model="form.note" :minlength="0" :maxlength="0" placeholder="提现完成后的商户备注信息，便于商户查询" />
+											<mm_rich v-model="form.note"></mm_rich>
 										</dd>
 									</dl>
 								</mm_form>

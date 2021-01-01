@@ -13,7 +13,7 @@
 									<dl>
 										<dt>上级分类</dt>
 										<dd>
-											<mm_select v-model="form.father_id" :options="$to_kv(list_product_type, 'type_id', 'name')" />
+											<mm_select v-model="form.father_id" :options="$to_kv(list_product_type, 'type_id', 'name', 0)" />
 										</dd>
 										<dt>分类名称</dt>
 										<dd>

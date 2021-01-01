@@ -1,5 +1,5 @@
 <template>
-	<textarea class="mm_rich" :id="id"></textarea>
+	<textarea class="mm_rich" :id="id_sub"></textarea>
 </template>
 
 <script>
@@ -12,7 +12,7 @@
 		props: {
 			id: {
 				type: String,
-				required: true
+				required: false
 			},
 			options: {
 				type: Object,
@@ -21,7 +21,7 @@
 						plugins: 'print preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template code codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists wordcount imagetools textpattern help emoticons autosave bdmap autoresize',
 						toolbar: `formatselect fontselect fontsizeselect | bold italic underline strikethrough link anchor forecolor backcolor | alignleft aligncenter alignright alignjustify outdent indent | table image axupimgs media charmap emoticons blockquote
 						| code undo redo restoredraft | bullist numlist | subscript superscript removeformat |
-						cut copy paste pastetext | hr pagebreak insertdatetime print preview | bdmap axupimgs indent2em lineheight formatpainter | fullscreen `,
+						cut copy paste pastetext | hr pagebreak insertdatetime print preview | bdmap axupimgs indent2em lineheight formatpainter | fullscreen`,
 						// height: 650, //编辑器高度
 						min_height: 400,
 						fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
@@ -30,11 +30,10 @@
 					}
 				}
 			},
-			content: {
+			value: {
 				type: String,
 				default: ''
 			},
-			value: String,
 			lang: {
 				type: String,
 				default: 'zh_CN'
@@ -51,7 +50,12 @@
 		},
 		watch: {
 			content() {
-				tinymce.get(this.id).setContent(this.content)
+				tinymce.get(this.id_sub).setContent(this.value)
+			}
+		},
+		data: function(){
+			return {
+				id_sub: this.id || this.new_id()
 			}
 		},
 		methods: {
@@ -107,6 +111,10 @@
 				};
 				hp.headers = {};
 				$.ajax(hp);
+			},
+			new_id: function new_id(){
+				var num = Math.ceil(Math.random() * 100000);
+				return "rich_" + num;
 			}
 		},
 		mounted() {
@@ -115,12 +123,12 @@
 			let s1 = new Function()
 			let config = (editor) => {
 				editor.on('NodeChange Change KeyUp', (e) => {
-					this.$emit('input', tinymce.get(this.id).getContent())
-					this.$emit('change', tinymce.get(this.id), tinymce.get(this.id).getContent())
+					this.$emit('input', tinymce.get(this.id_sub).getContent())
+					this.$emit('change', tinymce.get(this.id_sub), tinymce.get(this.id_sub).getContent())
 				})
 				editor.on('init', (e) => {
-					if (this.content != undefined) tinymce.get(this.id).setContent(this.content)
-					this.$emit('input', this.content)
+					if (this.value != undefined) tinymce.get(this.id_sub).setContent(this.value)
+					this.$emit('input', this.value)
 				})
 			}
 
@@ -129,7 +137,7 @@
 			if (typeof this.options == 'object') {
 
 				options = Object.assign({}, this.options)
-				if (!this.options.hasOwnProperty('selector')) options.selector = '#' + this.id
+				if (!this.options.hasOwnProperty('selector')) options.selector = '#' + this.id_sub
 				if (typeof this.options.setup == 'function') {
 					s1 = (editor) => {
 						config(editor)
@@ -137,7 +145,7 @@
 					}
 				}
 
-			} else options.selector = '#' + this.id
+			} else options.selector = '#' + this.id_sub
 
 			options.setup = (editor) => s1(editor);
 			options.language = this.lang;
@@ -151,7 +159,7 @@
 			Vue.nextTick(() => tinymce.init(options))
 		},
 		beforeDestroy() {
-			tinymce.execCommand('mceRemoveEditor', false, this.id)
+			tinymce.execCommand('mceRemoveEditor', false, this.id_sub)
 		}
 	}
 </script>

@@ -267,6 +267,38 @@
 	color: #000000;
 }
 
+.mm_textarea .value {
+	position: relative;
+}
+.mm_textarea .btn_expand {
+	position: absolute;
+	right: 0;
+	top: 0;
+	border: none;
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	opacity: 0;
+	font-size: 0.75rem;
+	padding: 0.25rem;
+	height: auto;
+	line-height: 1;
+}
+
+.mm_textarea textarea:focus ~ .btn_expand {
+	display: inline-block;
+	opacity: 1;
+}
+
+.mm_textarea .tox-tinymce {
+	display: none;
+}
+.mm_textarea.show-expand .value textarea {
+	display: none;
+}
+.mm_textarea.show-expand .tox-tinymce {
+	display: block;
+}
+
 .current .selected,
 .hover:hover .selected,
 .focus:focus .selected {
@@ -1262,6 +1294,10 @@ table .mm_btn {
 
 .th_desc {
 	width: 20rem
+}
+
+.th_selected {
+	text-align: center;
 }
 
 /* 图片上传 */

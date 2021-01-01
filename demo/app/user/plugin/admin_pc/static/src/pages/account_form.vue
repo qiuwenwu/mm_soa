@@ -29,15 +29,15 @@
 										</dd>
 										<dt>所在用户组</dt>
 										<dd>
-											<mm_select v-model="form.group_id" :options="$to_kv(list_group, 'group_id', 'name')" />
+											<mm_select v-model="form.group_id" :options="$to_kv(list_group, 'group_id', 'name', 0)" />
 										</dd>
 										<dt>所在管理组</dt>
 										<dd>
-											<mm_select v-model="form.admin_id" :options="$to_kv(list_admin, 'admin_id', 'name')" />
+											<mm_select v-model="form.admin_id" :options="$to_kv(list_admin, 'admin_id', 'name', 0)" />
 										</dd>
 										<dt>推荐人</dt>
 										<dd>
-											<mm_select v-model="form.referee_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_select v-model="form.referee_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>上次登录时间</dt>
 										<dd>
@@ -87,7 +87,7 @@
 										</dd>
 										<dt>好友</dt>
 										<dd>
-											<mm_textarea v-model="form.friends" type="text" placeholder="多个好友ID用“,”分隔" />
+											<mm_textarea v-model="form.friends" type="text" placeholder="多个好友ID用“,”分隔"></mm_textarea>
 										</dd>
 									</dl>
 								</mm_form>

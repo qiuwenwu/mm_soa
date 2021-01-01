@@ -13,7 +13,7 @@
 									<dl>
 										<dt>留言内容</dt>
 										<dd>
-											<mm_textarea v-model="form.note" type="text" placeholder="" />
+											<mm_rich v-model="form.note"></mm_rich>
 										</dd>
 										<dt>留言标题</dt>
 										<dd>

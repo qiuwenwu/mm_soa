@@ -75,6 +75,34 @@ main .mm_view {
 	max-height: 5rem;
 }
 
+.mm_table .btn_open {
+	width: 1.5rem;
+	line-height: 1.5rem;
+	height: 1.5rem;
+	border: none;
+	background: none;
+	text-align: center;
+	padding: 0;
+}
+
+.mm_table .fa-caret-right {
+	transform: rotate(0deg);
+	transition: transform ease-in-out 0.5s;
+}
+
+.mm_table .open .fa-caret-right {
+	transform: rotate(90deg);
+}
+
+.mm_table .sub .btn_open {
+	margin-left: 1.5rem;
+}
+
+.mm_table .no_sub .btn_open {
+	opacity: 0.5;
+}
+
+
 header.hide-x {
 	top: -100%;
 }

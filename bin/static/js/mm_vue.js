@@ -61,8 +61,12 @@ define(["Vue"], function(Vue) {
 			 * @param {Object} arr 数组
 			 * @param {String} key 键
 			 * @param {String} name 名称
+			 * @param {String} value 默认值
 			 */
-			Vue.prototype.$to_kv = function(arr, key, name) {
+			Vue.prototype.$to_kv = function(arr, key, name, value) {
+				if(value === undefined){
+					value = '';
+				}
 				var list = [];
 				if (arr.length > 0) {
 					if (key) {
@@ -77,17 +81,17 @@ define(["Vue"], function(Vue) {
 						if (arr[0].name !== '') {
 							list.unshift({
 								name: '',
-								value: ''
+								value: value
 							});
 						} else {
-							list[0].value = '';
+							list[0].value = value;
 						}
 					} else if (arr.length && typeof(arr[0]) === "object") {
 						list = arr;
 						if (arr[0].name !== '') {
 							list.unshift({
 								name: '',
-								value: ''
+								value: value
 							});
 						}
 					} else {
@@ -101,10 +105,10 @@ define(["Vue"], function(Vue) {
 						if (arr[0] !== '') {
 							list.unshift({
 								name: '',
-								value: ''
+								value: value
 							});
 						} else {
-							list[0].value = '';
+							list[0].value = value;
 						}
 					}
 				}

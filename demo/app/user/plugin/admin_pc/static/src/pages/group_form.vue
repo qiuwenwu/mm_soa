@@ -17,7 +17,7 @@
 										</dd>
 										<dt>下级用户组</dt>
 										<dd>
-											<mm_select v-model="form.next_group_id" :options="$to_kv(list_group, 'group_id', 'name')" />
+											<mm_select v-model="form.next_group_id" :options="$to_kv(list_group, 'group_id', 'name', 0)" />
 										</dd>
 										<dt>升级所需经验</dt>
 										<dd>

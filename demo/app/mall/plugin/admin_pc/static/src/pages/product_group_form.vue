@@ -11,21 +11,21 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
-										<dt>分组描述</dt>
+										<dt>分组名称</dt>
 										<dd>
-											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="" />
+											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder="" />
 										</dd>
 										<dt>分组图标</dt>
 										<dd>
 											<mm_upload_img width="10rem" height="10rem" name="icon" type="text" v-model="form.icon" />
 										</dd>
-										<dt>分组名称</dt>
+										<dt>分组描述</dt>
 										<dd>
-											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder="" />
+											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="" />
 										</dd>
 										<dt>店铺</dt>
 										<dd>
-											<mm_select v-model="form.shop_id" :options="$to_kv(list_shop, 'shop_id', 'name')" />
+											<mm_select v-model="form.shop_id" :options="$to_kv(list_shop, 'shop_id', 'name', 0)" />
 										</dd>
 									</dl>
 								</mm_form>
@@ -60,10 +60,10 @@
 					"group_id": 0
 				},
 				form: {
-					"description": '',
 					"group_id": 0,
-					"icon": '',
 					"name": '',
+					"icon": '',
+					"description": '',
 					"shop_id": 0,
 				},
 				// 店铺

@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="正文 / 留言者姓名 / 标签"
+											<mm_input v-model="query.keyword" title="关键词" desc="留言者姓名 / 标签 / 正文"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -54,22 +54,22 @@
 												<mm_reverse title="是否启用" v-model="query.orderby" field="available" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="显示排序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
+												<mm_reverse title="评分" v-model="query.orderby" field="score" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="留言者姓名" v-model="query.orderby" field="name" :func="search"></mm_reverse>
+												<mm_reverse title="显示排序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="所属产品" v-model="query.orderby" field="product_id" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="评分" v-model="query.orderby" field="score" :func="search"></mm_reverse>
+												<mm_reverse title="用户" v-model="query.orderby" field="user_id" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="留言者姓名" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="标签" v-model="query.orderby" field="tag" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="用户" v-model="query.orderby" field="user_id" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
@@ -83,22 +83,22 @@
 												<mm_switch v-model="o.available" @click.native="set(o)" />
 											</td>
 											<td>
-												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
+												<span>{{ o.score }}</span>
 											</td>
 											<td>
-												<span>{{ o.name }}</span>
+												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
 												<span>{{ get_name(list_product, o.product_id, 'product_id', 'title') }}</span>
 											</td>
 											<td>
-												<span>{{ o.score }}</span>
+												<span>{{ get_name(list_account, o.user_id, 'user_id', 'nickname') }}</span>
+											</td>
+											<td>
+												<span>{{ o.name }}</span>
 											</td>
 											<td>
 												<span>{{ o.tag }}</span>
-											</td>
-											<td>
-												<span>{{ get_name(list_account, o.user_id, 'user_id', 'nickname') }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./product_comment_form?comment_id=' + o[field]">修改</mm_btn>
@@ -181,24 +181,24 @@
 					page: 1,
 					//页面大小
 					size: 10,
-					// 是否启用
-					'available': '',
 					// 评论id
 					'comment_id': 0,
-					// 正文
-					'content': '',
+					// 是否启用
+					'available': '',
+					// 评分——最小值
+					'score_min': 0,
+					// 评分——最大值
+					'score_max': 0,
 					// 显示排序——最小值
 					'display_min': 0,
 					// 显示排序——最大值
 					'display_max': 0,
 					// 留言者姓名
 					'name': '',
-					// 评分——最小值
-					'score_min': 0,
-					// 评分——最大值
-					'score_max': 0,
 					// 标签
 					'tag': '',
+					// 正文
+					'content': '',
 					// 关键词
 					'keyword': '',
 					//排序

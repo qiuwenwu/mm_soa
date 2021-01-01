@@ -17,15 +17,15 @@
 										</dd>
 										<dt>付款人</dt>
 										<dd>
-											<mm_select v-model="form.from_user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_select v-model="form.from_user_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>收款人</dt>
 										<dd>
-											<mm_select v-model="form.to_user_id" :options="$to_kv(list_account, 'user_id', 'nickname')" />
+											<mm_select v-model="form.to_user_id" :options="$to_kv(list_account, 'user_id', 'nickname', 0)" />
 										</dd>
 										<dt>商户</dt>
 										<dd>
-											<mm_select v-model="form.seller_id" :options="$to_kv(list_seller, 'seller_id', 'name')" />
+											<mm_select v-model="form.seller_id" :options="$to_kv(list_seller, 'seller_id', 'name', 0)" />
 										</dd>
 										<dt>付款总计金额</dt>
 										<dd>
@@ -90,11 +90,11 @@
 										</dd>
 										<dt>付款人备注</dt>
 										<dd>
-											<mm_input v-model="form.note" :minlength="0" :maxlength="255" placeholder="付款完成后的用户备注信息，便于用户查询" />
+											<mm_rich v-model="form.note"></mm_rich>
 										</dd>
 										<dt>付款内容</dt>
 										<dd>
-											<mm_textarea v-model="form.content" type="text" placeholder="根据应用定格式，一般为json格式" />
+											<mm_rich v-model="form.content"></mm_rich>
 										</dd>
 									</dl>
 								</mm_form>

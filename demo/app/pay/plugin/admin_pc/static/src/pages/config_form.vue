@@ -35,7 +35,7 @@
 										</dd>
 										<dt>数据模型</dt>
 										<dd>
-											<mm_textarea v-model="form.model" type="text" placeholder="json格式，用于单选 / 多选模式" />
+											<mm_textarea v-model="form.model" type="text" placeholder="json格式，用于单选 / 多选模式"></mm_textarea>
 										</dd>
 									</dl>
 								</mm_form>

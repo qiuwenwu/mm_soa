@@ -25,7 +25,7 @@
 										<!--{else if(v.format)}-->
 										<!--{if(v.format.table)}-->
 										<dd>
-											<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+											<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}', 0)" />
 										</dd>
 										<!--{else}-->
 										<dd>
@@ -48,9 +48,13 @@
 										<dd>
 											<mm_upload_img width="10rem" height="10rem" name="${v.name}" type="text" v-model="form.${v.name}" />
 										</dd>
+										<!--{else if(v.name.indexOf('content') !== -1 || v.name.indexOf('note') !== -1)}-->
+										<dd>
+											<mm_rich v-model="form.${v.name}"></mm_rich>
+										</dd>
 										<!--{else if(v.dataType.indexOf('text') !== -1)}-->
 										<dd>
-											<mm_textarea v-model="form.${v.name}" type="text" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
+											<mm_textarea v-model="form.${v.name}" type="text" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"></mm_textarea>
 										</dd>
 										<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
 										<dd>
@@ -126,7 +130,7 @@
 			 * 获取 ${v.title}
 			 * @param {query} 查询条件
 			 */
-			get_ /*[v.basename]*/(query) {
+			get_/*[v.basename]*/(query) {
 				var _this = this;
 				if (!query) {
 					query = {
