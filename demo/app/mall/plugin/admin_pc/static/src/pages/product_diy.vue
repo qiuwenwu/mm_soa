@@ -67,7 +67,7 @@
 												<span>{{ o.description }}</span>
 											</td>
 											<td>
-												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
+												<input class="input_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
 												<span>{{ o.name }}</span>

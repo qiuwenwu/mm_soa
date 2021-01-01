@@ -83,7 +83,7 @@
 										<!--{else if(v.dataType === 'timestamp' || v.dataType === 'datetime')}-->
 										<span>{{ $to_time(o.${v.name}, 'yyyy-MM-dd hh:mm') }}</span>
 										<!--{else if(v.name === 'display' || v.name === 'orderby')}-->
-										<input class="td_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
+										<input class="input_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
 										<!--{else}-->
 										<span>{{ o.${v.name} }}</span>
 										<!--{/if}-->

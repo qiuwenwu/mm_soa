@@ -407,5 +407,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "shop_id"
+        ]
+    }
 }

@@ -44,7 +44,7 @@
 										<dd>
 											<mm_time v-model="form.${v.name}" type="datetime-local" />
 										</dd>
-										<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1)}-->
+										<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1 || v.name === 'avatar')}-->
 										<dd>
 											<mm_upload_img width="10rem" height="10rem" name="${v.name}" type="text" v-model="form.${v.name}" />
 										</dd>

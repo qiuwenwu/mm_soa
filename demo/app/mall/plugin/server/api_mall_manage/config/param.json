@@ -128,5 +128,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "config_id"
+        ]
+    }
 }

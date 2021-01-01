@@ -136,5 +136,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "group_id"
+        ]
+    }
 }

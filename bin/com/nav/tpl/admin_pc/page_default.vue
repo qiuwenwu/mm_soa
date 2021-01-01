@@ -72,7 +72,7 @@
 									<tbody>
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
-											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
@@ -96,7 +96,7 @@
 												<!--{else if(v.dataType === 'timestamp' || v.dataType === 'datetime')}-->
 												<span>{{ $to_time(o.${v.name}, 'yyyy-MM-dd hh:mm') }}</span>
 												<!--{else if(v.name === 'display' || v.name === 'orderby')}-->
-												<input class="td_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
+												<input class="input_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
 												<!--{else}-->
 												<span>{{ o.${v.name} }}</span>
 												<!--{/if}-->

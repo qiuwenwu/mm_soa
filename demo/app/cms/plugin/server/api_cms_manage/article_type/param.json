@@ -57,10 +57,7 @@
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "range": [
-                    1,
-                    30000
-                ]
+                "max": 30000
             }
         },
         {
@@ -100,10 +97,7 @@
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "range": [
-                    1,
-                    32767
-                ]
+                "max": 32767
             }
         },
         {
@@ -142,5 +136,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "type_id"
+        ]
+    }
 }

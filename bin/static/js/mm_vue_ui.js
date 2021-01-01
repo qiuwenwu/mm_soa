@@ -1940,7 +1940,7 @@ define(['jquery'], function(jquery) {
 	};
 
 	var mm_input = {
-		template: "<div class=\"mm_input\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type\" :value=\"value\" :min=\"min\" :max=\"max\" :minlength=\"min_length\" :maxlength=\"max_length\" :placeholder=\"desc || placeholder\" @input=\"set\" :disabled=\"disabled\" :required=\"required\" @blur=\"$emit('blur')\" /><slot><span class=\"unit\" v-if=\"unit\">{{ unit }}</span></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<div class=\"mm_input\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input v-bind:class=\"{'auto-width': auto }\" :type=\"type\" :value=\"value\" :min=\"min\" :max=\"max\" :minlength=\"min_length\" :maxlength=\"max_length\" :placeholder=\"desc || placeholder\" @input=\"set\" :disabled=\"disabled\" :required=\"required\" @blur=\"$emit('blur')\" :style=\"style\" /><slot><span class=\"unit\" v-if=\"unit\">{{ unit }}</span></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -1949,6 +1949,14 @@ define(['jquery'], function(jquery) {
 			required: {
 				type: Boolean,
 				default: false
+			},
+			auto: {
+				type: Boolean,
+				default: false
+			},
+			size: {
+				type: Number,
+				default: 0.625
 			}
 		},
 		methods: {
@@ -1972,6 +1980,16 @@ define(['jquery'], function(jquery) {
 					this.$emit("input", num);
 				} else {
 					this.$emit("input", e.target.value);
+				}
+			}
+		},
+		computed: {
+			style: function() {
+				if (this.auto) {
+					var len = this.value.length;
+					return "width:" + ((len + 1) * this.size) + "rem";
+				} else {
+					return '';
 				}
 			}
 		}

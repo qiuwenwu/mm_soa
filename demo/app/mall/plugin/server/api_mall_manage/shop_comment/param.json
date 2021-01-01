@@ -214,5 +214,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "comment_id"
+        ]
+    }
 }

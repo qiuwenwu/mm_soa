@@ -11,22 +11,14 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
-										<dt>英文</dt>
-										<dd>
-											<mm_input v-model="form.en" :minlength="0" :maxlength="255" placeholder="" />
-										</dd>
-										<dt>日文</dt>
-										<dd>
-											<mm_input v-model="form.ja" :minlength="0" :maxlength="255" placeholder="" />
-										</dd>
 										<dt class="required">主键</dt>
 										<dd>
 											<mm_input v-model="form.key" :minlength="0" :maxlength="32" placeholder=""
 											 :required="true" />
 										</dd>
-										<dt>韩文</dt>
+										<dt>英文</dt>
 										<dd>
-											<mm_input v-model="form.ko" :minlength="0" :maxlength="255" placeholder="" />
+											<mm_input v-model="form.en" :minlength="0" :maxlength="255" placeholder="" />
 										</dd>
 										<dt>简体中文</dt>
 										<dd>
@@ -35,6 +27,14 @@
 										<dt>繁体中文</dt>
 										<dd>
 											<mm_input v-model="form.zh_tw" :minlength="0" :maxlength="255" placeholder="" />
+										</dd>
+										<dt>韩文</dt>
+										<dd>
+											<mm_input v-model="form.ko" :minlength="0" :maxlength="255" placeholder="" />
+										</dd>
+										<dt>日文</dt>
+										<dd>
+											<mm_input v-model="form.ja" :minlength="0" :maxlength="255" placeholder="" />
 										</dd>
 									</dl>
 								</mm_form>
@@ -70,12 +70,12 @@
 				},
 				form: {
 					"lang_id": 0,
-					"en": '',
-					"ja": '',
 					"key": '',
-					"ko": '',
+					"en": '',
 					"zh_cn": '',
 					"zh_tw": '',
+					"ko": '',
+					"ja": '',
 				},
 			}
 		},

@@ -1,5 +1,5 @@
 {
-    "name": "pay_account_amount2",
+    "name": "pay_account_amount_manage",
     "title": "账户余额",
     "description": "",
     "path": "/apis/pay/account_amount",

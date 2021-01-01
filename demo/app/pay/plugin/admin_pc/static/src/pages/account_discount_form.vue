@@ -45,31 +45,31 @@
 										</dd>
 										<dt>应用平台</dt>
 										<dd>
-											<mm_input v-model="form.platform" :minlength="0" :maxlength="0" placeholder="pc电脑版网站 / moblie移动版网站 / wechat微信公众号 / app手机应用" />
+											<mm_input v-model="form.platform" :minlength="0" :maxlength="12" placeholder="pc电脑版网站 / moblie移动版网站 / wechat微信公众号 / app手机应用" />
 										</dd>
 										<dt>收款方式</dt>
 										<dd>
-											<mm_input v-model="form.way" :minlength="0" :maxlength="0" placeholder="third第三方支付 / bank网银 / digiccy数字货币" />
+											<mm_input v-model="form.way" :minlength="0" :maxlength="12" placeholder="third第三方支付 / bank网银 / digiccy数字货币" />
 										</dd>
 										<dt>转账机构</dt>
 										<dd>
-											<mm_input v-model="form.institution" :minlength="0" :maxlength="0" placeholder="第三方填支付宝 / 微信，银行填银行名称例如建设银行，数字货币填数字货币名称，例如比特币" />
+											<mm_input v-model="form.institution" :minlength="0" :maxlength="16" placeholder="第三方填支付宝 / 微信，银行填银行名称例如建设银行，数字货币填数字货币名称，例如比特币" />
 										</dd>
 										<dt>发起提现时的IP</dt>
 										<dd>
-											<mm_input v-model="form.ip" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.ip" :minlength="0" :maxlength="32" placeholder="" />
 										</dd>
 										<dt>付款账户</dt>
 										<dd>
-											<mm_input v-model="form.from_user" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.from_user" :minlength="0" :maxlength="128" placeholder="" />
 										</dd>
 										<dt>收款账户</dt>
 										<dd>
-											<mm_input v-model="form.to_user" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.to_user" :minlength="0" :maxlength="128" placeholder="" />
 										</dd>
 										<dt>拒绝原因</dt>
 										<dd>
-											<mm_input v-model="form.cause" :minlength="0" :maxlength="0" placeholder="告知商户为什么拒绝本次提现" />
+											<mm_input v-model="form.cause" :minlength="0" :maxlength="255" placeholder="告知商户为什么拒绝本次提现" />
 										</dd>
 										<dt>商户备注</dt>
 										<dd>

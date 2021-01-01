@@ -759,6 +759,9 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			query: [],
 			query_required: []
 		},
+		get_obj: {
+			query_required: []
+		},
 		list: []
 	};
 	var len = lt.length;
@@ -892,6 +895,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				cm.del.query_required.push(n);
 				cm.set.query.push(n);
 				cm.get.query.push(n);
+				cm.get_obj.query_required.push(n);
 				// 添加验证模型
 				cm.list.push(m);
 			} else {

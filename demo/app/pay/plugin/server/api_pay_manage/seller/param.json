@@ -66,10 +66,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -109,10 +106,7 @@
             "type": "number",
             "dataType": "mediumint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 8388607
             }
         },
         {
@@ -122,10 +116,7 @@
             "type": "number",
             "dataType": "int",
             "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
+                "max": 2147483647
             }
         },
         {
@@ -135,10 +126,7 @@
             "type": "number",
             "dataType": "int",
             "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
+                "max": 2147483647
             }
         },
         {
@@ -148,7 +136,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 16,
+                "notEmpty": true
             }
         },
         {
@@ -157,7 +146,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 64
+            }
         },
         {
             "name": "institution_code",
@@ -165,7 +156,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 64
+            }
         },
         {
             "name": "address",
@@ -173,7 +166,9 @@
             "description": "商户办公地的详细地址",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "business",
@@ -181,7 +176,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "institution_img",
@@ -199,5 +196,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "seller_id"
+        ]
+    }
 }

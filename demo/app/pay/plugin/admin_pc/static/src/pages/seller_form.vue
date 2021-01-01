@@ -29,24 +29,24 @@
 										</dd>
 										<dt class="required">商户名称</dt>
 										<dd>
-											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
+											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder=""
 											 :required="true" />
 										</dd>
 										<dt>注册企业名</dt>
 										<dd>
-											<mm_input v-model="form.institution" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.institution" :minlength="0" :maxlength="64" placeholder="" />
 										</dd>
 										<dt>组织机构码</dt>
 										<dd>
-											<mm_input v-model="form.institution_code" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.institution_code" :minlength="0" :maxlength="64" placeholder="" />
 										</dd>
 										<dt>详细地址</dt>
 										<dd>
-											<mm_input v-model="form.address" :minlength="0" :maxlength="0" placeholder="商户办公地的详细地址" />
+											<mm_input v-model="form.address" :minlength="0" :maxlength="255" placeholder="商户办公地的详细地址" />
 										</dd>
 										<dt>经营范围</dt>
 										<dd>
-											<mm_input v-model="form.business" :minlength="0" :maxlength="0" placeholder="" />
+											<mm_input v-model="form.business" :minlength="0" :maxlength="255" placeholder="" />
 										</dd>
 										<dt>营业执照图片</dt>
 										<dd>

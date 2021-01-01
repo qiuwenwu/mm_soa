@@ -131,7 +131,7 @@
 									<tbody>
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
-											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
 												<mm_switch v-model="o.available" @click.native="set(o)" />
@@ -143,7 +143,7 @@
 												<span>{{ get_name(list_product_type, o.type_id, 'type_id', 'name') }}</span>
 											</td>
 											<td>
-												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
+												<input class="input_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
 												<span>{{ get_name(list_product_channel, o.channel_id, 'channel_id', 'name') }}</span>

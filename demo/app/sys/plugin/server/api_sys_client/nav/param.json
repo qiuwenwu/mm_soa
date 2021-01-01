@@ -164,5 +164,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "nav_id"
+        ]
+    }
 }

@@ -1,5 +1,5 @@
 {
-    "name": "pay_seller2",
+    "name": "pay_seller_manage",
     "title": "商户信息",
     "description": "",
     "path": "/apis/pay/seller",

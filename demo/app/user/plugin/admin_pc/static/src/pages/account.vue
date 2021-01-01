@@ -106,7 +106,7 @@
 												<mm_reverse title="邮箱认证" v-model="query.orderby" field="email_state" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="上次登录时的IP地址" v-model="query.orderby" field="login_ip" :func="search"></mm_reverse>
+												<mm_reverse title="上次登录IP" v-model="query.orderby" field="login_ip" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="个性签名" v-model="query.orderby" field="signature" :func="search"></mm_reverse>
@@ -123,7 +123,7 @@
 									<tbody>
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
-											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
 												<span v-bind:class="arr_color[o.state]">{{arr_state[o.state] }}</span>

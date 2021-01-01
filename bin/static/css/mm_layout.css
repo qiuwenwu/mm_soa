@@ -94,6 +94,10 @@ main .mm_view {
 	transform: rotate(90deg);
 }
 
+.mm_table .sub {
+	background: rgba(0, 0, 0, 0.02);
+}
+
 .mm_table .sub .btn_open {
 	margin-left: 1.5rem;
 }
@@ -640,6 +644,7 @@ ol.mm_list li::before {
 	display: block;
 	float: left;
 }
+
 .mobile .value label {
 	float: none;
 }
@@ -647,6 +652,7 @@ ol.mm_list li::before {
 .mm_form dt {
 	line-height: 2rem;
 }
+
 .mm_form dd {
 	line-height: 1;
 }
@@ -655,11 +661,12 @@ ol.mm_list li::before {
 	.mm_side.hide-x .mm_warp {
 		left: -100%;
 	}
-	
+
 	.mm_form dt {
 		float: none;
 		padding-bottom: 0;
 	}
+
 	.mm_form dd {
 		float: none;
 		padding-top: 0;

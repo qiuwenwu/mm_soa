@@ -4,10 +4,10 @@
     "add": {
         "body": [
             "en",
-            "ja",
-            "ko",
             "zh_cn",
-            "zh_tw"
+            "zh_tw",
+            "ko",
+            "ja"
         ],
         "body_required": [
             "key"
@@ -25,12 +25,12 @@
         ],
         "query_required": [],
         "body": [
-            "en",
-            "ja",
             "key",
-            "ko",
+            "en",
             "zh_cn",
-            "zh_tw"
+            "zh_tw",
+            "ko",
+            "ja"
         ],
         "body_required": [],
         "body_not": []
@@ -53,26 +53,6 @@
             }
         },
         {
-            "name": "en",
-            "title": "英文",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
-            }
-        },
-        {
-            "name": "ja",
-            "title": "日文",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "max": 255
-            }
-        },
-        {
             "name": "key",
             "title": "主键",
             "description": "",
@@ -84,8 +64,8 @@
             }
         },
         {
-            "name": "ko",
-            "title": "韩文",
+            "name": "en",
+            "title": "英文",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -112,6 +92,31 @@
             "string": {
                 "max": 255
             }
+        },
+        {
+            "name": "ko",
+            "title": "韩文",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255
+            }
+        },
+        {
+            "name": "ja",
+            "title": "日文",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255
+            }
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "lang_id"
+        ]
+    }
 }

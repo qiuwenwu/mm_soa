@@ -118,5 +118,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "augmented_id"
+        ]
+    }
 }

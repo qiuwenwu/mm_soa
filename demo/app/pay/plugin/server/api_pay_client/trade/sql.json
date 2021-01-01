@@ -5,7 +5,7 @@
     "key": "trade_id",
     "orderby_default": "`trade_id` desc",
     "field_obj": "`trade_id`,`state`,`from_user_id`,`to_user_id`,`seller_id`,`total`,`amount`,`fee`,`time_create`,`time_pay`,`time_end`,`time_update`,`platform`,`way`,`app`,`institution`,`title`,`transaction_id`,`ip`,`from_user`,`to_user`,`description`,`note`,`content`",
-    "field_default": "`trade_id`,`state`,`from_user_id`,`to_user_id`,`seller_id`,`total`,`amount`,`fee`,`time_create`,`time_pay`,`time_end`,`time_update`,`platform`,`way`,`app`,`institution`,`title`,`transaction_id`,`ip`,`from_user`,`to_user`,`description`,`note`,`content`",
+    "field_default": "`trade_id`,`state`,`from_user_id`,`to_user_id`,`seller_id`,`total`,`amount`,`fee`,`time_create`,`time_pay`,`time_end`,`time_update`,`platform`,`way`,`app`,`institution`,`title`,`transaction_id`,`ip`,`from_user`,`to_user`,`description`,`note`",
     "method": "get get_obj",
     "query": {
         "state_min": "`state` >= {0}",

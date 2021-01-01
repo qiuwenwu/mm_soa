@@ -11,13 +11,13 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
-										<dt>留言内容</dt>
-										<dd>
-											<mm_rich v-model="form.note"></mm_rich>
-										</dd>
 										<dt>留言标题</dt>
 										<dd>
 											<mm_input v-model="form.title" :minlength="0" :maxlength="255" placeholder="" />
+										</dd>
+										<dt>留言内容</dt>
+										<dd>
+											<mm_rich v-model="form.note"></mm_rich>
 										</dd>
 									</dl>
 								</mm_form>
@@ -53,8 +53,8 @@
 				},
 				form: {
 					"message_id": 0,
-					"note": '',
 					"title": '',
+					"note": '',
 				},
 			}
 		},

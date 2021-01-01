@@ -73,7 +73,7 @@
 										<dd>
 											<mm_select v-model="form.email_state" :options="$to_kv(arr_email_state)" />
 										</dd>
-										<dt>上次登录时的IP地址</dt>
+										<dt>上次登录IP</dt>
 										<dd>
 											<mm_input v-model="form.login_ip" :minlength="0" :maxlength="128" placeholder="" />
 										</dd>
@@ -83,7 +83,7 @@
 										</dd>
 										<dt>头像地址</dt>
 										<dd>
-											<mm_input v-model="form.avatar" :minlength="0" :maxlength="255" placeholder="" />
+											<mm_upload_img width="10rem" height="10rem" name="avatar" type="text" v-model="form.avatar" />
 										</dd>
 										<dt>好友</dt>
 										<dd>

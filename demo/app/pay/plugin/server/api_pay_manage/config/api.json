@@ -1,5 +1,5 @@
 {
-    "name": "pay_config2",
+    "name": "pay_config_manage",
     "title": "支付配置",
     "description": "",
     "path": "/apis/pay/config",

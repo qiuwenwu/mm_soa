@@ -98,7 +98,7 @@ $.home = {
 		}
 		// 创建与view视图通讯的模型
 		var model = {
-			config: Object.assign(config, $.config),
+			config: Object.assign({ sys_lang_list: [] }, config, $.config),
 			seo: Object.assign({
 				title: $.config.sys.title + "门户",
 				keywords: "mm home pc",

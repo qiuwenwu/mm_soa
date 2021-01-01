@@ -1,3 +1,11 @@
+.mm_badge {
+	font-size: 0.75rem;
+	padding: 0.25rem .5rem;
+	border-radius: 1rem;
+	color: #fff;
+	background: var(--color_red);
+}
+
 .active,
 .hover,
 .focus,
@@ -270,12 +278,13 @@
 .mm_textarea .value {
 	position: relative;
 }
+
 .mm_textarea .btn_expand {
 	position: absolute;
 	right: 0;
 	top: 0;
 	border: none;
-	background: rgba(0,0,0,0.5);
+	background: rgba(0, 0, 0, 0.5);
 	color: #fff;
 	opacity: 0;
 	font-size: 0.75rem;
@@ -284,7 +293,7 @@
 	line-height: 1;
 }
 
-.mm_textarea textarea:focus ~ .btn_expand {
+.mm_textarea textarea:focus~.btn_expand {
 	display: inline-block;
 	opacity: 1;
 }
@@ -292,9 +301,11 @@
 .mm_textarea .tox-tinymce {
 	display: none;
 }
+
 .mm_textarea.show-expand .value textarea {
 	display: none;
 }
+
 .mm_textarea.show-expand .tox-tinymce {
 	display: block;
 }
@@ -947,6 +958,7 @@ table .mm_reverse .title {
 	.mm_nav_top.show .mask {
 		display: block;
 	}
+
 	.mm_nav_top.show nav {
 		padding: 1rem 0;
 	}
@@ -1220,6 +1232,12 @@ table .mm_reverse .title {
 	white-space: nowrap;
 }
 
+.mm_table td {
+	max-width: 24rem;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+
 table .mm_btn {
 	border-radius: .25rem;
 	display: inline-block;
@@ -1231,10 +1249,24 @@ table .mm_btn {
 	font-size: .75rem;
 }
 
-.td_display {
+.input_display {
 	width: 3rem;
 	text-align: center;
 	border-radius: var(--radius_small);
+	border: 1px solid var(--color_border);
+}
+
+.auto-width {
+	display: inline-block;
+	width: 100%;
+	min-width: 4rem;
+	background: none;
+	border-radius: 0 !important;
+	border-color: transparent !important;
+	padding: 0 !important;
+}
+
+.auto-width:focus {
 	border: 1px solid var(--color_border);
 }
 
@@ -1297,6 +1329,7 @@ table .mm_btn {
 }
 
 .th_selected {
+	width: 3rem;
 	text-align: center;
 }
 

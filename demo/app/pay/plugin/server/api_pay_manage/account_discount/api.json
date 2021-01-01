@@ -1,5 +1,5 @@
 {
-    "name": "pay_account_discount2",
+    "name": "pay_account_discount_manage",
     "title": "账户提现",
     "description": "",
     "path": "/apis/pay/account_discount",

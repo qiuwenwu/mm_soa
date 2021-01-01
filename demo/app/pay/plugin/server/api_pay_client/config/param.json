@@ -57,10 +57,7 @@
             "type": "number",
             "dataType": "int",
             "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
+                "max": 2147483647
             }
         },
         {
@@ -70,7 +67,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 16,
+                "notEmpty": true
             }
         },
         {
@@ -80,7 +78,8 @@
             "type": "string",
             "dataType": "varchar",
             "string": {
-                "notEmpty": 1
+                "max": 16,
+                "notEmpty": true
             }
         },
         {
@@ -89,7 +88,9 @@
             "description": "可以用中文名",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 16
+            }
         },
         {
             "name": "description",
@@ -97,7 +98,9 @@
             "description": "描述该变量的作用",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "value",
@@ -105,7 +108,9 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "model",
@@ -123,5 +128,10 @@
             "dataType": "varchar",
             "string": {}
         }
-    ]
+    ],
+    "get_obj": {
+        "query_required": [
+            "config_id"
+        ]
+    }
 }

@@ -36,16 +36,10 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<th>
-												<mm_reverse title="英文" v-model="query.orderby" field="en" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="日文" v-model="query.orderby" field="ja" :func="search"></mm_reverse>
-											</th>
-											<th>
 												<mm_reverse title="主键" v-model="query.orderby" field="key" :func="search"></mm_reverse>
 											</th>
 											<th>
-												<mm_reverse title="韩文" v-model="query.orderby" field="ko" :func="search"></mm_reverse>
+												<mm_reverse title="英文" v-model="query.orderby" field="en" :func="search"></mm_reverse>
 											</th>
 											<th>
 												<mm_reverse title="简体中文" v-model="query.orderby" field="zh_cn" :func="search"></mm_reverse>
@@ -53,31 +47,37 @@
 											<th>
 												<mm_reverse title="繁体中文" v-model="query.orderby" field="zh_tw" :func="search"></mm_reverse>
 											</th>
+											<th>
+												<mm_reverse title="韩文" v-model="query.orderby" field="ko" :func="search"></mm_reverse>
+											</th>
+											<th>
+												<mm_reverse title="日文" v-model="query.orderby" field="ja" :func="search"></mm_reverse>
+											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
 									</thead>
 									<tbody>
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
-											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
-											<td>
-												<span>{{ o.en }}</span>
-											</td>
-											<td>
-												<span>{{ o.ja }}</span>
-											</td>
 											<td>
 												<span>{{ o.key }}</span>
 											</td>
 											<td>
-												<span>{{ o.ko }}</span>
+												<span>{{ o.en }}</span>
 											</td>
 											<td>
 												<span>{{ o.zh_cn }}</span>
 											</td>
 											<td>
 												<span>{{ o.zh_tw }}</span>
+											</td>
+											<td>
+												<span>{{ o.ko }}</span>
+											</td>
+											<td>
+												<span>{{ o.ja }}</span>
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./lang_form?lang_id=' + o[field]">修改</mm_btn>

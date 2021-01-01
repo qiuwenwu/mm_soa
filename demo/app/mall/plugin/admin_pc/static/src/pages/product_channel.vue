@@ -51,7 +51,7 @@
 										<mm_btn class="btn_default-x" @click.native="export_db()" v-if="url_export">导出</mm_btn>
 									</div>
 								</div>
-								<mm_table type="2">
+								<mm_table type="3">
 									<thead class="table-sm">
 										<tr>
 											<th class="th_open"></th>
@@ -99,7 +99,7 @@
 										 @click="selected(idx)">
 											<th class="th_open"><button class="btn_open" :style="'margin-left:' + (1.5 * opens_lv(o[father_id])) + 'rem;'"
 												 @click="opens_change(o[field])"><i class="fa-caret-right"></i></button></th>
-											<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
 												<mm_switch v-model="o.available" @click.native="set(o)" />
@@ -111,7 +111,7 @@
 												<mm_switch v-model="o.can_comment" @click.native="set(o)" />
 											</td>
 											<td>
-												<input class="td_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
+												<input class="input_display" v-model.number="o.display" @blur="set(o)" min="0" max="1000" />
 											</td>
 											<td>
 												<span>{{ get_name(list_product_channel, o.father_id, 'channel_id', 'name') }}</span>
@@ -120,19 +120,19 @@
 												<span>{{ get_name(list_address_city, o.city_id, 'city_id', 'name') }}</span>
 											</td>
 											<td>
-												<span>{{ o.type }}</span>
+												<mm_input :auto="true" v-model="o.type" @blur="set(o)" />
 											</td>
 											<td>
-												<span>{{ o.name }}</span>
+												<mm_input :auto="true" v-model="o.name" @blur="set(o)" />
 											</td>
 											<td>
-												<span>{{ o.template }}</span>
+												<mm_input :auto="true" v-model="o.template" @blur="set(o)" />
 											</td>
 											<td>
-												<span>{{ o.url }}</span>
+												<mm_input :auto="true" v-model="o.url" @blur="set(o)" />
 											</td>
 											<td>
-												<span>{{ o.description }}</span>
+												<mm_input :auto="true" v-model="o.description" @blur="set(o)" />
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./product_channel_form?channel_id=' + o[field]">修改</mm_btn>
