@@ -20,9 +20,15 @@ async function main(ctx, db) {
 			user_id: user.user_id
 		};
 		if (method === "set" || method === "submit") {
-			var body = req.body;
+			var body = $.push({
+					"phone": '',
+					"nickname": '',
+					"email": '',
+					"signature": '',
+					"avatar": ''
+				}, req.body);
 			var bl = await db.set(query, body);
-			return $.ret.bl(bl, bl ? '更新成功！' : '更新失败！');
+			return $.ret.bl(bl, bl > 0 ? '更新成功！' : '更新失败！原因:' + db.error.message);
 		} else {
 			db.key = 'user_id';
 			var obj = await db.getObj(query);

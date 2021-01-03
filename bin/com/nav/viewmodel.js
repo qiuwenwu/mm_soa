@@ -102,8 +102,8 @@ ViewModel.prototype.js = async function(model) {
 				var name = "list_" + basename;
 				var id = format.id || format.key;
 				o.label = name;
-				var path = path_start + format.table.replace('_', '/') + "?size=0" // &field=" + format.key + "," + format.name;
-				js.data.push({
+				var path = path_start + format.table.replace('_', '/') + "?size=0";
+				var obj = {
 					basename,
 					title: format.title,
 					id,
@@ -111,7 +111,11 @@ ViewModel.prototype.js = async function(model) {
 					field: format.name,
 					value: [],
 					path
-				});
+				};
+				if(o.name === 'father_id' || o.name === 'fid'){
+					obj.father_id = o.name;
+				}
+				js.data.push(obj);
 			} else {
 				var basename = format.key;
 				var name = "arr_" + basename;

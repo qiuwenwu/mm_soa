@@ -53,7 +53,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/product_group?",
+				url: "/apis/mall/product_group?",
 				url_get_obj: "/apis/mall/product_group?method=get_obj",
 				field: "group_id",
 				query: {

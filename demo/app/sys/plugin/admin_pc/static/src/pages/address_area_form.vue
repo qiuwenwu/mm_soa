@@ -50,7 +50,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/sys/address_area?",
+				url: "/apis/sys/address_area?",
 				url_get_obj: "/apis/sys/address_area?method=get_obj",
 				field: "area_id",
 				query: {

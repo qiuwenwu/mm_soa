@@ -173,7 +173,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "type_id,name"
+						field: "type_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/mall/product_type?size=0', query, function(json) {

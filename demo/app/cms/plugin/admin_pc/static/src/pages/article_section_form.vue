@@ -59,7 +59,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/cms/article_section?",
+				url: "/apis/cms/article_section?",
 				url_get_obj: "/apis/cms/article_section?method=get_obj",
 				field: "section_id",
 				query: {

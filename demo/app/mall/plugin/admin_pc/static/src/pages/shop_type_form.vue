@@ -53,7 +53,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/shop_type?",
+				url: "/apis/mall/shop_type?",
 				url_get_obj: "/apis/mall/shop_type?method=get_obj",
 				field: "type_id",
 				query: {
@@ -79,7 +79,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "type_id,name"
+						field: "type_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/mall/shop_type?size=0', query, function(json) {

@@ -49,7 +49,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/product_property?",
+				url: "/apis/mall/product_property?",
 				url_get_obj: "/apis/mall/product_property?method=get_obj",
 				field: "property_id",
 				query: {

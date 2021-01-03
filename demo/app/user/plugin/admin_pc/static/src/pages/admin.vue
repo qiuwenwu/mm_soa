@@ -187,7 +187,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "admin_id,name"
+						field: "admin_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/user/admin?size=0', query, function(json) {

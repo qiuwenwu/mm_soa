@@ -112,7 +112,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/sys/app?",
+				url: "/apis/sys/app?",
 				url_get_obj: "/apis/sys/app?method=get_obj",
 				field: "app_id",
 				query: {

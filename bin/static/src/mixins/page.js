@@ -3,6 +3,11 @@ define(function() {
 
 	return {
 		data: function data() {
+			var opens = $.db.get('opens') || [0];
+			// var opens_str = ;
+			// if(opens_str){
+			// 	opens = opens_str;
+			// }
 			return {
 				// 标题
 				title: "",
@@ -85,7 +90,7 @@ define(function() {
 				// 修改条件
 				query_set: {},
 				// 展开的上级id
-				opens: [0],
+				opens: opens,
 				// 上级ID: father_id
 				father_id: "father_id"
 			};
@@ -144,7 +149,7 @@ define(function() {
 				if (!param) {
 					param = this.obj;
 				}
-				var pm = this.events("add_before", param) || param;
+				var pm = this.events("add_before", Object.assign({}, param)) || param;
 				var msg = this.events("add_check", pm);
 				var ret;
 				if (!msg) {
@@ -160,7 +165,7 @@ define(function() {
 				if (!param) {
 					param = this.query;
 				}
-				var pm = this.events("del_before", param) || param;
+				var pm = this.events("del_before", Object.assign({}, param)) || param;
 				var msg = this.events("del_check", pm);
 				var ret;
 				if (!msg) {
@@ -197,7 +202,7 @@ define(function() {
 				} else if (!this.query_set) {
 					this.query_set = Object.assign({}, this.query);
 				}
-				var pm = this.events("set_before", param, includeZero) || param;
+				var pm = this.events("set_before", Object.assign({}, param), includeZero) || param;
 				var msg = this.events("set_check", pm);
 				var ret;
 				if (!msg) {
@@ -248,7 +253,7 @@ define(function() {
 				if (!param) {
 					param = this.query;
 				}
-				var pm = this.events("get_list_before", param) || param;
+				var pm = this.events("get_list_before", Object.assign({}, param)) || param;
 				var msg = this.events("get_list_check", pm);
 				var ret;
 				if (!msg) {
@@ -265,7 +270,7 @@ define(function() {
 				if (!param) {
 					param = this.query;
 				}
-				var pm = this.events("get_obj_before", param) || param;
+				var pm = this.events("get_obj_before", Object.assign({}, param)) || param;
 				var msg = this.events("get_obj_check", pm);
 				var ret;
 				if (!msg) {
@@ -276,7 +281,7 @@ define(function() {
 				return ret;
 			},
 			sort: function sort(param, func) {
-				var pm = this.events("sort_before", param) || param;
+				var pm = this.events("sort_before", Object.assign({}, param)) || param;
 				var msg = this.events("sort_check", pm);
 				var ret;
 				if (!msg) {
@@ -285,7 +290,7 @@ define(function() {
 				return ret;
 			},
 			init: function init(param, func) {
-				var pm = this.events("init_before", param) || param;
+				var pm = this.events("init_before", Object.assign({}, param)) || param;
 				var msg = this.events("init_check", pm);
 				var ret;
 				if (!msg) {
@@ -299,7 +304,7 @@ define(function() {
 				if (!param) {
 					param = this.form;
 				}
-				var pm = this.events("submit_before", param) || param;
+				var pm = this.events("submit_before", Object.assign({}, param)) || param;
 				var msg = this.events("submit_check", pm);
 				var ret;
 				if (msg) {
@@ -317,7 +322,7 @@ define(function() {
 				return param;
 			},
 			upload: function upload(param, func) {
-				var pm = this.events("upload_before", param) || param;
+				var pm = this.events("upload_before", Object.assign({}, param)) || param;
 				var msg = this.events("upload_check", pm);
 				var ret;
 				if (msg) {
@@ -434,7 +439,7 @@ define(function() {
 			 * @param {Function} func 回调函数
 			 */
 			get_main: function get_main(query, func) {
-				var url = this.url ? this.url : this.url_get_obj;
+				var url = this.url_get_obj ? this.url_get_obj : this.url;
 				if (url) {
 					var _this = this;
 					this.get_obj(query, function() {
@@ -469,20 +474,19 @@ define(function() {
 			 */
 			get_obj_main: function get_obj_main(query, func) {
 				// console.log("get_obj_main");
-				var url = this.url ? this.url + "method=get_obj" : this.url_get_obj;
+				var url = this.url_get_obj ? this.url_get_obj : this.url + "method=get_obj";
 				if (!url) {
 					return;
 				}
-
 				var _this = this;
 				this.$get(this.toUrl(query, url), null, function(json, status) {
 					_this.events("get_obj_after", json, func);
 					var res = json.result;
 					if (res) {
 						var obj;
-						$.push(_this, res);
 						if (res.obj) {
 							obj = res.obj;
+							delete res.obj;
 						} else {
 							var list = res.list;
 							if (list && list.length > 0) {
@@ -491,6 +495,7 @@ define(function() {
 								obj = res;
 							}
 						}
+						$.push(_this, res, true);
 						if (obj) {
 							if (Object.keys(_this.obj).length === 0) {
 								_this.obj = obj;
@@ -507,7 +512,7 @@ define(function() {
 									}
 								}
 							}
-							_this.form = _this.obj;
+							$.push(_this.form, _this.obj);
 						}
 					} else if (json.error) {
 						console.log(json.error.message);
@@ -531,7 +536,7 @@ define(function() {
 			 * @param {Function} func 回调函数
 			 */
 			get_list_main: function get_list_main(query, func) {
-				var url = this.url ? this.url : this.url_get_list;
+				var url = this.url_get_list ? this.url_get_list : this.url;
 				if (!url) {
 					return;
 				}
@@ -575,7 +580,7 @@ define(function() {
 				if (query) {
 					$.push(this.query, query);
 				}
-				var url = this.url ? this.url : this.url_get_list;
+				var url = this.url_get_list ? this.url_get_list : this.url;
 				if (url) {
 					this.query.page = 1;
 					this.count = 0;
@@ -587,7 +592,7 @@ define(function() {
 				if (query) {
 					$.push(this.query, query);
 				}
-				var url = this.url ? this.url : this.url_get_list;
+				var url = this.url_get_list ? this.url_get_list : this.url;
 				if (url) {
 					this.count = 0;
 					$.route.push("?" + this.toUrl(this.query));
@@ -672,7 +677,7 @@ define(function() {
 			 * 提交表单
 			 */
 			submit_main: function submit_main(param, func) {
-				var url = this.url ? this.url : this.url_submit;
+				var url = this.url;
 				if (url) {
 					if (this.field) {
 						var id = param[this.field];
@@ -688,14 +693,14 @@ define(function() {
 					} else {
 						url += "method=submit"
 					}
-				} else {
-					if (this.field) {
-						var id = param[this.field];
-						if (id) {
-							url = this.url_set;
-						} else {
-							url = this.url_add;
-						}
+				} else if (this.url_submit) {
+					url = this.url_submit;
+				} else if (this.field) {
+					var id = param[this.field];
+					if (id) {
+						url = this.url_set;
+					} else {
+						url = this.url_add;
 					}
 				}
 
@@ -703,15 +708,14 @@ define(function() {
 				if (url) {
 					var _this = this;
 					this.$post(url, param, function(json, status) {
-						_this.events("submit_after", json, func);
 						if (json.result) {
 							_this.toast(json.result.tip);
-							_this.$back();
 						} else if (json.error) {
 							_this.toast(json.error.message);
 						} else {
 							_this.toast("服务器连接失败！");
 						}
+						_this.events("submit_after", json, func);
 					});
 				}
 			},
@@ -732,6 +736,7 @@ define(function() {
 				if (func) {
 					func(json);
 				}
+				_this.$back();
 			},
 			/**
 			 * 上下翻页
@@ -1076,6 +1081,7 @@ define(function() {
 						this.opens.push(id);
 					}
 				}
+				$.db.set('opens', this.opens);
 			},
 			/**
 			 * 判断是否存在

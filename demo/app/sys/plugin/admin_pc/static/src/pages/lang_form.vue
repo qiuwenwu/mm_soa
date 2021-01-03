@@ -62,7 +62,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/sys/lang?",
+				url: "/apis/sys/lang?",
 				url_get_obj: "/apis/sys/lang?method=get_obj",
 				field: "lang_id",
 				query: {

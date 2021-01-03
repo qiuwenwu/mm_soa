@@ -74,7 +74,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/user/group?",
+				url: "/apis/user/group?",
 				url_get_obj: "/apis/user/group?method=get_obj",
 				field: "group_id",
 				query: {

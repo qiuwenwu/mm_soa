@@ -115,7 +115,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/user/account?",
+				url: "/apis/user/account?",
 				url_get_obj: "/apis/user/account?method=get_obj",
 				field: "user_id",
 				query: {

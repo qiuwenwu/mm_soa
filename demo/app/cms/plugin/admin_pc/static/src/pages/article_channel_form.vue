@@ -78,7 +78,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/cms/article_channel?",
+				url: "/apis/cms/article_channel?",
 				url_get_obj: "/apis/cms/article_channel?method=get_obj",
 				field: "channel_id",
 				query: {
@@ -118,7 +118,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "channel_id,name"
+						field: "channel_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/cms/article_channel?size=0', query, function(json) {

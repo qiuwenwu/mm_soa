@@ -51,7 +51,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/sys/app_refresh?",
+				url: "/apis/sys/app_refresh?",
 				url_get_obj: "/apis/sys/app_refresh?method=get_obj",
 				field: "refresh_id",
 				query: {

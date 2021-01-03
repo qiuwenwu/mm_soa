@@ -83,7 +83,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/product_channel?",
+				url: "/apis/mall/product_channel?",
 				url_get_obj: "/apis/mall/product_channel?method=get_obj",
 				field: "channel_id",
 				query: {
@@ -124,7 +124,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "channel_id,name"
+						field: "channel_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/mall/product_channel?size=0', query, function(json) {

@@ -1498,11 +1498,15 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_icon = {
-		template: "<figure class=\"mm_icon\" v-if=\"src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img :src=\"src\" :alt=\"alt\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
+		template: "<figure class=\"mm_icon\" v-if=\"src && src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img :src=\"src\" :alt=\"alt\" :οnerrοr=\"src_default\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
 		props: {
 			src: {
 				type: String,
 				default: ""
+			},
+			src_default: {
+				type: String,
+				default: "/img/default.png"
 			},
 			height: {
 				type: String,

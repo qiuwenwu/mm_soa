@@ -69,7 +69,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/shop_comment?",
+				url: "/apis/mall/shop_comment?",
 				url_get_obj: "/apis/mall/shop_comment?method=get_obj",
 				field: "comment_id",
 				query: {

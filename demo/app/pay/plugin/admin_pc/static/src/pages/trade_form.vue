@@ -122,7 +122,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/pay/trade?",
+				url: "/apis/pay/trade?",
 				url_get_obj: "/apis/pay/trade?method=get_obj",
 				field: "trade_id",
 				query: {

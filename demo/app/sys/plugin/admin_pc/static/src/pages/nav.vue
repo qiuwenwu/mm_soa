@@ -207,7 +207,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "nav_id,name"
+						field: "nav_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/sys/nav?size=0', query, function(json) {

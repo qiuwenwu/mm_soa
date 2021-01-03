@@ -93,7 +93,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/shop?",
+				url: "/apis/mall/shop?",
 				url_get_obj: "/apis/mall/shop?method=get_obj",
 				field: "shop_id",
 				query: {

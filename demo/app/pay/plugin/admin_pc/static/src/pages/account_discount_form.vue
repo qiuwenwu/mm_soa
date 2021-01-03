@@ -101,7 +101,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/pay/account_discount?",
+				url: "/apis/pay/account_discount?",
 				url_get_obj: "/apis/pay/account_discount?method=get_obj",
 				field: "discount_id",
 				query: {

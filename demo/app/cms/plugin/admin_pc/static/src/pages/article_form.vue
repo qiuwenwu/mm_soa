@@ -118,7 +118,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/cms/article?",
+				url: "/apis/cms/article?",
 				url_get_obj: "/apis/cms/article?method=get_obj",
 				field: "article_id",
 				query: {

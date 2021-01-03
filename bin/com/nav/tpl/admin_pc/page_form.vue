@@ -102,7 +102,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "${api.path}?",
+				url: "${api.path}?",
 				url_get_obj: "${api.path}?method=get_obj",
 				field: "${sql.key}",
 				query: {
@@ -134,7 +134,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "${v.id},${v.field}"
+						field: "${v.id},${v.field}${v.father_id ? ',father_id' : '' }"
 					};
 				}
 				this.$get('~${v.path}', query, function(json) {

@@ -117,7 +117,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/product?",
+				url: "/apis/mall/product?",
 				url_get_obj: "/apis/mall/product?method=get_obj",
 				field: "product_id",
 				query: {

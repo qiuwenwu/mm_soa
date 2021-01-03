@@ -219,7 +219,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "${v.id},${v.field}"
+						field: "${v.id},${v.field}${v.father_id ? ',father_id' : '' }"
 					};
 				}
 				this.$get('~${v.path}', query, function(json) {

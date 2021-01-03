@@ -179,7 +179,7 @@
 }
 
 .mm_switch .active .onoff::after {
-	left: 1.64rem;
+	left: 1.79rem;
 }
 
 .mm_switch label:active .onoff::after {
@@ -195,7 +195,7 @@
 }
 
 .mm_switch .on {
-	left: .25rem;
+	left: .35rem;
 }
 
 .mm_switch .on::before {

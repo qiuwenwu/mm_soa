@@ -19,10 +19,6 @@
 										<dd>
 											<mm_upload_img width="10rem" height="10rem" name="avatar" type="text" v-model="form.avatar" />
 										</dd>
-										<dt class="required">用户名</dt>
-										<dd>
-											<mm_input v-model="form.username" :minlength="0" :maxlength="16" placeholder="用户登录时所用的账户名称" :required="true" />
-										</dd>
 										<dt>手机号码</dt>
 										<dd>
 											<mm_input v-model="form.phone" :minlength="0" :maxlength="11" placeholder="用户的手机号码，用于找回密码时或登录时" />
@@ -61,17 +57,16 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/user/account_base",
+				url_submit: "/apis/user/account_base?method=submit",
 				url_get_obj: "/apis/user/account_base?method=get_obj",
 				field: "user_id",
 				query: {},
 				form: {
 					"phone": '',
-					"username": '',
 					"nickname": '',
 					"email": '',
 					"signature": '',
-					"avatar": '',
+					"avatar": ''
 				}
 			}
 		},
@@ -80,7 +75,7 @@
 				var _this = this;
 				this.$get(this.url_get_obj, null, function(res){
 					if(res.result && res.result.obj){
-						_this.form = res.result.obj;
+						$.push(_this.form, res.result.obj);
 					}
 				});
 			}

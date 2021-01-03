@@ -78,7 +78,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/pay/seller?",
+				url: "/apis/pay/seller?",
 				url_get_obj: "/apis/pay/seller?method=get_obj",
 				field: "seller_id",
 				query: {

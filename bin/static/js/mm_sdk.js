@@ -585,9 +585,7 @@ if (typeof($) === "undefined") {
 	 * @return {String} 加密后的字符串
 	 */
 	String.prototype.md5 = function() {
-		var md5 = createHash("md5");
-		md5.update(this + '');
-		return md5.digest('hex');
+		return $.md5(this + '');
 	};
 
 	/**

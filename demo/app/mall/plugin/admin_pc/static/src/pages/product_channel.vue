@@ -258,7 +258,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "channel_id,name"
+						field: "channel_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/mall/product_channel?size=0', query, function(json) {

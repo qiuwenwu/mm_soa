@@ -58,7 +58,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/user/admin?",
+				url: "/apis/user/admin?",
 				url_get_obj: "/apis/user/admin?method=get_obj",
 				field: "admin_id",
 				query: {
@@ -85,7 +85,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "admin_id,name"
+						field: "admin_id,name,father_id"
 					};
 				}
 				this.$get('~/apis/user/admin?size=0', query, function(json) {

@@ -126,7 +126,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/sys/ad?",
+				url: "/apis/sys/ad?",
 				url_get_obj: "/apis/sys/ad?method=get_obj",
 				field: "ad_id",
 				query: {

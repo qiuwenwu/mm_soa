@@ -1,12 +1,12 @@
 {
 	// 路由路径
-	"path": "/apis/user/account_base",
+	"path": "/api/user/password",
 	// 名称, 用于动态增删改API配置
-	"name": "user_account_base_manage",
+	"name": "user_password",
 	// 标题, 用于开发文档显示
-	"title": "修改基本信息",
+	"title": "修改密码",
 	// 描述, 用于介绍该路由的作用
-	"description": "用于修改用户的账户基本信息",
+	"description": "用于修改当前用户的密码",
 	// 函数文件, 用于驱动脚本, 实现业务 
 	"func_file": "./index.js",
 	// 请求方法, 选填 GET, POST, ALL。 ALL指同时支持GET/POST
@@ -26,7 +26,7 @@
 		// 会员权限级别, 如果小于该值, 则无法访问, 0为不限制
 		"vip": 0,
 		// 管理员权限级别, 如果小于该值, 则无法访问, 0为不限制
-		"gm": 2,
+		"gm": 0,
 		// 商户/第三方权限级别, 如果小于该值, 则无法访问, 0为不限制
 		"mc": 0,
 		// 用户组, 允许访问该接口的普通用户群体, 传ID数组，例如: [1,5]

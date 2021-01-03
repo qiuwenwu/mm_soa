@@ -63,7 +63,7 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "/apis/mall/config?",
+				url: "/apis/mall/config?",
 				url_get_obj: "/apis/mall/config?method=get_obj",
 				field: "config_id",
 				query: {
