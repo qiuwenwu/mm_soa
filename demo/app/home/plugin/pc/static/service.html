@@ -2,6 +2,16 @@
 <html lang="zh-hans">
 	<head>
 		${@view('./common/head.html')}
+		<style>
+			#price_table {
+				text-align: center;
+			}
+
+			#price_table ul {
+				list-style: none;
+				padding: 0;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="app">
@@ -9,14 +19,166 @@
 				${@view('./common/header.html')}
 				<main>
 					<!-- 路径导航 -->
-					<div class="mm_warp">
-						
+					<div class="mm_warp" id="nav_path">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="col-12">
+									<div class="mm_view">
+										<h2>Our Services</h2>
+										<p><a href="index.html">Home</a> &nbsp; / &nbsp; Services</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 服务信息 -->
+					<div class="mm_warp" id="service_info">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="col-lg-4 col-md-6">
+									<div class="mm_view">
+										<img src="assets/images/g2.jpg">
+										<div class="doc">
+											<h3>太空机器人</h3>
+											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6">
+									<div class="mm_view">
+										<img src="assets/images/g3.jpg">
+										<div class="doc">
+											<h3>差异化指令</h3>
+											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6">
+									<div class="mm_view">
+										<img src="assets/images/g8.jpg">
+										<div class="doc">
+											<h3>主体分析</h3>
+											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6">
+									<div class="mm_view">
+										<img src="assets/images/g5.jpg">
+										<div class="doc">
+											<h3>寂静的声音</h3>
+											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6">
+									<div class="mm_view">
+										<img src="assets/images/g6.jpg">
+										<div class="doc">
+											<h3>编队飞行</h3>
+											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6">
+									<div class="mm_view">
+										<img src="assets/images/g7.jpg">
+										<div class="doc">
+											<h3>手指手势</h3>
+											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- 服务定价 -->
+					<div class="mm_warp" id="price_table">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="mm_col col-12">
+									<div class="mm_view">
+										<h3>开发服务套餐</h3>
+										<p>外观精美、简洁，用户体验良好，性能绝佳！</p>
+									</div>
+								</div>
+							</div>
+							<div class="mm_row mt-5 pt-3">
+								<div class="col-lg-4 col-sm-6">
+									<div class="mm_view">
+										<div class="price_item">
+											<h3><span>基础服务</span></h3>
+											<div class="pricing">
+												<h4><span class="unit">￥</span><span>2000</span><span class="sub">起</span></h4>
+												<p><span>7天</span></p>
+											</div>
+											<ul>
+												<li><span>模板开发</span></li>
+												<li><span class="font_default">基础功能</span></li>
+												<li><span>域名注册</span></li>
+												<li><span>域名备案</span></li>
+												<li><span>租用服务器</span></li>
+												<li><span>部署上线</span></li>
+												<li><span class="font_default">不包维护</span></li>
+											</ul>
+											<button class="mm_btn btn_primary" @click="submit">${lang.btn_appoint}</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-sm-6">
+									<div class="mm_view">
+										<div class="price_item">
+											<h3><span>定制服务</span></h3>
+											<div class="pricing">
+												<h4><span class="unit">￥</span><span>12000</span><span class="sub">起</span></h4>
+												<p><span>15天</span></p>
+											</div>
+											<ul>
+												<li><span>二次开发</span></li>
+												<li><span>功能拓展</span></li>
+												<li><span>域名注册</span></li>
+												<li><span>域名备案</span></li>
+												<li><span>租用服务器</span></li>
+												<li><span>部署上线</span></li>
+												<li><span>后期维护</span></li>
+											</ul>
+											<button class="mm_btn btn_primary" @click="submit">${lang.btn_appoint}</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-sm-6">
+									<div class="mm_view">
+										<div class="price_item">
+											<h3><span>云管服务</span></h3>
+											<div class="pricing">
+												<h4><span class="unit">￥</span><span>1800</span><span class="sub">元/年</span></h4>
+												<p><span>7天</span></p>
+											</div>
+											<ul>
+												<li><span class="font_success">持续开发</span></li>
+												<li><span>功能拓展</span></li>
+												<li><span>域名注册</span></li>
+												<li><span>域名备案</span></li>
+												<li><span class="font_success">无需租服务器</span></li>
+												<li><span class="font_success">无需部署</span></li>
+												<li><span>后期维护</span></li>
+											</ul>
+											<button class="mm_btn btn_primary" @click="submit">${lang.btn_appoint}</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</main>
 				${@view('./common/footer.html')}
 			</div>
 		</div>
-		
+
 		<!-- 公共js -->
 		<script src="/home/pc/js/common.js"></script>
 		<!-- 实例化VUE业务 -->
@@ -25,7 +187,12 @@
 				el: "#app",
 				mixins: [mixin_page],
 				mounted() {
-					
+
+				},
+				methods: {
+					submit() {
+
+					}
 				}
 			});
 		</script>

@@ -4,8 +4,8 @@
     "table": "sys_nav",
     "key": "nav_id",
     "orderby_default": "`nav_id` desc",
-    "field_obj": "`nav_id`,`name`,`title`,`url`,`style`,`class`,`target`,`position`,`device`,`father_id`",
-    "field_default": "`nav_id`,`name`,`title`,`url`,`style`,`class`,`target`,`position`,`device`,`father_id`",
+    "field_obj": "`nav_id`,`available`,`name`,`title`,`url`,`style`,`class`,`target`,`position`,`device`,`father_id`",
+    "field_default": "`nav_id`,`available`,`name`,`title`,`url`,`style`,`class`,`target`,`position`,`device`,`father_id`",
     "query": {
         "name": "`name` like '%{0}%'",
         "title": "`title` like '%{0}%'",
@@ -19,6 +19,14 @@
     },
     "update": {},
     "format": [
+        {
+            "key": "available",
+            "title": "是否启用",
+            "list": [
+                "否",
+                "是"
+            ]
+        },
         {
             "key": "father_id",
             "title": "上级",

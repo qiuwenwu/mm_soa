@@ -1,0 +1,224 @@
+{
+    "name": "admin_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "dev",
+            "path": "/dev",
+            "redirect": "/dev/app"
+        },
+        {
+            "name": "dev_app",
+            "path": "/dev/app",
+            "component": "/dev/admin_pc/src/pages/app.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_app_form",
+            "path": "/dev/app_form",
+            "component": "/dev/admin_pc/src/pages/app_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_app_type",
+            "path": "/dev/app_type",
+            "component": "/dev/admin_pc/src/pages/app_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_app_type_form",
+            "path": "/dev/app_type_form",
+            "component": "/dev/admin_pc/src/pages/app_type_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_page",
+            "path": "/dev/page",
+            "component": "/dev/admin_pc/src/pages/page.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_page_form",
+            "path": "/dev/page_form",
+            "component": "/dev/admin_pc/src/pages/page_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_page_component",
+            "path": "/dev/page_component",
+            "component": "/dev/admin_pc/src/pages/page_component.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_page_component_form",
+            "path": "/dev/page_component_form",
+            "component": "/dev/admin_pc/src/pages/page_component_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_page_group",
+            "path": "/dev/page_group",
+            "component": "/dev/admin_pc/src/pages/page_group.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_page_group_form",
+            "path": "/dev/page_group_form",
+            "component": "/dev/admin_pc/src/pages/page_group_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_table",
+            "path": "/dev/table",
+            "component": "/dev/admin_pc/src/pages/table.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_table_form",
+            "path": "/dev/table_form",
+            "component": "/dev/admin_pc/src/pages/table_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_table_field",
+            "path": "/dev/table_field",
+            "component": "/dev/admin_pc/src/pages/table_field.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_table_field_form",
+            "path": "/dev/table_field_form",
+            "component": "/dev/admin_pc/src/pages/table_field_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "开发者",
+            "name": "dev",
+            "icon": "<i class=\"fa-cog\"></i>",
+            "url": "/dev",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "dev_app",
+                    "url": "/dev/app"
+                },
+                {
+                    "title": "文章分类",
+                    "show": false,
+                    "name": "dev_app_type",
+                    "url": "/dev/app_type"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "dev_page",
+                    "url": "/dev/page"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "dev_page_component",
+                    "url": "/dev/page_component"
+                },
+                {
+                    "title": "文章分类",
+                    "show": false,
+                    "name": "dev_page_group",
+                    "url": "/dev/page_group"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "dev_table",
+                    "url": "/dev/table"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "dev_table_field",
+                    "url": "/dev/table_field"
+                }
+            ]
+        }
+    ]
+}

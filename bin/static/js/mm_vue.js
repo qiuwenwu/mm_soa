@@ -1,4 +1,4 @@
-define(["Vue"], function(Vue) {
+function load_mm_vue(Vue) {
 	"use strict";
 
 	var getHost = function() {
@@ -391,4 +391,10 @@ define(["Vue"], function(Vue) {
 		}
 	});
 	return mm;
-});
+}
+if(window.define){
+	define(['Vue'], load_mm_vue);
+}
+else {
+	window.mm_vue = load_mm_vue(Vue);
+}

@@ -103,22 +103,23 @@
 						</div>
 					</div>
 
-
 					<!-- 经营范围 -->
 					<div class="mm_warp" id="business">
 						<div class="mm_container">
 							<div class="mm_row">
 								<div class="mm_col col-12 col-md-4">
 									<div class="mm_view" id="need">
-										<h2>${lang.title_form_need}</h2>
-										<p>${lang.desc_form_need}</p>
-										<div class="mm_input">
-											<input type="text" v-model="form.name" placeholder="${lang.input_desc_name}" />
-										</div>
-										<div class="mm_input">
-											<input type="text" v-model="form.phone" placeholder="${lang.input_desc_phone}" />
-										</div>
-										<button class="mm_btn btn_primary" @click="submit">${lang.btn_submit}</button>
+										<form>
+											<h2>${lang.title_form_need}</h2>
+											<p>${lang.desc_form_need}</p>
+											<div class="mm_input">
+												<input type="text" v-model="form.name" placeholder="${lang.input_desc_name}" required="" />
+											</div>
+											<div class="mm_input">
+												<input type="text" v-model="form.phone" placeholder="${lang.input_desc_phone}" required="" />
+											</div>
+											<button type="submit" class="mm_btn btn_primary" @click="submit">${lang.btn_submit}</button>
+										</form>
 									</div>
 								</div>
 								<div class="mm_col col-12 col-md-8">
@@ -208,13 +209,13 @@
 								</div>
 								<div class="mm_col col-6 col-md-3">
 									<div class="mm_view">
-										<h2>18</h2>
+										<h2>15</h2>
 										<p>${@lang.dev_blockchain}</p>
 									</div>
 								</div>
 								<div class="mm_col col-6 col-md-3">
 									<div class="mm_view">
-										<h2>34</h2>
+										<h2>35</h2>
 										<p>${@lang.dev_blockchain}</p>
 									</div>
 								</div>

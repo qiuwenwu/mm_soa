@@ -21,10 +21,7 @@
             "max": 8388607,
             "decimal": 0,
             "default": "0",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "available",
@@ -42,10 +39,7 @@
             "max": 1,
             "decimal": 0,
             "default": "1",
-            "map": "0否|1是",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "0否|1是"
         },
         {
             "name": "state",
@@ -63,10 +57,7 @@
             "max": 5,
             "decimal": 0,
             "default": "1",
-            "map": "1营业中|2已歇业|3已关店|4已删除|5已违规",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "1营业中|2已歇业|3已关店|4已删除|5已违规"
         },
         {
             "name": "type_id",
@@ -84,10 +75,7 @@
             "max": 1000,
             "decimal": 0,
             "default": "0",
-            "map": "mall_shop_type.name",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "mall_shop_type.name"
         },
         {
             "name": "display",
@@ -105,10 +93,7 @@
             "max": 1000,
             "decimal": 0,
             "default": "100",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "channel_id",
@@ -126,10 +111,7 @@
             "max": 10000,
             "decimal": 0,
             "default": "1",
-            "map": "mall_shop_channel.name",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "mall_shop_channel.name"
         },
         {
             "name": "city_id",
@@ -147,10 +129,7 @@
             "max": 8388607,
             "decimal": 0,
             "default": "0",
-            "map": "sys_address_city.name",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "sys_address_city.name"
         },
         {
             "name": "user_id",
@@ -168,10 +147,7 @@
             "max": 8388607,
             "decimal": 0,
             "default": "0",
-            "map": "user_account.nickname",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "user_account.nickname"
         },
         {
             "name": "hot",
@@ -189,10 +165,7 @@
             "max": 1000000000,
             "decimal": 0,
             "default": "0",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "praise",
@@ -210,10 +183,7 @@
             "max": 1000000000,
             "decimal": 0,
             "default": "0",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "time_create",
@@ -231,10 +201,7 @@
             "max": 0,
             "decimal": 0,
             "default": "CURRENT_TIMESTAMP",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "time_update",
@@ -252,10 +219,7 @@
             "max": 0,
             "decimal": 0,
             "default": "CURRENT_TIMESTAMP",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "name",
@@ -273,10 +237,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "description",
@@ -294,10 +255,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "keywords",
@@ -315,10 +273,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "img",
@@ -336,10 +291,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "tag",
@@ -357,10 +309,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "collecter",
@@ -378,10 +327,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         }
     ]
 }

@@ -206,13 +206,7 @@ Drive.prototype.model = function(fields) {
 		// 默认值
 		"default": dflt_value,
 		// 转换编排
-		"map": map,
-		// 联表入，唯一主键在其他表中，然后关联到该表
-		"join_in": [],
-		// 联表出，唯一主键在该表中，然后关联其他表
-		"join_out": [],
-		// 展现位置
-		"position": []
+		"map": map
 	};
 };
 

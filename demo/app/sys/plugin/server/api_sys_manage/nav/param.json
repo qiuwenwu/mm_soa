@@ -3,6 +3,7 @@
     "title": "导航",
     "add": {
         "body": [
+            "available",
             "title",
             "url",
             "style",
@@ -25,12 +26,14 @@
     "set": {
         "query": [
             "nav_id",
+            "available",
             "name",
             "title",
             "keyword"
         ],
         "query_required": [],
         "body": [
+            "available",
             "name",
             "title",
             "url",
@@ -47,6 +50,7 @@
     "get": {
         "query": [
             "nav_id",
+            "available",
             "name",
             "title",
             "keyword"
@@ -62,6 +66,16 @@
             "dataType": "smallint",
             "number": {
                 "max": 32767
+            }
+        },
+        {
+            "name": "available",
+            "title": "是否启用",
+            "description": "启用后才可以看到该导航。(0否|1是)",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
             }
         },
         {

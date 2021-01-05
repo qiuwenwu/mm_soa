@@ -21,10 +21,7 @@
             "max": 30000,
             "decimal": 0,
             "default": "0",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "display",
@@ -42,10 +39,7 @@
             "max": 1000,
             "decimal": 0,
             "default": "100",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "father_id",
@@ -63,10 +57,7 @@
             "max": 32767,
             "decimal": 0,
             "default": "0",
-            "map": "cms_article_type.name.type_id",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "cms_article_type.name.type_id"
         },
         {
             "name": "name",
@@ -84,10 +75,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "description",
@@ -105,10 +93,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "icon",
@@ -126,10 +111,7 @@
             "max": 255,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         }
     ]
 }

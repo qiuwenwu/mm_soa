@@ -733,7 +733,7 @@ function _defineProperty(obj, key, value) {
 	return obj;
 }
 
-define(['jquery'], function(jquery) {
+function load_ui(jquery) {
 	import_picker(jquery);
 	import_datetimePicker(jquery);
 	"use strict";
@@ -2531,4 +2531,10 @@ define(['jquery'], function(jquery) {
 			Vue.component("mm_upload_img", mm_upload_img);
 		}
 	};
-});
+}
+if(window.define){
+	define(['jquery'], load_ui);
+}
+else {
+	window.mm_ui = load_ui(window.$);
+}

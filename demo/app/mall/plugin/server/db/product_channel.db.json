@@ -21,10 +21,7 @@
             "max": 10000,
             "decimal": 0,
             "default": "0",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "available",
@@ -42,10 +39,7 @@
             "max": 1,
             "decimal": 0,
             "default": "1",
-            "map": "0否|1是",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "0否|1是"
         },
         {
             "name": "hide",
@@ -63,10 +57,7 @@
             "max": 1,
             "decimal": 0,
             "default": "0",
-            "map": "0否|1是",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "0否|1是"
         },
         {
             "name": "can_comment",
@@ -84,10 +75,7 @@
             "max": 1,
             "decimal": 0,
             "default": "1",
-            "map": "0否|1是",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "0否|1是"
         },
         {
             "name": "display",
@@ -105,10 +93,7 @@
             "max": 1000,
             "decimal": 0,
             "default": "100",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "father_id",
@@ -126,10 +111,7 @@
             "max": 10000,
             "decimal": 0,
             "default": "0",
-            "map": "mall_product_channel.name.channel_id",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "mall_product_channel.name.channel_id"
         },
         {
             "name": "city_id",
@@ -147,10 +129,7 @@
             "max": 8388607,
             "decimal": 0,
             "default": "0",
-            "map": "sys_address_city",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": "sys_address_city"
         },
         {
             "name": "type",
@@ -168,10 +147,7 @@
             "max": 0,
             "decimal": 0,
             "default": "product",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "name",
@@ -189,10 +165,7 @@
             "max": 0,
             "decimal": 0,
             "default": "",
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "template",
@@ -210,10 +183,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "icon",
@@ -231,10 +201,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "url",
@@ -252,10 +219,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         },
         {
             "name": "description",
@@ -273,10 +237,7 @@
             "max": 0,
             "decimal": 0,
             "default": null,
-            "map": "",
-            "join_in": [],
-            "join_out": [],
-            "position": []
+            "map": ""
         }
     ]
 }
