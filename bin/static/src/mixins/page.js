@@ -736,7 +736,7 @@ define(function() {
 				if (func) {
 					func(json);
 				}
-				_this.$back();
+				this.$back();
 			},
 			/**
 			 * 上下翻页

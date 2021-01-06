@@ -39,12 +39,12 @@
 											<dd :class="{active: query.channel_id === 0 }" @click="set_select({ channel_id: 0 });">全部</dd>
 											<dd v-for="(o, i) in channel" :class="{active: query.channel_id === o.value }" :key="i" @click="set_select({ channel_id: o });">{{ o.name }}</dd>
 										</dl>
-										<dl>
+										<dl v-show="query.channel_id && query.channel_id <= 6">
 											<dt>颜色</dt>
 											<dd :class="{active: query.keywords === '' }" @click="set_select({ keywords: '' });" @click="search()">全部</dd>
 											<dd v-for="o in ui_color" :key="i" :class="{active: query.keywords === o.value }" @click="set_select({ keywords: o });">{{ o.name }}</dd>
 										</dl>
-										<dl>
+										<dl v-show="query.channel_id && query.channel_id > 6">
 											<dt>编程语言</dt>
 											<dd :class="{active: query.keywords === '' }" @click="set_select({ keywords: '' });" @click="search()">全部</dd>
 											<dd v-for="o in code_lang" :key="i" :class="{active: query.keywords === o.value }" @click="set_select({ keywords: o });">{{ o.name }}</dd>
@@ -53,7 +53,7 @@
 											<dt>已选条件</dt>
 											<dd v-for="(o, i) in selscted_item" @click="del_select(o)">
 												{{ o.name }}
-												<img src="/static/img/deli.png">
+												<i class="fa-trash-o"></i>
 											</dd>
 										</dl>
 									</div>
@@ -64,7 +64,13 @@
 								<div class="col-md-6">
 									<ul>
 										<li>
-											<mm_reverse title="是否启用" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
+											<mm_reverse title="热度" v-model="query.orderby" field="hot" :func="search"></mm_reverse>
+										</li>
+										<li>
+											<mm_reverse title="发布时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
+										</li>
+										<li>
+											<mm_reverse title="更新时间" v-model="query.orderby" field="time_update" :func="search"></mm_reverse>
 										</li>
 									</ul>
 								</div>
@@ -75,7 +81,7 @@
 									</div>
 								</div>
 								<!-- 呈现方式 -->
-								<div class="col-md-4">
+								<div class="col-md-2">
 									<div class="show_way">
 										<button><i class="fa-th-large"></i></button>
 										<button><i class="fa-th-list"></i></button>
@@ -127,7 +133,22 @@
 					},
 					del_select(o) {
 
+					},
+					get_channel() {
+						var _this = this;
+						this.$get('/api/cms/article_channel?', {
+							page: 0,
+							orderby: "`display` asc",
+							father_id: 4
+						}, function(json) {
+							if (json.result) {
+								_this.channel = json.result.list;
+							}
+						});
 					}
+				},
+				created() {
+					this.get_channel();
 				},
 				mounted() {
 
