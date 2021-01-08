@@ -497,7 +497,7 @@ define(function() {
 						}
 						$.push(_this, res, true);
 						if (obj) {
-							if (Object.keys(_this.obj).length === 0) {
+							if (_this.obj || Object.keys(_this.obj).length === 0) {
 								_this.obj = obj;
 							} else {
 								$.push(_this.obj, obj);
@@ -512,7 +512,11 @@ define(function() {
 									}
 								}
 							}
-							$.push(_this.form, _this.obj);
+							if (_this.form || Object.keys(_this.form).length === 0) {
+								_this.form = _this.obj;
+							} else {
+								$.push(_this.form, _this.obj);
+							}
 						}
 					} else if (json.error) {
 						console.log(json.error.message);

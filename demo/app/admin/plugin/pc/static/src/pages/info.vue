@@ -75,6 +75,7 @@
 				var _this = this;
 				this.$get(this.url_get_obj, null, function(res){
 					if(res.result && res.result.obj){
+						console.log(_this.form, res.result.obj);
 						$.push(_this.form, res.result.obj);
 					}
 				});
