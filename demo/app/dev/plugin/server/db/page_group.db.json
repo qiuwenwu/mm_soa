@@ -1,5 +1,5 @@
 {
-    "title": "文章分类",
+    "title": "页面分组",
     "description": "将文章归类，可选看不同类型的文章",
     "name": "dev_page_group",
     "table": "dev_page_group",
@@ -57,7 +57,7 @@
             "max": 32767,
             "decimal": 0,
             "default": "0",
-            "map": "dev_app_group.name.group_id"
+            "map": "dev_page_group.name.group_id"
         },
         {
             "name": "app_id",
@@ -76,6 +76,24 @@
             "decimal": 0,
             "default": "0",
             "map": "dev_app.name.app_id"
+        },
+        {
+            "name": "num",
+            "title": "使用次数",
+            "description": "",
+            "type": "int",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 1,
+            "min_length": 0,
+            "max_length": 11,
+            "min": 0,
+            "max": 2147483647,
+            "decimal": 0,
+            "default": "0",
+            "map": ""
         },
         {
             "name": "rate",

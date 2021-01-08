@@ -1,15 +1,17 @@
 {
     "name": "dev_page_group",
-    "title": "文章分类",
+    "title": "页面分组",
     "table": "dev_page_group",
     "key": "group_id",
     "orderby_default": "`display` asc",
-    "field_obj": "`group_id`,`father_id`,`app_id`,`rate`,`name`,`title`,`description`",
-    "field_default": "`group_id`,`display`,`father_id`,`app_id`,`rate`,`name`,`title`,`description`",
+    "field_obj": "`group_id`,`father_id`,`app_id`,`num`,`rate`,`name`,`title`,`description`",
+    "field_default": "`group_id`,`display`,`father_id`,`app_id`,`num`,`rate`,`name`,`title`,`description`",
     "method": "get get_obj",
     "query": {
         "display_min": "`display` >= {0}",
         "display_max": "`display` <= {0}",
+        "num_min": "`num` >= {0}",
+        "num_max": "`num` <= {0}",
         "rate_min": "`rate` >= {0}",
         "rate_max": "`rate` <= {0}",
         "name": "`name` like '%{0}%'",
@@ -20,13 +22,14 @@
     "query_default": {},
     "update": {
         "display_add": "`display` = `display` + {0}",
+        "num_add": "`num` = `num` + {0}",
         "rate_add": "`rate` = `rate` + {0}"
     },
     "format": [
         {
             "key": "father_id",
             "title": "上级分组",
-            "table": "dev_app_group",
+            "table": "dev_page_group",
             "name": "name",
             "id": "group_id"
         },

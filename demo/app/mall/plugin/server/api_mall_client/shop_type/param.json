@@ -6,8 +6,9 @@
             "display",
             "father_id",
             "name",
-            "icon",
-            "description"
+            "title",
+            "description",
+            "icon"
         ],
         "body_required": []
     },
@@ -23,6 +24,7 @@
             "display_min",
             "display_max",
             "name",
+            "title",
             "description",
             "keyword"
         ],
@@ -32,8 +34,9 @@
             "display_add",
             "father_id",
             "name",
-            "icon",
-            "description"
+            "title",
+            "description",
+            "icon"
         ],
         "body_required": [],
         "body_not": []
@@ -44,6 +47,7 @@
             "display_min",
             "display_max",
             "name",
+            "title",
             "description",
             "keyword"
         ],
@@ -111,12 +115,14 @@
             }
         },
         {
-            "name": "icon",
-            "title": "分类图标",
+            "name": "title",
+            "title": "分类标题",
             "description": "",
             "type": "string",
-            "dataType": "text",
-            "string": {}
+            "dataType": "varchar",
+            "string": {
+                "max": 125
+            }
         },
         {
             "name": "description",
@@ -129,9 +135,17 @@
             }
         },
         {
+            "name": "icon",
+            "title": "分类图标",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索分类名称(name)、分类描述(description)",
+            "description": "用于搜索分类名称(name)、分类标题(title)、分类描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

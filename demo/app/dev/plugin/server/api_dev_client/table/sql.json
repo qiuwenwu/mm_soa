@@ -1,13 +1,15 @@
 {
     "name": "dev_table",
-    "title": "开发数据表",
+    "title": "数据表",
     "table": "dev_table",
     "key": "table_id",
     "orderby_default": "`table_id` desc",
-    "field_obj": "`table_id`,`app_id`,`rate`,`name`,`title`,`description`,`keywords`",
-    "field_default": "`table_id`,`app_id`,`rate`,`name`,`title`,`description`,`keywords`",
+    "field_obj": "`table_id`,`app_id`,`group_id`,`num`,`rate`,`name`,`title`,`description`,`keywords`",
+    "field_default": "`table_id`,`app_id`,`group_id`,`num`,`rate`,`name`,`title`,`description`,`keywords`",
     "method": "get get_obj",
     "query": {
+        "num_min": "`num` >= {0}",
+        "num_max": "`num` <= {0}",
         "rate_min": "`rate` >= {0}",
         "rate_max": "`rate` <= {0}",
         "name": "`name` like '%{0}%'",
@@ -18,6 +20,7 @@
     },
     "query_default": {},
     "update": {
+        "num_add": "`num` = `num` + {0}",
         "rate_add": "`rate` = `rate` + {0}"
     },
     "format": [
@@ -27,6 +30,13 @@
             "table": "dev_app",
             "name": "name",
             "id": "app_id"
+        },
+        {
+            "key": "group_id",
+            "title": "数据表分组",
+            "table": "dev_table_group",
+            "name": "name",
+            "id": "table_id"
         }
     ]
 }

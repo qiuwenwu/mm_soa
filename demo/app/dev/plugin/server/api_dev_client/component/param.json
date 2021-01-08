@@ -1,9 +1,10 @@
 {
     "name": "dev_component",
-    "title": "",
+    "title": "组件",
     "add": {
         "body": [
             "component_id",
+            "num",
             "rate",
             "title",
             "description"
@@ -21,6 +22,8 @@
     "set": {
         "query": [
             "page_id",
+            "num_min",
+            "num_max",
             "rate_min",
             "rate_max",
             "name",
@@ -31,6 +34,8 @@
         "query_required": [],
         "body": [
             "component_id",
+            "num",
+            "num_add",
             "rate",
             "rate_add",
             "name",
@@ -43,6 +48,8 @@
     "get": {
         "query": [
             "page_id",
+            "num_min",
+            "num_max",
             "rate_min",
             "rate_max",
             "name",
@@ -72,6 +79,36 @@
             "name": "page_id",
             "title": "适用页面ID",
             "description": "(dev_page.name.page_id)",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num",
+            "title": "使用次数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_min",
+            "title": "使用次数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_max",
+            "title": "使用次数——最大值",
+            "description": "",
             "type": "number",
             "dataType": "int",
             "number": {

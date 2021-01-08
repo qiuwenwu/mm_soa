@@ -1,7 +1,7 @@
 {
     "name": "dev_app_type",
-    "title": "文章分类",
-    "description": "将文章归类，可选看不同类型的文章",
+    "title": "应用分类",
+    "description": "将应用归类，方便选择构建不同的应用",
     "path": "/api/dev/app_type",
     "method": "GET",
     "cache": 0,

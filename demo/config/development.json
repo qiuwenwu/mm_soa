@@ -35,7 +35,7 @@
 		 * 进程数, 0为根据CPU核心数创建线程数
 		 * @type {Number}
 		 */
-		"process_num": 0,
+		"process_num": 1,
 		/**
 		 * 是否启用压缩
 		 * @type {Boolean}

@@ -12,7 +12,7 @@
 	"list": [{
 			"name": "method",
 			"title": "执行方式",
-			"description": "add增、del删、get改、set查、update更新、load载入、save保存",
+			"description": "add增、del删、get改、set查、update更新、load载入、save保存、update_config更新配置文件、update_db更新数据库",
 			"type": "string"
 		},
 		{

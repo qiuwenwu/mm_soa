@@ -60,19 +60,19 @@
             "map": ""
         },
         {
-            "name": "icon",
-            "title": "分组图标",
+            "name": "title",
+            "title": "分组标题",
             "description": "",
-            "type": "text",
+            "type": "varchar",
             "key": false,
             "auto": "",
             "symbol": false,
             "fill_zero": false,
             "not_null": 0,
             "min_length": 0,
-            "max_length": 0,
+            "max_length": 125,
             "min": 0,
-            "max": 255,
+            "max": 0,
             "decimal": 0,
             "default": null,
             "map": ""
@@ -112,6 +112,24 @@
             "decimal": 0,
             "default": "0",
             "map": "mall_shop.name"
+        },
+        {
+            "name": "icon",
+            "title": "分组图标",
+            "description": "",
+            "type": "text",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 0,
+            "min_length": 0,
+            "max_length": 0,
+            "min": 0,
+            "max": 255,
+            "decimal": 0,
+            "default": null,
+            "map": ""
         }
     ]
 }

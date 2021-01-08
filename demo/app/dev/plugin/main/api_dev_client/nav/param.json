@@ -11,7 +11,7 @@
 	"list": [{
 			"name": "method",
 			"title": "执行方式",
-			"description": "add增、del删、get改、set查、update更新、load载入、save保存",
+			"description": "add增、del删、get改、set查、update更新、load载入、save保存、update_vue更新VUE文件，update_mvc更新模板页面",
 			"type": "string"
 		},
 		{

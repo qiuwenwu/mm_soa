@@ -1,13 +1,12 @@
 {
-    "path": "/api/dev/app",
-    "type": "api",
     "name": "dev_app",
-    "title": "开发应用",
-    "cache": 0,
-    "func_file": "./index.js",
+    "title": "应用",
+    "description": "用于引导创建应用",
+    "path": "/api/dev/app",
     "method": "GET",
+    "cache": 0,
+    "client_cache": false,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "description": "用于引导创建应用"
+    "check_param": true
 }

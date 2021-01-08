@@ -52,6 +52,50 @@
             }
         },
         {
+            "name": "dev_component",
+            "path": "/dev/component",
+            "component": "/dev/admin_pc/src/pages/component.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_component_form",
+            "path": "/dev/component_form",
+            "component": "/dev/admin_pc/src/pages/component_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_component_type",
+            "path": "/dev/component_type",
+            "component": "/dev/admin_pc/src/pages/component_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_component_type_form",
+            "path": "/dev/component_type_form",
+            "component": "/dev/admin_pc/src/pages/component_type_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
             "name": "dev_page",
             "path": "/dev/page",
             "component": "/dev/admin_pc/src/pages/page.vue",
@@ -67,28 +111,6 @@
             "path": "/dev/page_form",
             "component": "/dev/admin_pc/src/pages/page_form.vue",
             "level": 4,
-            "oauth": {
-                "signIn": true,
-                "gm": 2,
-                "user_admin": []
-            }
-        },
-        {
-            "name": "dev_page_component",
-            "path": "/dev/page_component",
-            "component": "/dev/admin_pc/src/pages/page_component.vue",
-            "level": 2,
-            "oauth": {
-                "signIn": true,
-                "gm": 2,
-                "user_admin": []
-            }
-        },
-        {
-            "name": "dev_page_component_form",
-            "path": "/dev/page_component_form",
-            "component": "/dev/admin_pc/src/pages/page_component_form.vue",
-            "level": 3,
             "oauth": {
                 "signIn": true,
                 "gm": 2,
@@ -160,6 +182,28 @@
                 "gm": 2,
                 "user_admin": []
             }
+        },
+        {
+            "name": "dev_table_group",
+            "path": "/dev/table_group",
+            "component": "/dev/admin_pc/src/pages/table_group.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "dev_table_group_form",
+            "path": "/dev/table_group_form",
+            "component": "/dev/admin_pc/src/pages/table_group_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
         }
     ],
     "top": [],
@@ -172,51 +216,63 @@
         {
             "title": "开发者",
             "name": "dev",
-            "icon": "<i class=\"fa-cog\"></i>",
+            "icon": "<i class=\"fa-book\"></i>",
             "url": "/dev",
             "display": 0,
             "sub": [
                 {
-                    "title": "",
+                    "title": "应用",
                     "show": false,
                     "name": "dev_app",
                     "url": "/dev/app"
                 },
                 {
-                    "title": "文章分类",
+                    "title": "应用分类",
                     "show": false,
                     "name": "dev_app_type",
                     "url": "/dev/app_type"
                 },
                 {
-                    "title": "",
+                    "title": "组件",
+                    "show": false,
+                    "name": "dev_component",
+                    "url": "/dev/component"
+                },
+                {
+                    "title": "组件分类",
+                    "show": false,
+                    "name": "dev_component_type",
+                    "url": "/dev/component_type"
+                },
+                {
+                    "title": "页面",
                     "show": false,
                     "name": "dev_page",
                     "url": "/dev/page"
                 },
                 {
-                    "title": "",
-                    "show": false,
-                    "name": "dev_page_component",
-                    "url": "/dev/page_component"
-                },
-                {
-                    "title": "文章分类",
+                    "title": "页面分组",
                     "show": false,
                     "name": "dev_page_group",
                     "url": "/dev/page_group"
                 },
                 {
-                    "title": "",
+                    "title": "数据表",
                     "show": false,
                     "name": "dev_table",
                     "url": "/dev/table"
                 },
                 {
-                    "title": "",
+                    "title": "开发表字段",
                     "show": false,
                     "name": "dev_table_field",
                     "url": "/dev/table_field"
+                },
+                {
+                    "title": "数据表分组",
+                    "show": false,
+                    "name": "dev_table_group",
+                    "url": "/dev/table_group"
                 }
             ]
         }

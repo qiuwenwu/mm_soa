@@ -1989,7 +1989,7 @@ function load_ui(jquery) {
 		},
 		computed: {
 			style: function() {
-				if (this.auto) {
+				if (this.auto && this.value) {
 					var len = this.value.length;
 					return "width:" + ((len + 1) * this.size) + "rem";
 				} else {

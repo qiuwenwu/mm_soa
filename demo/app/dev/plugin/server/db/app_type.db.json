@@ -1,6 +1,6 @@
 {
-    "title": "文章分类",
-    "description": "将文章归类，可选看不同类型的文章",
+    "title": "应用分类",
+    "description": "将应用归类，方便选择构建不同的应用",
     "name": "dev_app_type",
     "table": "dev_app_type",
     "key": "type_id",
@@ -61,7 +61,7 @@
         },
         {
             "name": "name",
-            "title": "名称",
+            "title": "分类名称",
             "description": "",
             "type": "varchar",
             "key": false,
@@ -79,7 +79,7 @@
         },
         {
             "name": "title",
-            "title": "标题",
+            "title": "分类标题",
             "description": "",
             "type": "varchar",
             "key": false,
@@ -97,7 +97,7 @@
         },
         {
             "name": "description",
-            "title": "描述",
+            "title": "分类描述",
             "description": "",
             "type": "varchar",
             "key": false,

@@ -15,9 +15,9 @@
 										<dd>
 											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder="" />
 										</dd>
-										<dt>分组图标</dt>
+										<dt>分组标题</dt>
 										<dd>
-											<mm_upload_img width="10rem" height="10rem" name="icon" type="text" v-model="form.icon" />
+											<mm_input v-model="form.title" :minlength="0" :maxlength="125" placeholder="" />
 										</dd>
 										<dt>分组描述</dt>
 										<dd>
@@ -26,6 +26,10 @@
 										<dt>店铺</dt>
 										<dd>
 											<mm_select v-model="form.shop_id" :options="$to_kv(list_shop, 'shop_id', 'name', 0)" />
+										</dd>
+										<dt>分组图标</dt>
+										<dd>
+											<mm_upload_img width="10rem" height="10rem" name="icon" type="text" v-model="form.icon" />
 										</dd>
 									</dl>
 								</mm_form>
@@ -62,9 +66,10 @@
 				form: {
 					"group_id": 0,
 					"name": '',
-					"icon": '',
+					"title": '',
 					"description": '',
 					"shop_id": 0,
+					"icon": '',
 				},
 				// 店铺
 				'list_shop':[],

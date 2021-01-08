@@ -19,6 +19,10 @@
 										<dd>
 											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder="" />
 										</dd>
+										<dt>分类标题</dt>
+										<dd>
+											<mm_input v-model="form.title" :minlength="0" :maxlength="125" placeholder="" />
+										</dd>
 										<dt>分类描述</dt>
 										<dd>
 											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="" />
@@ -63,6 +67,7 @@
 					"type_id": 0,
 					"father_id": 0,
 					"name": '',
+					"title": '',
 					"description": '',
 					"icon": '',
 				},

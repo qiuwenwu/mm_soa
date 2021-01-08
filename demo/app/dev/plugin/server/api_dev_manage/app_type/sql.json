@@ -1,6 +1,6 @@
 {
     "name": "dev_app_type2",
-    "title": "文章分类",
+    "title": "应用分类",
     "table": "dev_app_type",
     "key": "type_id",
     "orderby_default": "`type_id` desc",

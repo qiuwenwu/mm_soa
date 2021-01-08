@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="频道名称 / 描述"
+											<mm_input v-model="query.keyword" title="关键词" desc="频道名称 / 频道标题 / 描述"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -82,6 +82,9 @@
 												<mm_reverse title="频道名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 											</th>
 											<th>
+												<mm_reverse title="频道标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="风格模板" v-model="query.orderby" field="template" :func="search"></mm_reverse>
 											</th>
 											<th>
@@ -124,6 +127,9 @@
 											</td>
 											<td>
 												<mm_input :auto="true" v-model="o.name" @blur="set(o)" />
+											</td>
+											<td>
+												<mm_input :auto="true" v-model="o.title" @blur="set(o)" />
 											</td>
 											<td>
 												<mm_input :auto="true" v-model="o.template" @blur="set(o)" />
@@ -225,6 +231,8 @@
 					'display_max': 0,
 					// 频道名称
 					'name': '',
+					// 频道标题
+					'title': '',
 					// 描述
 					'description': '',
 					// 关键词

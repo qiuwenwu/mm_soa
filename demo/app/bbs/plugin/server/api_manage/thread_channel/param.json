@@ -9,6 +9,7 @@
             "display",
             "father_id",
             "city_id",
+            "title",
             "template",
             "description",
             "icon",
@@ -33,6 +34,7 @@
             "display_min",
             "display_max",
             "name",
+            "title",
             "description",
             "keyword"
         ],
@@ -46,6 +48,7 @@
             "father_id",
             "city_id",
             "name",
+            "title",
             "template",
             "description",
             "icon",
@@ -63,6 +66,7 @@
             "display_min",
             "display_max",
             "name",
+            "title",
             "description",
             "keyword"
         ],
@@ -179,6 +183,16 @@
             }
         },
         {
+            "name": "title",
+            "title": "频道标题",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 125
+            }
+        },
+        {
             "name": "template",
             "title": "风格模板",
             "description": "频道和主题都使用的样式。question问答、info资讯、news新闻、article文章、activity活动",
@@ -220,7 +234,7 @@
         {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索频道名称(name)、描述(description)",
+            "description": "用于搜索频道名称(name)、频道标题(title)、描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

@@ -1,5 +1,43 @@
 {
     "name": "dev_app",
+    "title": "应用",
+    "add": {
+        "body": [
+            "type_id",
+            "title",
+            "description",
+            "keywords"
+        ],
+        "body_required": [
+            "name"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "app_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "app_id",
+            "name",
+            "title",
+            "description",
+            "keywords",
+            "keyword"
+        ],
+        "query_required": [],
+        "body": [
+            "type_id",
+            "name",
+            "title",
+            "description",
+            "keywords"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
     "get": {
         "query": [
             "app_id",
@@ -10,6 +48,11 @@
             "keyword"
         ],
         "query_required": []
+    },
+    "get_obj": {
+        "query_required": [
+            "app_id"
+        ]
     },
     "list": [
         {
@@ -81,48 +124,5 @@
             "dataType": "varchar",
             "string": {}
         }
-    ],
-    "add": {
-        "body": [
-            "type_id",
-            "title",
-            "description",
-            "keywords"
-        ],
-        "body_required": [
-            "name"
-        ]
-    },
-    "del": {
-        "query": [],
-        "query_required": [
-            "app_id"
-        ]
-    },
-    "set": {
-        "query": [
-            "app_id",
-            "name",
-            "title",
-            "description",
-            "keywords",
-            "keyword"
-        ],
-        "query_required": [],
-        "body": [
-            "type_id",
-            "name",
-            "title",
-            "description",
-            "keywords"
-        ],
-        "body_required": [],
-        "body_not": []
-    },
-    "get_obj": {
-        "query_required": [
-            "app_id"
-        ]
-    },
-    "title": "开发应用"
+    ]
 }

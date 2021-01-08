@@ -168,6 +168,24 @@
             "map": ""
         },
         {
+            "name": "title",
+            "title": "频道标题",
+            "description": "",
+            "type": "varchar",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 0,
+            "min_length": 0,
+            "max_length": 125,
+            "min": 0,
+            "max": 0,
+            "decimal": 0,
+            "default": null,
+            "map": ""
+        },
+        {
             "name": "template",
             "title": "风格模板",
             "description": "频道和店铺都使用的样式",

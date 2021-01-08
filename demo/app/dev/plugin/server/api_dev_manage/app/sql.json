@@ -1,6 +1,6 @@
 {
     "name": "dev_app2",
-    "title": "开发应用",
+    "title": "应用",
     "table": "dev_app",
     "key": "app_id",
     "orderby_default": "`app_id` desc",

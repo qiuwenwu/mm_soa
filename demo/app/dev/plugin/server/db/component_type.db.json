@@ -1,6 +1,6 @@
 {
-    "title": "文章分类",
-    "description": "将文章归类，可选看不同类型的文章",
+    "title": "组件分类",
+    "description": "将组件归类，方便引用不同的组件",
     "name": "dev_component_type",
     "table": "dev_component_type",
     "key": "type_id",
@@ -57,11 +57,11 @@
             "max": 32767,
             "decimal": 0,
             "default": "0",
-            "map": "dev_app_type.name.type_id"
+            "map": "dev_component_type.name.type_id"
         },
         {
             "name": "name",
-            "title": "名称",
+            "title": "分类名称",
             "description": "",
             "type": "varchar",
             "key": false,
@@ -79,7 +79,7 @@
         },
         {
             "name": "title",
-            "title": "标题",
+            "title": "分类标题",
             "description": "",
             "type": "varchar",
             "key": false,
@@ -97,7 +97,7 @@
         },
         {
             "name": "description",
-            "title": "描述",
+            "title": "分类描述",
             "description": "",
             "type": "varchar",
             "key": false,

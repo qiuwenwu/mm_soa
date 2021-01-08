@@ -11,6 +11,10 @@
 							<div class="card_body">
 								<mm_form>
 									<dl>
+										<dt>是否启用</dt>
+										<dd>
+											<mm_switch v-model="form.available" />
+										</dd>
 										<dt class="required">英文名称</dt>
 										<dd>
 											<mm_input v-model="form.name" :minlength="0" :maxlength="32" placeholder="用于多国语识别"
@@ -82,6 +86,7 @@
 				},
 				form: {
 					"nav_id": 0,
+					"available": 0,
 					"name": '',
 					"title": '',
 					"url": '',
@@ -92,6 +97,8 @@
 					"device": '',
 					"father_id": 0,
 				},
+				// 是否启用
+				'arr_available':["否","是"],
 				// 上级
 				'list_nav':[],
 			}

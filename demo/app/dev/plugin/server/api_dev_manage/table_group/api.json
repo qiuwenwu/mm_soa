@@ -1,8 +1,8 @@
 {
-    "name": "dev_page_component_manage",
-    "title": "",
-    "description": "",
-    "path": "/apis/dev/page_component",
+    "name": "dev_table_group_manage",
+    "title": "数据表分组",
+    "description": "将数据表分组，方便创造新表",
+    "path": "/apis/dev/table_group",
     "method": "ALL",
     "cache": 0,
     "client_cache": false,

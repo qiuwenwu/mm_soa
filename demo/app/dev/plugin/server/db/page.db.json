@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "页面",
+    "description": "用于构建MVC或MVVM页面",
     "name": "dev_page",
     "table": "dev_page",
     "key": "page_id",
@@ -11,7 +11,7 @@
             "description": "",
             "type": "int",
             "key": true,
-            "auto": "",
+            "auto": "auto_increment",
             "symbol": false,
             "fill_zero": false,
             "not_null": 1,
@@ -39,7 +39,25 @@
             "max": 2147483647,
             "decimal": 0,
             "default": "0",
-            "map": "dev_app_type.name.type_id"
+            "map": "dev_page_group.name.group_id"
+        },
+        {
+            "name": "num",
+            "title": "使用次数",
+            "description": "",
+            "type": "int",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 1,
+            "min_length": 0,
+            "max_length": 11,
+            "min": 0,
+            "max": 2147483647,
+            "decimal": 0,
+            "default": "0",
+            "map": ""
         },
         {
             "name": "rate",

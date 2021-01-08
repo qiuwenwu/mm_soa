@@ -5,9 +5,10 @@
         "body": [
             "display",
             "name",
-            "icon",
+            "title",
             "description",
-            "shop_id"
+            "shop_id",
+            "icon"
         ],
         "body_required": []
     },
@@ -23,6 +24,7 @@
             "display_min",
             "display_max",
             "name",
+            "title",
             "description",
             "keyword"
         ],
@@ -31,9 +33,10 @@
             "display",
             "display_add",
             "name",
-            "icon",
+            "title",
             "description",
-            "shop_id"
+            "shop_id",
+            "icon"
         ],
         "body_required": [],
         "body_not": []
@@ -44,6 +47,7 @@
             "display_min",
             "display_max",
             "name",
+            "title",
             "description",
             "keyword"
         ],
@@ -101,12 +105,14 @@
             }
         },
         {
-            "name": "icon",
-            "title": "分组图标",
+            "name": "title",
+            "title": "分组标题",
             "description": "",
             "type": "string",
-            "dataType": "text",
-            "string": {}
+            "dataType": "varchar",
+            "string": {
+                "max": 125
+            }
         },
         {
             "name": "description",
@@ -129,9 +135,17 @@
             }
         },
         {
+            "name": "icon",
+            "title": "分组图标",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索分组名称(name)、分组描述(description)",
+            "description": "用于搜索分组名称(name)、分组标题(title)、分组描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

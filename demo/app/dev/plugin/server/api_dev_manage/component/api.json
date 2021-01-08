@@ -1,7 +1,7 @@
 {
     "name": "dev_component_manage",
-    "title": "",
-    "description": "",
+    "title": "组件",
+    "description": "用于组装成新页面",
     "path": "/apis/dev/component",
     "method": "ALL",
     "cache": 0,

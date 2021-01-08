@@ -1264,6 +1264,7 @@ table .mm_btn {
 	border-radius: 0 !important;
 	border-color: transparent !important;
 	padding: 0 !important;
+	font-size: inherit;
 }
 
 .auto-width:focus {

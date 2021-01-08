@@ -1,5 +1,5 @@
 {
-    "title": "开发数据表",
+    "title": "数据表",
     "description": "用于构建应用时自动创建表",
     "name": "dev_table",
     "table": "dev_table",
@@ -7,11 +7,11 @@
     "fields": [
         {
             "name": "table_id",
-            "title": "表ID",
+            "title": "数据表ID",
             "description": "",
             "type": "int",
             "key": true,
-            "auto": "",
+            "auto": "auto_increment",
             "symbol": false,
             "fill_zero": false,
             "not_null": 1,
@@ -40,6 +40,42 @@
             "decimal": 0,
             "default": "0",
             "map": "dev_app.name.app_id"
+        },
+        {
+            "name": "group_id",
+            "title": "数据表分组ID",
+            "description": "",
+            "type": "int",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 1,
+            "min_length": 0,
+            "max_length": 11,
+            "min": 0,
+            "max": 2147483647,
+            "decimal": 0,
+            "default": "0",
+            "map": "dev_table_group.name.table_id"
+        },
+        {
+            "name": "num",
+            "title": "使用次数",
+            "description": "",
+            "type": "int",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 1,
+            "min_length": 0,
+            "max_length": 11,
+            "min": 0,
+            "max": 2147483647,
+            "decimal": 0,
+            "default": "0",
+            "map": ""
         },
         {
             "name": "rate",

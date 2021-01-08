@@ -97,13 +97,14 @@ ViewModel.prototype.js = async function(model) {
 		var o = field[i];
 		var format = o.format;
 		if (format) {
+			var obj;
 			if (format.table) {
 				var basename = format.table.split('_').splice(1).join('_');
 				var name = "list_" + basename;
 				var id = format.id || format.key;
 				o.label = name;
 				var path = path_start + format.table.replace('_', '/') + "?size=0";
-				var obj = {
+				obj = {
 					basename,
 					title: format.title,
 					id,
@@ -112,20 +113,26 @@ ViewModel.prototype.js = async function(model) {
 					value: [],
 					path
 				};
+				
+				// 存在BUG（start）
 				if(o.name === 'father_id' || o.name === 'fid'){
 					obj.father_id = o.name;
 				}
-				js.data.push(obj);
+				if(o.name === 'title'){
+					obj.title_name = 'title';
+				}
+				// 存在BUG（end）
 			} else {
 				var basename = format.key;
 				var name = "arr_" + basename;
 				o.label = name;
-				js.data.push({
+				obj = {
 					title: format.title,
 					name,
 					value: format.list
-				});
+				}
 			}
+			js.data.push(obj);
 		}
 	}
 	var param = model.param;

@@ -4,8 +4,8 @@
     "table": "dev_table_field",
     "key": "field_id",
     "orderby_default": "`field_id` desc",
-    "field_obj": "`field_id`,`table_id`,`rate`,`name`,`title`,`description`,`keywords`,`key`,`auto`,`symbol`,`fill_zero`,`not_null`,`min_length`,`max_length`,`type`,`min`,`max`,`decimal`,`default`,`map`",
-    "field_default": "`field_id`,`table_id`,`rate`,`name`,`title`,`description`,`keywords`,`key`,`auto`,`symbol`,`fill_zero`,`not_null`,`min_length`,`max_length`,`type`,`min`,`max`,`decimal`,`default`,`map`",
+    "field_obj": "`field_id`,`key`,`fill_zero`,`not_null`,`symbol`,`decimal`,`table_id`,`num`,`min_length`,`max_length`,`min`,`max`,`rate`,`name`,`type`,`auto`,`title`,`description`,`keywords`,`default`,`map`",
+    "field_default": "`field_id`,`key`,`fill_zero`,`not_null`,`symbol`,`decimal`,`table_id`,`num`,`min_length`,`max_length`,`min`,`max`,`rate`,`name`,`type`,`auto`,`title`,`description`,`keywords`,`default`,`map`",
     "query": {
         "rate_min": "`rate` >= {0}",
         "rate_max": "`rate` <= {0}",
@@ -27,7 +27,9 @@
         "decimal_min": "`decimal` >= {0}",
         "decimal_max": "`decimal` <= {0}",
         "default": "`default` like '%{0}%'",
-        "map": "`map` like '%{0}%'"
+        "map": "`map` like '%{0}%'",
+        "num_min": "`num` >= {0}",
+        "num_max": "`num` <= {0}"
     },
     "update": {
         "rate_add": "`rate` = `rate` + {0}",
@@ -35,13 +37,14 @@
         "max_length_add": "`max_length` = `max_length` + {0}",
         "min_add": "`min` = `min` + {0}",
         "max_add": "`max` = `max` + {0}",
-        "decimal_add": "`decimal` = `decimal` + {0}"
+        "decimal_add": "`decimal` = `decimal` + {0}",
+        "num_add": "`num` = `num` + {0}"
     },
     "format": [
         {
             "key": "table_id",
             "title": "适用的表",
-            "table": "dev_data_table",
+            "table": "dev_table",
             "name": "name",
             "id": "table_id"
         }

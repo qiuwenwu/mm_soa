@@ -1,9 +1,11 @@
 {
     "name": "dev_table2",
-    "title": "开发数据表",
+    "title": "数据表",
     "add": {
         "body": [
             "app_id",
+            "group_id",
+            "num",
             "rate",
             "title",
             "description",
@@ -22,6 +24,8 @@
     "set": {
         "query": [
             "table_id",
+            "num_min",
+            "num_max",
             "rate_min",
             "rate_max",
             "name",
@@ -33,6 +37,9 @@
         "query_required": [],
         "body": [
             "app_id",
+            "group_id",
+            "num",
+            "num_add",
             "rate",
             "rate_add",
             "name",
@@ -46,6 +53,8 @@
     "get": {
         "query": [
             "table_id",
+            "num_min",
+            "num_max",
             "rate_min",
             "rate_max",
             "name",
@@ -64,7 +73,7 @@
     "list": [
         {
             "name": "table_id",
-            "title": "表ID",
+            "title": "数据表ID",
             "description": "",
             "type": "number",
             "dataType": "int",
@@ -76,6 +85,46 @@
             "name": "app_id",
             "title": "适用的应用ID",
             "description": "(dev_app.name.app_id)",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "group_id",
+            "title": "数据表分组ID",
+            "description": "(dev_table_group.name.table_id)",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num",
+            "title": "使用次数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_min",
+            "title": "使用次数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_max",
+            "title": "使用次数——最大值",
+            "description": "",
             "type": "number",
             "dataType": "int",
             "number": {

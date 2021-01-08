@@ -40,6 +40,10 @@
 											<mm_input v-model="form.name" :minlength="0" :maxlength="16" placeholder=""
 											 :required="true" />
 										</dd>
+										<dt>分组标题</dt>
+										<dd>
+											<mm_input v-model="form.title" :minlength="0" :maxlength="125" placeholder="" />
+										</dd>
 										<dt>描述</dt>
 										<dd>
 											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="描述该用户组的特点或权限范围" />
@@ -89,6 +93,7 @@
 					"bonus": 0,
 					"app": '',
 					"name": '',
+					"title": '',
 					"description": '',
 					"icon": '',
 				},

@@ -1,7 +1,7 @@
 {
     "name": "dev_component_type",
-    "title": "文章分类",
-    "description": "将文章归类，可选看不同类型的文章",
+    "title": "组件分类",
+    "description": "将组件归类，方便引用不同的组件",
     "path": "/api/dev/component_type",
     "method": "GET",
     "cache": 0,

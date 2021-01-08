@@ -1,9 +1,10 @@
 {
     "name": "dev_page2",
-    "title": "",
+    "title": "页面",
     "add": {
         "body": [
             "group_id",
+            "num",
             "rate",
             "title",
             "description"
@@ -21,6 +22,8 @@
     "set": {
         "query": [
             "page_id",
+            "num_min",
+            "num_max",
             "rate_min",
             "rate_max",
             "name",
@@ -31,6 +34,8 @@
         "query_required": [],
         "body": [
             "group_id",
+            "num",
+            "num_add",
             "rate",
             "rate_add",
             "name",
@@ -43,6 +48,8 @@
     "get": {
         "query": [
             "page_id",
+            "num_min",
+            "num_max",
             "rate_min",
             "rate_max",
             "name",
@@ -71,7 +78,37 @@
         {
             "name": "group_id",
             "title": "页面分组ID",
-            "description": "(dev_app_type.name.type_id)",
+            "description": "(dev_page_group.name.group_id)",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num",
+            "title": "使用次数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_min",
+            "title": "使用次数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_max",
+            "title": "使用次数——最大值",
+            "description": "",
             "type": "number",
             "dataType": "int",
             "number": {

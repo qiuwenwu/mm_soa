@@ -118,13 +118,13 @@ Nav.prototype.update_vue = async function(param) {
 		name,
 		cover,
 		route_name,
-		route_path
+		path
 	} = param;
 
 	if (name) {
 		var o = this.get(name);
 		if (o) {
-			await o.update_vue(route_path, cover);
+			await o.update_vue(path, cover);
 		} else {
 			return "该配置不存在";
 		}
@@ -133,14 +133,14 @@ Nav.prototype.update_vue = async function(param) {
 		for (var i = 0; i < len; i++) {
 			var o = this.list[i];
 			if (o.config.name === route_name) {
-				o.update_vue(route_path, cover);
+				o.update_vue(path, cover);
 			}
 		}
 	} else {
 		var len = this.list.length;
 		for (var i = 0; i < len; i++) {
 			var o = this.list[i];
-			o.update_vue(route_path, cover);
+			o.update_vue(path, cover);
 		}
 	}
 	return null;

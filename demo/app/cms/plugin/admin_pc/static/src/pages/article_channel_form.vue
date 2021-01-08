@@ -40,6 +40,10 @@
 										<dd>
 											<mm_input v-model="form.template" :minlength="0" :maxlength="64" placeholder="频道和文章都使用的样式" />
 										</dd>
+										<dt>频道标题</dt>
+										<dd>
+											<mm_input v-model="form.title" :minlength="0" :maxlength="125" placeholder="" />
+										</dd>
 										<dt>描述</dt>
 										<dd>
 											<mm_input v-model="form.description" :minlength="0" :maxlength="255" placeholder="描述该频道的作用" />
@@ -93,6 +97,7 @@
 					"city_id": 0,
 					"name": '',
 					"template": '',
+					"title": '',
 					"description": '',
 					"icon": '',
 					"url": '',

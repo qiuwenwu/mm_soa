@@ -1,6 +1,6 @@
 {
     "name": "dev_page_group",
-    "title": "文章分类",
+    "title": "页面分组",
     "description": "将文章归类，可选看不同类型的文章",
     "path": "/api/dev/page_group",
     "method": "GET",

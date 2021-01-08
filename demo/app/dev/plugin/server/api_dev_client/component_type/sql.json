@@ -1,6 +1,6 @@
 {
     "name": "dev_component_type",
-    "title": "文章分类",
+    "title": "组件分类",
     "table": "dev_component_type",
     "key": "type_id",
     "orderby_default": "`display` asc",
@@ -24,7 +24,7 @@
         {
             "key": "father_id",
             "title": "上级分类",
-            "table": "dev_app_type",
+            "table": "dev_component_type",
             "name": "name",
             "id": "type_id"
         }

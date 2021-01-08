@@ -1,6 +1,6 @@
 {
     "name": "dev_app_manage",
-    "title": "开发应用",
+    "title": "应用",
     "description": "用于引导创建应用",
     "path": "/apis/dev/app",
     "method": "ALL",

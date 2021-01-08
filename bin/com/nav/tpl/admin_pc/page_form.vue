@@ -134,7 +134,7 @@
 				var _this = this;
 				if (!query) {
 					query = {
-						field: "${v.id},${v.field}${v.father_id ? ',father_id' : '' }"
+						field: "${v.id},${v.field}${v.father_id ? ',' + v.father_id : '' }${v.title_name ? ',title' : '' }"
 					};
 				}
 				this.$get('~${v.path}', query, function(json) {

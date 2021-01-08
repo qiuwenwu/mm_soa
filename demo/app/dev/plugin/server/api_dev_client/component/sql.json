@@ -1,13 +1,15 @@
 {
     "name": "dev_component",
-    "title": "",
+    "title": "组件",
     "table": "dev_component",
     "key": "page_id",
     "orderby_default": "`page_id` desc",
-    "field_obj": "`component_id`,`page_id`,`rate`,`name`,`title`,`description`",
-    "field_default": "`component_id`,`page_id`,`rate`,`name`,`title`,`description`",
+    "field_obj": "`component_id`,`page_id`,`num`,`rate`,`name`,`title`,`description`",
+    "field_default": "`component_id`,`page_id`,`num`,`rate`,`name`,`title`,`description`",
     "method": "get get_obj",
     "query": {
+        "num_min": "`num` >= {0}",
+        "num_max": "`num` <= {0}",
         "rate_min": "`rate` >= {0}",
         "rate_max": "`rate` <= {0}",
         "name": "`name` like '%{0}%'",
@@ -17,6 +19,7 @@
     },
     "query_default": {},
     "update": {
+        "num_add": "`num` = `num` + {0}",
         "rate_add": "`rate` = `rate` + {0}"
     },
     "format": [

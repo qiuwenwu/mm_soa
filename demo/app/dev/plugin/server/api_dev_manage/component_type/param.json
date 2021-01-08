@@ -1,6 +1,6 @@
 {
     "name": "dev_component_type2",
-    "title": "文章分类",
+    "title": "组件分类",
     "add": {
         "body": [
             "display",
@@ -105,7 +105,7 @@
         {
             "name": "father_id",
             "title": "上级分类ID",
-            "description": "(dev_app_type.name.type_id)",
+            "description": "(dev_component_type.name.type_id)",
             "type": "number",
             "dataType": "smallint",
             "number": {
@@ -114,7 +114,7 @@
         },
         {
             "name": "name",
-            "title": "名称",
+            "title": "分类名称",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -125,7 +125,7 @@
         },
         {
             "name": "title",
-            "title": "标题",
+            "title": "分类标题",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -135,7 +135,7 @@
         },
         {
             "name": "description",
-            "title": "描述",
+            "title": "分类描述",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -156,7 +156,7 @@
         {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索名称(name)、标题(title)、描述(description)、关键词(keywords)",
+            "description": "用于搜索分类名称(name)、分类标题(title)、分类描述(description)、关键词(keywords)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

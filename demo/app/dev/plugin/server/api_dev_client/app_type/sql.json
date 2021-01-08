@@ -1,6 +1,6 @@
 {
     "name": "dev_app_type",
-    "title": "文章分类",
+    "title": "应用分类",
     "table": "dev_app_type",
     "key": "type_id",
     "orderby_default": "`display` asc",
@@ -10,11 +10,11 @@
     "query": {
         "display_min": "`display` >= {0}",
         "display_max": "`display` <= {0}",
+        "name": "`name` like '%{0}%'",
         "title": "`title` like '%{0}%'",
         "description": "`description` like '%{0}%'",
         "keywords": "`keywords` like '%{0}%'",
-        "keyword": "(`name` like '%{0}%' || `title` like '%{0}%' || `description` like '%{0}%' || `keywords` like '%{0}%')",
-        "name": "`name` like '%{0}%'"
+        "keyword": "(`name` like '%{0}%' || `title` like '%{0}%' || `description` like '%{0}%' || `keywords` like '%{0}%')"
     },
     "query_default": {},
     "update": {

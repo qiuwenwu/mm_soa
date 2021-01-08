@@ -15,7 +15,7 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="分类名称 / 分类描述"
+											<mm_input v-model="query.keyword" title="关键词" desc="分类名称 / 分类标题 / 分类描述"
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
@@ -54,6 +54,9 @@
 												<mm_reverse title="分类名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 											</th>
 											<th>
+												<mm_reverse title="分类标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
+											</th>
+											<th>
 												<mm_reverse title="分类描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
 											</th>
 											<th class="th_handle"><span>操作</span></th>
@@ -75,6 +78,9 @@
 											</td>
 											<td>
 												<mm_input :auto="true" v-model="o.name" @blur="set(o)" />
+											</td>
+											<td>
+												<mm_input :auto="true" v-model="o.title" @blur="set(o)" />
 											</td>
 											<td>
 												<mm_input :auto="true" v-model="o.description" @blur="set(o)" />
@@ -148,6 +154,8 @@
 					'display_max': 0,
 					// 分类名称
 					'name': '',
+					// 分类标题
+					'title': '',
 					// 分类描述
 					'description': '',
 					// 关键词

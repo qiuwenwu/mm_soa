@@ -41,6 +41,10 @@
 											<mm_input v-model="form.name" :minlength="0" :maxlength="0" placeholder=""
 											 :required="true" />
 										</dd>
+										<dt>频道标题</dt>
+										<dd>
+											<mm_input v-model="form.title" :minlength="0" :maxlength="125" placeholder="" />
+										</dd>
 										<dt>风格模板</dt>
 										<dd>
 											<mm_input v-model="form.template" :minlength="0" :maxlength="64" placeholder="频道和店铺都使用的样式" />
@@ -98,6 +102,7 @@
 					"city_id": 0,
 					"type": '',
 					"name": '',
+					"title": '',
 					"template": '',
 					"icon": '',
 					"url": '',

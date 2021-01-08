@@ -1,7 +1,7 @@
 {
     "name": "dev_page_manage",
-    "title": "",
-    "description": "",
+    "title": "页面",
+    "description": "用于构建MVC或MVVM页面",
     "path": "/apis/dev/page",
     "method": "ALL",
     "cache": 0,
