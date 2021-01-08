@@ -22,6 +22,7 @@ input:invalid {
 	float: right;
 	background: var(--color_primary);
 	padding: 0;
+	margin: 0 1rem;
 }
 
 #user_action li,
@@ -41,6 +42,7 @@ input:invalid {
 #logo {
 	float: left;
 	padding: 0 1rem;
+	margin-right: 2.5rem;
 }
 
 #logo img {
@@ -68,6 +70,7 @@ input:invalid {
 }
 
 .mm_search {
+	margin: 0 1rem;
 	position: relative;
 	display: inline-block !important;
 }
@@ -90,14 +93,15 @@ input:invalid {
 }
 
 #nav_top {
-	min-width: 46.875rem;
+	float: none;
+	overflow-x: hidden;
 }
 
 #nav_top nav .item:last-child {
 	float: right;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 800px) {
 	#nav_top {
 		min-width: auto;
 	}
@@ -214,7 +218,7 @@ input:invalid {
 }
 
 .mm_page>header~main {
-	margin-top: 6.125rem;
+	margin-top: 5.625rem;
 	margin-bottom: 0;
 }
 

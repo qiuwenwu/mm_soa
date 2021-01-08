@@ -904,7 +904,7 @@ table .mm_reverse .title {
 	min-width: 2.5rem;
 }
 
-.mm_nav_top .item>* {
+.mm_nav_top .item a {
 	padding: 0 0.75rem;
 	line-height: 2.5rem;
 }
@@ -920,7 +920,7 @@ table .mm_reverse .title {
 	display: none;
 }
 
-@media (max-width:768px) {
+@media (max-width: 830px) {
 	.mm_nav_top>button {
 		display: block;
 	}
