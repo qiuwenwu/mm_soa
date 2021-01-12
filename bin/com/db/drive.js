@@ -556,7 +556,25 @@ Drive.prototype.get_format = async function(obj) {
 	};
 	if (map.indexOf('|') !== -1) {
 		var list = map.split('|');
-		if (/^[0-9]+/.test(map)) {
+		if (map.indexOf(',') !== -1) {
+			format.list = list.map((o) => {
+				var arr = o.split(',');
+				var value = arr[0];
+				if(arr.length > 0){
+					return {
+						name: arr[1],
+						value: value
+					}
+				}
+				else {
+					return {
+						name: value,
+						value
+					}
+				}
+			});
+		}
+		else if (/^[0-9]+/.test(map)) {
 			if (map.indexOf('0') !== 0) {
 				list.unshift('');
 			}

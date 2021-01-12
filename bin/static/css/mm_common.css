@@ -60,6 +60,14 @@
 }
 
 /* 基本元素 */
+/**
+ * 卡片
+ */
+.card {
+	border-radius: var(--radius_small);
+	overflow: hidden;
+}
+
 .stroke {
 	-webkit-background-clip: content-box;
 	-webkit-text-fill-color: transparent;

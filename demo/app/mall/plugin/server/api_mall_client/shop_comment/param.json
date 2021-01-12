@@ -66,6 +66,11 @@
         ],
         "query_required": []
     },
+    "get_obj": {
+        "query_required": [
+            "comment_id"
+        ]
+    },
     "list": [
         {
             "name": "comment_id",
@@ -214,10 +219,5 @@
             "dataType": "varchar",
             "string": {}
         }
-    ],
-    "get_obj": {
-        "query_required": [
-            "comment_id"
-        ]
-    }
+    ]
 }

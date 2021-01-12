@@ -17,7 +17,7 @@ async function main(ctx, db) {
 
 	var style = q["style"];
 	if (style) {
-		ctx.cookies.set('theme_style', style);
+		ctx.cookies.set('theme_name', style);
 		bl = true;
 	}
 	if (bl) {

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+	<head>
+		${@view('./common/head.html')}
+	</head>
+	<body>
+		<div id="app">
+			<div class="mm_page">
+				${@view('./common/header.html')}
+				<main>
+					<!-- 路径导航 -->
+					<div class="mm_warp" id="nav_path">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="col-12">
+									<div class="mm_view">
+										<h2>Product show</h2>
+										<p><a href="index.html">Home</a> &nbsp; / &nbsp; Product</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 筛选面板 -->
+					<div class="mm_warp" id="search_plane">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="col-12">
+									<div class="select_item">
+										<dl>
+											<dt>关键词</dt>
+											<dd>
+												<input type="text" v-model="query.keyword"> <button @click="search()">搜索</button>
+											</dd>
+										</dl>
+										<dl>
+											<dt>技术</dt>
+											<dd :class="{active: query.channel_id === 0 }" @click="set_select({ channel_id: 0 });">全部</dd>
+											<dd v-for="(o, i) in channel" :class="{active: query.channel_id === o.value }" :key="i" @click="set_select({ channel_id: o });">{{ o.name }}</dd>
+										</dl>
+										<dl v-show="query.channel_id && query.channel_id <= 6">
+											<dt>颜色</dt>
+											<dd :class="{active: query.keywords === '' }" @click="set_select({ keywords: '' });" @click="search()">全部</dd>
+											<dd v-for="o in ui_color" :key="i" :class="{active: query.keywords === o.value }" @click="set_select({ keywords: o });">{{ o.name }}</dd>
+										</dl>
+										<dl v-show="query.channel_id && query.channel_id > 6">
+											<dt>编程语言</dt>
+											<dd :class="{active: query.keywords === '' }" @click="set_select({ keywords: '' });" @click="search()">全部</dd>
+											<dd v-for="o in code_lang" :key="i" :class="{active: query.keywords === o.value }" @click="set_select({ keywords: o });">{{ o.name }}</dd>
+										</dl>
+										<dl class="selscted_item">
+											<dt>已选条件</dt>
+											<dd v-for="(o, i) in selscted_item" @click="del_select(o)">
+												{{ o.name }}
+												<i class="fa-trash-o"></i>
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+							<div class="mm_row">
+								<!-- 排序 -->
+								<div class="col-md-6">
+									<ul>
+										<li>
+											<mm_reverse title="热度" v-model="query.orderby" field="hot" :func="search"></mm_reverse>
+										</li>
+										<li>
+											<mm_reverse title="发布时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
+										</li>
+										<li>
+											<mm_reverse title="更新时间" v-model="query.orderby" field="time_update" :func="search"></mm_reverse>
+										</li>
+									</ul>
+								</div>
+								<!-- 从结果中查询 -->
+								<div class="col-md-4">
+									<div class="filter">
+										<input v-model="keyword" />
+									</div>
+								</div>
+								<!-- 呈现方式 -->
+								<div class="col-md-2">
+									<div class="show_way">
+										<button><i class="fa-th-large"></i></button>
+										<button><i class="fa-th-list"></i></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</main>
+				${@view('./common/footer.html')}
+			</div>
+		</div>
+
+		<!-- 公共js -->
+		<script src="/js/mm_vue.js"></script>
+		<script src="/js/mm_vue_ui.js"></script>
+		<script src="/cms/home_pc/template/default/js/common.js"></script>
+
+		<!-- 实例化VUE业务 -->
+		<script>
+			Vue.config.devtools = 'development';
+			Vue.use(mm_vue);
+			Vue.use(mm_ui);
+			var app = new Vue({
+				el: "#app",
+				mixins: [mixin_page],
+				data() {
+					return {
+						url_get_list: "/api/cms/article?",
+						channel: [],
+						ui_color: [],
+						code_lang: [],
+						query: {
+							page: 1,
+							size: 20,
+							channel_id: 0,
+							keywords: "",
+							keyword: "",
+							orderby: ""
+						},
+						selscted_item: [],
+						keyword: ""
+					}
+				},
+				methods: {
+					set_select(o) {
+
+					},
+					del_select(o) {
+
+					},
+					get_channel() {
+						var _this = this;
+						this.$get('/api/cms/article_channel?', {
+							page: 0,
+							orderby: "`display` asc",
+							father_id: 4
+						}, function(json) {
+							if (json.result) {
+								_this.channel = json.result.list;
+							}
+						});
+					}
+				},
+				created() {
+					this.get_channel();
+				},
+				mounted() {
+
+				}
+			});
+		</script>
+	</body>
+</html>

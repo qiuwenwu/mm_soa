@@ -53,6 +53,11 @@
         ],
         "query_required": []
     },
+    "get_obj": {
+        "query_required": [
+            "group_id"
+        ]
+    },
     "list": [
         {
             "name": "group_id",
@@ -150,10 +155,5 @@
             "dataType": "varchar",
             "string": {}
         }
-    ],
-    "get_obj": {
-        "query_required": [
-            "group_id"
-        ]
-    }
+    ]
 }

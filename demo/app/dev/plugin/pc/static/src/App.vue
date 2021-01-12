@@ -20,7 +20,7 @@
 				<div id="tabs">
 					<div class="mm_tab_head">
 						<div v-for="(o, idx) in nav_cache" :key="idx" :class="{ 'active': o.url === url_now }">
-							<i class="fa-times-circle" v-if="o.name !== 'index'" @click="del_tab(o)"></i>
+							<i v-if="o.name !== 'index'" @click="del_tab(o)">×</i>
 							<router-link :to="o.url">
 								{{ o.title }}
 							</router-link>

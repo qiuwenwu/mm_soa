@@ -8,8 +8,8 @@ async function main(ctx, db) {
 	// 获取请求参数
 	var req = ctx.request;
 	var q = req.query;
-
-	db.table = "sys_lang";
+	var qpp = q["app"] || "cms";
+	db.table = qpp + "_lang";
 	db.size = 0;
 	var type = q["type"];
 	var arr = await db.get({}, "", "`key`" + ",`" + type + "`");

@@ -19,6 +19,9 @@
 											 @blur="search()" />
 										</mm_item>
 										<mm_item>
+											<mm_select v-model="query.type" title="数据类型" :options="$to_kv(arr_type)" @change="search()" />
+										</mm_item>
+										<mm_item>
 											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
 										</mm_item>
 									</mm_list>
@@ -66,7 +69,7 @@
 												<span>{{ o.name }}</span>
 											</td>
 											<td>
-												<span>{{ o.type }}</span>
+												<span>{{arr_type[o.type] }}</span>
 											</td>
 											<td>
 												<span>{{ o.title }}</span>
@@ -110,6 +113,10 @@
 				</div>
 				<div class="card_body">
 					<dl>
+						<dt>数据类型</dt>
+						<dd>
+							<mm_select v-model="form.type" :options="$to_kv(arr_type)" />
+						</dd>
 					</dl>
 				</div>
 				<div class="card_foot">
@@ -162,6 +169,8 @@
 				form: {},
 				//颜色
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
+				// 数据类型
+				'arr_type':[{"name":"文本型","value":"string"},{"name":"数字型","value":"number"},{"name":"布尔型","value":"boolean"}],
 				// 视图模型
 				vm: {}
 			}

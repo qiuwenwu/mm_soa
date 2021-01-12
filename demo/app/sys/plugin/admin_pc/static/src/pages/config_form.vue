@@ -18,8 +18,7 @@
 										</dd>
 										<dt class="required">数据类型</dt>
 										<dd>
-											<mm_input v-model="form.type" :minlength="0" :maxlength="16" placeholder="string文本型 / number数字型 / boolean布尔型"
-											 :required="true" />
+											<mm_select v-model="form.type" :options="$to_kv(arr_type)" />
 										</dd>
 										<dt>变量标题</dt>
 										<dd>
@@ -78,6 +77,8 @@
 					"description": '',
 					"model": '',
 				},
+				// 数据类型
+				'arr_type':[{"name":"文本型","value":"string"},{"name":"数字型","value":"number"},{"name":"布尔型","value":"boolean"}],
 			}
 		},
 		methods: {

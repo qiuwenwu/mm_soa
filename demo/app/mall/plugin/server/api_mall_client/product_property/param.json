@@ -47,6 +47,11 @@
         ],
         "query_required": []
     },
+    "get_obj": {
+        "query_required": [
+            "property_id"
+        ]
+    },
     "list": [
         {
             "name": "property_id",
@@ -124,10 +129,5 @@
             "dataType": "varchar",
             "string": {}
         }
-    ],
-    "get_obj": {
-        "query_required": [
-            "property_id"
-        ]
-    }
+    ]
 }

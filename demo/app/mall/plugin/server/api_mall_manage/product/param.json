@@ -123,6 +123,11 @@
         ],
         "query_required": []
     },
+    "get_obj": {
+        "query_required": [
+            "product_id"
+        ]
+    },
     "list": [
         {
             "name": "product_id",
@@ -552,10 +557,5 @@
             "dataType": "varchar",
             "string": {}
         }
-    ],
-    "get_obj": {
-        "query_required": [
-            "product_id"
-        ]
-    }
+    ]
 }

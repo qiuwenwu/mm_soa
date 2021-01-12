@@ -153,7 +153,7 @@
 	line-height: 2.2rem !important;
 	width: 3.75rem !important;
 	background: #fff;
-	border: 1px solid #e5e5e5;
+	border: 1px solid var(--color_border);
 	border-radius: 100px;
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -161,14 +161,14 @@
 
 .mm_switch .onoff::after {
 	position: absolute;
-	left: -1px;
-	top: -1px;
+	left: 0;
+	top: 0;
 	display: block;
-	width: 2rem;
-	height: 2rem;
+	width: calc(2rem - 1px);
+	height: calc(2rem - 1px);
 	border-radius: 50%;
 	background: #fff;
-	border: 1px solid #e5e5e5;
+	border: 1px solid var(--color_border);
 	box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
 	content: '';
 	transition: all 0.3s ease;
@@ -389,7 +389,7 @@ table .mm_reverse .title {
 	height: 0;
 	border-left: .25rem solid transparent;
 	border-right: .25rem solid transparent;
-	border-bottom: .5rem solid #E5E5E5;
+	border-bottom: .5rem solid var(--color_border);
 }
 
 .mm_reverse .down::after {
@@ -400,7 +400,7 @@ table .mm_reverse .title {
 	height: 0;
 	border-left: .25rem solid transparent;
 	border-right: .25rem solid transparent;
-	border-top: .5rem solid #E5E5E5;
+	border-top: .5rem solid var(--color_border);
 }
 
 .mm_reverse .up.active::before {
@@ -418,7 +418,7 @@ table .mm_reverse .title {
 }
 
 .reverse_arrow .up::after {
-	background: #E5E5E5;
+	background: var(--color_border);
 	height: .75rem;
 	position: absolute;
 	top: .25rem;
@@ -430,7 +430,7 @@ table .mm_reverse .title {
 
 .reverse_arrow .up::before {
 	border: .15rem solid;
-	border-color: transparent #E5E5E5 #E5E5E5 transparent;
+	border-color: transparent var(--color_border) var(--color_border) transparent;
 }
 
 .reverse_arrow .up.active::after {
@@ -448,7 +448,7 @@ table .mm_reverse .title {
 }
 
 .reverse_arrow .down::before {
-	background: #E5E5E5;
+	background: var(--color_border);
 	height: .75rem;
 	position: absolute;
 	top: 0;
@@ -462,7 +462,7 @@ table .mm_reverse .title {
 	position: absolute;
 	bottom: 0;
 	border: .15rem solid;
-	border-color: #E5E5E5 transparent transparent #E5E5E5;
+	border-color: var(--color_border) transparent transparent var(--color_border);
 }
 
 .reverse_arrow .down.active::before {
@@ -1259,7 +1259,7 @@ table .mm_btn {
 .auto-width {
 	display: inline-block;
 	width: 100%;
-	min-width: 4rem;
+	min-width: 4.5rem;
 	background: none;
 	border-radius: 0 !important;
 	border-color: transparent !important;

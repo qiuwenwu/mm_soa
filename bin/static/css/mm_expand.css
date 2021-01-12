@@ -115,7 +115,7 @@
 	-ms-flex: 1;
 	-webkit-box-flex: 1;
 	background: #fff;
-	border-right: 1px solid #e5e5e5;
+	border-right: 1px solid var(--color_border);
 	box-sizing: border-box;
 	color: #353535;
 	cursor: pointer;

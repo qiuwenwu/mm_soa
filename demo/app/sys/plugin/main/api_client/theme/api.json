@@ -1,6 +1,6 @@
 {
 	// 路由路径
-	"path": "/api/sys/theme",
+	"path": "/api/sys_theme",
 	// 名称, 用于动态增删改API配置
 	"name": "api_theme",
 	// 标题, 用于开发文档显示

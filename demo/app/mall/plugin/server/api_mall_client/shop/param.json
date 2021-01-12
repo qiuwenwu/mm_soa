@@ -94,6 +94,11 @@
         ],
         "query_required": []
     },
+    "get_obj": {
+        "query_required": [
+            "shop_id"
+        ]
+    },
     "list": [
         {
             "name": "shop_id",
@@ -407,10 +412,5 @@
             "dataType": "varchar",
             "string": {}
         }
-    ],
-    "get_obj": {
-        "query_required": [
-            "shop_id"
-        ]
-    }
+    ]
 }
