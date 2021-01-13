@@ -2,6 +2,111 @@
 <html lang="zh-hans">
 	<head>
 		${@view('./common/head.html')}
+		<style type="text/css">
+			#search_plane {
+				margin-top: 1rem;
+				margin-bottom: 0.5rem;
+			}
+
+			#search_plane dl {
+				margin: 0 1rem;
+				border-bottom: 1px solid #e5e5e5;
+			}
+
+			#search_plane dt {
+				font-weight: 600;
+			}
+
+			#search_plane span {
+				display: inline-block;
+				height: 2rem;
+				padding: 0 .5rem;
+				border-radius: 0.5rem;
+				border: 1px solid transparent;
+			}
+
+			#search_plane span:hover {
+				cursor: pointer;
+				color: var(--color_primary);
+			}
+
+			#search_plane .active span {
+				color: var(--color_primary);
+				border: 1px solid var(--color_primary);
+			}
+
+			#search_plane .color i {
+				display: inline-block;
+				width: 1rem;
+				height: 1rem;
+			}
+
+			#search_plane .selscted_item dd {
+				position: relative;
+			}
+
+			#search_plane .selscted_item span {
+				border: 1px solid var(--color_border);
+				min-width: 4rem;
+				text-align: center;
+			}
+
+			#search_plane .selscted_item i {
+				display: none;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			#search_plane .selscted_item dd:hover span {
+				border-color: var(--color_error);
+				color: #fff;
+			}
+
+			#search_plane .selscted_item dd:hover i {
+				color: var(--color_error);
+				display: block;
+			}
+
+			#sort .mm_view {
+				padding: .5rem 0;
+			}
+
+			#sort {
+				margin-bottom: 1rem;
+			}
+
+			#sort h5 {
+				float: left;
+				line-height: 2rem;
+				padding: 0 1rem;
+			}
+
+			#sort ul {
+				overflow: hidden;
+			}
+
+			#sort li {
+				list-style: none;
+				float: left;
+			}
+
+			#sort .filter {
+				float: right;
+				padding: 0.5rem;
+			}
+
+			#sort .show_way {
+				float: right;
+				text-align: right;
+				padding: 0.5rem;
+			}
+
+			#sort .show_way i::before {
+				font-size: 0.875rem;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="app">
@@ -23,74 +128,120 @@
 					</div>
 
 					<!-- 筛选面板 -->
-					<div class="mm_warp" id="search_plane">
+					<div class="mm_warp">
 						<div class="mm_container">
-							<div class="mm_row">
+							<div class="mm_row card" id="search_plane">
 								<div class="col-12">
 									<div class="select_item">
 										<dl>
 											<dt>关键词</dt>
 											<dd>
-												<input type="text" v-model="query.keyword"> <button @click="search()">搜索</button>
+												<div class="mm_group group-1">
+													<input type="text" placeholder="输入搜索关键词" v-model="query.keyword" @keyup.enter="search()">
+													<button type="button" class="mm_btn" @click="search()">搜索</button>
+												</div>
 											</dd>
 										</dl>
 										<dl>
-											<dt>技术</dt>
-											<dd :class="{active: query.channel_id === 0 }" @click="set_select({ channel_id: 0 });">全部</dd>
-											<dd v-for="(o, i) in channel" :class="{active: query.channel_id === o.value }" :key="i" @click="set_select({ channel_id: o });">{{ o.name }}</dd>
+											<dt>开发技术</dt>
+											<dd :class="{active: query.channel_id === 0 }" @click="query.channel_id = 0; search();"><span>全部</span></dd>
+											<dd v-for="(o, i) in channel" :class="{active: query.channel_id === o.channel_id }" :key="i" @click="query.channel_id = o.channel_id; query.tag = ''; search();"><span>{{ o.name }}</span></dd>
 										</dl>
-										<dl v-show="query.channel_id && query.channel_id <= 6">
-											<dt>颜色</dt>
-											<dd :class="{active: query.keywords === '' }" @click="set_select({ keywords: '' });" @click="search()">全部</dd>
-											<dd v-for="o in ui_color" :key="i" :class="{active: query.keywords === o.value }" @click="set_select({ keywords: o });">{{ o.name }}</dd>
+										<dl v-show="query.channel_id && query.channel_id === 5">
+											<dt>文档类型</dt>
+											<dd :class="{active: query.tag === '' }" @click="query.tag = ''; search();" @click="search()"><span>全部</span></dd>
+											<dd v-for="o in demand_type" :key="o" :class="{active: query.tag === o }" @click="query.tag = o; search();"><span>{{ o }}</span></dd>
 										</dl>
-										<dl v-show="query.channel_id && query.channel_id > 6">
+										<dl v-show="query.channel_id && query.channel_id === 6">
+											<dt>主题颜色</dt>
+											<dd :class="{active: query.tag === '' }" @click="query.tag = ''; search();" @click="search()"><span>全部</span></dd>
+											<dd v-for="o in ui_color" :key="o" class="color" :class="{active: query.tag === o }" @click="query.tag = o; search();">
+												<span><i :class="'bg_' + o"></i></span>
+											</dd>
+										</dl>
+										<dl v-show="query.channel_id && query.channel_id === 7">
+											<dt>代码框架</dt>
+											<dd :class="{active: query.tag === '' }" @click="query.tag = ''; search();" @click="search()"><span>全部</span></dd>
+											<dd v-for="o in code_framework" :key="o" :class="{active: query.tag === o }" @click="query.tag = o; search();"><span>{{ o }}</span></dd>
+										</dl>
+										<dl v-show="query.channel_id && query.channel_id === 11">
 											<dt>编程语言</dt>
-											<dd :class="{active: query.keywords === '' }" @click="set_select({ keywords: '' });" @click="search()">全部</dd>
-											<dd v-for="o in code_lang" :key="i" :class="{active: query.keywords === o.value }" @click="set_select({ keywords: o });">{{ o.name }}</dd>
+											<dd :class="{active: query.tag === '' }" @click="query.tag = ''; search();" @click="search()"><span>全部</span></dd>
+											<dd v-for="o in code_lang" :key="o" :class="{active: query.tag === o }" @click="query.tag = o; search();"><span>{{ o }}</span></dd>
 										</dl>
 										<dl class="selscted_item">
 											<dt>已选条件</dt>
-											<dd v-for="(o, i) in selscted_item" @click="del_select(o)">
-												{{ o.name }}
+											<dd v-if="query.channel_id" @click="query.channel_id = 0; search()">
+												<span>{{ get_channel_name(query.channel_id) }}</span>
+												<i class="fa-trash-o"></i>
+											</dd>
+											<dd v-if="query.tag" @click="query.tag = ''; search()">
+												<span>{{ lang[query.tag] || query.tag }}</span>
 												<i class="fa-trash-o"></i>
 											</dd>
 										</dl>
 									</div>
 								</div>
 							</div>
-							<div class="mm_row">
+							<div class="mm_row card" id="sort">
 								<!-- 排序 -->
 								<div class="col-md-6">
-									<ul>
-										<li>
-											<mm_reverse title="热度" v-model="query.orderby" field="hot" :func="search"></mm_reverse>
-										</li>
-										<li>
-											<mm_reverse title="发布时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
-										</li>
-										<li>
-											<mm_reverse title="更新时间" v-model="query.orderby" field="time_update" :func="search"></mm_reverse>
-										</li>
-									</ul>
-								</div>
-								<!-- 从结果中查询 -->
-								<div class="col-md-4">
-									<div class="filter">
-										<input v-model="keyword" />
+									<div class="mm_view">
+										<h5><span>排序：</span></h5>
+										<ul>
+											<li>
+												<mm_reverse title="热度" v-model="query.orderby" field="hot" :func="search"></mm_reverse>
+											</li>
+											<li>
+												<mm_reverse title="发布时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
+											</li>
+											<li>
+												<mm_reverse title="更新时间" v-model="query.orderby" field="time_update" :func="search"></mm_reverse>
+											</li>
+										</ul>
 									</div>
 								</div>
-								<!-- 呈现方式 -->
-								<div class="col-md-2">
+								<div class="col-md-6">
+									<!-- 呈现方式 -->
 									<div class="show_way">
 										<button><i class="fa-th-large"></i></button>
 										<button><i class="fa-th-list"></i></button>
+									</div>
+									<!-- 从结果中查询 -->
+									<div class="filter">
+										<div class="mm_group group-1"><input type="text" placeholder="从结果再筛选" v-model="keyword" @keyup.enter="word = keyword">
+											<button type="button" class="mm_btn" @click="word = keyword"><i class="fa-search"></i></button></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
+					<!-- 产品列表 -->
+					<div class="mm_warp">
+						<div class="mm_container">
+							<div class="mm_row">
+								<div class="col-12">
+									<nav class="list_img item-tb mm_list list-4" id="list_product">
+										<a v-for="o in list" href="o.url || ./product?''" class="mm_item router-link-active" url="/">
+											<div class="mm_img">
+												<div class="media">
+													<figure class="mm_icon">
+														<img src="/img/default.png" alt="图片" οnerrοr="/img/default.png" mode="mode">
+														<figcaption></figcaption>
+													</figure>
+												</div>
+												<div class="doc">
+													<div class="title">{{ o.title }}</div>
+													<div class="content">{{ o.description }}</div>
+												</div>
+											</div>
+										</a>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
 				</main>
 				${@view('./common/footer.html')}
 			</div>
@@ -113,26 +264,29 @@
 					return {
 						url_get_list: "/api/cms/article?",
 						channel: [],
-						ui_color: [],
-						code_lang: [],
+						lang: {},
+						ui_color: ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'],
+						code_lang: ['js', 'java', 'python', 'c#', 'php'],
+						code_framework: ['h5', 'vue', 'mini_app', 'web_app'],
+						demand_type: ['需求文档', '项目分解表', '原型图'],
 						query: {
 							page: 1,
 							size: 20,
 							channel_id: 0,
 							keywords: "",
-							keyword: "",
+							tag: "",
 							orderby: ""
 						},
-						selscted_item: [],
-						keyword: ""
+						keyword: "",
+						word: ""
 					}
 				},
 				methods: {
-					set_select(o) {
-
-					},
-					del_select(o) {
-
+					get_list_before(param) {
+						if (param.channel_id === 0) {
+							param.channel_id = '5|6|7|11|14'
+						}
+						return param;
 					},
 					get_channel() {
 						var _this = this;
@@ -145,10 +299,35 @@
 								_this.channel = json.result.list;
 							}
 						});
+					},
+					get_lang() {
+						var _this = this;
+						this.$get('/api/cms/lang?', {
+							page: 0,
+							field: '`key`,`${sys_lang}`'
+						}, function(json) {
+							if (json.result) {
+								var list = json.result.list;
+								for (var i = 0; i < list.length; i++) {
+									var o = list[i];
+									_this.lang[o.key] = o['${sys_lang}'];
+								}
+							}
+						});
+					},
+					get_channel_name(channel_id) {
+						var name = this.channel.getVal('name', {
+							channel_id
+						});
+						return this.lang[name] || name;
 					}
 				},
 				created() {
+					this.get_lang();
 					this.get_channel();
+				},
+				computed: {
+
 				},
 				mounted() {
 

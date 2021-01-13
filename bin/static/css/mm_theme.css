@@ -180,7 +180,11 @@ ol.mm_list li:nth-child(3)::before {
 	color: var(--color_white);
 	border-color: var(--color_red);
 }
-
+.bg_orange {
+	background: var(--color_orange) !important;
+	color: var(--color_white);
+	border-color: var(--color_orange);
+}
 .bg_error {
 	background: var(--color_error) !important;
 	color: var(--color_white);

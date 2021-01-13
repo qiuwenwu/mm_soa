@@ -571,7 +571,7 @@ dd>span {
 
 dd {
 	display: block;
-	padding: var(--padding_small);
+	padding: var(--padding_mini);
 	float: left;
 }
 
