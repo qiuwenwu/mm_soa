@@ -109,6 +109,11 @@
         ],
         "query_required": []
     },
+    "get_obj": {
+        "query_required": [
+            "article_id"
+        ]
+    },
     "list": [
         {
             "name": "article_id",
@@ -463,8 +468,10 @@
             "title": "封面图",
             "description": "用于显示于文章列表页，多个封面图用换行分隔",
             "type": "string",
-            "dataType": "text",
-            "string": {}
+            "dataType": "varchar",
+            "string": {
+                "max": 255
+            }
         },
         {
             "name": "content",
@@ -490,10 +497,5 @@
             "dataType": "varchar",
             "string": {}
         }
-    ],
-    "get_obj": {
-        "query_required": [
-            "article_id"
-        ]
-    }
+    ]
 }

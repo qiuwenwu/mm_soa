@@ -124,6 +124,9 @@
 											<th>
 												<mm_reverse title="标签" v-model="query.orderby" field="tag" :func="search"></mm_reverse>
 											</th>
+											<th>
+												<mm_reverse title="封面图" v-model="query.orderby" field="img" :func="search"></mm_reverse>
+											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
 									</thead>
@@ -191,6 +194,9 @@
 											</td>
 											<td>
 												<span>{{ o.tag }}</span>
+											</td>
+											<td>
+												<img class="img" :src="o.img" alt="封面图" />
 											</td>
 											<td>
 												<mm_btn class="btn_primary" :url="'./article_form?article_id=' + o[field]">修改</mm_btn>
