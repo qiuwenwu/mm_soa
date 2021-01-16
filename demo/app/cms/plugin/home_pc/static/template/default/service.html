@@ -3,13 +3,66 @@
 	<head>
 		${@view('./common/head.html')}
 		<style>
+			body {
+				background: #fff;
+			}
+
 			#price_table {
 				text-align: center;
+				margin: 5rem 0;
 			}
 
 			#price_table ul {
 				list-style: none;
 				padding: 0;
+			}
+
+			#price_table h2 {
+				font-size: 2.25rem;
+				line-height: 2.625rem;
+				font-weight: 600;
+				margin-bottom: 1rem;
+			}
+
+			#price_table p {
+				color: var(--color_default);
+			}
+			
+			#price_table .mm_card {
+				margin-left: 1rem;
+				margin-right: 1rem;
+				border-radius: 1rem;
+			}
+			
+			#price_table h4 {
+				font-weight: 700;
+				padding: 0.5rem 0;
+				background-color: var(--color_primary);
+				color: var(--color_white);
+			}
+			
+			#price_table .pricing {
+			    background: #002147;
+			    text-align: center;
+				color: #fff;
+			    padding: 1rem 0;
+			}
+			
+			#price_table .unit {
+				font-size: 1rem;
+			}
+			#price_table .sub {
+				font-size: 0.625rem;
+				margin-left: 0.25rem;
+			}
+			#price_table ul {
+				padding: 1rem 0;
+			}
+			#price_table li {
+				line-height: 2rem;
+			}
+			#price_table button {
+				margin-bottom: 2rem;
 			}
 		</style>
 	</head>
@@ -32,88 +85,25 @@
 						</div>
 					</div>
 
-					<!-- 服务信息 -->
-					<div class="mm_warp" id="service_info">
-						<div class="mm_container">
-							<div class="mm_row">
-								<div class="col-lg-4 col-md-6">
-									<div class="mm_view">
-										<img src="assets/images/g2.jpg">
-										<div class="doc">
-											<h3>太空机器人</h3>
-											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="mm_view">
-										<img src="assets/images/g3.jpg">
-										<div class="doc">
-											<h3>差异化指令</h3>
-											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="mm_view">
-										<img src="assets/images/g8.jpg">
-										<div class="doc">
-											<h3>主体分析</h3>
-											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="mm_view">
-										<img src="assets/images/g5.jpg">
-										<div class="doc">
-											<h3>寂静的声音</h3>
-											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="mm_view">
-										<img src="assets/images/g6.jpg">
-										<div class="doc">
-											<h3>编队飞行</h3>
-											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="mm_view">
-										<img src="assets/images/g7.jpg">
-										<div class="doc">
-											<h3>手指手势</h3>
-											<p>私立学校，塞德·杜伊斯莫德临时禁忌和劳动者基金会</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
 					<!-- 服务定价 -->
 					<div class="mm_warp" id="price_table">
 						<div class="mm_container">
 							<div class="mm_row">
 								<div class="mm_col col-12">
 									<div class="mm_view">
-										<h3>开发服务套餐</h3>
-										<p>外观精美、简洁，用户体验良好，性能绝佳！</p>
+										<h2>开发服务套餐</h2>
+										<p>我们追求的是外观精美、简洁，用户体验良好，性能绝佳！</p>
 									</div>
 								</div>
 							</div>
 							<div class="mm_row mt-5 pt-3">
-								<div class="col-lg-4 col-sm-6">
-									<div class="mm_view">
+								<div class="col-lg-3 col-sm-6">
+									<div class="mm_card">
 										<div class="price_item">
-											<h3><span>基础服务</span></h3>
+											<h4><span>基础服务</span></h4>
 											<div class="pricing">
-												<h4><span class="unit">￥</span><span>2000</span><span class="sub">起</span></h4>
-												<p><span>7天</span></p>
+												<h3><span class="unit">￥</span><span>2000</span></h3>
+												<p><span class="sub">起 / 套</span></p>
 											</div>
 											<ul>
 												<li><span>模板开发</span></li>
@@ -129,13 +119,13 @@
 									</div>
 								</div>
 
-								<div class="col-lg-4 col-sm-6">
-									<div class="mm_view">
+								<div class="col-lg-3 col-sm-6">
+									<div class="mm_card">
 										<div class="price_item">
-											<h3><span>定制服务</span></h3>
+											<h4><span>定制服务</span></h4>
 											<div class="pricing">
-												<h4><span class="unit">￥</span><span>12000</span><span class="sub">起</span></h4>
-												<p><span>15天</span></p>
+												<h3><span class="unit">￥</span><span>12000</span></h3>
+												<p><span class="sub">起 / 套</span></p>
 											</div>
 											<ul>
 												<li><span>二次开发</span></li>
@@ -150,13 +140,13 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-4 col-sm-6">
-									<div class="mm_view">
+								<div class="col-lg-3 col-sm-6">
+									<div class="mm_card">
 										<div class="price_item">
-											<h3><span>云管服务</span></h3>
+											<h4><span>云管服务</span></h4>
 											<div class="pricing">
-												<h4><span class="unit">￥</span><span>1800</span><span class="sub">元/年</span></h4>
-												<p><span>7天</span></p>
+												<h3><span class="unit">￥</span><span>1800</span></h3>
+												<p><span class="sub">起 / 年</span></p>
 											</div>
 											<ul>
 												<li><span class="font_success">持续开发</span></li>

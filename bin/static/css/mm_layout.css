@@ -657,6 +657,11 @@ ol.mm_list li::before {
 	line-height: 1;
 }
 
+.mm_icon {
+	background: center center no-repeat;
+	background-size: 100%;
+}
+
 @media (max-width:576px) {
 	.mm_side.hide-x .mm_warp {
 		left: -100%;

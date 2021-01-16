@@ -57,7 +57,7 @@
 		"mm_crypto": "^1.1.2",
 		"mm_es6_to_amd": "^1.3.6",
 		"mm_excel": "^1.0.4",
-		"mm_expand": "^1.5.0",
+		"mm_expand": "^1.5.1",
 		"mm_html": "^1.0.8",
 		"mm_https": "^1.4.4",
 		"mm_koa_proxy": "^1.0.0",

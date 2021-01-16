@@ -1865,33 +1865,33 @@
 /* ===  填充  === */
 /* 基础 */
 .pa {
-	padding: var(--padding_base) !important;
+	padding: var(--padding_small) !important;
 }
 
 .pb {
-	padding-bottom: var(--padding_base) !important;
+	padding-bottom: var(--padding_small) !important;
 }
 
 .pl {
-	padding-left: var(--padding_base) !important;
+	padding-left: var(--padding_small) !important;
 }
 
 .plr {
-	padding-left: var(--padding_base);
-	padding-right: var(--padding_base) !important;
+	padding-left: var(--padding_small);
+	padding-right: var(--padding_small) !important;
 }
 
 .pr {
-	padding-right: var(--padding_base) !important;
+	padding-right: var(--padding_small) !important;
 }
 
 .pt {
-	padding-top: var(--padding_base) !important;
+	padding-top: var(--padding_small) !important;
 }
 
 .ptb {
-	padding-top: var(--padding_base);
-	padding-bottom: var(--padding_base) !important;
+	padding-top: var(--padding_small);
+	padding-bottom: var(--padding_small) !important;
 }
 
 .pn {

@@ -18,7 +18,7 @@ Auto_db.prototype.set = async function(db, app, name) {
 	}
 	$.push(obj, app.config);
 	ret = $.ret.bl(true);
-}
+};
 
 /**
  * 更新应用
@@ -51,7 +51,7 @@ Auto_db.prototype.app = async function(query, body, db) {
 		ret = $.ret.error(50000, '未找到系统！');
 	}
 	return ret;
-}
+};
 
 /**
  * 更新数据库

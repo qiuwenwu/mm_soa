@@ -850,7 +850,7 @@ if (typeof($) === "undefined") {
 	 * @return {Date} 时间对象
 	 */
 	String.prototype.toTime = function() {
-		var str = this.replace('T', ' ').replace('Z', '').replaceAll('.', '/').replaceAll('-', '/');
+		var str = this.replace('T', ' ').replace('Z', '').replaceAll('-', '/');
 		return new Date(str);
 	};
 	/**
@@ -859,8 +859,8 @@ if (typeof($) === "undefined") {
 	 * @return {String} 时间格式字符串
 	 */
 	String.prototype.toTimeFormat = function(format) {
-		var str = this.replace('T', ' ').replace('Z', '').replaceAll('.', '/').replaceAll('-', '/');
-		return new Date(str).toStr(format);
+		var str = this.replace('T', ' ').replace('Z', '').replaceAll('-', '/');
+		return str.toTime().toStr(format);
 	};
 	/**
 	 * @description 转为数组
@@ -1209,7 +1209,6 @@ if (typeof($) === "undefined") {
 	Array.prototype.getVal = function(key, query) {
 		var obj = this.getObj(query);
 		if (obj) {
-			console.log('ruchag', obj[key]);
 			return obj[key];
 		} else {
 			return null;

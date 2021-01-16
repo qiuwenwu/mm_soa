@@ -6,7 +6,7 @@
 					<mm_col class="col-12">
 						<mm_card>
 							<div class="card_head arrow">
-								<h5>商城配置</h5>
+								<h5></h5>
 							</div>
 							<div class="card_body">
 								<mm_form class="mm_filter">
@@ -15,10 +15,6 @@
 									</div>
 									<mm_list col="3">
 										<mm_item>
-											<mm_input v-model="query.keyword" title="关键词" desc="变量名 / 变量标题 / 变量描述"
-											 @blur="search()" />
-										</mm_item>
-										<mm_item>
 											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
 										</mm_item>
 									</mm_list>
@@ -26,7 +22,7 @@
 								<div class="mm_action">
 									<h5><span>操作</span></h5>
 									<div class="btns">
-										<mm_btn class="btn_primary-x" url="./config_form">添加</mm_btn>
+										<mm_btn class="btn_primary-x" url="./config_form?">添加</mm_btn>
 										<mm_btn @click.native="show = true" class="btn_primary-x" v-bind:class="{ 'disabled': !selects }">批量修改</mm_btn>
 									</div>
 									<div class="btn_small">
@@ -39,21 +35,6 @@
 										<tr>
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
-											<th>
-												<mm_reverse title="变量名" v-model="query.orderby" field="name" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="数据类型" v-model="query.orderby" field="type" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="变量标题" v-model="query.orderby" field="title" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="变量描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
-											</th>
-											<th>
-												<mm_reverse title="变量值" v-model="query.orderby" field="value" :func="search"></mm_reverse>
-											</th>
 											<th class="th_handle"><span>操作</span></th>
 										</tr>
 									</thead>
@@ -63,22 +44,7 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<td>
-												<span>{{ o.name }}</span>
-											</td>
-											<td>
-												<span>{{ o.type }}</span>
-											</td>
-											<td>
-												<span>{{ o.title }}</span>
-											</td>
-											<td>
-												<span>{{ o.description }}</span>
-											</td>
-											<td>
-												<span>{{ o.value }}</span>
-											</td>
-											<td>
-												<mm_btn class="btn_primary" :url="'./config_form?config_id=' + o[field]">修改</mm_btn>
+												<mm_btn class="btn_primary" :url="'./config_form?=' + o[field]">修改</mm_btn>
 												<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
 											</td>
 										</tr>
@@ -131,14 +97,14 @@
 		data() {
 			return {
 				// 列表请求地址
-				url_get_list: "/apis/mall/config",
-				url_del: "/apis/mall/config?method=del&",
-				url_set: "/apis/mall/config?method=set&",
-				url_import: "/apis/mall/config?method=import&",
-				url_export: "/apis/mall/config?method=export&",
-				field: "config_id",
+				url_get_list: "",
+				url_del: "?method=del&",
+				url_set: "?method=set&",
+				url_import: "?method=import&",
+				url_export: "?method=export&",
+				field: "",
 				query_set: {
-					"config_id": ""
+					"": ""
 				},
 				// 查询条件
 				query: {
@@ -146,16 +112,6 @@
 					page: 1,
 					//页面大小
 					size: 10,
-					// 配置ID
-					'config_id': 0,
-					// 变量名
-					'name': '',
-					// 变量标题
-					'title': '',
-					// 变量描述
-					'description': '',
-					// 关键词
-					'keyword': '',
 					//排序
 					orderby: ""
 				},
