@@ -1,7 +1,7 @@
 {
-    "path": "/api/dev/app",
+    "path": "/api/dev_app",
     "type": "api",
-    "name": "dev_app",
+    "name": "dev_app_main",
     "title": "管理API的接口",
     "cache": 0,
     "func_file": "./index.js",

@@ -312,7 +312,7 @@ Drive.prototype.new_config = function(file) {
 			});
 		}
 	}
-	cg.name = plugin;
+	cg.name = app + "_" + plugin;
 	var title = "未命名";
 	var app_file = ("/app/" + app + "/app.json").fullname();
 	if(app_file.hasFile())

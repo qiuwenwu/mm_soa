@@ -175,9 +175,9 @@
 				// 查询条件
 				query: {
 					//页码
-					page: 0,
+					page: '0',
 					//页面大小
-					size: 0,
+					size: '0',
 					/*[loop js.query v idx]*/
 					// ${' ' + v.title}
 					/*[if v.type === 'number' && !v.select]*/

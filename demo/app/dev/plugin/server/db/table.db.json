@@ -57,7 +57,7 @@
             "max": 2147483647,
             "decimal": 0,
             "default": "0",
-            "map": "dev_table_group.name.table_id"
+            "map": "dev_table_group.name.group_id"
         },
         {
             "name": "num",

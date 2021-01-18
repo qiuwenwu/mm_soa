@@ -1,8 +1,8 @@
 {
-    "name": "dev_task",
+    "name": "dev_task_main",
     "title": "管理任务的接口",
     "description": "暂无描述",
-    "path": "/api/dev/task",
+    "path": "/api/dev_task",
     "type": "api",
     "contentType": "json",
     "func_file": "./index.js",

@@ -1,6 +1,6 @@
 const dev = require('../com.js').dev;
 
-var dev_class = new dev('plugin');
+var dev_class = new dev('app');
 
 /**
  * @description 接口主函数

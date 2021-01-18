@@ -9,7 +9,7 @@ require({
 	paths: {
 		css: '/js/css.min',
 		text: '/js/text.min',
-		vue: '/js/mm-requirejs-vue',
+		vue: '/js/requirejs-vue',
 
 		// 生产版||调试版
 		Vue: '/js/vue',

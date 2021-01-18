@@ -1,7 +1,7 @@
 {
-	"path": "/api/dev/event",
+	"path": "/api/dev_event",
 	"type": "api",
-	"name": "dev_event",
+	"name": "dev_event_main",
 	"title": "管理事件的接口",
 	"cache": 0,
 	"func_file": "./index.js",

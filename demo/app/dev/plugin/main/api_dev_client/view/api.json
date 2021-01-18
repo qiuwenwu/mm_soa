@@ -1,7 +1,7 @@
 {
-	"path": "/api/dev/view",
+	"path": "/api/dev_view",
 	"type": "api",
-	"name": "dev_view",
+	"name": "dev_view_main",
 	"title": "管理视图的接口",
 	"cache": 0,
 	"func_file": "./index.js",

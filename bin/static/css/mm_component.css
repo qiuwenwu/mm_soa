@@ -778,6 +778,12 @@ table .mm_reverse .title {
 	padding: 0;
 }
 
+.mm_nav_side .btn,.mm_nav_side .box {
+	white-space: nowrap;
+	overflow: hidden;
+	/* text-overflow: ellipsis; */
+}
+
 .mm_nav_side .mm_item.active {
 	border-bottom: none;
 }

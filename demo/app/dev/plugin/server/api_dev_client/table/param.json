@@ -94,7 +94,7 @@
         {
             "name": "group_id",
             "title": "数据表分组ID",
-            "description": "(dev_table_group.name.table_id)",
+            "description": "(dev_table_group.name.group_id)",
             "type": "number",
             "dataType": "int",
             "number": {

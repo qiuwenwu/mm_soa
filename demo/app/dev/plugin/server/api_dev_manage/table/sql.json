@@ -34,7 +34,7 @@
             "title": "数据表分组",
             "table": "dev_table_group",
             "name": "name",
-            "id": "table_id"
+            "id": "group_id"
         }
     ],
     "field_hide": []

@@ -1,8 +1,8 @@
 {
 	// 路由路径
-	"path": "/api/dev/auto",
+	"path": "/api/dev_auto",
 	// 名称, 用于动态增删改API配置
-	"name": "dev_auto",
+	"name": "dev_auto_main",
 	// 标题, 用于开发文档显示
 	"title": "自动创建",
 	// 描述, 用于介绍该路由的作用

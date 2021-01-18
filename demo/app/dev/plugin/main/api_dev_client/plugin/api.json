@@ -1,7 +1,7 @@
 {
-	"path": "/api/dev/plugin",
+	"path": "/api/dev_plugin",
 	"type": "api",
-	"name": "dev_plugin",
+	"name": "dev_plugin_main",
 	"title": "管理插件的接口",
 	"cache": 0,
 	"func_file": "./index.js",
