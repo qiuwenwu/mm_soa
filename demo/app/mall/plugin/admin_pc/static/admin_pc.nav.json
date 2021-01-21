@@ -30,28 +30,6 @@
             }
         },
         {
-            "name": "mall_config",
-            "path": "/mall/config",
-            "component": "/mall/admin_pc/src/pages/config.vue",
-            "level": 3,
-            "oauth": {
-                "signIn": true,
-                "gm": 2,
-                "user_admin": []
-            }
-        },
-        {
-            "name": "mall_config_form",
-            "path": "/mall/config_form",
-            "component": "/mall/admin_pc/src/pages/config_form.vue",
-            "level": 4,
-            "oauth": {
-                "signIn": true,
-                "gm": 2,
-                "user_admin": []
-            }
-        },
-        {
             "name": "mall_lang",
             "path": "/mall/lang",
             "component": "/mall/admin_pc/src/pages/lang.vue",
@@ -357,12 +335,6 @@
                     "show": false,
                     "name": "mall_ad",
                     "url": "/mall/ad"
-                },
-                {
-                    "title": "商城配置",
-                    "show": false,
-                    "name": "mall_config",
-                    "url": "/mall/config"
                 },
                 {
                     "title": "商城语言",
