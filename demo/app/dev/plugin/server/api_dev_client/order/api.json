@@ -1,8 +1,8 @@
 {
-    "name": "dev_template",
-    "title": "",
+    "name": "dev_order",
+    "title": "订单信息",
     "description": "",
-    "path": "/api/dev/template",
+    "path": "/api/dev/order",
     "method": "ALL",
     "cache": 0,
     "client_cache": false,
