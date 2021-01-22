@@ -60,7 +60,7 @@ module.exports = function(server) {
 		server.use(async (ctx, next) => {
 			$.log.httpLogger.info(formatReq(ctx));
 			await next();
-			$.log.httpLogger.info(formatRes(ctx));
+			// $.log.httpLogger.info(formatRes(ctx));
 		});
 	}
 }

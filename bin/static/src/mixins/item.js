@@ -1,6 +1,10 @@
 define(function() {
 	"use strict";
 	return {
+		model: {
+		  event: 'change',
+		  prop: 'obj'
+		},
 		props: {
 			// 回调函数
 			func: {

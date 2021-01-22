@@ -26,7 +26,7 @@ module.exports = function(server) {
 		if (db.ret) {
 			ctx.body = db.ret;
 		}
-		next();
+		await next();
 	});
 	
 	return server;
