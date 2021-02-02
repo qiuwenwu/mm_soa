@@ -304,6 +304,7 @@ Drive.prototype.update_db = async function(db) {
 			var value = "";
 			switch (o.type) {
 				case "varchar":
+				case "longtext":
 				case "text":
 					if (o.decimal) {
 						type = o.type + '(' + o.max_length + ',' + o.decimal + ')';
@@ -363,7 +364,7 @@ Drive.prototype.update_db = async function(db) {
 			}
 
 			var note = o.title + "：";
-			if (o.type === 'varchar' || o.type === 'text') {
+			if (o.type === 'varchar' || o.type === 'text' || o.type === 'longtext') {
 				if (o.max_length) {
 					note += "[" + o.min_length + "," + o.max_length + "]"
 				} else if (o.min_length) {
@@ -638,7 +639,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 			field_obj += ",`" + n + "`";
 		}
 
-		if (p === 'varchar' || p === 'text') {
+		if (p === 'varchar' || p === 'text' || p === 'longtext') {
 			query[n] = "`" + n + "` like '%{0}%'";
 			if (this.isSet(n, this.query_keyword)) {
 				keyword += " || `" + n + "` like '%{0}%'";
@@ -798,7 +799,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			"dataType": p,
 		};
 
-		if (p === 'varchar' || p === 'text') {
+		if (p === 'varchar' || p === 'text' || p === 'longtext') {
 			m.type = "string";
 			// 字符串相关验证
 			m.string = {
@@ -993,7 +994,7 @@ Drive.prototype.isSet = function(name, arr) {
  * @return {Boolean} 是否可以
  */
 Drive.prototype.isCan = function(name, arr, type) {
-	if (type === 'text') {
+	if (type === 'longtext') {
 		return false;
 	}
 	var bl = false;

@@ -4,8 +4,8 @@
     "table": "dev_order",
     "key": "order_id",
     "orderby_default": "`order_id` desc",
-    "field_obj": "`order_id`,`orderid`,`name`,`price`,`time_end`,`doc`,`file`,`lang`,`ui`,`db`,`framework`,`state`,`balance`,`tpl_home`,`tpl_admin`,`publisher`,`handler`",
-    "field_default": "`order_id`,`orderid`,`name`,`price`,`time_end`,`file`,`lang`,`ui`,`db`,`framework`,`state`,`balance`,`tpl_home`,`tpl_admin`,`publisher`,`handler`,`time_create`,`time_update`",
+    "field_obj": "`order_id`,`orderid`,`name`,`price`,`doc`,`file`,`lang`,`mode`,`ui`,`db`,`framework`,`state`,`balance`,`tpl_home`,`tpl_admin`,`publisher`,`handler`,`time_end`,`dispose_log`,`config`",
+    "field_default": "`order_id`,`orderid`,`name`,`price`,`doc`,`file`,`lang`,`mode`,`ui`,`db`,`framework`,`state`,`balance`,`tpl_home`,`tpl_admin`,`publisher`,`handler`,`time_create`,`time_update`,`time_end`,`dispose_log`",
     "query": {
         "orderid": "`orderid` like '%{0}%'",
         "name": "`name` like '%{0}%'",
@@ -29,7 +29,10 @@
         "time_create_min": "`time_create` >= '{0}'",
         "time_create_max": "`time_create` <= '{0}'",
         "time_update_min": "`time_update` >= '{0}'",
-        "time_update_max": "`time_update` <= '{0}'"
+        "time_update_max": "`time_update` <= '{0}'",
+        "mode": "`mode` like '%{0}%'",
+        "dispose_log": "`dispose_log` like '%{0}%'",
+        "config": "`config` like '%{0}%'"
     },
     "update": {
         "state_add": "`state` = `state` + {0}",
@@ -37,11 +40,25 @@
     },
     "format": [
         {
+            "key": "mode",
+            "title": "模式",
+            "list": [
+                {
+                    "name": "MVC",
+                    "value": "MVC"
+                },
+                {
+                    "name": "MVVM",
+                    "value": "MVVM"
+                }
+            ]
+        },
+        {
             "key": "state",
             "title": "订单状态",
             "list": [
                 "",
-                "待领取",
+                "待取单",
                 "待开发",
                 "进行中",
                 "已完成",

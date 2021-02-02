@@ -3,7 +3,7 @@
     "title": "订单信息",
     "description": "",
     "path": "/api/dev/order",
-    "method": "ALL",
+    "method": "GET",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",

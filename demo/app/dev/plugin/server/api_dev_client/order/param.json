@@ -9,6 +9,7 @@
             "doc",
             "file",
             "lang",
+            "mode",
             "ui",
             "db",
             "framework",
@@ -17,9 +18,12 @@
             "tpl_home",
             "tpl_admin",
             "publisher",
-            "handler"
+            "handler",
+            "dispose_log"
         ],
-        "body_required": []
+        "body_required": [
+            "config"
+        ]
     },
     "del": {
         "query": [],
@@ -47,6 +51,7 @@
             "doc",
             "file",
             "lang",
+            "mode",
             "ui",
             "db",
             "framework",
@@ -56,7 +61,9 @@
             "tpl_home",
             "tpl_admin",
             "publisher",
-            "handler"
+            "handler",
+            "dispose_log",
+            "config"
         ],
         "body_required": [],
         "body_not": []
@@ -67,8 +74,6 @@
             "name",
             "price_min",
             "price_max",
-            "time_end_min",
-            "time_end_max",
             "state_min",
             "state_max",
             "balance",
@@ -76,6 +81,8 @@
             "time_create_max",
             "time_update_min",
             "time_update_max",
+            "time_end_min",
+            "time_end_max",
             "keyword"
         ],
         "query_required": []
@@ -141,39 +148,6 @@
             "number": {}
         },
         {
-            "name": "time_end",
-            "title": "要求时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "time_end_min",
-            "title": "要求时间——开始时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "time_end_max",
-            "title": "要求时间——结束时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
             "name": "doc",
             "title": "需求文档",
             "description": "",
@@ -199,6 +173,16 @@
             "dataType": "varchar",
             "string": {
                 "max": 32
+            }
+        },
+        {
+            "name": "mode",
+            "title": "模式",
+            "description": "(MVC|MVVM)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 64
             }
         },
         {
@@ -234,7 +218,7 @@
         {
             "name": "state",
             "title": "订单状态",
-            "description": "(1待领取|2待开发|3进行中|4已完成|5修改中|6已删除)",
+            "description": "(1待取单|2待开发|3进行中|4已完成|5修改中|6已删除)",
             "type": "number",
             "dataType": "smallint",
             "number": {
@@ -244,7 +228,7 @@
         {
             "name": "state_min",
             "title": "订单状态——最小值",
-            "description": "(1待领取|2待开发|3进行中|4已完成|5修改中|6已删除)",
+            "description": "(1待取单|2待开发|3进行中|4已完成|5修改中|6已删除)",
             "type": "number",
             "dataType": "smallint",
             "number": {
@@ -254,7 +238,7 @@
         {
             "name": "state_max",
             "title": "订单状态——最大值",
-            "description": "(1待领取|2待开发|3进行中|4已完成|5修改中|6已删除)",
+            "description": "(1待取单|2待开发|3进行中|4已完成|5修改中|6已删除)",
             "type": "number",
             "dataType": "smallint",
             "number": {
@@ -303,7 +287,7 @@
         },
         {
             "name": "handler",
-            "title": "指派员",
+            "title": "技术员",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -375,6 +359,57 @@
             "string": {
                 "notEmpty": true,
                 "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end",
+            "title": "结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end_min",
+            "title": "结束时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end_max",
+            "title": "结束时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "dispose_log",
+            "title": "部署记录",
+            "description": "时间+空格+部署人，多次部署换行表示",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "config",
+            "title": "配置信息",
+            "description": "",
+            "type": "string",
+            "dataType": "longtext",
+            "string": {
+                "notEmpty": true
             }
         },
         {
