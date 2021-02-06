@@ -199,7 +199,7 @@ define(function() {
 				}
 				if (query) {
 					this.query_set = query;
-				} else if (!this.query_set) {
+				} else {
 					this.query_set = Object.assign({}, this.query);
 				}
 				var pm = this.events("set_before", Object.assign({}, param), includeZero) || param;

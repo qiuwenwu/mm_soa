@@ -74,7 +74,7 @@ class Drive extends Item {
 			// 分隔符 用于查询时的多条件处理
 			"separator": "|",
 			// 支持的方法 add增、del删、set改、get查, 只填get表示只支持查询 // import export del_repeat",
-			"method": "add del set get get_obj import export del_repeat",
+			"method": "add del set get get_obj import export del_repeat sum count",
 			// sql查询语句
 			"query": {},
 			// 默认查询, 当查询条件中不包含该项时，默认添加该项。 例如: { "age": "`age` < 20" } , 当查询参含有age，不调用该项，不存在时，sql会增加该项
@@ -812,5 +812,90 @@ Drive.prototype.main = async function(params, db) {
 		return $.ret.error(50001, '不支持的操作方式');
 	}
 };
+
+
+/**
+ * 总计
+ * @param {Object} db 数据库管理器
+ * @param {Object} pm 查询条件
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.sum_main = async function(db, pm) {
+	var ret;
+	var orderby = pm.orderby || "";
+	delete pm.orderby;
+	var groupby = pm.groupby;
+	delete pm.groupby;
+	var f = db.config.filter;
+	var field = pm[f.field];
+	delete pm[f.field];
+
+	if (!groupby || !field) {
+		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
+	} else {
+		var list = await db.groupSum(pm, groupby, field, orderby);
+		if (!list.length && db.error) {
+			$.log.error('SUM查询SQL', db.sql, db.error);
+			ret = $.ret.body(db.error);
+		} else {
+			ret = $.ret.list(list);
+		}
+	}
+	return ret;
+};
+
+/**
+ * 总计
+ * @param {Object} db 数据库管理器
+ * @param {Object} query 查询条件
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.sum = async function(db, query, body) {
+	var pm = Object.assign({}, query, body);
+	return await this.sum_main(db, pm);
+};
+
+
+/**
+ * 总计
+ * @param {Object} db 数据库管理器
+ * @param {Object} pm 查询条件
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.count_main = async function(db, pm) {
+	var ret;
+	var orderby = pm.orderby || "";
+	delete pm.orderby;
+	var groupby = pm.groupby;
+	delete pm.groupby;
+	var f = db.config.filter;
+	var field = pm[f.field];
+	delete pm[f.field];
+
+	if (!groupby || !field) {
+		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
+	} else {
+		var list = await db.groupCount(pm, groupby, field, orderby);
+		if (!list.length && db.error) {
+			$.log.error('COUNT查询SQL', db.sql, db.error);
+			ret = $.ret.error(10000, db.error);
+		} else {
+			ret = $.ret.list(list);
+		}
+	}
+	return ret;
+};
+
+/**
+ * 总计
+ * @param {Object} db 数据库管理器
+ * @param {Object} query 查询条件
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.count = async function(db, query, body) {
+	var pm = Object.assign({}, query, body);
+	return await this.count_main(db, pm);
+};
+
 
 module.exports = Drive;

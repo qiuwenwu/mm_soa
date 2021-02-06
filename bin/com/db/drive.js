@@ -681,7 +681,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		orderby_default: '`' + cg.key + '` desc',
 		field_obj: field_obj.replace(',', ''),
 		field_default: field.replace(',', ''),
-		method: 'get get_obj',
+		method: 'get get_obj sum count',
 		query,
 		query_default,
 		update,

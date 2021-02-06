@@ -57,6 +57,35 @@ class Drive extends Item {
 				// query中的必填参数
 				"query_required": []
 			},
+			// 导入
+			"import": {
+				// body中的参数
+				"body": ["name"],
+				// body中的必填参数
+				"body_required": ["file"]
+			},
+			// 导出
+			"export": {
+				// url中的query参数
+				"query": [],
+				// query中的必填参数
+				"query_required": []
+			},
+			// 去重
+			"del_req": {
+				// query中的必填参数
+				"query_required": ["groupby", "sort"]
+			},
+			// 合计
+			"sum": {
+				// query中的必填参数
+				"query_required": ["field", "groupby"]
+			},
+			// 总数
+			"count": {
+				// query中的必填参数
+				"query_required": ["field", "groupby"]
+			},
 			// 提交
 			// "post": {
 			// 	// url中的query参数
