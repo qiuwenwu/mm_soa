@@ -1,4 +1,3 @@
-var MD5 = require('./md5.js')
 // 百度翻译API
 // APPID
 var appid = '20201209000642613';
@@ -14,7 +13,7 @@ var key = 'EFNYG2FPSuYHcNKrfH6V';
  */
 async function translate(word, from = "zh", to = "en") {
 	var salt = (new Date).getTime();
-	var sign = MD5(appid + word + salt + key);
+	var sign = (appid + word + salt + key).md5();
 	var http = new $.Http();
 	
 	var query = {

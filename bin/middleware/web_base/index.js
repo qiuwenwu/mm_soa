@@ -3,6 +3,7 @@ const session = require('mm_session');
 const compress = require('koa-compress');
 const koaBody = require('koa-body');
 const compose = require('koa-compose');
+const send = require('koa-send');
 
 /**
  * 应用
@@ -10,7 +11,17 @@ const compose = require('koa-compose');
  */
 module.exports = function(server) {
 	var web = server.config.web;
-
+	
+	/**
+	 * 发送文件
+	 */
+	server.use(async(ctx, next) => {
+		ctx.send = async function(src){
+			await send(ctx, src);
+		}
+		await next();
+	});
+	
 	// 设置session 保存时长2小时
 	server.use(session({
 		maxAge: 7200

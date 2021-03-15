@@ -204,12 +204,12 @@ define(function() {
 		methods: {
 			/// 可更改其他属性，默认绑定回调函数
 			/// fun: 函数名
-			/// param1: 参数1
+			/// method: 参数1
 			/// param2: 参数2
 			/// param3: 参数3
-			run: function run(fun, param1, param2, param3) {
+			run: function run(fun, method, param2, param3) {
 				if (this.func) {
-					return this.func(param1, param2, param3);
+					return this.func(method, param2, param3);
 				}
 
 				return null;

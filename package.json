@@ -1,14 +1,14 @@
 {
 	"name": "mm_soa",
-	"version": "1.4.7",
+	"version": "1.4.8",
 	"description": "这是超级美眉全网应用互联服务端框架，用于多个平台跨域应用连接，共享资源。",
 	"main": "index.js",
 	"scripts": {
-		"dev": "./node_modules/.bin/cross-env NODE_ENV=development nodemon demo/test.js",
-		"test": "./node_modules/.bin/cross-env NODE_ENV=test nodemon demo/test.js",
-		"pro": "./node_modules/.bin/cross-env NODE_ENV=production node demo/test.js",
-		"start": "./node_modules/.bin/cross-env NODE_ENV=local node demo/test.js",
-		"local": "./node_modules/.bin/cross-env NODE_ENV=local node demo/test.js"
+		"dev": "cross-env NODE_ENV=development nodemon demo/test.js",
+		"test": "cross-env NODE_ENV=test nodemon demo/test.js",
+		"pro": "cross-env NODE_ENV=production node demo/test.js",
+		"start": "cross-env NODE_ENV=local node demo/test.js",
+		"local": "cross-env NODE_ENV=local node demo/test.js"
 	},
 	"repository": {
 		"type": "git",
@@ -49,7 +49,7 @@
 	"dependencies": {
 		"increase-memory-limit": "^1.0.7",
 		"koa": "^2.11.0",
-		"koa-body": "^4.1.1",
+		"koa-body": "^4.2.0",
 		"koa-compress": "^4.0.1",
 		"koa-websocket": "^6.0.0",
 		"mm_cache": "^1.4.0",
