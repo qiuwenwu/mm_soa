@@ -1,0 +1,361 @@
+{
+    "name": "service_member",
+    "title": "服务成员",
+    "add": {
+        "body": [
+            "user_id",
+            "way",
+            "type_id",
+            "city_id",
+            "area_id",
+            "position_x",
+            "position_y",
+            "price",
+            "service_phone",
+            "servicer_name"
+        ],
+        "body_required": [
+            "address"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "member_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "member_id",
+            "way_min",
+            "way_max",
+            "position_x_min",
+            "position_x_max",
+            "position_y_min",
+            "position_y_max",
+            "price_min",
+            "price_max",
+            "servicer_name",
+            "keyword"
+        ],
+        "query_required": [],
+        "body": [
+            "user_id",
+            "way",
+            "way_add",
+            "type_id",
+            "city_id",
+            "area_id",
+            "position_x",
+            "position_x_add",
+            "position_y",
+            "position_y_add",
+            "price",
+            "price_add",
+            "service_phone",
+            "servicer_name",
+            "address"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "member_id",
+            "way_min",
+            "way_max",
+            "position_x_min",
+            "position_x_max",
+            "position_y_min",
+            "position_y_max",
+            "price_min",
+            "price_max",
+            "time_create_min",
+            "time_create_max",
+            "time_update_min",
+            "time_update_max",
+            "servicer_name",
+            "keyword"
+        ],
+        "query_required": []
+    },
+    "get_obj": {
+        "query_required": [
+            "member_id"
+        ]
+    },
+    "list": [
+        {
+            "name": "member_id",
+            "title": "成员ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "用户ID",
+            "description": "提供这些服务的用户ID(user_account.nickname)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "way",
+            "title": "收费方式",
+            "description": "(1次|2时|3日|4周|5月|6季|7年)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "way_min",
+            "title": "收费方式——最小值",
+            "description": "(1次|2时|3日|4周|5月|6季|7年)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "way_max",
+            "title": "收费方式——最大值",
+            "description": "(1次|2时|3日|4周|5月|6季|7年)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "type_id",
+            "title": "默认分类ID",
+            "description": "用来搜索指定类型的服务(service_type.name)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所属城市ID",
+            "description": "提供服务的城市，可以通过该ID筛看(sys_address_city)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "area_id",
+            "title": "所属市区ID",
+            "description": "对于一些地方服务，可以通过该ID筛看(sys_address_area)",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 8388607
+            }
+        },
+        {
+            "name": "position_x",
+            "title": "坐标位置X",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "position_x_min",
+            "title": "坐标位置X——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "position_x_max",
+            "title": "坐标位置X——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "position_y",
+            "title": "坐标位置Y",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "position_y_min",
+            "title": "坐标位置Y——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "position_y_max",
+            "title": "坐标位置Y——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "price",
+            "title": "默认定价",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "range": [
+                    1,
+                    1000000
+                ]
+            }
+        },
+        {
+            "name": "price_min",
+            "title": "默认定价——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "range": [
+                    1,
+                    1000000
+                ]
+            }
+        },
+        {
+            "name": "price_max",
+            "title": "默认定价——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "range": [
+                    1,
+                    1000000
+                ]
+            }
+        },
+        {
+            "name": "time_create",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "service_phone",
+            "title": "服务者电话",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 11
+            }
+        },
+        {
+            "name": "servicer_name",
+            "title": "服务者姓名",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 16
+            }
+        },
+        {
+            "name": "address",
+            "title": "具体地址",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 255,
+                "notEmpty": true
+            }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索服务者姓名(servicer_name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

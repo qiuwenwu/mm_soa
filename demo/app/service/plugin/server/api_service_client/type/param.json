@@ -1,0 +1,201 @@
+{
+    "name": "service_type",
+    "title": "服务分类",
+    "add": {
+        "body": [
+            "display",
+            "father_id",
+            "name",
+            "icon"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "type_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "type_id",
+            "display_min",
+            "display_max",
+            "name",
+            "keyword"
+        ],
+        "query_required": [],
+        "body": [
+            "display",
+            "display_add",
+            "father_id",
+            "name",
+            "icon"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "type_id",
+            "display_min",
+            "display_max",
+            "name",
+            "time_create_min",
+            "time_create_max",
+            "time_update_min",
+            "time_update_max",
+            "keyword"
+        ],
+        "query_required": []
+    },
+    "get_obj": {
+        "query_required": [
+            "type_id"
+        ]
+    },
+    "list": [
+        {
+            "name": "type_id",
+            "title": "服务分类ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 30000
+            }
+        },
+        {
+            "name": "display",
+            "title": "显示顺序",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "father_id",
+            "title": "上级分类ID",
+            "description": "(service_type.name.type_id)",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "name",
+            "title": "分类名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "max": 16
+            }
+        },
+        {
+            "name": "icon",
+            "title": "分类图标",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "time_create",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索分类名称(name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

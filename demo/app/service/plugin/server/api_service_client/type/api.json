@@ -1,0 +1,12 @@
+{
+    "name": "service_type",
+    "title": "服务分类",
+    "description": "",
+    "path": "/api/service/type",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

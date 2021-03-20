@@ -1,0 +1,118 @@
+{
+    "name": "service_order",
+    "title": "订单信息",
+    "table": "service_order",
+    "key": "order_id",
+    "orderby_default": "`order_id` desc",
+    "field_obj": "`order_id`,`state`,`way`,`type_id`,`user_id`,`city_id`,`area_id`,`position_x`,`position_y`,`price`,`price_ago`,`time_validity`,`time_create`,`time_update`,`address`,`user_phone`,`service_phone`,`servicer_name`",
+    "field_default": "`order_id`,`state`,`way`,`type_id`,`user_id`,`city_id`,`area_id`,`position_x`,`position_y`,`price`,`price_ago`,`time_validity`,`time_create`,`time_update`,`address`,`user_phone`,`service_phone`,`servicer_name`",
+    "method": "get get_obj sum count",
+    "query": {
+        "order_number": "`order_number` like '%{0}%'",
+        "name": "`name` like '%{0}%'",
+        "price_min": "`price` >= {0}",
+        "price_max": "`price` <= {0}",
+        "num_min": "`num` >= {0}",
+        "num_max": "`num` <= {0}",
+        "tag": "`tag` like '%{0}%'",
+        "place": "`place` like '%{0}%'",
+        "price_all_min": "`price_all` >= {0}",
+        "price_all_max": "`price_all` <= {0}",
+        "phone": "`phone` like '%{0}%'",
+        "merchant_phone": "`merchant_phone` like '%{0}%'",
+        "merchant_name": "`merchant_name` like '%{0}%'",
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "score_min": "`score` >= {0}",
+        "score_max": "`score` <= {0}",
+        "createtime_min": "`createtime` >= '{0}'",
+        "createtime_max": "`createtime` <= '{0}'",
+        "updatetime_min": "`updatetime` >= '{0}'",
+        "updatetime_max": "`updatetime` <= '{0}'",
+        "keyword": "(`servicer_name` like '%{0}%')",
+        "way_min": "`way` >= {0}",
+        "way_max": "`way` <= {0}",
+        "position_x_min": "`position_x` >= {0}",
+        "position_x_max": "`position_x` <= {0}",
+        "position_y_min": "`position_y` >= {0}",
+        "position_y_max": "`position_y` <= {0}",
+        "price_ago_min": "`price_ago` >= {0}",
+        "price_ago_max": "`price_ago` <= {0}",
+        "time_validity_min": "`time_validity` >= '{0}'",
+        "time_validity_max": "`time_validity` <= '{0}'",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
+        "address": "`address` like '%{0}%'",
+        "user_phone": "`user_phone` like '%{0}%'",
+        "service_phone": "`service_phone` like '%{0}%'",
+        "servicer_name": "`servicer_name` like '%{0}%'"
+    },
+    "query_default": {},
+    "update": {
+        "price_add": "`price` = `price` + {0}",
+        "num_add": "`num` = `num` + {0}",
+        "price_all_add": "`price_all` = `price_all` + {0}",
+        "state_add": "`state` = `state` + {0}",
+        "score_add": "`score` = `score` + {0}",
+        "way_add": "`way` = `way` + {0}",
+        "position_x_add": "`position_x` = `position_x` + {0}",
+        "position_y_add": "`position_y` = `position_y` + {0}",
+        "price_ago_add": "`price_ago` = `price_ago` + {0}"
+    },
+    "format": [
+        {
+            "key": "state",
+            "title": "状态",
+            "list": [
+                "",
+                "待接单",
+                "待上门",
+                "待开工",
+                "已取消",
+                "工作中",
+                "已完成"
+            ]
+        },
+        {
+            "key": "way",
+            "title": "收费方式",
+            "list": [
+                "",
+                "次",
+                "时",
+                "日",
+                "周",
+                "月",
+                "季",
+                "年"
+            ]
+        },
+        {
+            "key": "type_id",
+            "title": "服务分类",
+            "table": "service_type",
+            "name": "name"
+        },
+        {
+            "key": "user_id",
+            "title": "下单用户",
+            "table": "user_account",
+            "name": "nickname",
+            "id": "user_id"
+        },
+        {
+            "key": "city_id",
+            "title": "所属城市",
+            "table": "sys_address_city",
+            "name": "name"
+        },
+        {
+            "key": "area_id",
+            "title": "所属市区",
+            "table": "sys_address_area",
+            "name": "name"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "service_order",
+    "title": "订单信息",
+    "description": "",
+    "path": "/api/service/order",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

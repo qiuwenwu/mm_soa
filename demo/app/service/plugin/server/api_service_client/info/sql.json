@@ -1,0 +1,113 @@
+{
+    "name": "service_info",
+    "title": "服务信息",
+    "table": "service_info",
+    "key": "info_id",
+    "orderby_default": "`display` asc",
+    "field_obj": "`info_id`,`available`,`state`,`type_id`,`way`,`city_id`,`area_id`,`user_id`,`hot`,`praise`,`sales`,`position_x`,`position_y`,`price`,`time_create`,`time_update`,`service_phone`,`servicer_name`,`items`,`address`,`content`,`img`",
+    "field_default": "`info_id`,`available`,`state`,`type_id`,`display`,`way`,`city_id`,`area_id`,`user_id`,`hot`,`praise`,`sales`,`position_x`,`position_y`,`price`,`time_create`,`time_update`,`service_phone`,`servicer_name`,`items`,`address`,`img`",
+    "method": "get get_obj sum count",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "display_min": "`display` >= {0}",
+        "display_max": "`display` <= {0}",
+        "way_min": "`way` >= {0}",
+        "way_max": "`way` <= {0}",
+        "hot_min": "`hot` >= {0}",
+        "hot_max": "`hot` <= {0}",
+        "praise_min": "`praise` >= {0}",
+        "praise_max": "`praise` <= {0}",
+        "sales_min": "`sales` >= {0}",
+        "sales_max": "`sales` <= {0}",
+        "position_x_min": "`position_x` >= {0}",
+        "position_x_max": "`position_x` <= {0}",
+        "position_y_min": "`position_y` >= {0}",
+        "position_y_max": "`position_y` <= {0}",
+        "price_min": "`price` >= {0}",
+        "price_max": "`price` <= {0}",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
+        "service_phone": "`service_phone` like '%{0}%'",
+        "servicer_name": "`servicer_name` like '%{0}%'",
+        "items": "`items` like '%{0}%'",
+        "address": "`address` like '%{0}%'",
+        "content": "`content` like '%{0}%'",
+        "img": "`img` like '%{0}%'",
+        "keyword": "(`servicer_name` like '%{0}%')"
+    },
+    "query_default": {},
+    "update": {
+        "state_add": "`state` = `state` + {0}",
+        "display_add": "`display` = `display` + {0}",
+        "way_add": "`way` = `way` + {0}",
+        "hot_add": "`hot` = `hot` + {0}",
+        "praise_add": "`praise` = `praise` + {0}",
+        "sales_add": "`sales` = `sales` + {0}",
+        "position_x_add": "`position_x` = `position_x` + {0}",
+        "position_y_add": "`position_y` = `position_y` + {0}",
+        "price_add": "`price` = `price` + {0}"
+    },
+    "format": [
+        {
+            "key": "available",
+            "title": "是否启用",
+            "list": [
+                "否",
+                "是"
+            ]
+        },
+        {
+            "key": "state",
+            "title": "状态",
+            "list": [
+                "",
+                "空闲中",
+                "工作中",
+                "休假中",
+                "已退出",
+                "已违规"
+            ]
+        },
+        {
+            "key": "type_id",
+            "title": "服务分类",
+            "table": "service_type",
+            "name": "name"
+        },
+        {
+            "key": "way",
+            "title": "收费方式",
+            "list": [
+                "",
+                "次",
+                "时",
+                "日",
+                "周",
+                "月",
+                "季",
+                "年"
+            ]
+        },
+        {
+            "key": "city_id",
+            "title": "所属城市",
+            "table": "sys_address_city",
+            "name": "name"
+        },
+        {
+            "key": "area_id",
+            "title": "所属市区",
+            "table": "sys_address_area",
+            "name": "name"
+        },
+        {
+            "key": "user_id",
+            "title": "用户",
+            "table": "user_account",
+            "name": "nickname"
+        }
+    ]
+}

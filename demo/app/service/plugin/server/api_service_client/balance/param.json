@@ -1,0 +1,229 @@
+{
+    "name": "service_balance",
+    "title": "结算",
+    "add": {
+        "body": [
+            "remain_cash",
+            "settlement",
+            "state",
+            "user_id"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "account_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "account_id",
+            "remain_cash_min",
+            "remain_cash_max",
+            "settlement_min",
+            "settlement_max",
+            "state_min",
+            "state_max"
+        ],
+        "query_required": [],
+        "body": [
+            "remain_cash",
+            "remain_cash_add",
+            "settlement",
+            "settlement_add",
+            "state",
+            "state_add",
+            "user_id"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "account_id",
+            "remain_cash_min",
+            "remain_cash_max",
+            "settlement_min",
+            "settlement_max",
+            "state_min",
+            "state_max",
+            "time_create_min",
+            "time_create_max",
+            "time_update_min",
+            "time_update_max"
+        ],
+        "query_required": []
+    },
+    "get_obj": {
+        "query_required": [
+            "account_id"
+        ]
+    },
+    "list": [
+        {
+            "name": "account_id",
+            "title": "结算ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "remain_cash",
+            "title": "账户余额",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "remain_cash_min",
+            "title": "账户余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "remain_cash_max",
+            "title": "账户余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "settlement",
+            "title": "结款金额",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "settlement_min",
+            "title": "结款金额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "settlement_max",
+            "title": "结款金额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "state",
+            "title": "状态",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "state_min",
+            "title": "状态——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "state_max",
+            "title": "状态——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "结款人",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "time_create",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        }
+    ]
+}

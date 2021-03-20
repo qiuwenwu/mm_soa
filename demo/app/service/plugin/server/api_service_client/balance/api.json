@@ -1,0 +1,12 @@
+{
+    "name": "service_balance",
+    "title": "结算",
+    "description": "",
+    "path": "/api/service/balance",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

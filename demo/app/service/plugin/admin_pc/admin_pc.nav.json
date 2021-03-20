@@ -1,0 +1,196 @@
+{
+    "name": "service_admin_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "service",
+            "path": "/service",
+            "redirect": "/service/achievement"
+        },
+        {
+            "name": "service_achievement",
+            "path": "/service/achievement",
+            "component": "/service/admin_pc/src/pages/achievement.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_achievement_form",
+            "path": "/service/achievement_form",
+            "component": "/service/admin_pc/src/pages/achievement_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_balance",
+            "path": "/service/balance",
+            "component": "/service/admin_pc/src/pages/balance.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_balance_form",
+            "path": "/service/balance_form",
+            "component": "/service/admin_pc/src/pages/balance_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_info",
+            "path": "/service/info",
+            "component": "/service/admin_pc/src/pages/info.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_info_form",
+            "path": "/service/info_form",
+            "component": "/service/admin_pc/src/pages/info_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_member",
+            "path": "/service/member",
+            "component": "/service/admin_pc/src/pages/member.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_member_form",
+            "path": "/service/member_form",
+            "component": "/service/admin_pc/src/pages/member_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_order",
+            "path": "/service/order",
+            "component": "/service/admin_pc/src/pages/order.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_order_form",
+            "path": "/service/order_form",
+            "component": "/service/admin_pc/src/pages/order_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_type",
+            "path": "/service/type",
+            "component": "/service/admin_pc/src/pages/type.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "service_type_form",
+            "path": "/service/type_form",
+            "component": "/service/admin_pc/src/pages/type_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "同城服务",
+            "name": "service",
+            "icon": "<i class=\"fa-briefcase\"></i>",
+            "url": "/service",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "业绩",
+                    "show": false,
+                    "name": "service_achievement",
+                    "url": "/service/achievement"
+                },
+                {
+                    "title": "结算",
+                    "show": false,
+                    "name": "service_balance",
+                    "url": "/service/balance"
+                },
+                {
+                    "title": "服务信息",
+                    "show": false,
+                    "name": "service_info",
+                    "url": "/service/info"
+                },
+                {
+                    "title": "服务成员",
+                    "show": false,
+                    "name": "service_member",
+                    "url": "/service/member"
+                },
+                {
+                    "title": " 订单信息",
+                    "show": false,
+                    "name": "service_order",
+                    "url": "/service/order"
+                },
+                {
+                    "title": "服务分类",
+                    "show": false,
+                    "name": "service_type",
+                    "url": "/service/type"
+                }
+            ]
+        }
+    ]
+}

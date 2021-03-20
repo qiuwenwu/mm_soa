@@ -1,0 +1,32 @@
+{
+    "name": "service_balance2",
+    "title": "结算",
+    "table": "service_balance",
+    "key": "account_id",
+    "orderby_default": "`account_id` desc",
+    "field_obj": "`account_id`,`remain_cash`,`settlement`,`state`,`user_id`",
+    "field_default": "`account_id`,`remain_cash`,`settlement`,`state`,`user_id`,`time_create`,`time_update`",
+    "query": {
+        "remain_cash_min": "`remain_cash` >= {0}",
+        "remain_cash_max": "`remain_cash` <= {0}",
+        "settlement_min": "`settlement` >= {0}",
+        "settlement_max": "`settlement` <= {0}",
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "createtime_min": "`createtime` >= '{0}'",
+        "createtime_max": "`createtime` <= '{0}'",
+        "updatetime_min": "`updatetime` >= '{0}'",
+        "updatetime_max": "`updatetime` <= '{0}'",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'"
+    },
+    "update": {
+        "remain_cash_add": "`remain_cash` = `remain_cash` + {0}",
+        "settlement_add": "`settlement` = `settlement` + {0}",
+        "state_add": "`state` = `state` + {0}"
+    },
+    "format": [],
+    "field_hide": []
+}
