@@ -497,7 +497,7 @@ define(function() {
 						}
 						$.push(_this, res, true);
 						if (obj) {
-							if (_this.obj || Object.keys(_this.obj).length === 0) {
+							if (!_this.obj || Object.keys(_this.obj).length === 0) {
 								_this.obj = obj;
 							} else {
 								$.push(_this.obj, obj);
@@ -512,7 +512,7 @@ define(function() {
 									}
 								}
 							}
-							if (_this.form || Object.keys(_this.form).length === 0) {
+							if (!_this.form || Object.keys(_this.form).length === 0) {
 								_this.form = _this.obj;
 							} else {
 								$.push(_this.form, _this.obj);
@@ -599,7 +599,6 @@ define(function() {
 				var url = this.url_get_list ? this.url_get_list : this.url;
 				if (url) {
 					this.count = 0;
-					$.route.push("?" + this.toUrl(this.query));
 					this.first(query, func);
 				}
 			},
@@ -720,6 +719,9 @@ define(function() {
 							_this.toast("服务器连接失败！");
 						}
 						_this.events("submit_after", json, func);
+						if (url.indexOf("=set") !== -1) {
+							_this.$back();
+						}
 					});
 				}
 			},
@@ -740,7 +742,6 @@ define(function() {
 				if (func) {
 					func(json);
 				}
-				this.$back();
 			},
 			/**
 			 * 上下翻页
@@ -981,29 +982,6 @@ define(function() {
 			 */
 			cancel: function cancel() {
 				this.$back();
-			},
-			/**
-			 * 排序改变事件
-			 * @param {Object} e 事件对象
-			 */
-			sort_change: function sort_change(e) {
-				console.log(e);
-				// var key = this.sort_key;
-				// var obj = e.moved.element;
-				// var id_1 = e.moved.oldIndex;
-				// var id_2 = e.moved.newIndex
-				// if(obj.hasOwnProperty(key)){
-				// 	var o1 = this.list[id_1];
-				// 	var o2 = this.list[id_2];
-				// 	if(id_1 > id_2){
-				// 		o2[key] = o1[key] - 1;
-				// 	}
-				// 	else {
-				// 		o2[key] = o1[key] + 1;
-				// 	}
-				// 	this.set(o1);
-				// 	this.set(o2);
-				// }
 			},
 			/**
 			 * 导入数据

@@ -6,7 +6,7 @@
 					<mm_col class="col-mm-12">
 						<mm_card>
 							<div class="card_head arrow">
-								<h5>{{ form[field] ? '修改' : '创建' }} 订单信息</h5>
+								<h5>{{ form[field] ? '修改' : '创建' }}订单信息</h5>
 							</div>
 							<div class="card_body">
 								<mm_form>

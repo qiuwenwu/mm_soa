@@ -194,7 +194,9 @@
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				/*[loop js.data v idx]*/
 				// ${' ' + v.title}
-				'${v.name}': ${@JSON.stringify(v.value)},
+				'${v.name}': $ {
+					@JSON.stringify(v.value)
+				},
 				/*[/loop]*/
 				// 视图模型
 				vm: {}
@@ -223,6 +225,15 @@
 			},
 			/*[/if]*/
 			/*[/loop]*/
+			/**
+			 * 获取列表之前
+			 * @param {Object} param 参数
+			 */
+			get_list_before(param) {
+				delete param.page;
+				param.size = "0";
+				return param;
+			}
 		},
 		created() {
 			/*[loop js.data v idx]*/

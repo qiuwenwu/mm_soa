@@ -84,11 +84,11 @@
 										<dd>
 											<mm_upload_img width="10rem" height="10rem" name="img" type="text" v-model="form.img" />
 										</dd>
-										<dt>正文</dt>
+										<dt class="required">正文</dt>
 										<dd>
 											<mm_rich v-model="form.content"></mm_rich>
 										</dd>
-										<dt>收藏者</dt>
+										<dt class="required">收藏者</dt>
 										<dd>
 											<mm_textarea v-model="form.collecter" type="text" placeholder="多个收藏者用”,“分隔"></mm_textarea>
 										</dd>

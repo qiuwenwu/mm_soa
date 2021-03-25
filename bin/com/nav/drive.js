@@ -451,11 +451,11 @@ Drive.prototype.create_vue = async function(file, route) {
 		f += 'page_table.vue';
 	} else if (name.endsWith('_list')) {
 		f += 'page_list.vue';
-	} else if (name.endsWith('_channel')) {
+	} else if (name.endsWith('channel')) {
 		f += 'page_channel.vue';
-	} else if (name.endsWith('_type')) {
+	} else if (name.endsWith('type')) {
 		f += 'page_type.vue';
-	} else if (name.endsWith('_nav')) {
+	} else if (name.endsWith('nav')) {
 		f += 'page_nav.vue';
 	} else {
 		f += 'page_default.vue';

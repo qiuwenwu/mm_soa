@@ -223,6 +223,15 @@
 			},
 			/*[/if]*/
 			/*[/loop]*/
+			/**
+			 * 获取列表之前
+			 * @param {Object} param 参数
+			 */
+			get_list_before(param){
+				delete param.page;
+				param.size = "0";
+				return param;
+			}
 		},
 		created() {
 			/*[loop js.data v idx]*/

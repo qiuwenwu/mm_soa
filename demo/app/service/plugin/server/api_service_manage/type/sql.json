@@ -5,7 +5,7 @@
     "key": "type_id",
     "orderby_default": "`type_id` desc",
     "field_obj": "`type_id`,`father_id`,`name`,`icon`",
-    "field_default": "`type_id`,`display`,`father_id`,`name`,`icon`,`time_create`,`time_update`",
+    "field_default": "`type_id`,`display`,`father_id`,`name`,`icon`",
     "query": {
         "display_min": "`display` >= {0}",
         "display_max": "`display` <= {0}",

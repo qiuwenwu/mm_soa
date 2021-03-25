@@ -6,7 +6,7 @@
 					<mm_col class="col-12">
 						<mm_card>
 							<div class="card_head arrow">
-								<h5> 订单信息</h5>
+								<h5>订单信息</h5>
 							</div>
 							<div class="card_body">
 								<mm_form class="mm_filter">
