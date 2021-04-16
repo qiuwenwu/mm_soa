@@ -70,7 +70,7 @@
 					// 热度
 					hot: 'hot',
 					// 原价
-					price_old: 'price_old',
+					price_ago: 'price_ago',
 					// 价格
 					price: 'price',
 					// 总价

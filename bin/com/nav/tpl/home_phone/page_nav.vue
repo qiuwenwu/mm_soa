@@ -7,14 +7,14 @@
 						<h5>${api.title}</h5>
 					</header>
 					<mm_body>
-						<mm_form class="mm_filter">
+						<mm_form class="bar_filter">
 							<h5><span>筛选条件</span></h5>
 							<mm_list col="3">
 								<!--{if(param.list)}-->
 								<!--{loop param.list v idx}-->
 									<!--{if(v.name == 'keyword')}-->
 								<mm_col>
-									<mm_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" @blur="search()" />
+									<control_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" @blur="search()" />
 								</mm_col>
 									<!--{/if}-->
 								<!--{/loop}-->
@@ -23,11 +23,11 @@
 									<!--{if(v.format)}-->
 										<!--{if(v.format.table)}-->
 								<mm_col>
-									<mm_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" @change="search()" />
+									<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" @change="search()" />
 								</mm_col>
 										<!--{else}-->
 								<mm_col>
-									<mm_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
+									<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
 								</mm_col>
 										<!--{/if}-->
 									<!--{/if}-->
@@ -37,7 +37,7 @@
 								</mm_col>
 							</mm_list>
 						</mm_form>
-						<div class="mm_action">
+						<div class="bar_action">
 							<h5><span>操作</span></h5>
 							<div class="">
 								<mm_btn class="btn_primary-x" url="./${name}_form?">添加</mm_btn>
@@ -52,7 +52,7 @@
 									<!--{loop field v idx}-->
 										<!--{if(idx > 0)}-->
 									<th scope="col">
-										<mm_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></mm_reverse>
+										<control_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></control_reverse>
 									</th>
 										<!--{/if}-->
 									<!--{/loop}-->
@@ -87,10 +87,10 @@
 					<footer>
 						<mm_grid class="mm_data_count">
 							<mm_col>
-								<mm_select v-model="query.size" :options="$to_size()" @change="search()" />
+								<control_select v-model="query.size" :options="$to_size()" @change="search()" />
 							</mm_col>
 							<mm_col width="50" style="min-width: 22.5rem;">
-								<mm_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo" :icons="['首页', '上一页', '下一页', '尾页']"></mm_pager>
+								<control_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo" :icons="['首页', '上一页', '下一页', '尾页']"></control_pager>
 							</mm_col>
 							<mm_col>
 								<div class="right plr">
@@ -117,11 +117,11 @@
 						<dt>${v.title}</dt>
 								<!--{if(v.format.table)}-->
 						<dd>
-							<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
 						</dd>
 								<!--{else}-->
 						<dd>
-							<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
+							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
 						</dd>
 								<!--{/if}-->
 							<!--{/if}-->

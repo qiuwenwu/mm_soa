@@ -3,7 +3,7 @@
 		<slot :style_sub="style_sub">
 			<img :src="src" alt="" v-if="tag === 'img' || src" :style="style_sub">
 			<button v-else-if="tag === 'button'" type="button" :class="'mm_btn btn-' + type" v-html="text" :style="style_sub"></button>
-			<input class="mm_input" v-else-if="tag === 'input'" :type="type" :value="text" :style="style_sub" @input="$emit('input', $event.target.value)">
+			<input class="control_input" v-else-if="tag === 'input'" :type="type" :value="text" :style="style_sub" @input="$emit('input', $event.target.value)">
 			<div class="block" v-else v-html="text" :style="style_sub"></div>
 		</slot>
 	</div>

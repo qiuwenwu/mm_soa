@@ -20,16 +20,16 @@
 										<!--{/if}-->
 										<!--{if(v.dataType === 'tinyint')}-->
 										<dd>
-											<mm_switch v-model="form.${v.name}" />
+											<control_switch v-model="form.${v.name}" />
 										</dd>
 										<!--{else if(v.format)}-->
 										<!--{if(v.format.table)}-->
 										<dd>
-											<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}', 0)" />
+											<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}', 0)" />
 										</dd>
 										<!--{else}-->
 										<dd>
-											<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
+											<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
 										</dd>
 										<!--{/if}-->
 										<!--{else if(v.dataType === 'date')}-->
@@ -50,7 +50,7 @@
 										</dd>
 										<!--{else if(v.name.indexOf('content') !== -1 || v.name.indexOf('note') !== -1)}-->
 										<dd>
-											<mm_rich v-model="form.${v.name}"></mm_rich>
+											<control_rich v-model="form.${v.name}"></control_rich>
 										</dd>
 										<!--{else if(v.dataType.indexOf('text') !== -1)}-->
 										<dd>
@@ -59,18 +59,18 @@
 										<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
 										<dd>
 											<!--{if(v.number.range && v.number.range.length)}-->
-											<mm_number v-model="form.${v.name}" :min="${v.number.range[0]}" :max="${v.number.range[1]}" />
+											<control_number v-model="form.${v.name}" :min="${v.number.range[0]}" :max="${v.number.range[1]}" />
 											<!--{else}-->
-											<mm_number v-model="form.${v.name}" :min="${v.number ? v.number.min : 0}" :max="${v.number ? v.number.max : 0}" />
+											<control_number v-model="form.${v.name}" :min="${v.number ? v.number.min : 0}" :max="${v.number ? v.number.max : 0}" />
 											<!--{/if}-->
 										</dd>
 										<!--{else}-->
 										<dd>
 											<!--{if(v.required)}-->
-											<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
+											<control_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
 											 :required="true" />
 											<!--{else}-->
-											<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
+											<control_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
 											<!--{/if}-->
 										</dd>
 										<!--{/if}-->

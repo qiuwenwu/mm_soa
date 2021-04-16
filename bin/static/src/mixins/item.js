@@ -2,8 +2,8 @@ define(function() {
 	"use strict";
 	return {
 		model: {
-		  event: 'change',
-		  prop: 'obj'
+			event: 'change',
+			prop: 'obj'
 		},
 		props: {
 			// 回调函数
@@ -181,13 +181,13 @@ define(function() {
 					// 热度
 					hot: 'hot',
 					// 原价
-					price_old: 'price_old',
+					price_ago: 'price_ago',
 					// 价格
 					price: 'price',
 					// 总价
 					total: 'total',
 					// 点赞数
-					zan: 'zan',
+					praise: 'praise',
 					// 总量
 					count: 'count',
 					// 数量

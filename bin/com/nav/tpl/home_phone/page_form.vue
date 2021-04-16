@@ -16,16 +16,16 @@
 							<!--{/if}-->
 							<!--{if(v.dataType === 'tinyint')}-->
 						<dd>
-							<mm_switch v-model="form.${v.name}" />
+							<control_switch v-model="form.${v.name}" />
 						</dd>
 							<!--{else if(v.format)}-->
 								<!--{if(v.format.table)}-->
 						<dd>
-							<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
 						</dd>
 								<!--{else}-->
 						<dd>
-							<mm_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
+							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
 						</dd>
 								<!--{/if}-->
 							<!--{else if(v.dataType.indexOf('time') !== -1 || v.dataType.indexOf('date') !== -1)}-->
@@ -42,14 +42,14 @@
 						</dd>
 							<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
 						<dd>
-							<mm_number v-model="form.${v.name}" :min="${v.number ? v.number.min : 0}" :max="${v.number ? v.number.max : 0}" />
+							<control_number v-model="form.${v.name}" :min="${v.number ? v.number.min : 0}" :max="${v.number ? v.number.max : 0}" />
 						</dd>
 							<!--{else}-->
 						<dd>
 							<!--{if(v.required)}-->
-							<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" :required="true"/>
+							<control_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" :required="true"/>
 							<!--{else}-->
-							<mm_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
+							<control_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
 							<!--{/if}-->
 						</dd>
 								<!--{/if}-->

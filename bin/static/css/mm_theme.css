@@ -14,7 +14,7 @@
 	font-weight: 600;
 }
 
-.price_old {
+.price_ago {
 	color: var(--color_default);
 	text-decoration: line-through;
 }
