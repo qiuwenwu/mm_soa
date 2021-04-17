@@ -210,8 +210,8 @@ footer.hide-x {
 	padding: var(--padding_mini) var(--padding_base);
 }
 
-
 /* 列表 */
+[class^=list_],
 .mm_list,
 .mm_info {
 	display: -webkit-flex;
@@ -264,6 +264,13 @@ ol.mm_list li::before {
 .mm_item {
 	position: relative;
 	width: 100%;
+}
+
+.mm_item:before, .mm_item:after {
+	content: "";
+	display: block;
+	float: none;
+	clear: both;
 }
 
 .media {

@@ -1,6 +1,6 @@
 <template>
 	<!-- 代码 -->
-	<pre class="mm_code" v-highlightjs="code"><button class="copy_btn" @click="$copy(code)" v-if="code"><span>复制</span></button><slot><code :lang="lang" :contenteditable="edit"></code></slot></pre>
+	<pre class="expand_pre" v-highlightjs="code"><button class="copy_btn" @click="$copy(code)" v-if="code"><span>复制</span></button><slot><code :lang="lang" :contenteditable="edit"></code></slot></pre>
 </template>
 
 <script>
@@ -26,14 +26,14 @@
 </script>
 
 <style>
-	.mm_code {
+	.expand_pre {
 		position: relative;
 	}
-	.mm_code ul {
+	.expand_pre ul {
 		list-style: none;
 		padding-left: 0;
 	}
-	.mm_code .copy_btn {
+	.expand_pre .copy_btn {
 		position: absolute;
 		right: 0.75rem;
 		top: 0.75rem;
@@ -48,11 +48,11 @@
 		height: auto;
 	}
 
-	.mm_code:hover .copy_btn {
+	.expand_pre:hover .copy_btn {
 		display: block;
 	}
 
-	.mm_code .copy_btn:active {
+	.expand_pre .copy_btn:active {
 		background: rgba(125,125,125, 0.25);
 	}
 

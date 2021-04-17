@@ -1,5 +1,5 @@
 <template>
-	<div class="mm_drag" draggable="true" @dragstart="dragstart" @dragover="dragover" @dragend="dragend">
+	<div class="expand_drag" draggable="true" @dragstart="dragstart" @dragover="dragover" @dragend="dragend">
 		<slot></slot>
 	</div>
 </template>

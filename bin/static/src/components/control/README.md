@@ -1,9 +1,7 @@
-#基础控件
-
-control_input 输入框
-
+#控件
 control_date 日期选择器
 
-form_forgot 找回密码
+control_file 文件上传控件
 
-form_password 修改密码
+control_rich 富文本编辑器
+

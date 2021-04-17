@@ -1,16 +1,17 @@
 <template>
-	<tbody>
-		<tr>
-			
-		</tr>
-	</tbody>
+	<!-- 标签栏 -->
+	<div class="bar_tab">
+		
+	</div>
 </template>
 
 <script>
-	import mixin from '/src/mixins/item.js'
-
+	import mixin from '/src/mixins/component.js'
 	export default {
 		mixins: [mixin],
+		props: {
+
+		},
 		data() {
 			return {};
 		}

@@ -1,3 +1,4 @@
+
 .mm_badge {
 	font-size: 0.75rem;
 	padding: 0.25rem .5rem;
@@ -334,7 +335,7 @@ form .title {
 .control_radio .title,
 .control_select .title,
 .control_number .title,
-.swiperr .title,
+.slide .title,
 .control_switch .title,
 .control_reverse .title {
 	float: left;
@@ -498,7 +499,7 @@ table .control_reverse .title {
 .control_radio,
 .control_select,
 .control_number,
-.swiperr,
+.slide,
 .control_switch {
 	position: relative;
 }
@@ -511,7 +512,7 @@ table .control_reverse .title {
 .control_checkbox .value:before,
 .control_radio .value:before,
 .control_number .value:before,
-.swiperr .value:before,
+.slide .value:before,
 .control_switch .value:before {
 	content: "";
 	display: block;
@@ -521,7 +522,7 @@ table .control_reverse .title {
 .control_checkbox .value:after,
 .control_radio .value:after,
 .control_number .value:after,
-.swiperr .value:after,
+.slide .value:after,
 .control_switch .value:after {
 	content: "";
 	display: block;
@@ -573,7 +574,7 @@ table .control_reverse .title {
 .inline .control_radio,
 .inline .control_select,
 .inline .control_number,
-.inline .swiperr,
+.inline .slide,
 .inline .control_switch {
 	display: inline-block;
 }

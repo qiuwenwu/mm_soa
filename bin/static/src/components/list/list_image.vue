@@ -1,8 +1,7 @@
 <template>
-	<div class="list_image">
-		<div class="item" :class="css" v-for="(o, k) in list" :key="k">
-			<item_image :viewmodel="vm" :obj="o"></item_image>
-		</div>
+	<div class="list_image" :class="cols">
+		<item_image v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o"
+			:class="css + (select === i ? ' active' : '')" @click.native="selected(i, o)"><slot></slot></item_image>
 	</div>
 </template>
 
@@ -35,25 +34,25 @@
 							tip: "12集全",
 							tag: "独播",
 							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "/"
+							url: "#"
 						},
 						{
 							image_id: 4,
 							title: "测试4",
 							image: "/img/default.png",
-							url: "/"
+							url: "#"
 						},
 						{
 							image_id: 5,
 							title: "测试5",
 							image: "/img/default.png",
-							url: "/"
+							url: "#"
 						},
 						{
 							image_id: 6,
 							title: "测试6",
 							image: "/img/default.png",
-							url: "/"
+							url: "#"
 						},
 						{
 							image_id: 7,

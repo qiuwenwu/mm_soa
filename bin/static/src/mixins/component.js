@@ -15,6 +15,10 @@ export default {
 				return []
 			}
 		},
+		col: {
+			type: String,
+			default: ""
+		},
 		vm: {
 			type: Object,
 			default () {
@@ -158,7 +162,10 @@ export default {
 
 			// 响应错误消息
 			message: "",
-
+			
+			// 选中项
+			select: -1,
+			
 			// 选中集
 			selects: "",
 
@@ -1044,9 +1051,13 @@ export default {
 		/**
 		 * 选中
 		 * @param {Number} index 项目索引
+		 * @param {Object} obj 选中的对象
 		 */
-		selected: function selected(index) {
+		selected: function selected(index, obj) {
 			this.select = index;
+			if(obj){
+				$.push(this.obj, obj);
+			}
 			$.db.set('select', index, 120);
 		},
 		/**
@@ -1250,6 +1261,12 @@ export default {
 		 */
 		page_count: function page_count() {
 			return Math.ceil(this.count / this.query.size);
+		},
+		/**
+		 * 列数
+		 */
+		cols: function() {
+			return this.col ? "list-" + this.col : ""
 		}
 	},
 	created() {

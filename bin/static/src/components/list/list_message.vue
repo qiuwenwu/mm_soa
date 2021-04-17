@@ -1,8 +1,7 @@
 <template>
-	<div class="list_message">
-		<div class="item" :class="css" v-for="(o, k) in list" :key="k">
-			<item_message :viewmodel="vm" :obj="o"></item_message>
-		</div>
+	<div class="list_message" :class="cols">
+		<item_message v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o"
+			:class="css + (select === i ? ' active' : '')" @click.native="selected(i, o)"><slot></slot></item_message>
 	</div>
 </template>
 

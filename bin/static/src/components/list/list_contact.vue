@@ -1,8 +1,7 @@
 <template>
-	<div class="list_contact">
-		<div class="item" :class="css" v-for="(o, k) in list" :key="k">
-			<item_contact :viewmodel="vm" :obj="o"></item_contact>
-		</div>
+	<div class="list_contact" :class="cols">
+		<item_contact v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o"
+			:class="css + (select === i ? ' active' : '')" @click.native="selected(i, o)"><slot></slot></item_contact>
 	</div>
 </template>
 

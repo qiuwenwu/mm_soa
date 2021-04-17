@@ -1,9 +1,11 @@
 <template>
-	<div class="mm_sptite" :style="style" :id="name" :class="'group_' + group">
+	<div class="expand_sptite" :style="style" :id="name" :class="'group_' + group">
 		<slot :style_sub="style_sub">
 			<img :src="src" alt="" v-if="tag === 'img' || src" :style="style_sub">
-			<button v-else-if="tag === 'button'" type="button" :class="'mm_btn btn-' + type" v-html="text" :style="style_sub"></button>
-			<input class="control_input" v-else-if="tag === 'input'" :type="type" :value="text" :style="style_sub" @input="$emit('input', $event.target.value)">
+			<button v-else-if="tag === 'button'" type="button" :class="'mm_btn btn-' + type" v-html="text"
+				:style="style_sub"></button>
+			<input class="control_input" v-else-if="tag === 'input'" :type="type" :value="text" :style="style_sub"
+				@input="$emit('input', $event.target.value)">
 			<div class="block" v-else v-html="text" :style="style_sub"></div>
 		</slot>
 	</div>
@@ -12,7 +14,7 @@
 <script>
 	// 实时屏幕宽高度
 	var screen = document.documentElement;
-	
+
 	export default {
 		data() {
 			return {
@@ -97,7 +99,7 @@
 		computed: {
 			style() {
 				var style = `position:absolute; z-index:${this.zIndex};`;
-				
+
 				//  x轴
 				if (this.align.x === 'left') {
 					if (typeof(this.pos.x) === 'number' || /^-?[0-9]+$/.test(this.pos.x)) {

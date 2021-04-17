@@ -1,5 +1,5 @@
 <template>
-	<div class="mm_qrcode" :id="id || ide"></div>
+	<div class="expand_qrcode" :id="id || ide"></div>
 </template>
 
 <script>
