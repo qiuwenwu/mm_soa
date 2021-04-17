@@ -2,6 +2,8 @@
 
 bar_action 操作栏
 
+bar_ad 广告栏
+
 bar_buy 购物栏
 
 bar_chat 聊天输入栏

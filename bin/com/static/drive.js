@@ -53,7 +53,7 @@ class Drive extends Item {
 			// 执行函数名
 			"func_name": "",
 			// 是否将ES6转换AMD
-			"convert_amd": false,
+			"convert_amd": true
 		};
 
 		if (config) {

@@ -1,5 +1,5 @@
 <template>
-	<!-- 代码 -->
+	<!-- 代码拓展 -->
 	<pre class="expand_pre" v-highlightjs="code"><button class="copy_btn" @click="$copy(code)" v-if="code"><span>复制</span></button><slot><code :lang="lang" :contenteditable="edit"></code></slot></pre>
 </template>
 

@@ -7,6 +7,10 @@
 	color: var(--color_describe);
 }
 
+.note {
+	color: var(--color_default_h);
+}
+
 .money,
 .total,
 .price {

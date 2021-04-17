@@ -1,4 +1,5 @@
 <template>
+	<!-- 推拽拓展 -->
 	<div class="expand_drag" draggable="true" @dragstart="dragstart" @dragover="dragover" @dragend="dragend">
 		<slot></slot>
 	</div>

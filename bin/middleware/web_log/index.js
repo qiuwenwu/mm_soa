@@ -58,7 +58,9 @@ var formatRes = function(ctx, resTime = new Date()) {
 module.exports = function(server) {
 	if (server.config.web.log) {
 		server.use(async (ctx, next) => {
-			$.log.httpLogger.info(formatReq(ctx));
+			if(ctx.path.indexOf(".") === -1){
+				$.log.httpLogger.info(formatReq(ctx));
+			}
 			await next();
 			// $.log.httpLogger.info(formatRes(ctx));
 		});

@@ -2542,7 +2542,7 @@
 	cursor: not-allowed;
 	/* 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%); */
-	border: none !important;
+	border-color: transparent !important;
 	background: rgba(250, 250, 250, 1);
 	color: var(--color_default) !important;
 }
@@ -2557,4 +2557,14 @@
 	color: var(--color_error);
 	left: 0;
 	top: 1rem;
+}
+
+.font-big {
+	font-size: var(--font_big);
+}
+.font-small {
+	font-size: var(--font_small);
+}
+.font-mini {
+	font-size: var(--font_mini);
 }

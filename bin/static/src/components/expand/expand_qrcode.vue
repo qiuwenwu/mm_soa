@@ -1,4 +1,5 @@
 <template>
+	<!-- 二维码拓展 -->
 	<div class="expand_qrcode" :id="id || ide"></div>
 </template>
 

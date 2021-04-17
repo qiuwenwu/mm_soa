@@ -1,4 +1,5 @@
 <template>
+	<!-- 精灵拓展 -->
 	<div class="expand_sptite" :style="style" :id="name" :class="'group_' + group">
 		<slot :style_sub="style_sub">
 			<img :src="src" alt="" v-if="tag === 'img' || src" :style="style_sub">

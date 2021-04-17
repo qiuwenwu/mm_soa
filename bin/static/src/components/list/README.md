@@ -8,6 +8,8 @@ list_audio 音频列表
 
 list_base 基础列表
 
+list_cart 购物车列表
+
 list_chat 聊天列表
 
 list_comment 评论列表
