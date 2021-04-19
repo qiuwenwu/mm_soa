@@ -2,6 +2,7 @@
 .show {
 	display: block !important;
 }
+
 .show_phone {
 	display: none !important;
 }
@@ -17,6 +18,7 @@
 .hide {
 	display: none !important;
 }
+
 .hide_phone {
 	display: block !important;
 }
@@ -2436,6 +2438,10 @@
 }
 
 /** 图片 **/
+.icon-radius figure {
+	border-radius: 0.5rem;
+}
+
 .icon-x figure {
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	padding: .5rem;
@@ -2562,9 +2568,11 @@
 .font-big {
 	font-size: var(--font_big);
 }
+
 .font-small {
 	font-size: var(--font_small);
 }
+
 .font-mini {
 	font-size: var(--font_mini);
 }

@@ -103,7 +103,6 @@ import expand_pre from '/src/components/expand/expand_pre.vue';
 import expand_qrcode from '/src/components/expand/expand_qrcode.vue';
 import expand_sptite from '/src/components/expand/expand_sptite.vue';
 
-
 /* === 创建全局组件 === */
 export default {
 	install(Vue, options) {
@@ -152,7 +151,7 @@ export default {
 		Vue.component('item_type', item_type);
 		Vue.component('item_user', item_user);
 		Vue.component('item_video', item_video);
-		
+
 		// 列表
 		Vue.component('list_address', list_address);
 		Vue.component('list_analyse', list_analyse);
@@ -183,7 +182,7 @@ export default {
 		Vue.component('list_type', list_type);
 		Vue.component('list_user', list_user);
 		Vue.component('list_video', list_video);
-		
+
 		// 导航
 		Vue.component('nav_bottom', nav_bottom);
 		Vue.component('nav_main', nav_main);
@@ -192,19 +191,49 @@ export default {
 		Vue.component('nav_side', nav_side);
 		Vue.component('nav_top', nav_top);
 		Vue.component('nav_user', nav_user);
-		
+
 		// 轮播
 		Vue.component('swiper_card', swiper_card);
 		Vue.component('swiper_image', swiper_image);
 		Vue.component('swiper_menu', swiper_menu);
 		Vue.component('swiper_page', swiper_page);
 		Vue.component('swiper_text', swiper_text);
-		
+
 		// 拓展
 		Vue.component('expand_drag', expand_drag);
 		Vue.component('expand_pay', expand_pay);
 		Vue.component('expand_pre', expand_pre);
 		Vue.component('expand_qrcode', expand_qrcode);
 		Vue.component('expand_sptite', expand_sptite);
+		
+		
+		/**
+		 * 转换时间
+		 * @param {String} timeStr 时间字符串
+		 * @param {String} format 转换格式
+		 * @return {String} 返回转换后的结果
+		 */
+		Vue.prototype.$to_time = function(timeStr, format){
+			var time = timeStr.toTime();
+			if(format){
+				return time.toStr(format);
+			}
+			else {
+				var date = time.toStr("yyyy-MM-dd");
+				var now = new Date();
+				if(date == now.toStr("yyyy-MM-dd")){
+					return time.toStr("hh:mm")
+				}
+				else if(date == now.addDays(-1).toStr("yyyy-MM-dd")){
+					return "昨天" + time.toStr("hh:mm")
+				}
+				else if(time.toStr("yyyy") == now.toStr("yyyy")){
+					return time.toStr("MM-dd");
+				}
+				else {
+					return date;
+				}
+			}
+		}
 	}
 }

@@ -43,6 +43,8 @@ export default {
 					content: 'content',
 					// 时间
 					time: 'time',
+					// 创建时间
+					create_time: "create_time",
 					// 链接
 					url: 'url',
 					// 方式
@@ -67,8 +69,12 @@ export default {
 					price: 'price',
 					// 总价
 					total: 'total',
+					// 评论
+					num_comment: 'num_comment',
 					// 点赞数
-					praise: 'praise',
+					num_praise: 'num_praise',
+					// 访问数
+					num_see: 'num_see',
 					// 总量
 					count: 'count',
 					// 数量

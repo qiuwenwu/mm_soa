@@ -6,6 +6,18 @@ define(function() {
 			prop: 'obj'
 		},
 		props: {
+			css: {
+				type: String,
+				default: ""
+			},
+			icon_key:{
+				type: String,
+				default: "image"
+			},
+			src_default: {
+				type: String,
+				default: "/img/default.png"
+			},
 			// 回调函数
 			func: {
 				type: Function,
@@ -186,8 +198,12 @@ define(function() {
 					price: 'price',
 					// 总价
 					total: 'total',
+					// 评论
+					num_comment: 'num_comment',
 					// 点赞数
-					praise: 'praise',
+					num_praise: 'num_praise',
+					// 访问数
+					num_see: 'num_see',
 					// 总量
 					count: 'count',
 					// 数量

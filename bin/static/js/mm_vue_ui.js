@@ -1498,7 +1498,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_icon = {
-		template: "<figure class=\"mm_icon\" v-if=\"src && src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img :src=\"src\" :alt=\"alt\" :οnerrοr=\"src_default\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
+		template: "<figure class=\"mm_icon\" v-if=\"src && src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img class=\"img\" :src=\"src\" :alt=\"alt\" :onerror=\"onerror\" /><figcaption v-if=\"$slots.default\"><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
 		props: {
 			src: {
 				type: String,
@@ -1512,25 +1512,15 @@ function load_ui(jquery) {
 				type: String,
 				default: ""
 			},
-			auto: {
-				type: String,
-				default: ""
-			},
 			alt: {
 				type: String,
 				default: "图片"
 			}
 		},
-		data: function data() {
-			var mode = "";
-
-			if (this.auto) {
-				mode = "widthFix";
+		computed: {
+			onerror: function() {
+				return "javascript:this.src='" + this.src_default + "'";
 			}
-
-			return {
-				mode: mode
-			};
 		}
 	};
 	var mm_loading = {

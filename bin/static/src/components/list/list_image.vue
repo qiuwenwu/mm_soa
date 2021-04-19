@@ -1,7 +1,9 @@
 <template>
 	<div class="list_image" :class="cols">
-		<item_image v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o"
-			:class="css + (select === i ? ' active' : '')" @click.native="selected(i, o)"><slot></slot></item_image>
+		<item_image v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o" :css="css"
+			:class="(select === i ? ' active' : '')" @click.native="selected(i, o)">
+			<slot></slot>
+		</item_image>
 	</div>
 </template>
 

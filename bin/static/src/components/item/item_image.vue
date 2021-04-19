@@ -1,7 +1,7 @@
 <template>
 	<!-- 图片 -->
 	<mm_item :url="obj[vm.url]">
-		<div class="item_image">
+		<div class="item_image" :class="css">
 			<div class="media">
 				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
 			</div>

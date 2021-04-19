@@ -1,16 +1,16 @@
 <template>
 	<!-- 号码 -->
-	<div class="control_number">
-		<div class="title">标题</div>
-		<div class="desc">描述</div>
-		<!-- 列表项 -->
-		<div class="box">
-			<mm_group>
-				<button class="btn">测试</button>
-				<button class="btn">按钮</button>
-			</mm_group>
+	<mm_item :url="obj[vm.url]">
+		<div class="item_number" :class="css">
+			<div class="media">
+				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
+			</div>
+			<div class="doc">
+				<div class="title" v-html="obj[vm.title]"></div>
+				<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
+			</div>
 		</div>
-	</div>
+	</mm_item>
 </template>
 
 <script>

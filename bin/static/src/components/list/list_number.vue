@@ -1,7 +1,9 @@
 <template>
 	<div class="list_number" :class="cols">
-		<item_number v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o"
-			:class="css + (select === i ? ' active' : '')" @click.native="selected(i, o)"><slot></slot></item_number>
+		<item_number v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o" :css="css"
+			:class="(select === i ? ' active' : '')" @click.native="selected(i, o)">
+			<slot></slot>
+		</item_number>
 	</div>
 </template>
 
@@ -18,6 +20,52 @@
 							title: "测试1",
 							image: "/img/default.png",
 							description: "这是一个图片的描述，为了方便演示排版而写",
+							url: "/"
+						},
+						{
+							image_id: 2,
+							title: "测试2",
+							image: "/img/default.png",
+							description: "这是一个图片的描述，为了方便演示排版而写",
+							url: "/"
+						},
+						{
+							image_id: 3,
+							title: "测试3",
+							image: "/img/default.png",
+							tip: "12集全",
+							tag: "独播",
+							description: "这是一个图片的描述，为了方便演示排版而写",
+							url: "#"
+						},
+						{
+							image_id: 4,
+							title: "测试4",
+							image: "/img/default.png",
+							url: "#"
+						},
+						{
+							image_id: 5,
+							title: "测试5",
+							image: "/img/default.png",
+							url: "#"
+						},
+						{
+							image_id: 6,
+							title: "测试6",
+							image: "/img/default.png",
+							url: "#"
+						},
+						{
+							image_id: 7,
+							title: "测试7",
+							image: "/img/default.png",
+							url: "/"
+						},
+						{
+							image_id: 8,
+							title: "测试8",
+							image: "/img/default.png",
 							url: "/"
 						}
 					]

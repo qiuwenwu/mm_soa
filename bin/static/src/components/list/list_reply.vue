@@ -1,9 +1,9 @@
 <template>
-	<div class="list_article" :class="cols">
-		<item_article v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o"
+	<div class="list_reply" :class="cols">
+		<item_reply v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o"
 			:class="css + (select === i ? ' active' : '')" @click.native="selected(i, o)">
 			<slot></slot>
-		</item_article>
+		</item_reply>
 	</div>
 </template>
 

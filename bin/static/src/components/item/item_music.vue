@@ -1,12 +1,16 @@
 <template>
 	<!-- 文章 -->
-	<div class="item_video">
-		<mm_icon :src="obj[vm.icon]"></mm_icon>
-		<div class="title">{{ obj[vm.title] }}</div>
-		<div class="desc">
-			<div class="collect" v-if="obj.users && obj.users.length > 0"><span class="fa fa-heart" v-bind:class="{ 'font-default': has_collect(obj.users) }"></span><span>{{ obj[vm.collect] }}</span></div>
+	<mm_item :url="obj[vm.url]">
+		<div class="item_music" :class="css">
+			<div class="media">
+				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
+			</div>
+			<div class="doc">
+				<div class="title" v-html="obj[vm.title]"></div>
+				<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
+			</div>
 		</div>
-	</div>
+	</mm_item>
 </template>
 
 <script>

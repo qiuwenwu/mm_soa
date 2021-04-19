@@ -1,10 +1,16 @@
 <template>
 	<!-- 用户 -->
-	<div class="small">
-		<mm_icon :src="obj[vm.icon]"></mm_icon>
-		<div class="title">{{ obj[vm.name] }}</div>
-		<div class="collect" :show="show" @click="run('collect', obj)">关注</div>
-	</div>
+	<mm_item :url="obj[vm.url]">
+		<div class="item_user" :class="css">
+			<div class="media">
+				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
+			</div>
+			<div class="doc">
+				<div class="title" v-html="obj[vm.title]"></div>
+				<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
+			</div>
+		</div>
+	</mm_item>
 </template>
 
 <script>
