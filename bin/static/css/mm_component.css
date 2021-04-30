@@ -1417,3 +1417,12 @@ table .mm_btn {
 	margin-left: .125rem;
 	margin-right: .5rem;
 }
+
+/** ===  拓展样式  === **/
+.expand_drag {
+	position: absolute;
+}
+
+.expand_drag:hover {
+	cursor: pointer;
+}

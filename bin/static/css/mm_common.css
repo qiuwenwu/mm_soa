@@ -1,3 +1,15 @@
+/* 图片集合九宫 */
+.imgs{
+	display: flex;
+	justify-content: stretch;
+	align-content: stretch;
+	flex: 1;
+}
+.imgs>*{
+	padding: 0 0.125rem;
+	width: 100%;
+}
+
 /* 显示隐藏 */
 .show {
 	display: block !important;

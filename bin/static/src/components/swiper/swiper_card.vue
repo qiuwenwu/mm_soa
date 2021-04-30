@@ -1,11 +1,14 @@
 <template>
 	<!-- 轮播图 -->
-	<div class="swiper_card swiper-container" :id="id" indicatorDots autoplay>
+	<div class="swiper_card swiper-container" :id="id">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
-				<slot :item="o" :index="idx"></slot>
+				<div class="card">
+					<slot :row="o" :index="idx"></slot>
+				</div>
 			</div>
 		</div>
+		<div class="swiper-pagination"></div>
 	</div>
 </template>
 
@@ -18,42 +21,44 @@
 			mixin
 		],
 		props: {
-			autoplay: {
-				type: Boolean,
-				default: true
-			},
 			id: {
 				type: String,
-				default: "swiper_card"
+				default: "id"
 			}
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper(this.id, {
-					autoplay: this.autoplay,
+				var swiper = new Swiper("#" + this.id, {
+					speed: 2000,
+					autoplay: {
+						delay: 2800,
+						disableOnInteraction: false,
+						waitForTransition: false,
+					},
 					centeredSlides: true,
 					slidesPerView: 1.2,
-					spaceBetween: 30,
+					spaceBetween: 16,
 					pagination: {
 						el: '.swiper-pagination',
-						clickable: true
+						clickable: true,
+						dynamicBullets: true,
 					}
 				});
 			}
 		},
 		mounted() {
-			setTimeout(this.doing, 1000)
+			setTimeout(() => {
+				this.doing()
+			}, 300)
 		}
 	}
 </script>
 
 <style>
-	.swiper_card {
-		height: 11.5rem;
-	}
-
 	.swiper_card .swiper-slide {
 		width: calc(100% - 4rem);
+		padding: 1rem 0 3rem 0;
+		height: 15rem;
 	}
 
 	.swiper_card .mm_icon {
@@ -61,5 +66,9 @@
 		border-radius: 0.25rem;
 		height: 10rem;
 		margin: auto;
+	}
+
+	.swiper_card .card {
+		height: 100%;
 	}
 </style>

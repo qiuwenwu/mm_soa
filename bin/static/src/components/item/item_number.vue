@@ -2,12 +2,15 @@
 	<!-- 号码 -->
 	<mm_item :url="obj[vm.url]">
 		<div class="item_number" :class="css">
-			<div class="media">
-				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
-			</div>
 			<div class="doc">
-				<div class="title" v-html="obj[vm.title]"></div>
-				<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
+				<span class="phone" v-if="obj[vm.phone]"><span>{{obj[vm.phone]}}</span></span>
+				<span class="type" v-if="obj[vm.type]"><span>{{obj[vm.type]}}</span></span>
+			</div>
+			<div class="description">
+				<span class="date" v-if="obj[vm.date]"><span>{{obj[vm.date]}}</span></span>
+				<span class="time" v-if="obj[vm.time]"><span>{{obj[vm.time]}}</span></span>
+				<span class="address" v-if="obj[vm.address]"><span>{{obj[vm.address]}}</span></span>
+				<span class="business" v-if="obj[vm.business]"><span>{{obj[vm.business]}}</span></span>
 			</div>
 		</div>
 	</mm_item>

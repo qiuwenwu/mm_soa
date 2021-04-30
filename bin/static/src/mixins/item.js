@@ -158,8 +158,12 @@ define(function() {
 					id: 'id',
 					// 上级ID
 					fid: 'fid',
+					// 用户id
+					user_id: 'user_id',
 					// 图片
 					img: 'img',
+					// 图片集合
+					imgs: 'imgs',
 					// 图标
 					icon: 'icon',
 					// 标题
@@ -170,10 +174,20 @@ define(function() {
 					keywords: 'keywords',
 					// 图片
 					image: 'image',
+					// 头像
+					avatar:'avatar',
+					// 等级
+					level: 'level',
+					// 状态
+					state: 'state',
 					// 内容
 					content: 'content',
 					// 时间
 					time: 'time',
+					// 日期
+					date: 'date',
+					// 类型
+					type: 'type',
 					// 链接
 					url: 'url',
 					// 方式
@@ -182,6 +196,8 @@ define(function() {
 					source: 'source',
 					// 来源地址
 					source_url: 'source_url',
+					// 分数
+					score: 'score',
 					// 标签
 					label: 'label',
 					// 名称
@@ -192,28 +208,46 @@ define(function() {
 					tip: 'tip',
 					// 热度
 					hot: 'hot',
+					// 电话号码
+					phone: 'phone',
 					// 原价
 					price_ago: 'price_ago',
 					// 价格
 					price: 'price',
+					// 播放
+					play: 'play',
 					// 总价
 					total: 'total',
+					// 运费
+					freight: 'freight',
+					// 商家
+					business: 'business',
 					// 评论
 					num_comment: 'num_comment',
 					// 点赞数
 					num_praise: 'num_praise',
 					// 访问数
 					num_see: 'num_see',
+					// 消息数量
+					num_message:'num_message',
 					// 总量
 					count: 'count',
 					// 数量
 					num: 'num',
 					// 作者
 					author: 'author',
+					// 地址
+					address: 'address',
 					// 收藏量
 					collect: 'collect',
 					// 标签
-					tag: 'tag'
+					tag: 'tag',
+					// 静音图标
+					mute: 'mute',
+					// 二维码图标
+					qrcode: 'qrcode',
+					// 省略号图标
+					ellipsis:"ellipsis",
 				}, this.viewmodel)
 			};
 		},

@@ -3,7 +3,7 @@
 	<mm_item :url="obj[vm.url]">
 		<div class="item_base" :class="css">
 			<div class="media" v-if="icon_key">
-				<mm_icon :src="obj[vm[icon_key]]" :src_default="src_default"></mm_icon>
+				<mm_icon class="img" :src="obj[vm[icon_key]]" :src_default="src_default"></mm_icon>
 			</div>
 			<div class="doc">
 				<div class="title" v-html="obj[vm.title]"></div>

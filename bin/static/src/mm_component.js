@@ -87,9 +87,11 @@ import nav_user from '/src/components/nav/nav_user.vue';
 
 // 轮播
 import swiper_card from '/src/components/swiper/swiper_card.vue';
+import swiper_rotate_card from '/src/components/swiper/swiper_rotate_card.vue';
 import swiper_image from '/src/components/swiper/swiper_image.vue';
 import swiper_menu from '/src/components/swiper/swiper_menu.vue';
 import swiper_page from '/src/components/swiper/swiper_page.vue';
+import swiper_vertical_page from '/src/components/swiper/swiper_vertical_page.vue';
 import swiper_text from '/src/components/swiper/swiper_text.vue';
 
 // 表格
@@ -106,6 +108,7 @@ import expand_sptite from '/src/components/expand/expand_sptite.vue';
 /* === 创建全局组件 === */
 export default {
 	install(Vue, options) {
+		
 		// 栏目组件
 		Vue.component('bar_action', bar_action);
 		Vue.component('bar_ad', bar_ad);
@@ -194,9 +197,11 @@ export default {
 
 		// 轮播
 		Vue.component('swiper_card', swiper_card);
+		Vue.component('swiper_rotate_card', swiper_rotate_card);
 		Vue.component('swiper_image', swiper_image);
 		Vue.component('swiper_menu', swiper_menu);
 		Vue.component('swiper_page', swiper_page);
+		Vue.component('swiper_vertical_page', swiper_vertical_page);
 		Vue.component('swiper_text', swiper_text);
 
 		// 拓展

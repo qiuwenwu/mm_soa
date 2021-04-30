@@ -4,10 +4,23 @@
 		<div class="item_goods" :class="css">
 			<div class="media">
 				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
+				<span class="tag" v-if="obj[vm.tag]"><span>{{obj[vm.tag]}}</span></span>
 			</div>
 			<div class="doc">
-				<div class="title" v-html="obj[vm.title]"></div>
-				<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
+				<div class="name" v-if="obj[vm.name]"><span>{{obj[vm.name]}}</span></div>
+				<div class="content" v-if="obj[vm.description]"><span>{{obj[vm.description]}}</span></div>
+				<div class="price" v-if="obj[vm.price]"><span>{{obj[vm.price]}}</span></div>
+				<div class="price_ago" v-if="obj[vm.price_ago]"><span>{{obj[vm.price_ago]}}</span></div>
+				<div class="num_comment"><span>{{obj[vm.num_comment]}}</span></div>
+				<div class="collect"><span>{{obj[vm.collect]}}</span></div>
+				<div class="info">
+					<div class="freight" v-if="(obj[vm.freight] && obj[vm.freight] > 0)"><span class="freight_before">{{obj[vm.freight]}}</span></div>
+					<div class="freight" v-else><span>免运费</span></div>
+					<div class="address" v-if="obj[vm.address]">
+						<span>{{obj[vm.address]}}</span>
+					</div>
+					<div class="hot"><span>{{obj[vm.hot]}}</span></div>
+				</div>
 			</div>
 		</div>
 	</mm_item>

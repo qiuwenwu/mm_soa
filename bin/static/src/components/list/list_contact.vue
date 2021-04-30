@@ -1,7 +1,7 @@
 <template>
 	<div class="list_contact" :class="cols">
-		<item_contact v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o" :css="css"
-			:class="(select === i ? ' active' : '')" @click.native="selected(i, o)">
+		<item_contact v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o" :css="css" :class="(select === i ? ' active' : '')"
+		 @click.native="selected(i, o)">
 			<slot></slot>
 		</item_contact>
 	</div>
@@ -16,58 +16,46 @@
 				type: Array,
 				default: function() {
 					return [{
-							image_id: 1,
-							title: "测试1",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "/"
+							user_id: 1,
+							name: "张三",
+							phone:"13156121452",
+							avatar: "/img/default.png"
 						},
 						{
-							image_id: 2,
-							title: "测试2",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "/"
+							user_id: 2,
+							name: "李四",
+							avatar: "/img/default.png"
 						},
 						{
-							image_id: 3,
-							title: "测试3",
-							image: "/img/default.png",
-							tip: "12集全",
-							tag: "独播",
-							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "#"
+							user_id: 3,
+							name: "王五",
+							avatar: "/img/default.png"
 						},
 						{
-							image_id: 4,
-							title: "测试4",
-							image: "/img/default.png",
-							url: "#"
+							user_id: 4,
+							name: "测试4",
+							avatar: "/img/default.png"
 						},
 						{
-							image_id: 5,
-							title: "测试5",
-							image: "/img/default.png",
-							url: "#"
+							user_id: 5,
+							name: "测试5",
+							avatar: "/img/default.png"
 						},
 						{
-							image_id: 6,
-							title: "测试6",
-							image: "/img/default.png",
-							url: "#"
+							user_id: 6,
+							name: "测试6",
+							avatar: "/img/default.png"
 						},
 						{
-							image_id: 7,
-							title: "测试7",
-							image: "/img/default.png",
-							url: "/"
+							user_id: 7,
+							name: "测试7",
+							avatar: "/img/default.png"
 						},
 						{
-							image_id: 8,
-							title: "测试8",
-							image: "/img/default.png",
-							url: "/"
-						}
+							user_id: 8,
+							name: "测试",
+							avatar: "/img/default.png"
+						},
 					]
 				}
 			}

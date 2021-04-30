@@ -1,13 +1,19 @@
 <template>
-	<!-- 文章 -->
+	<!-- 视频 -->
 	<mm_item :url="obj[vm.url]">
 		<div class="item_video" :class="css">
 			<div class="media">
 				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
+				<span class="label" v-if="obj[vm.label]"><span>{{obj[vm.label]}}</span></span>
+				<span class="tag" v-if="obj[vm.tag]"><span>{{obj[vm.tag]}}</span></span>
+				<span class="score" v-if="obj[vm.score]"><span>{{obj[vm.score]}}</span></span>
 			</div>
 			<div class="doc">
-				<div class="title" v-html="obj[vm.title]"></div>
-				<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
+				<div class="name" v-if="obj[vm.name]"><span>{{obj[vm.name]}}</span></div>	
+				<div class="content" v-if="obj[vm.description]"><span>{{obj[vm.description]}}</span></div>
+				<div class="num_see" v-if="obj[vm.num_see]"><span>{{obj[vm.num_see]}}</span></div>
+				<div class="num_comment" v-if="obj[vm.num_comment]"><span>{{obj[vm.num_comment]}}</span></div>
+				<div class="time" v-if="obj[vm.time]"><span>{{obj[vm.time]}}</span></div>
 			</div>
 		</div>
 	</mm_item>
@@ -49,51 +55,4 @@
 </script>
 
 <style>
-	.item_video .mm_main {
-		padding: 0.625rem 0;
-	}
-
-	.item_video .mm_side {
-		width: 100%;
-		padding: 0;
-	}
-
-	.item_video .mm_main {
-		width: calc(100% - 0.875rem);
-		overflow: hidden;
-		border: none;
-	}
-
-	.item_video .div {
-		max-height: 3rem;
-		line-height: 1.5rem;
-		overflow: hidden;
-		width: calc(100% - 4rem);
-		text-overflow: ellipsis;
-	}
-
-	.item_video .mm_icon {
-		width: 100%;
-		height: 10rem;
-	}
-
-	.item_video .mm_item {
-		background: #fff;
-		margin-left: 2rem;
-		margin-right: 2rem;
-		border-radius: 0.25rem;
-		margin-bottom: 1rem;
-		overflow: hidden;
-	}
-
-	.item_video .mm_desc {
-		line-height: 1.5;
-	}
-
-	.item_video .collect {
-		position: absolute;
-		right: 0.875rem;
-		bottom: 0.625rem;
-		text-align: right;
-	}
 </style>

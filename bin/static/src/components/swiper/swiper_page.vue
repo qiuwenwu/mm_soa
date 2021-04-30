@@ -2,10 +2,20 @@
 	<!-- 轮播图 -->
 	<div class="swiper_page swiper-container" :id="id">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
-				<slot :item="o" :index="idx"></slot>
+			<div class="swiper-slide">
+				<slot></slot>
+			</div>
+			<div class="swiper-slide">
+				<slot name="page1"></slot>
+			</div>
+			<div class="swiper-slide">
+				<slot name="page2"></slot>
+			</div>
+			<div class="swiper-slide">
+				<slot name="page3"></slot>
 			</div>
 		</div>
+		<div class="swiper-pagination"></div>
 	</div>
 </template>
 
@@ -24,16 +34,14 @@
 			},
 			id: {
 				type: String,
-				default: "swiper_page"
+				default: "id"
 			}
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper(this.id, {
+				var swiper = new Swiper('#' + this.id, {
 					autoplay: this.autoplay,
-					centeredSlides: true,
-					slidesPerView: 1.2,
-					spaceBetween: 30,
+					slidesPerView: 1,
 					pagination: {
 						el: '.swiper-pagination',
 						clickable: true
@@ -42,14 +50,16 @@
 			}
 		},
 		mounted() {
-			setTimeout(this.doing, 1000)
+			setTimeout(() => {
+				this.doing()
+			}, 300)
 		}
 	}
 </script>
 
 <style>
 	.swiper_page {
-		height: 11.5rem;
+		height: 80vh;
 	}
 
 	.swiper_page .swiper-slide {

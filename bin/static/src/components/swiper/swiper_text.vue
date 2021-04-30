@@ -1,13 +1,15 @@
 <template>
 	<!-- 轮播图 -->
-	<div class="swiper_text swiper-container" autoplay circular vertical>
+	<div class="swiper_text swiper-container" :id="id">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
-				<slot :item="o" :index="idx">
-					<router-link :to="o[vm.url]">
-						{{ o[vm.title] }}
-					</router-link>
-				</slot>
+			<div class="swiper-slide" >
+				<slot></slot>
+			</div>
+			<div class="swiper-slide" >
+				<slot name="card1"></slot>
+			</div>
+			<div class="swiper-slide" >
+				<slot name="card2"></slot>
 			</div>
 		</div>
 	</div>
@@ -22,38 +24,48 @@
 			mixin
 		],
 		props: {
-			autoplay: {
-				type: "",
-				default: true
-			},
 			id: {
 				type: String,
-				default: "swiper_card"
+				default: "id"
 			}
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper(this.id, {
-					autoplay: this.autoplay,
-					direction: 'vertical'
+				var swiper = new Swiper("#" + this.id, {
+					speed: 2000,
+					autoplay: {
+						delay: 2800,
+						disableOnInteraction: false,
+						waitForTransition: false,
+					},
+					autoplay:true,
+					direction: 'vertical',
 				});
 			}
 		},
 		mounted() {
-			setTimeout(this.doing, 1000)
+			setTimeout(() => {
+				this.doing()
+			}, 300)
 		}
 	}
 </script>
 
 <style>
 	.swiper_text {
-		line-height: 2.5rem;
-		height: 2.5rem;
+		width: calc(100% - 4rem);
+		height: 1.5rem;
 	}
-
+	
 	.swiper_text .mm_view {
 		color: #666;
 		padding: 0 1rem;
 		font-size: 85%;
+	}
+	.swiper_text .text_block{
+		display: flex;
+	}
+	.swiper_text .text_block h4{
+		color: var(--color_red);
 	}
 </style>

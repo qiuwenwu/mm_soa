@@ -295,10 +295,7 @@ main {
 	position: relative;
 }
 
-div {
-	/* text-overflow: ellipsis; */
-	white-space: normal;
-}
+
 
 address,
 article,

@@ -16,56 +16,55 @@
 				type: Array,
 				default: function() {
 					return [{
-							image_id: 1,
-							title: "测试1",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							id: 1,
+							title: "什么是享赢棋牌联盟？",
+							description: "这是一个问题的回答，为了方便演示排版而写",
+							time:"2021-04-19 21:16",
 							url: "/"
 						},
 						{
-							image_id: 2,
-							title: "测试2",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							id: 2,
+							title: "这是第2个问题？？????????????????????????",
+							description: "这是一个回答，为了方便演示排版而写这是一个回答，为了方便演示排版而写这是一个回答，为了方便演示排版而写这是一个回答，为了方便演示排版而写",
+							time:"2021-04-19 21:16",
 							url: "/"
 						},
 						{
-							image_id: 3,
-							title: "测试3",
-							image: "/img/default.png",
-							tip: "12集全",
-							tag: "独播",
-							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "#"
-						},
-						{
-							image_id: 4,
-							title: "测试4",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 5,
-							title: "测试5",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 6,
-							title: "测试6",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 7,
-							title: "测试7",
-							image: "/img/default.png",
+							id: 3,
+							title: "这是第3个问题？？？？？？？？？",
+							description: "这是一个问题的回答",
+							time:"2021-04-19 21:16",
 							url: "/"
 						},
 						{
-							image_id: 8,
-							title: "测试8",
-							image: "/img/default.png",
+							id: 4,
+							title: "这是第4个问题？？？？？",
+							description: "这是一个问题的回答，为了演示而写",
+							time:"2021-04-19 21:16",
+							url: "/"
+						},
+						{
+							id: 5,
+							title: "这是第5个问题？？？？？？？",
+							description: "这是一个问题的回答，为了演示排版而写",
+							url: "/"
+						},
+						{
+							id: 6,
+							title: "这是第6个问题？",
+							description: "这是一个问题的回答，为了演示",
+							url: "/"
+						},
+						{
+							id: 7,
+							title: "这是第7个问题？？？",
+							description: "这是一个问题的回答，方便演示排版而写",
+							url: "/"
+						},
+						{
+							id: 8,
+							title: "这是第8个问题？？？？",
+							description: "这是一个问题的回答，为了排版而写",
 							url: "/"
 						}
 					]

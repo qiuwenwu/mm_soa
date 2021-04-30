@@ -1,5 +1,17 @@
 export default {
 	props: {
+		/**
+		 * 回调函数(中控)
+		 * @param {String} name 函数名
+		 * @param {Object} param1
+		 * @param {Object} param2
+		 * @param {Object} param3
+		 * @return {Object} 任意值
+		 */
+		func: {
+			type: Function,
+			default: function func(name, param1, param2, param3) {},
+		},
 		query: {
 			type: Object,
 			default () {
@@ -27,12 +39,18 @@ export default {
 					id: 'id',
 					// 上级ID
 					fid: 'fid',
+					// 用户名
+					username: 'username',
+					// 用户id
+					user_id: 'user_id',
 					// 图片
 					img: 'img',
 					// 图标
 					icon: 'icon',
 					// 标题
 					title: 'title',
+					// 子项
+					sub: 'sub',
 					// 描述
 					description: 'description',
 					// 关键词
@@ -168,10 +186,10 @@ export default {
 
 			// 响应错误消息
 			message: "",
-			
+
 			// 选中项
 			select: -1,
-			
+
 			// 选中集
 			selects: "",
 
@@ -243,30 +261,7 @@ export default {
 				return null;
 			}
 		},
-		/**
-		 * 回调函数(中控)
-		 * @param {String} name 函数名
-		 * @param {Object} param1
-		 * @param {Object} param2
-		 * @param {Object} param3
-		 * @return {Object} 任意值
-		 */
-		func: function func(name, param1, param2, param3) {
-			var f = this[name];
-			if (f) {
-				if (param1 === undefined) {
-					return f();
-				} else if (param2 === undefined) {
-					return f(param1);
-				} else if (param3 === undefined) {
-					return f(param1, param2);
-				} else {
-					return f(param1, param2, param3);
-				}
-			} else {
-				return null;
-			}
-		},
+
 		/**
 		 * @description 添加数据
 		 * @param {Object} param 要添加的数据
@@ -1061,7 +1056,7 @@ export default {
 		 */
 		selected: function selected(index, obj) {
 			this.select = index;
-			if(obj){
+			if (obj) {
 				$.push(this.obj, obj);
 			}
 			$.db.set('select', index, 120);

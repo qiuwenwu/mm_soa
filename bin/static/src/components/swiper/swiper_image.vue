@@ -1,12 +1,18 @@
 <template>
 	<!-- 轮播图 -->
-	<div class="swiper_image swiper-container" indicator-dots autoplay circular :interval="5000">
-		<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
-			<slot :item="o" :index="idx">
-				<item_image :obj="o"></item_image>
-			</slot>
+	<div class="swiper_image">
+		<div class="swiper-container" :id="id" >
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
+					<slot :row="o" :index="idx"></slot>
+				</div>
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+			<div class="swiper-pagination"></div>
 		</div>
 	</div>
+
 </template>
 
 <script>
@@ -14,37 +20,60 @@
 	import Swiper from "swiper";
 
 	export default {
-		mixins: [
-			mixin
-		],
+		mixins: [mixin],
 		props: {
-			autoplay: {
-				type: "",
-				default: true
-			},
 			id: {
 				type: String,
-				default: "swiper_card"
+				default: "id"
 			}
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper(this.id, {
+				var swiper = new Swiper('#' + this.id, {
+					speed: 2000,
+					autoplay: {
+						delay: 2800,
+						disableOnInteraction: false,
+						waitForTransition: false,
+					},
+					centeredSlides: true,
+					slidesPerView: 1,
 					pagination: {
 						el: '.swiper-pagination',
-						autoplay: this.autoplay
-					}
+						clickable: true,
+						dynamicBullets: true,
+					},
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev',
+					},
 				});
 			}
 		},
 		mounted() {
-			setTimeout(this.doing, 1000)
+			setTimeout(() => {
+				this.doing()
+			}, 300)
 		}
 	}
 </script>
 
 <style>
-	.swiper_image {
-		height: 8.75rem;
+	.swiper_image .swiper-slide {
+		width: calc(100% - 4rem);
+		padding: 1rem 0 3rem 0;
+		height: 18.75rem;
+
+	}
+
+	.swiper_image .swiper-container {
+		user-select: none;
+	}
+
+	.swiper_image .mm_icon {
+		width: 100%;
+		border-radius: 0.25rem;
+		height: 10rem;
+		margin: auto;
 	}
 </style>

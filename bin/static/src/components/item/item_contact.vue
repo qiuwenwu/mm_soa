@@ -3,11 +3,11 @@
 	<mm_item :url="obj[vm.url]">
 		<div class="item_contact" :class="css">
 			<div class="media">
-				<mm_icon :src="obj[vm.image]" :desc="obj[vm.tip]"></mm_icon>
+				<mm_icon :src="obj[vm.avatar]" :desc="obj[vm.tip]"></mm_icon>
 			</div>
 			<div class="doc">
-				<div class="title" v-html="obj[vm.title]"></div>
-				<div class="content" v-html="obj[vm.description]" v-if="obj[vm.description]"></div>
+				<div class="name" v-if="obj[vm.name]"><span>{{obj[vm.name]}}</span></div>
+				<div class="phone" v-if="obj[vm.phone]"><span>{{obj[vm.phone]}}</span></div>
 			</div>
 		</div>
 	</mm_item>

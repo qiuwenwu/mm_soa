@@ -16,56 +16,91 @@
 				type: Array,
 				default: function() {
 					return [{
-							image_id: 1,
-							title: "测试1",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							user_id: 1,
+							name: "姓名1",
+							avatar: "/img/default.png",
+							level:15,
+							tag:11,
+							state:"在线",
+							description: "个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名",
+							qrcode:1,
 							url: "/"
 						},
 						{
-							image_id: 2,
-							title: "测试2",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							user_id: 2,
+							name: "姓名2",
+							avatar: "/img/default.png",
+							level:85,
+							tag:0,
+							state:"隐身",
+							description: "个性签名个性签名个性签名个性签名",
+							qrcode:0,
 							url: "/"
 						},
 						{
-							image_id: 3,
-							title: "测试3",
-							image: "/img/default.png",
-							tip: "12集全",
-							tag: "独播",
-							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "#"
-						},
-						{
-							image_id: 4,
-							title: "测试4",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 5,
-							title: "测试5",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 6,
-							title: "测试6",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 7,
-							title: "测试7",
-							image: "/img/default.png",
+							user_id: 3,
+							name: "姓名3",
+							avatar: "/img/default.png",
+							level:5,
+							tag:2,
+							state:"勿扰",
+							description: "这是一个用户的描述",
+							qrcode:1,
 							url: "/"
 						},
 						{
-							image_id: 8,
-							title: "测试8",
-							image: "/img/default.png",
+							user_id: 4,
+							name: "姓名4",
+							avatar: "/img/default.png",
+							level:15,
+							tag:8,
+							state:"在线",
+							description: "",
+							qrcode:1,
+							url: "/"
+						},
+						{
+							user_id: 5,
+							name: "姓名5",
+							avatar: "/img/default.png",
+							level:15,
+							tag:0,
+							state:"在线",
+							description: "这是一个用户的描述",
+							qrcode:1,
+							url: "/"
+						},
+						{
+							user_id: 6,
+							name: "姓名6",
+							avatar: "/img/default.png",
+							level:15,
+							tag:3,
+							state:"在线",
+							description: "这是一个用户的描述",
+							qrcode:1,
+							url: "/"
+						},
+						{
+							user_id: 7,
+							name: "姓名8",
+							avatar: "/img/default.png",
+							level:15,
+							tag:5,
+							state:"在线",
+							description: "这是一个用户的描述",
+							qrcode:1,
+							url: "/"
+						},
+						{
+							user_id: 8,
+							name: "姓名8",
+							avatar: "/img/default.png",
+							level:15,
+							tag:7,
+							state:"在线",
+							description: "这是一个用户的描述",
+							qrcode:1,
 							url: "/"
 						}
 					]

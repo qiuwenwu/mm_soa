@@ -16,56 +16,91 @@
 				type: Array,
 				default: function() {
 					return [{
-							image_id: 1,
-							title: "测试1",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							user_id: 1,
+							name: "测试1",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:1,
+							type:1,
+							mute:0,
 							url: "/"
 						},
-						{
-							image_id: 2,
-							title: "测试2",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							{
+							user_id: 2,
+							name: "测试2",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:2,
+							type:2,
+							mute:1,
 							url: "/"
 						},
-						{
-							image_id: 3,
-							title: "测试3",
-							image: "/img/default.png",
-							tip: "12集全",
-							tag: "独播",
-							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "#"
-						},
-						{
-							image_id: 4,
-							title: "测试4",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 5,
-							title: "测试5",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 6,
-							title: "测试6",
-							image: "/img/default.png",
-							url: "#"
-						},
-						{
-							image_id: 7,
-							title: "测试7",
-							image: "/img/default.png",
+							{
+							user_id: 3,
+							name: "测试3",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:99,
+							type:3,
+							mute:0,
 							url: "/"
 						},
-						{
-							image_id: 8,
-							title: "测试8",
-							image: "/img/default.png",
+							{
+							user_id: 4,
+							name: "测试4",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:12,
+							type:1,
+							mute:1,
+							url: "/"
+						},
+							{
+							user_id: 5,
+							name: "测试5",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:123,
+							type:2,
+							mute:1,
+							url: "/"
+						},
+							{
+							user_id: 6,
+							name: "测试6",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:0,
+							type:3,
+							mute:0,
+							url: "/"
+						},
+							{
+							user_id: 7,
+							name: "测试7",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:78,
+							type:1,
+							mute:0,
+							url: "/"
+						},
+							{
+							user_id: 8,
+							name: "测试8",
+							avatar: "/img/default.png",
+							create_time: "2021-04-19 21:16",
+							content: "这是一个图片的描述，为了方便演示排版而写",
+							num_message:0,
+							type:1,
+							mute:1,
 							url: "/"
 						}
 					]

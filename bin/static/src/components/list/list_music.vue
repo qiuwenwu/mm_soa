@@ -17,55 +17,81 @@
 				default: function() {
 					return [{
 							image_id: 1,
-							title: "测试1",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							name:"这是第1首歌",
+							label:"SQ",
+							tag:"VIP",
+							author: "张三",
+							time:"3:40",
 							url: "/"
 						},
 						{
 							image_id: 2,
-							title: "测试2",
-							image: "/img/default.png",
-							description: "这是一个图片的描述，为了方便演示排版而写",
+							icon: 0,
+							name:"这是第2首歌",
+							label:"SQ",
+							tag:"",
+							author: "张三",
+							time:"5:40",
 							url: "/"
 						},
 						{
 							image_id: 3,
-							title: "测试3",
-							image: "/img/default.png",
-							tip: "12集全",
-							tag: "独播",
-							description: "这是一个图片的描述，为了方便演示排版而写",
-							url: "#"
+							icon: 1,
+							name:"这是第3首歌",
+							label:"",
+							tag:"VIP",
+							author: "张三",
+							time:"3:03",
+							url: "/"
 						},
 						{
 							image_id: 4,
-							title: "测试4",
-							image: "/img/default.png",
-							url: "#"
+							icon: 0,
+							name:"这是第4首歌",
+							label:"",
+							tag:"",
+							author: "张三",
+							time:"3:43",
+							url: "/"
 						},
 						{
 							image_id: 5,
-							title: "测试5",
-							image: "/img/default.png",
-							url: "#"
+							icon: 0,
+							name:"这是第5首歌",
+							label:"SQ",
+							tag:"VIP",
+							author: "张三",
+							time:"4:03",
+							url: "/"
 						},
 						{
 							image_id: 6,
-							title: "测试6",
-							image: "/img/default.png",
-							url: "#"
+							icon: 0,
+							name:"这是第6首歌",
+							label:"SQ",
+							tag:"",
+							author: "张三",
+							time:"2:03",
+							url: "/"
 						},
 						{
 							image_id: 7,
-							title: "测试7",
-							image: "/img/default.png",
+							icon: 1,
+							name:"这是第7首歌",
+							label:"SQ",
+							tag:"VIP",
+							author: "张三",
+							time:"3:03",
 							url: "/"
 						},
 						{
 							image_id: 8,
-							title: "测试8",
-							image: "/img/default.png",
+							icon: 0,
+							name:"这是第8首歌",
+							label:"SQ",
+							tag:"VIP",
+							author: "张三",
+							time:"3:03",
 							url: "/"
 						}
 					]

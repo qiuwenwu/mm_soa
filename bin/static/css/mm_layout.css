@@ -305,9 +305,12 @@ ol.mm_list li::before {
 	padding-top: 0;
 }
 
-.mm_item .title,
+.mm_item .title{
+	overflow: hidden;
+}
 .mm_item .content {
 	overflow: hidden;
+	font-size: 0.875rem;
 }
 
 .item-ltb .media {

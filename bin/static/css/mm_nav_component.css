@@ -1,0 +1,355 @@
+/* 主导航 */
+.nav_main{
+	padding: 0.5rem 0;
+	background-color: #000000;
+	color: #fff;
+}
+.nav_main [class^="icon"]{
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.nav_main a:hover{
+	color: var(--color_warning);
+}
+.nav_main .list{
+	display: flex;
+}
+.nav_main .item{
+	font-size: 0.75rem;
+	position: relative;
+	margin: 0 0.5rem;
+}
+.nav_main .item i{
+	margin-left: 0.25rem;
+}
+.nav_main .item>i:hover{
+	cursor: pointer;
+	color: var(--color_warning);
+}
+.nav_main .dropdown{
+	font-size: 0.875rem;
+	position: absolute;	
+	width: 10rem;
+	top:-1000px;
+	left: 0;
+	overflow: hidden;
+	background-color: var(--bg_grey);
+	color: #000000;
+}
+.nav_main .item.active .dropdown{
+	top: 1.625rem;
+}
+.nav_main .sub:hover{
+	background-color: #666;
+}
+.nav_main .sub a:hover{
+	color: #fff;
+}
+.nav_main .item_sub{
+	padding: 0.25rem 1.25rem;
+}
+.nav_main .item_sub>i{
+	margin-right: 0.5rem;
+}
+/* 侧边导览 */
+/* 模态 */
+.nav_side .modal_nav {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: -100%;
+	top: 0;
+}
+
+.nav_side .modal_nav.in {
+	left: 0;
+}
+
+.nav_side .modal_backdrop {
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: opacity ease-in-out 0.2s;
+}
+
+.nav_side .in .modal_backdrop {
+	opacity: 1;
+}
+
+.nav_side .out .modal_backdrop {
+	opacity: 0;
+}
+
+.nav_side .modal_body {
+	position: absolute;
+	height: 100%;
+	min-width: 50%;
+	top: 0;
+	left: -100%;
+	padding-top: 4rem;
+	overflow: auto;
+	background-color: #fff;
+	transition: left ease-in-out 0.4s;
+}
+
+.nav_side .in .modal_body {
+	left: 0;
+}
+
+.nav_side .out .modal_body {
+	left: -100%;
+}
+
+/* 折叠 */
+.nav_side .sub_list {
+	height: 0;
+	overflow: hidden;
+	transition: height ease-in-out 0.2s;
+}
+
+.nav_side .btn_nav {
+	display: flex;
+	align-items: center;
+	padding: 0.625rem 1.25rem;
+	background-color: #fff;
+}
+
+.nav_side .btn_nav>span {
+	margin-left: 0.5rem;
+}
+
+.nav_side .btn_nav:active {
+	background-color: #ECF5FF;
+}
+
+.nav_side .sub_list {
+	padding-left: 0.5em;
+}
+
+.nav_side i {
+	display: inline-block;
+	width: 1rem;
+	text-align: center;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.nav_side .arrow_nav {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.nav_side .arrow_nav.rotate {
+	transform: rotate(180deg);
+	transition: transform ease-in-out 0.2s;
+}
+
+.nav_side .arrow_nav.rotate_back {
+	transform: rotate(0);
+	transition: transform ease-in-out 0.2s;
+}
+
+.nav_side .arrow_nav::before {
+	content: "\f107";
+}
+
+/* 顶部导航 */
+
+/* 底部导航 */
+.nav_bottom .list{
+	text-align: center;
+}
+.nav_bottom .item{
+	display: inline-block;
+}
+.nav_bottom .list>.item:not(:nth-last-child(-n+1))::after{
+	margin: 0 0.5rem;
+	content:"|";
+	color: #999;
+}
+.nav_bottom a:hover{
+	color: var(--color_red);
+}
+
+/* 快捷导航 */
+.nav_quick {
+	position: relative;
+	text-align: center;
+}
+
+.nav_quick .dropdown {
+	position: absolute;
+	z-index:300;
+	top: -4rem;
+	left: 50%;
+	transform: translate(-50%) scale(0);
+	width: 18rem;
+	padding: 0.75rem;
+	border: 1px solid;
+	border-color: var(--color_border);
+	border-radius: 0.5rem;
+	box-shadow: 0px 2px 10px var(--color_shadow);
+	background-color: #fff;
+}
+
+/* 箭头 */
+.nav_quick .dropdown::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: -10.25px;
+	left: 50%;
+	width: 0.75rem;
+	height: 0.75rem;
+	border: 1px solid;
+	border-color: var(--color_border) var(--color_border) transparent transparent;
+	background-color: #fff;
+	transform: rotate(-45deg) translate(-50%);
+}
+
+.nav_quick .dropdown.show_drop {
+	animation: show_drop 0.2s linear forwards;
+}
+
+@keyframes show_drop {
+	0% {
+		top: 0;
+		transform: translate(-50%) scale(0);
+	}
+
+	85% {
+		top: 2rem;
+		transform: translate(-50%) scale(1.05);
+	}
+
+	100% {
+		top: 2rem;
+		transform: translate(-50%) scale(1);
+	}
+}
+
+.nav_quick .item>.title {
+	font-size: 0.875rem;
+	font-weight: bold;
+	text-align: left;
+}
+
+.nav_quick .list_sub {
+	display: flex;
+	margin: 0 -0.25rem;
+}
+
+.nav_quick .item_sub {
+	flex: 0 0 25%;
+	padding: 0.125rem 0.25rem;
+}
+.nav_quick .item_sub>.title {
+	display: block;
+	font-size: 0.75rem;
+	padding: 0.125rem 0;
+	text-align: center;
+	border-radius: 0.25rem;
+	background-color: var(--bg_grey);
+}
+/* 靠左样式 */
+.nav_quick.display_left .dropdown{
+	left: 1rem;
+	transform: scale(0);
+}
+
+.nav_quick.display_left .dropdown::before{
+	left: 1rem;
+	transform: rotate(-45deg) translate(-50%);
+}
+.nav_quick.display_left .dropdown.show_drop {
+	animation: show_drop_2 0.2s linear forwards;
+}
+@keyframes show_drop_2 {
+	0% {
+		top: 0;
+		transform: scale(0);
+	}
+
+	85% {
+		top: 2rem;
+		transform: scale(1.05);
+	}
+
+	100% {
+		top: 2rem;
+		transform: scale(1);
+	}
+}
+/* 靠右样式 */
+.nav_quick.display_right .dropdown{
+	left: initial;
+	right: 1rem;
+	transform: scale(0);
+}
+
+.nav_quick.display_right .dropdown::before{
+	left: initial;
+	right: 1rem;
+	transform: rotate(-45deg) translate(-50%);
+}
+.nav_quick.display_right .dropdown.show_drop {
+	animation: show_drop_2 0.2s linear forwards;
+}
+
+/* 用户导航 */
+.nav_user .login{
+	text-align: center;
+}
+.nav_user .login>a>span{
+	margin:0 0.5rem;
+}
+.nav_user .login>a:hover{
+	color: #fca216;
+}
+.nav_user .user{
+	position: relative;
+	text-align: center;
+}
+.nav_user .username{
+	background-color: #000;
+	color: #fca216;
+}
+.nav_user .icon{
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #999;
+	margin-left: 0.5rem;
+}
+.nav_user .icon::before{
+	content: "\f0d7";
+}
+.nav_user .item.active .icon::before{
+	content: "\f0d8";
+}
+.nav_user .dropdown{
+	position: absolute;
+	top: -1000px;
+	left: 0;
+	width: 100%;
+	background-color: #6a737d;
+	color: #fff;
+}
+.nav_user .active .dropdown{
+	top: 1.5rem;
+}
+.nav_user .title:hover{
+	background-color: #999;
+	color: #fcca16;
+}
