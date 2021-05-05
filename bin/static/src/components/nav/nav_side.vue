@@ -1,7 +1,7 @@
 <template>
 	<!-- 侧边导航 -->
 	<div class="nav_side">
-		<div id="btn_open_nav" @click="open_nav">点击此处</div>
+		<div id="btn_open_nav" @click="open_nav"><slot><span>点击此处</span></slot></div>
 
 		<!-- 模态 -->
 		<div class="modal_nav" :class="{ in: is_in ,out: is_out}">

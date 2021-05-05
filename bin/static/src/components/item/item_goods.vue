@@ -7,7 +7,7 @@
 				<span class="tag" v-if="obj[vm.tag]"><span>{{obj[vm.tag]}}</span></span>
 			</div>
 			<div class="doc">
-				<div class="name" v-if="obj[vm.name]"><span>{{obj[vm.name]}}</span></div>
+				<div class="title" v-if="obj[vm.title]"><span>{{obj[vm.title]}}</span></div>
 				<div class="content" v-if="obj[vm.description]"><span>{{obj[vm.description]}}</span></div>
 				<div class="price" v-if="obj[vm.price]"><span>{{obj[vm.price]}}</span></div>
 				<div class="price_ago" v-if="obj[vm.price_ago]"><span>{{obj[vm.price_ago]}}</span></div>

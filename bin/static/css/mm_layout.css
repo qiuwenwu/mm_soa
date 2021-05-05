@@ -289,16 +289,7 @@ ol.mm_list li::before {
 .doc {
 	padding: var(--padding_mini);
 	overflow: hidden;
-}
-
-.item-ltb .mm_item,
-.item-rtb .mm_item,
-.item-rr .mm_item,
-.item-rl .mm_item,
-.item-ll .mm_item,
-.item-lr .mm_item {
-	padding-left: var(--padding_mini);
-	padding-right: var(--padding_mini);
+	height: 100%;
 }
 
 .item-tb .media~.doc {
@@ -310,6 +301,9 @@ ol.mm_list li::before {
 }
 .mm_item .content {
 	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
 	font-size: 0.875rem;
 }
 

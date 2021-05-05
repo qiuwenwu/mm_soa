@@ -1,12 +1,12 @@
 <template>
 	<!-- 操作栏 -->
 	<div class="bar_action">
-		<div id="btn_open_model" @click="open_model">点击此处</div>
+		<div id="btn_open_modal" @click="open_modal"><slot>点击此处</slot></div>
 		<div class="modal_action" :class="{ in: is_in ,out: is_out}" id="modal_action">
-			<div class="modal_action_backdrop"></div>
+			<div class="modal_action_backdrop" @click="close_modal()"></div>
 			<div class="modal_action_body">
 				<div class="btn_action" v-for="(o,i) in list" :key="i" @click="event_click(o)">{{o.title}}</div>
-				<div class="btn_close" @click="close_model">取消</div>
+				<div class="btn_close" @click="close_modal">取消</div>
 			</div>
 		</div>
 	</div>
@@ -39,10 +39,10 @@
 			};
 		},
 		methods: {
-			open_model() {
+			open_modal() {
 				this.is_in = true;
 			},
-			close_model() {
+			close_modal() {
 				this.is_out = true;
 				setTimeout(() => {
 					this.is_in = false;
@@ -50,7 +50,7 @@
 				}, 300)
 			},
 			event_click(o) {
-				this.close_model()
+				this.close_modal()
 				if (this.func) {
 					this.func(o);
 				}

@@ -118,6 +118,23 @@
 	position: relative;
 }
 
+.item_message .doc:after {
+	content: "";
+	display: block;
+	border-bottom: 1px solid var(--color_border);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.item-ltb .doc:after {
+	left: 0.5rem;
+}
+.item-rtb .doc:after {
+	right: 0.5rem;
+}
+
 .item_message .content {
 	font-size: 0.875rem;
 	display: -webkit-box;
@@ -138,17 +155,17 @@
 
 .item_message .num_message {
 	display: inline-block;
-	width: 1rem;
-	height: 1rem;
+	width: 1.25rem;
+	height: 1.25rem;
 	background-color: #F43530;
 	color: #FFFFFF;
-	line-height: 1rem;
+	line-height: 1.25rem;
 	text-align: center;
-	font-size: .75rem;
+	font-size: .625rem;
 	vertical-align: middle;
 	position: absolute;
-	top: 0.25rem;
-	right: 0.25rem;
+	top: 0.125rem;
+	right: 0.125rem;
 	padding: 0;
 	border-radius: 50%;
 }
@@ -175,7 +192,9 @@
 	opacity: 0.7;
 	font: normal normal normal 14px/1 FontAwesome;
 }
-
+.item_message .mute span {
+	display: none;
+}
 .item_message .mute::before {
 	content: "\f1f6";
 }
@@ -193,7 +212,7 @@
 	color: #fff;
 	font-size: 0.75rem;
 }
-.item_goods .name {
+.item_goods .title {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
@@ -217,9 +236,11 @@
 
 .item_goods .price::before {
 	content: "￥";
+	font-size: 80%;
 }
 .item_goods .price_ago::before {
 	content: "￥";
+	font-size: 80%;
 }
 .item_goods .num_comment{
 	float: right;
@@ -475,6 +496,8 @@
 	font-size: 0.625rem;
 	line-height: 1.25;
 	display: inline-block;
+	position: relative;
+	top: -.125rem;
 }
 .item_music .tag{
 	margin-left: 0.5rem;
@@ -484,6 +507,8 @@
 	font-size: 0.625rem;
 	line-height: 1.25;
 	display: inline-block;
+	position: relative;
+	top: -.125rem;
 }
 .item_music .author{
 	display: none;
@@ -515,7 +540,6 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	overflow: hidden;
-	height: 3rem;
 }
 .item_news .source{
 	float: left;
@@ -556,6 +580,7 @@
 
 .item_number .phone {
 	margin-right: 0.5rem;
+	font-weight: 600;
 }
 
 .item_number .type {
@@ -583,41 +608,37 @@
 	-webkit-line-clamp: 1;
 	overflow: hidden;
 	margin-bottom: 0.5rem;
+	font-weight: 600;
 }
 
 .item_question .title::before {
 	content: "问";
 	padding: 0.25rem;
-	margin: 0.5rem;
+	margin-right: 0.5rem;
 	background-color: #e3344a;
 	color: #fff;
 	border-radius: 0.25rem;
-	font-size: 0.75rem;
+	font-size: 0.625rem;
+	font-weight: normal;
+	position: relative;
+	top: -.15rem;
 }
 
 .item_question .time {
 	float: right;
-	padding-top: 0.25rem;
 	font-size: 0.75rem;
 	color: #999;
-}
-
-.item_question .content {
-	font-size: 0.875rem;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 1;
-	overflow: hidden;
 }
 
 .item_question .content::before {
 	content: "答";
 	padding: 0.25rem;
-	margin: 0.5rem;
+	margin-right: 0.5rem;
 	background-color: #ff9806;
 	color: #fff;
 	border-radius: 0.25rem;
-	font-size: 0.75rem;
+	font-size: 0.625rem;
+	position: relative;
 }
 
 .item-rl .item_question .doc {
@@ -637,7 +658,7 @@
 	content: "\f0c8";
 	border-radius: 0;
 	background-color: rgba(0, 0, 0, 0);
-	font-size: 0.75rem;
+	font-size: 0.625rem;
 	color: #fca216;
 }
 

@@ -1,15 +1,13 @@
 <template>
 	<a class="bar_user" :href="obj.url">
 		<div class="media">
-			<div class="figure">
-				<img :src="obj.image">
-			</div>
+			<mm_icon :src="obj[vm.image]" :desc="obj[vm.image]"></mm_icon>
 		</div>
 		<div class="doc">
 			<div class="name"><span>{{obj.name}}</span></div>
 			<span class="chevron"></span>
 			<span class="qrcode"></span>
-			<div class="user_id"><span>{{obj.user_id}}</span></div>
+			<div class="account"><span>{{obj.user_id}}</span></div>
 		</div>
 	</a>
 </template>
