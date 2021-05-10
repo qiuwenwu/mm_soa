@@ -213,7 +213,7 @@
 	font-family: "Helvetica Neue";
 	font-style: normal;
 	font-weight: 400;
-	src: url(../font/HelveticaNeue.eot) format(embedded-opentype), url(../font/HelveticaNeue.woff2) format(woff2), url(../font/HelveticaNeue.woff) format(woff), url(../font/HelveticaNeue.ttf) format(truetype), url(../font/HelveticaNeue.svg) format(svg);
+	src: url(../fonts/HelveticaNeue.eot) format(embedded-opentype), url(../fonts/HelveticaNeue.woff2) format(woff2), url(../fonts/HelveticaNeue.woff) format(woff), url(../fonts/HelveticaNeue.ttf) format(truetype), url(../fonts/HelveticaNeue.svg) format(svg);
 }
 
 * {

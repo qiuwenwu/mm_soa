@@ -113,6 +113,9 @@ export default {
 	},
 	data: function data() {
 		return {
+			// 标题
+			title: "",
+
 			// 地址
 			url: "",
 
@@ -159,7 +162,7 @@ export default {
 
 			// 提交进度
 			posting: 0,
-
+			
 			// 查询结果匹配数统计
 			count: 0,
 
@@ -186,10 +189,10 @@ export default {
 
 			// 响应错误消息
 			message: "",
-
+			
 			// 选中项
 			select: -1,
-
+			
 			// 选中集
 			selects: "",
 
@@ -204,7 +207,7 @@ export default {
 
 			// 修改条件
 			query_set: {},
-
+			
 			// 上级ID: father_id
 			father_id: "father_id",
 
@@ -222,7 +225,8 @@ export default {
 			user: this.$store.state.user,
 
 			// 修改提示
-			tip_show: true
+			tip_show: true,
+
 		};
 	},
 	methods: {
@@ -231,18 +235,18 @@ export default {
 		 * @param {String} key 键
 		 * @param {String} obj 值
 		 */
-		save_obj: function save_obj(key, obj) {
-			$.setStorageSync(key, obj)
+		save_obj:function save_obj(key,obj){
+			uni.setStorageSync(key,obj)
 		},
 		/**
 		 * @description 查询对象
 		 * @param {String} key 键
 		 * @return {Object} 值
 		 */
-		load_obj: function load_obj(key) {
-			return $.getStorageSync(key)
+		load_obj:function load_obj(key){
+			return uni.getStorageSync(key)
 		},
-		/**
+/**
 		 * @description 事件管理, 用于管理函数
 		 * @param {String} name 事件名
 		 * @param {Object} param1 参数1
@@ -261,7 +265,6 @@ export default {
 				return null;
 			}
 		},
-
 		/**
 		 * @description 添加数据
 		 * @param {Object} param 要添加的数据
@@ -297,7 +300,7 @@ export default {
 		},
 		del_show: function(o, id) {
 			var _this = this;
-			$.confirm('删除后将无法回复!<br/>是否确定要删除?', function() {
+			uni.confirm('删除后将无法回复!<br/>是否确定要删除?', function() {
 				// console.log('确定删除!');
 				var query = {};
 				query[id] = o[id];
@@ -339,7 +342,7 @@ export default {
 		 * @param {Object} 返回新的参数
 		 */
 		set_before: function set_before(param, includeZero) {
-			var pm = $.delete(param, includeZero);
+			var pm = uni.delete(param, includeZero);
 			for (var k in pm) {
 				if (k.toLocaleLowerCase().indexOf('time') !== -1 && pm[k].indexOf('T') !== -1) {
 					pm[k] = new Date(pm[k]).toStr('yyyy-MM-dd 00:00:00');
@@ -352,7 +355,7 @@ export default {
 		 */
 		batchSet: function batchSet() {
 			var _this = this;
-			$.confirm('批量修改数据无法挽回<br/>确定要操作吗?', function() {
+			uni.confirm('批量修改数据无法挽回<br/>确定要操作吗?', function() {
 				var q = Object.assign({}, _this.query, _this.query_set);
 				q[_this.field] = _this.selects;
 				delete q.page;
@@ -620,12 +623,12 @@ export default {
 							obj = res;
 						}
 					}
-					$.push(_this, res, true);
+					uni.push(_this, res, true);
 					if (obj) {
 						if (!_this.obj || Object.keys(_this.obj).length === 0) {
 							_this.obj = obj;
 						} else {
-							$.push(_this.obj, obj);
+							uni.push(_this.obj, obj);
 						}
 						var o = _this.obj;
 						for (var k in o) {
@@ -640,7 +643,7 @@ export default {
 						if (!_this.form || Object.keys(_this.form).length === 0) {
 							_this.form = Object.assign({}, _this.obj)
 						} else {
-							$.push(_this.form, Object.assign({}, _this.obj));
+							uni.push(_this.form, Object.assign({}, _this.obj));
 						}
 					}
 				} else if (json.error) {
@@ -709,24 +712,24 @@ export default {
 		 */
 		search: function search(query, func) {
 			if (query) {
-				$.push(this.query, query);
+				uni.push(this.query, query);
 			}
 			var url = this.url_get_list ? this.url_get_list : this.url;
 			if (url) {
 				this.query.page = 1;
 				this.count = 0;
-				$.route.push("?" + this.toUrl(this.query));
+				uni.route.push("?" + this.toUrl(this.query));
 				this.first(query, func);
 			}
 		},
 		get_create: function get_create(query, func) {
 			if (query) {
-				$.push(this.query, query);
+				uni.push(this.query, query);
 			}
 			var url = this.url_get_list ? this.url_get_list : this.url;
 			if (url) {
 				this.count = 0;
-				// $.route.push("?" + this.toUrl(this.query));
+				// uni.route.push("?" + this.toUrl(this.query));
 				this.first(query, func);
 			}
 		},
@@ -737,7 +740,7 @@ export default {
 		 */
 		first: function first(query, func) {
 			var _this = this;
-
+			
 			if (!this.count) {
 				var qy = Object.assign({}, this.query);
 				this.get_list(qy, func);
@@ -800,14 +803,14 @@ export default {
 		 * @param {Object} query
 		 */
 		clear: function clear(query) {
-			$.clear(query);
+			uni.clear(query);
 		},
 		/**
 		 * 重置
 		 */
 		reset: function reset() {
-			$.clear(this.query);
-			$.push(this.query, this.config);
+			uni.clear(this.query);
+			uni.push(this.query, this.config);
 		},
 
 		/**
@@ -873,7 +876,7 @@ export default {
 			if (func) {
 				func(json);
 			}
-			$.navigateBack({
+			uni.navigateBack({
 				delta: 2
 			});
 		},
@@ -898,7 +901,7 @@ export default {
 			var query = this.query;
 			var p = query.page;
 			query.page = page;
-			$.navigateTo({
+			uni.navigateTo({
 				url: "?" + this.toUrl(query)
 			});
 			if (this.page_count !== 0) {
@@ -913,6 +916,7 @@ export default {
 				this.first(query);
 			}
 		},
+		
 		/**
 		 * @description 转查询参数
 		 * @param {Object} obj 被转换的对象
@@ -920,7 +924,7 @@ export default {
 		 * @return {String} url字符串
 		 */
 		toUrl: function toUrl(obj, url) {
-			return $.toUrl(obj, url);
+			return uni.toUrl(obj, url);
 		},
 		/**
 		 * 初始化前函数
@@ -936,7 +940,7 @@ export default {
 		 */
 		init_main: function init_main(query) {
 			var _this = this;
-			$.push(this.query, query);
+			uni.push(this.query, query);
 			_this.init_after(function() {
 				_this.get(_this.query);
 			});
@@ -1052,14 +1056,10 @@ export default {
 		/**
 		 * 选中
 		 * @param {Number} index 项目索引
-		 * @param {Object} obj 选中的对象
 		 */
-		selected: function selected(index, obj) {
+		selected: function selected(index) {
 			this.select = index;
-			if (obj) {
-				$.push(this.obj, obj);
-			}
-			$.db.set('select', index, 120);
+			uni.db.set('select', index, 120);
 		},
 		/**
 		 * 页面改变时
@@ -1075,7 +1075,7 @@ export default {
 			} else if (n > this.page_count) {
 				n = this.page_count
 			}
-			this.page_now = n;
+			this.goTo(n)
 		},
 		/**
 		 * 获取名称
@@ -1121,7 +1121,7 @@ export default {
 		 * 取消并返回
 		 */
 		cancel: function cancel() {
-			$.navigateBack({
+			uni.navigateBack({
 				delta: 2
 			});
 		},
@@ -1132,14 +1132,14 @@ export default {
 		import_db: function import_db(file) {
 			if (file) {
 				var _this = this;
-				$.confirm("是否导入 " + file.name, "导入数据", function() {
-					$.http.upload(_this.url_import, file, function(json) {
+				uni.confirm("是否导入 " + file.name, "导入数据", function() {
+					uni.http.upload(_this.url_import, file, function(json) {
 						if (json.result) {
-							$.confirm(json.result.tip, function() {
+							uni.confirm(json.result.tip, function() {
 								_this.get();
 							});
 						} else if (json.error) {
-							$.confirm(json.error.message);
+							uni.confirm(json.error.message);
 						} else {
 							_this.$toast("服务器连接失败！", "danger");
 						}
@@ -1205,7 +1205,7 @@ export default {
 					this.opens.push(id);
 				}
 			}
-			$.db.set('opens', this.opens);
+			uni.db.set('opens', this.opens);
 		},
 		/**
 		 * 判断是否存在
@@ -1275,7 +1275,8 @@ export default {
 	},
 	mounted() {
 		this.showing = 100;
-		var query = this.$route.query
+		var routes = getCurrentPages(); 
+		var query = routes[routes.length - 1].options
 		this.init(query);
 	},
 	beforeDestroy() {
