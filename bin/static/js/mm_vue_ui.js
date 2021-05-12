@@ -1642,19 +1642,19 @@ function load_ui(jquery) {
 		template: "<div :class=\"'mm_row' + cl\"><slot></slot></div>",
 		props: {
 			col: {
-				type: String,
-				default: ""
+				type: Number,
+				default: 0
 			}
 		},
 		computed: {
 			cl: function cl() {
 				var cl = this.col;
 
-				if (cl && cl.indexOf("-") == -1) {
-					cl = " row-" + cl;
+				if (cl) {
+					return " row-" + cl;
 				}
-
-				return cl;
+				
+				return "";
 			}
 		}
 	};
