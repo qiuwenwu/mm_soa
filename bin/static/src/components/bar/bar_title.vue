@@ -1,9 +1,9 @@
 <template>
 	<!-- 标题栏 -->
-	<a :href="obj.url" class="bar_title">
+	<div @click="event_click(obj)" class="bar_title">
 		<div class="title"><span>{{obj.title}}</span></div>
 		<div class="desc"><span>{{obj.desc}}</span></div>
-	</a>
+	</div>
 
 </template>
 
@@ -27,6 +27,11 @@
 			return {};
 		},
 		methods:{
+      event_click(obj){
+      	if(this.func){
+      		this.func(obj);
+      	}
+      }
 		}
 	}
 </script>

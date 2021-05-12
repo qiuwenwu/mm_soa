@@ -13,7 +13,7 @@
 									<div class="title">
 										<h5><span>筛选条件</span></h5>
 									</div>
-									<mm_list col="3">
+									<mm_list :col="3">
 										<!--{if(param.list)}-->
 										<!--{loop param.list v idx}-->
 										<!--{if(v.name == 'keyword')}-->

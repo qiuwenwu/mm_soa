@@ -1,14 +1,14 @@
 <template>
 	<div class="bar_menu">
 		<div class="list">
-			<a :href="o.url" class="item" v-for="(o, i) in list" :key="i">
+			<div @click="event_click(o)" class="item" v-for="(o, i) in list" :key="i">
 					<div class="media">
 						<mm_icon :src="o[vm.img]"></mm_icon>
 					</div>
 					<div class="title">
-						{{ o[vm.title] }}
+            <span>{{ o[vm.title] }}</span>
 					</div>
-			</a>
+			</div>
 		</div>
 	</div>
 </template>
@@ -51,6 +51,12 @@
 			},
 		},
 		methods: {
+      // 发射事件
+      event_click(o) {
+      	if (this.func) {
+      		this.func(o);
+      	}
+      },
 		},
 		components: {},
 	};

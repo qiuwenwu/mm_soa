@@ -1,18 +1,18 @@
 <template>
 	<div class="nav_user">
 		<div class="login" v-if="!obj[vm.username]">
-			<a href=""><span>请登陆</span></a>
-			<a href=""><span>注册</span></a>
+			<router-link to="/login"><span>登录</span></router-link>
+			<router-link to="/register"><span>注册</span></router-link>
 		</div>
-		<div class="user" v-else :class="{active:is_active}">
+		<div class="user" v-else :class="{active:is_active}" @click="active">
 			<div class="username">
 				<span>{{obj[vm.username]}}</span>
-				<span class="icon" @click="active"></span>
+				<span class="icon"></span>
 			</div>
 			<div class="dropdown">
-				<a :href="o.url" v-for="(o,i) in list" :key="i">
+				<router-link :to="o.url" v-for="(o,i) in list" :key="i">
 					<div class="title"><span>{{o[vm.title]}}</span></div>
-				</a>
+				</router-link>
 			</div>
 		</div>
 	</div>

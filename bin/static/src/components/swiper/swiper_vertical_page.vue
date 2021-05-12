@@ -52,7 +52,7 @@
 				var _this=  this;
 				var mySwiper = new Swiper('.swiper-container', {
 					direction: 'vertical',
-					speed: 2000,
+					speed: 350,
 					pagination: {
 						el: '.swiper-pagination',
 						clickable: true,

@@ -1,5 +1,5 @@
 <template>
-	<a class="bar_user" :href="obj.url">
+	<div class="bar_user" @click="event_click(obj)">
 		<div class="media">
 			<mm_icon :src="obj[vm.image]" :desc="obj[vm.image]"></mm_icon>
 		</div>
@@ -8,8 +8,9 @@
 			<span class="chevron"></span>
 			<span class="qrcode"></span>
 			<div class="account"><span>{{obj.user_id}}</span></div>
+      <slot></slot>
 		</div>
-	</a>
+	</div>
 </template>
 
 <script>
@@ -32,6 +33,13 @@
 		data() {
 			return {};
 		},
+    methods:{
+      event_click(o){
+        if (this.func) {
+        	this.func(o);
+        }
+      }
+    }
 	}
 </script>
 

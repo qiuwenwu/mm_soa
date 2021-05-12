@@ -32,7 +32,7 @@
 		methods: {
 			doing() {
 				var swiper = new Swiper("#" + this.id, {
-					speed: 2000,
+					speed: 350,
 					autoplay: {
 						delay: 2800,
 						disableOnInteraction: false,

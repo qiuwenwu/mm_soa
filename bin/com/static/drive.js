@@ -151,10 +151,12 @@ Drive.prototype.mode = async function(convert_amd) {
 				var file = (this.dir + path).fullname();
 				var code;
 				var str = file.loadText();
+				console.log("内容");
 				try {
 					if (str && str.indexOf('@/') !== -1) {
 						var arr = ctx.request.href.split('/');
 						var word = arr[0] + "//" + arr[2] + "/";
+						console.log(word);
 						str = str.replaceAll('@/', word);
 					}
 					code = $.es6_to_amd(str);

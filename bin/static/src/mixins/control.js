@@ -95,7 +95,15 @@ export default {
 		field: {
 			type: String,
 			default: "value"
-		}
+		},
+    disabled: {
+			type: Boolean,
+			default: false
+		},
+    num: {
+      type: Number,
+      default: 5
+    }
 	},
 	data: function data() {
 		return {

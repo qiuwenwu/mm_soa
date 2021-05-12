@@ -4,7 +4,7 @@
 		<div class="btn_voice" @click="even_click(obj.voice)"><span class="icon_voice"></span></div>
 		<div class="input_box">
 			<input type="text" :value="value" v-on:input="$emit('input', $event.target.value)">
-			<span class="icon_smile"></span>
+			<span class="icon_smile" @click="even_click(obj.smile)"></span>
 		</div>
 
 		<div class="btn_more" @click="even_click(obj.more)"><span class="icon_more"></span></div>
@@ -32,15 +32,19 @@
 					return {
 						keyboard: {
 							title: "键盘",
-							command: "#"
+							command: "keyboard"
 						},
 						voice: {
 							title: "语音",
-							command: "#"
+							command: "voice"
+						},
+						smile: {
+							title: "表情",
+							command: "smile"
 						},
 						more: {
 							title: "更多",
-							command: "#"
+							command: "more"
 
 						}
 					}

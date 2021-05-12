@@ -7,7 +7,7 @@
 					<span class="icon_title"></span>
 				</div>
 				<div class="group">
-					<div class="sub" v-for="(object,index) in o[vm.sub]" :key="o.command + index"  @click="event_click_sub(object,index)"><span>{{object[vm.title]}}</span></div>
+					<div class="sub" :class="{active:key_sub==index}" v-for="(object,index) in o[vm.sub]" :key="o.command + index"  @click="event_click_sub(object,index)"><span>{{object[vm.title]}}</span></div>
 				</div>
 			</div>
 		</div>

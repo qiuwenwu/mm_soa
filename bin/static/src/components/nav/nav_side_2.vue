@@ -54,22 +54,6 @@
                   title: "sub_item1",
                   url: "#",
                 },
-                {
-                  title: "sub_item1",
-                  url: "#",
-                },
-                {
-                  title: "sub_item1",
-                  url: "#",
-                },
-                {
-                  title: "sub_item1",
-                  url: "#",
-                },
-                {
-                  title: "sub_item1",
-                  url: "#",
-                },
               ]
             },
             {
@@ -107,7 +91,7 @@
     data() {
       return {
         // 控制下拉
-        key_drop: -1,
+        list_drop: [],
         // 控制箭头旋转
         key_rotate: -1
       };
@@ -115,28 +99,28 @@
     methods: {
       // 打开折叠
       open_sub(o, i) {
-        var key_drop = this.key_drop
+        var list_drop = this.list_drop
         var key_rotate = this.key_rotate
         if (o.sub && o.sub.length) {
-          if (key_drop !== i) {
-            key_drop = i
+          if (list_drop.indexOf(i) === -1) {
+            list_drop.push(i)
             key_rotate = i
           } else {
-            key_drop = -1
+            list_drop.del(i)
             key_rotate = -1
           }
         }
-        this.key_drop = key_drop
+        this.list_drop = list_drop
         this.key_rotate = key_rotate
       },
       // 关闭折叠
       close_sub(){
-        this.key_drop = -1
+        this.list_drop = []
         this.key_rotate = -1
       },
       // 获取折叠高度
       get_height(o, i) {
-        if (this.key_drop === i) {
+        if (this.list_drop.indexOf(i) !== -1) {
           if (this.has_sub(o)) {
             var height = 2.75 * o.sub.length;
             return 'height:' + height + 'rem;'

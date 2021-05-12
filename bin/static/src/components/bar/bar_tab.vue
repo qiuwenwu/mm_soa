@@ -15,8 +15,8 @@
 		mixins: [mixin],
 		props: {
 			col:{
-				type: String,
-				default: ""
+				type: Number,
+				default: 0
 			},
 			icon_key: {
 				type: String,

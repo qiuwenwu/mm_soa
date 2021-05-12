@@ -34,7 +34,7 @@
 		methods: {
 			doing() {
 				var swiper = new Swiper('#' + this.id, {
-					speed: 5000,
+					speed: 350,
 					watchSlidesProgress: true, //查看slide的progress
 					resistanceRatio: 0, //禁止边缘移动
 					on: {

@@ -38,7 +38,8 @@ function import_picker($) {
 		p.inline = p.params.container ? true : false;
 
 		// 3D Transforms origin bug, only on safari
-		var originBug = $.device.ios || (navigator.userAgent.toLowerCase().indexOf('safari') >= 0 && navigator.userAgent.toLowerCase()
+		var originBug = $.device.ios || (navigator.userAgent.toLowerCase().indexOf('safari') >= 0 && navigator
+			.userAgent.toLowerCase()
 			.indexOf('chrome') < 0) && !$.device.android;
 
 		// Value
@@ -69,7 +70,8 @@ function import_picker($) {
 				p.params.onChange(p, p.value, p.displayValue);
 			}
 			if (p.input && p.input.length > 0) {
-				$(p.input).val(p.params.formatValue ? p.params.formatValue(p, p.value, p.displayValue) : p.value.join(' '));
+				$(p.input).val(p.params.formatValue ? p.params.formatValue(p, p.value, p.displayValue) : p.value
+					.join(' '));
 				$(p.input).trigger('change');
 			}
 		};
@@ -149,7 +151,8 @@ function import_picker($) {
 			// Set Value Function
 			col.setValue = function(newValue, transition, valueCallbacks) {
 				if (typeof transition === 'undefined') transition = '';
-				var newActiveIndex = col.wrapper.find('.picker-item[data-picker-value="' + newValue + '"]').index();
+				var newActiveIndex = col.wrapper.find('.picker-item[data-picker-value="' + newValue + '"]')
+					.index();
 				if (typeof newActiveIndex === 'undefined' || newActiveIndex === -1) {
 					return;
 				}
@@ -159,7 +162,8 @@ function import_picker($) {
 				col.wrapper.transform('translate3d(0,' + (newTranslate) + 'px,0)');
 
 				// Watch items
-				if (p.params.updateValuesOnMomentum && col.activeIndex && col.activeIndex !== newActiveIndex) {
+				if (p.params.updateValuesOnMomentum && col.activeIndex && col.activeIndex !==
+					newActiveIndex) {
 					$.cancelAnimationFrame(animationFrameId);
 					col.wrapper.transitionEnd(function() {
 						$.cancelAnimationFrame(animationFrameId);
@@ -175,7 +179,8 @@ function import_picker($) {
 				if (typeof translate === 'undefined') {
 					translate = $.getTranslate(col.wrapper[0], 'y');
 				}
-				if (typeof activeIndex === 'undefined') activeIndex = -Math.round((translate - maxTranslate) / itemHeight);
+				if (typeof activeIndex === 'undefined') activeIndex = -Math.round((translate -
+					maxTranslate) / itemHeight);
 				if (activeIndex < 0) activeIndex = 0;
 				if (activeIndex >= col.items.length) activeIndex = col.items.length - 1;
 				var previousActiveIndex = col.activeIndex;
@@ -212,7 +217,8 @@ function import_picker($) {
 				if (!p.params.rotateEffect) {
 					return;
 				}
-				var percentage = (translate - (Math.floor((translate - maxTranslate) / itemHeight) * itemHeight + maxTranslate)) /
+				var percentage = (translate - (Math.floor((translate - maxTranslate) / itemHeight) *
+						itemHeight + maxTranslate)) /
 					itemHeight;
 
 				col.items.each(function() {
@@ -231,7 +237,8 @@ function import_picker($) {
 					if (Math.abs(percentage) > itemsFit) item.addClass('picker-item-far');
 					else item.removeClass('picker-item-far');
 					// Set transform
-					item.transform('translate3d(0, ' + (-translate + maxTranslate) + 'px, ' + (originBug ? -110 : 0) +
+					item.transform('translate3d(0, ' + (-translate + maxTranslate) + 'px, ' + (
+							originBug ? -110 : 0) +
 						'px) rotateX(' + angle + 'deg)');
 				});
 			};
@@ -247,7 +254,8 @@ function import_picker($) {
 			if (updateItems) col.updateItems(0, maxTranslate, 0);
 
 			var allowItemClick = true;
-			var isTouched, isMoved, touchStartY, touchCurrentY, touchStartTime, touchEndTime, startTranslate, returnTo,
+			var isTouched, isMoved, touchStartY, touchCurrentY, touchStartTime, touchEndTime, startTranslate,
+				returnTo,
 				currentTranslate, prevTranslate, velocityTranslate, velocityTime;
 
 			function handleTouchStart(e) {
@@ -396,16 +404,20 @@ function import_picker($) {
 			var columnItemsHTML = '';
 			var columnHTML = '';
 			if (col.divider) {
-				columnHTML += '<div class="picker-items-col picker-items-col-divider ' + (col.textAlign ? 'picker-items-col-' +
+				columnHTML += '<div class="picker-items-col picker-items-col-divider ' + (col.textAlign ?
+					'picker-items-col-' +
 					col.textAlign : '') + ' ' + (col.cssClass || '') + '">' + col.content + '</div>';
 			} else {
 				for (var j = 0; j < col.values.length; j++) {
-					columnItemsHTML += '<div class="picker-item" data-picker-value="' + col.values[j] + '">' + (col.displayValues ?
+					columnItemsHTML += '<div class="picker-item" data-picker-value="' + col.values[j] + '">' + (
+						col.displayValues ?
 						col.displayValues[j] : col.values[j]) + '</div>';
 				}
 
-				columnHTML += '<div class="picker-items-col ' + (col.textAlign ? 'picker-items-col-' + col.textAlign : '') + ' ' +
-					(col.cssClass || '') + '"><div class="picker-items-col-wrapper">' + columnItemsHTML + '</div></div>';
+				columnHTML += '<div class="picker-items-col ' + (col.textAlign ? 'picker-items-col-' + col
+						.textAlign : '') + ' ' +
+					(col.cssClass || '') + '"><div class="picker-items-col-wrapper">' + columnItemsHTML +
+					'</div></div>';
 			}
 			return onlyItems ? columnItemsHTML : columnHTML;
 		};
@@ -420,11 +432,13 @@ function import_picker($) {
 				colsHTML += p.columnHTML(p.params.cols[i]);
 				p.cols.push(col);
 			}
-			pickerClass = 'picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' :
+			pickerClass = 'picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ?
+				' picker-3d' :
 				'');
 			pickerHTML =
 				'<div class="' + (pickerClass) + '">' +
-				(p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText) : '') +
+				(p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params
+					.toolbarCloseText) : '') +
 				'<div class="picker-modal-inner picker-items">' +
 				colsHTML +
 				'<div class="picker-center-highlight"></div>' +
@@ -536,7 +550,8 @@ function import_picker($) {
 				// Init Events
 				p.container.find('.picker-items-col').each(function() {
 					var updateItems = true;
-					if ((!p.initialized && p.params.value) || (p.initialized && p.value)) updateItems = false;
+					if ((!p.initialized && p.params.value) || (p.initialized && p.value)) updateItems =
+						false;
 					p.initPickerCol(this, updateItems);
 				});
 
@@ -645,7 +660,8 @@ function import_datetimePicker($) {
 
 		rotateEffect: false, //为了性能
 
-		value: [today.getFullYear(), formatNumber(today.getMonth() + 1), formatNumber(today.getDate()), today.getHours(),
+		value: [today.getFullYear(), formatNumber(today.getMonth() + 1), formatNumber(today.getDate()), today
+			.getHours(),
 			formatNumber(today.getMinutes())
 		],
 
@@ -795,7 +811,8 @@ function load_ui(jquery) {
 
 		for (var i = 0; i < this.length; i++) {
 			var elStyle = this[i].style;
-			elStyle.webkitTransitionDuration = elStyle.MozTransitionDuration = elStyle.transitionDuration = duration;
+			elStyle.webkitTransitionDuration = elStyle.MozTransitionDuration = elStyle.transitionDuration =
+			duration;
 		}
 
 		return this;
@@ -828,7 +845,8 @@ function load_ui(jquery) {
 
 			if (params.buttons && params.buttons.length > 0) {
 				for (var i = 0; i < params.buttons.length; i++) {
-					buttonsHTML += "<span class=\"modal-button" + (params.buttons[i].bold ? " modal-button-bold" : "") + "\">" +
+					buttonsHTML += "<span class=\"modal-button" + (params.buttons[i].bold ?
+							" modal-button-bold" : "") + "\">" +
 						params.buttons[i].text + "</span>";
 				}
 			}
@@ -839,8 +857,10 @@ function load_ui(jquery) {
 			var afterTextHTML = params.afterText ? params.afterText : "";
 			var noButtons = !params.buttons || params.buttons.length === 0 ? "modal-no-buttons" : "";
 			var verticalButtons = params.verticalButtons ? "modal-buttons-vertical" : "";
-			modalHTML = "<div class=\"modal " + extraClass + " " + noButtons + "\"><div class=\"modal-inner\">" + (titleHTML +
-					textHTML + afterTextHTML) + "</div><div class=\"modal-buttons " + verticalButtons + "\">" + buttonsHTML +
+			modalHTML = "<div class=\"modal " + extraClass + " " + noButtons +
+				"\"><div class=\"modal-inner\">" + (titleHTML +
+					textHTML + afterTextHTML) + "</div><div class=\"modal-buttons " + verticalButtons + "\">" +
+				buttonsHTML +
 				"</div></div>";
 			_modalTemplateTempDiv.innerHTML = modalHTML;
 			var modal = $(_modalTemplateTempDiv).children();
@@ -912,8 +932,10 @@ function load_ui(jquery) {
 					bold: true
 				}],
 				onClick: function onClick(modal, index) {
-					if (index === 0 && callbackCancel) callbackCancel($(modal).find(".modal-text-input").val());
-					if (index === 1 && callbackOk) callbackOk($(modal).find(".modal-text-input").val());
+					if (index === 0 && callbackCancel) callbackCancel($(modal).find(
+						".modal-text-input").val());
+					if (index === 1 && callbackOk) callbackOk($(modal).find(".modal-text-input")
+						.val());
 				}
 			});
 		};
@@ -928,9 +950,11 @@ function load_ui(jquery) {
 			return $.modal({
 				text: text || "",
 				title: typeof title === "undefined" ? defaults.modalTitle : title,
-				afterText: "<input type=\"text\" name=\"modal-username\" placeholder=\"" + defaults.modalUsernamePlaceholder +
+				afterText: "<input type=\"text\" name=\"modal-username\" placeholder=\"" + defaults
+					.modalUsernamePlaceholder +
 					"\" class=\"modal-text-input modal-text-input-double\"><input type=\"password\" name=\"modal-password\" placeholder=\"" +
-					defaults.modalPasswordPlaceholder + "\" class=\"modal-text-input modal-text-input-double\">",
+					defaults.modalPasswordPlaceholder +
+					"\" class=\"modal-text-input modal-text-input-double\">",
 				buttons: [{
 					text: defaults.modalButtonCancel
 				}, {
@@ -938,8 +962,10 @@ function load_ui(jquery) {
 					bold: true
 				}],
 				onClick: function onClick(modal, index) {
-					var username = $(modal).find(".modal-text-input[name=\"modal-username\"]").val();
-					var password = $(modal).find(".modal-text-input[name=\"modal-password\"]").val();
+					var username = $(modal).find(".modal-text-input[name=\"modal-username\"]")
+				.val();
+					var password = $(modal).find(".modal-text-input[name=\"modal-password\"]")
+				.val();
 					if (index === 0 && callbackCancel) callbackCancel(username, password);
 					if (index === 1 && callbackOk) callbackOk(username, password);
 				}
@@ -956,7 +982,8 @@ function load_ui(jquery) {
 			return $.modal({
 				text: text || "",
 				title: typeof title === "undefined" ? defaults.modalTitle : title,
-				afterText: "<input type=\"password\" name=\"modal-password\" placeholder=\"" + defaults.modalPasswordPlaceholder +
+				afterText: "<input type=\"password\" name=\"modal-password\" placeholder=\"" + defaults
+					.modalPasswordPlaceholder +
 					"\" class=\"modal-text-input\">",
 				buttons: [{
 					text: defaults.modalButtonCancel
@@ -965,7 +992,8 @@ function load_ui(jquery) {
 					bold: true
 				}],
 				onClick: function onClick(modal, index) {
-					var password = $(modal).find(".modal-text-input[name=\"modal-password\"]").val();
+					var password = $(modal).find(".modal-text-input[name=\"modal-password\"]")
+				.val();
 					if (index === 0 && callbackCancel) callbackCancel(password);
 					if (index === 1 && callbackOk) callbackOk(password);
 				}
@@ -999,7 +1027,8 @@ function load_ui(jquery) {
 		$.showIndicatorDiy = function(htmlcontent) {
 			if ($(".preloader-indicator-modal")[0]) return;
 			$(defaults.modalContainer).append(
-				"<div class=\"preloader-indicator-overlay\"></div><div class=\"preloader-indicator-modal\">" + htmlcontent +
+				"<div class=\"preloader-indicator-overlay\"></div><div class=\"preloader-indicator-modal\">" +
+				htmlcontent +
 				"</div>");
 		};
 
@@ -1121,7 +1150,8 @@ function load_ui(jquery) {
 		};
 
 		$.toast = function(msg, duration, extraclass) {
-			var $toast = $("<div class=\"modal toast " + (extraclass || "") + "\">" + msg + "</div>").appendTo(document.body);
+			var $toast = $("<div class=\"modal toast " + (extraclass || "") + "\">" + msg + "</div>").appendTo(
+				document.body);
 			$.openModal($toast, function() {
 				setTimeout(function() {
 					$.closeModal($toast);
@@ -1263,17 +1293,20 @@ function load_ui(jquery) {
 			}
 
 			if (clicked.hasClass("modal-overlay")) {
-				if ($(".modal.modal-in").length > 0 && defaults.modalCloseByOutside) $.closeModal(".modal.modal-in");
+				if ($(".modal.modal-in").length > 0 && defaults.modalCloseByOutside) $.closeModal(
+				".modal.modal-in");
 				if ($(".actions-modal.modal-in").length > 0 && defaults.actionsCloseByOutside) $.closeModal(
 					".actions-modal.modal-in");
 			}
 
 			if (clicked.hasClass("popup-overlay")) {
-				if ($(".popup.modal-in").length > 0 && defaults.popupCloseByOutside) $.closeModal(".popup.modal-in");
+				if ($(".popup.modal-in").length > 0 && defaults.popupCloseByOutside) $.closeModal(
+				".popup.modal-in");
 			}
 		}
 
-		$(document).on("click", " .modal-overlay, .popup-overlay, .close-popup, .open-popup, .close-picker", handleClicks);
+		$(document).on("click", " .modal-overlay, .popup-overlay, .close-popup, .open-popup, .close-picker",
+			handleClicks);
 		var defaults = $.modal.prototype.defaults = {
 			modalStack: true,
 			modalButtonOk: "确定",
@@ -1675,7 +1708,7 @@ function load_ui(jquery) {
 		template: "<nav :class=\"'mm_list' + cl\"><slot></slot></nav>",
 		props: {
 			col: {
-				type: String,
+				type: Number,
 				default: ""
 			}
 		},
@@ -1683,11 +1716,11 @@ function load_ui(jquery) {
 			cl: function cl() {
 				var cl = this.col;
 
-				if (cl && cl.indexOf("-") == -1) {
-					cl = " list-" + cl;
+				if (cl) {
+					return " list-" + cl;
 				}
 
-				return cl;
+				return "";
 			}
 		}
 	};
@@ -1695,7 +1728,7 @@ function load_ui(jquery) {
 		template: "<div class=\"mm_main\"><slot></slot></div>"
 	};
 	var mm_modal = {
-		template: "<div class=\"mm_modal\" v-bind:class=\"{ 'show' : show }\"><div v-bind:class=\"'from_' + display\"><slot></slot></div><div class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></div></div>",
+		template: "<div class=\"mm_modal\" v-bind:class=\"'from_' + display + (show ? '' : ' hide-x')\"><div class=\"modal_main\"><slot></slot></div><div class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></div></div>",
 		props: {
 			display: {
 				type: String,
@@ -1789,7 +1822,8 @@ function load_ui(jquery) {
 		}
 
 		function mouseUp() {
-			el.releaseCapture ? (el.releaseCapture(), el.onmousemove = el.onmouseup = null) : $(document).unbind("mousemove",
+			el.releaseCapture ? (el.releaseCapture(), el.onmousemove = el.onmouseup = null) : $(document).unbind(
+				"mousemove",
 				mouseMove).unbind("mouseup", mouseUp);
 		}
 	}
@@ -2360,7 +2394,8 @@ function load_ui(jquery) {
 			}
 		},
 		data: function data() {
-			var other = this.bg ? '; background: url(' + this.bg + ') center center no-repeat; background-size:100%' : '';
+			var other = this.bg ? '; background: url(' + this.bg +
+				') center center no-repeat; background-size:100%' : '';
 
 			if (this.height) {
 				other += ';height:' + this.height;
@@ -2479,50 +2514,70 @@ function load_ui(jquery) {
 
 	return {
 		install: function install(Vue, options) {
-			//自定义拖动
+			// 自定义拖动
 			Vue.directive('drag',
-			     function (el, binding) {
-			         el.onmousedown = function (e) {
-			            e.preventDefault();
-			            let bw = document.body.clientWidth;
-			            let bh = document.body.clientHeight;
-			            //鼠标按下，计算当前元素距离可视区的距离
-			             let disX = e.clientX - el.offsetLeft;
-			             let disY = e.clientY - el.offsetTop;
-			             // 计算两边坐标
-			             document.onmousemove = function (e) {
-			                 let l = 0, t = 0;
-			                 // 拖动边界
-			                 if (e.clientX >= bw) {
-			                     l = bw - disX;
-			                 } else if (e.clientX <= 0) {
-			                     {
-			                         l = 0- disX;
-			                     }
-			                 } else {
-			                     l = e.clientX - disX;
-			                 }
-			                 if (e.clientY >= bh) {
-			                     t = bh - disY;
-			                 }else if(e.clientY <= 0) {
-			                     t = 0- disY;
-			                 }
-			                 else {
-			                     t = e.clientY - disY;
-			                 }
-			                 //移动当前元素
-			                 el.style.left = l + 'px';
-			                 el.style.top = t + 'px';
-			             };
-			             // 鼠标停止移动时，事件移除
-			             document.onmouseup = function (e) {
-			                 document.onmousemove = null;
-			                 document.onmouseup = null;
-			             };
-			         };
-			     }
-			 );
-			 
+				function(el, binding) {
+					el.onmousedown = function(e) {
+						let odiv = el; //获取当前元素
+						let firstTime = '',
+							lastTime = '';
+						// 给当前元素添加属性，用于元素状态的判断
+						odiv.setAttribute('ele-flag', false)
+						odiv.setAttribute('draging-flag', true)
+
+						e.preventDefault();
+						let bw = document.body.clientWidth;
+						let bh = document.body.clientHeight;
+						//鼠标按下，计算当前元素距离可视区的距离
+						let disX = e.clientX - el.offsetLeft;
+						let disY = e.clientY - el.offsetTop;
+
+						// 计算两边坐标
+						document.onmousemove = function(e) {
+							let l = 0,
+								t = 0;
+							// 拖动边界
+							if (e.clientX >= bw) {
+								l = bw - disX;
+							} else if (e.clientX <= 0) {
+								{
+									l = 0 - disX;
+								}
+							} else {
+								l = e.clientX - disX;
+							}
+							if (e.clientY >= bh) {
+								t = bh - disY;
+							} else if (e.clientY <= 0) {
+								t = 0 - disY;
+							} else {
+								t = e.clientY - disY;
+							}
+							//移动当前元素
+							el.style.left = l + 'px';
+							el.style.top = t + 'px';
+						};
+						// 鼠标停止移动时，事件移除
+						document.onmouseup = function(e) {
+							document.onmousemove = null;
+							document.onmouseup = null;
+							console.log({
+								x: e.clientX,
+								y: e.clientY
+							});
+							lastTime = new Date().getTime();
+							if ((lastTime - firstTime) > 200) {
+								odiv.setAttribute('ele-flag', true)
+								event.stopPropagation()
+							}
+							setTimeout(function() {
+								odiv.setAttribute('draging-flag', false)
+							}, 100)
+						};
+					};
+				}
+			);
+
 			Vue.component("mm_icon", mm_icon);
 			Vue.component("mm_btn", mm_btn);
 			Vue.component("mm_loading", mm_loading);
@@ -2566,9 +2621,8 @@ function load_ui(jquery) {
 		}
 	};
 }
-if(window.define){
+if (window.define) {
 	define(['jquery'], load_ui);
-}
-else {
+} else {
 	window.mm_ui = load_ui(window.$);
 }

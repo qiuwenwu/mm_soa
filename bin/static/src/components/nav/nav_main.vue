@@ -1,9 +1,9 @@
 <template>
 	<div class="nav_main">
 		<div class="list">
-			<div class="item" :class="{active:key_drop === i}" v-for="(o,i) in list" :key="i">
-				<a :href="o.url"><span>{{o[vm.title]}}</span></a>
-				<i v-if="o.icon" :class="'icon ' + o.icon" @click="show_items(i)"></i>
+			<div class="item" :class="{active:key_drop === i}" v-for="(o,i) in list" :key="i"  @click="show_items(i)">
+				<a class="title" :href="o.url"><span>{{o[vm.title]}}</span></a>
+				<i v-if="o.icon" :class="'icon ' + o.icon"></i>
 				<div class="dropdown" v-if="o.sub">
 					<div class="sub" v-for="(obj,idx) in o[vm.sub]" :key="idx">
 						<a :href="obj.url">
@@ -83,7 +83,6 @@
 								url: ""
 							}, ],
 							icon: "fa-caret-down",
-							url: ""
 						},
 						{
 							title: "起步",
@@ -123,7 +122,6 @@
 								url: ""
 							}, ],
 							icon: "fa-caret-down",
-							url: ""
 						},
 						{
 							title: "交流",
