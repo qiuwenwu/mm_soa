@@ -1709,7 +1709,7 @@ function load_ui(jquery) {
 		props: {
 			col: {
 				type: Number,
-				default: ""
+				default: 0
 			}
 		},
 		computed: {

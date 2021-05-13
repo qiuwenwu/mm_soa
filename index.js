@@ -60,7 +60,7 @@ class Soa extends Base {
 				 * 系统服务监听端口
 				 * @type {Number}
 				 */
-				"port": 10001
+				"port": 0
 			},
 			/**
 			 * web服务配置
@@ -259,9 +259,26 @@ class Soa extends Base {
 			"proxy": {}
 		});
 		this.set_config(config, {});
-
+		var m = this.config.master;
+		if (!m.port) {
+			m.port = this.config.web.port * 2;
+		}
+		var dict = this.config.proxy.targets;
+		for (var k in dict) {
+			var o = dict[k];
+			var url = o.target;
+			if (url) {
+				if (url.endWith(":0")) {
+					o.target = url.substring(0, url.length - 2) + ":" + m.port;
+				}
+			} else {
+				o.target = "http://127.0.0.1:" + m.port
+			}
+		}
+		
 		$.push(server, this, true);
 		$.push($.config, this.config, true);
+		
 		bin.new(server);
 		return server;
 	}
@@ -306,7 +323,6 @@ Soa.prototype.init_main = function() {
 		var h = host == '0.0.0.0' ? this.getIP(os) : host;
 
 		var m = this.config.master;
-
 		$.log.info('欢迎使用' + this.config.sys.title);
 		console.log('访问地址', `http://${h}:${port}`);
 		console.log('主程地址', `http://${m.host}:${m.port}`);
@@ -339,7 +355,5 @@ Soa.prototype.init_main = function() {
 	bin.init(this, 'common_after', true);
 	return this;
 };
-
-
 
 module.exports = Soa;

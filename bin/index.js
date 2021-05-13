@@ -19,8 +19,7 @@ class Bin {
 	 * @param {Object} config 配置参数
 	 * @param {Object} option 附加选项
 	 */
-	constructor(config, option) {
-	}
+	constructor(config, option) {}
 }
 
 /**
@@ -51,11 +50,11 @@ Bin.prototype.init = function(server, process_type = "worker") {
  */
 Bin.prototype.load_middleware = function(server, process_type) {
 	var list = this.middleware.list;
-	for(var i = 0; i < list.length; i++){
+	for (var i = 0; i < list.length; i++) {
 		var o = list[i];
-		if(o.process_type === process_type){
+		if (o.process_type === process_type) {
 			o.func = require(o.func_file);
-			if(o.func){
+			if (o.func) {
 				o.func(server);
 			}
 		}
