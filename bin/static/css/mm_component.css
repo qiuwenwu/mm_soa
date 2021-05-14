@@ -17,12 +17,9 @@
 .mm_btn {
 	display: inline-block;
 	text-transform: none;
-	height: var(--height_base);
-	line-height: var(--height_base);
 	cursor: pointer;
 	border: 1px solid var(--color_border);
-	padding-left: var(--padding_small);
-	padding-right: var(--padding_small);
+	padding: var(--padding_mini) var(--padding_base);
 	border-radius: var(--radius_small);
 	font-size: 0.875rem;
 }
@@ -91,7 +88,7 @@
 
 /* 计数器 */
 .control_number {
-	display: inline-block;
+	width: fit-content;
 }
 
 .control_number .value {
@@ -504,10 +501,6 @@ table .control_reverse .title {
 	position: relative;
 }
 
-.control_switch .value {
-	display: inline-block;
-}
-
 .control_input .value::before,
 .control_checkbox .value:before,
 .control_radio .value:before,
@@ -531,6 +524,10 @@ table .control_reverse .title {
 .control_input .unit {
 	padding-left: .5rem;
 	padding-right: 1rem;
+}
+
+.control_switch {
+	overflow: hidden;
 }
 
 /* 导航 */
@@ -590,10 +587,8 @@ table .control_reverse .title {
 }
 
 .pc .control_input input {
-	padding: .25rem .5rem;
 	border-radius: .25rem;
 	border: 1px solid rgba(125, 125, 125, 0.25);
-	height: 2rem;
 	min-width: 12rem;
 }
 
@@ -640,9 +635,8 @@ table .control_reverse .title {
 
 .mobile .control_input {
 	margin-bottom: -1px;
-	padding-top: .25rem;
-	padding-bottom: .25rem;
-	border-top: 1px solid #DBDBDB;
+	padding-top: var(--padding_small);
+	padding-bottom: var(--padding_small);
 	border-bottom: 1px solid #DBDBDB;
 }
 
@@ -654,9 +648,10 @@ table .control_reverse .title {
 .mobile .control_input input {
 	line-height: 2rem;
 	height: 2rem;
-	padding: 0 .5rem;
+	padding: 0 var(--padding_small);
 	flex: 1;
 	border-color: transparent;
+	margin-right: 0.5rem;
 }
 
 
@@ -672,10 +667,9 @@ table .control_reverse .title {
 .mobile .control_radio label,
 .mobile .control_checkbox label {
 	display: block;
-	margin: -1px 0 0 0;
-	padding: 0.5rem;
-	border-top: 1px solid #DBDBDB;
-	border-bottom: 1px solid #DBDBDB;
+	padding: 0.75rem;
+	border-bottom: 1px solid var(--color_border);
+	margin-bottom: -1px;
 }
 
 .mobile .control_radio .figure {
@@ -700,8 +694,8 @@ table .control_reverse .title {
 
 .mobile .control_switch {
 	margin-bottom: -1px;
-	padding-top: .25rem;
-	padding-bottom: .25rem;
+	padding-top: var(--padding_small);
+	padding-bottom: var(--padding_small);
 	border-top: 1px solid rgba(125, 125, 125, 0.25);
 	border-bottom: 1px solid rgba(125, 125, 125, 0.25);
 	overflow: hidden;
@@ -767,7 +761,6 @@ table .control_reverse .title {
 }
 
 .mm_nav_fast>* {
-	line-height: var(--height_big);
 	height: var(--height_big);
 	border-radius: 0;
 	padding-right: var(--padding_base);
@@ -811,7 +804,7 @@ table .control_reverse .title {
 .mm_nav_side .btn {
 	overflow: hidden;
 	line-height: var(--height_big);
-	padding: 0 var(--padding_mini);
+	padding: 0 var(--padding_small);
 	color: inherit;
 	font-size: var(--font_small);
 	position: relative;
@@ -878,6 +871,7 @@ table .control_reverse .title {
 
 .mm_nav_top {
 	float: right;
+    white-space: nowrap;
 }
 
 .mm_nav_top .mm_icon {
@@ -895,10 +889,8 @@ table .control_reverse .title {
 
 
 .mm_nav_top>button {
-	display: none;
 	height: 2.5rem;
 	min-width: 2.5rem;
-	line-height: 2.5rem;
 	float: right;
 	border-radius: 0;
 }
@@ -921,6 +913,9 @@ table .control_reverse .title {
 
 .mm_nav_top .mask {
 	background: none;
+	display: none;
+}
+.mm_nav_top>button {
 	display: none;
 }
 
@@ -1245,10 +1240,6 @@ table .control_reverse .title {
 table .mm_btn {
 	border-radius: .25rem;
 	display: inline-block;
-	height: 1.5rem;
-	line-height: 1.5rem;
-	padding-left: 0.75rem;
-	padding-right: 0.75rem;
 	margin-right: .5rem;
 	font-size: .75rem;
 }

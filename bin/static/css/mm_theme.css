@@ -36,6 +36,7 @@
 	background: #fff;
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
+	overflow: hidden;
 }
 
 .mm_table,
@@ -101,12 +102,12 @@ nav a:active {
 	background: var(--bg_black);
 }
 
-.mm_page>header .mm_warp {
+.mm_page>.header .mm_warp {
 	background: var(--bg_black);
 	color: var(--color_white);
 }
 
-.mm_page>footer .mm_warp {
+.mm_page>.footer .mm_warp {
 	background: var(--bg_white);
 }
 

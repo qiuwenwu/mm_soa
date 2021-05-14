@@ -43,6 +43,7 @@
 	justify-content: stretch;
 	align-content: space-between;
 	height: 100%;
+	overflow-x: hidden;
 }
 
 .item_article .doc>* {
@@ -148,8 +149,8 @@
 .item_message .time {
 	font-size: 0.625rem;
 	position: absolute;
-	top: 0.5rem;
-	right: 0.5rem;
+	top: var(--margin_small);
+	right: var(--margin_base);
 	color: #999;
 }
 
@@ -185,8 +186,8 @@
 
 .item_message .mute {
 	position: absolute;
-	right: 0.5rem;
-	bottom: 0.75rem;
+	right: var(--margin_base);
+	bottom: var(--margin_big);
 	font-size: 0.625rem;
 	color: #999;
 	opacity: 0.7;

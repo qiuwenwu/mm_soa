@@ -1,12 +1,15 @@
-[class^=item_]{
+[class^=item_] {
 	height: 100%;
 }
-[class^=item_]::before,[class^=item_]::after {
+
+[class^=item_]::before,
+[class^=item_]::after {
 	display: block;
 	content: "";
 	clear: both;
 	float: none;
 }
+
 #app {
 	position: absolute;
 	width: 100%;
@@ -25,26 +28,26 @@
 }
 
 main {
-	margin-bottom: 2.5rem;
+	min-height: 100vh;
 	transition: all 0.5s ease-in-out;
 }
 
-.mm_page>header {
+.header {
 	min-height: var(--height_big);
 	display: block;
 	position: absolute;
 	z-index: 10;
 	right: 0;
 	top: 0;
-	width: 100%;
 	transition: all 0.5s ease-in-out;
+	width: 100%;
 }
 
-.mm_page>header~main {
-	margin-top: 2.5rem;
+.header~main {
+	padding-top: 2.5rem;
 }
 
-.mm_page>footer {
+.footer {
 	min-height: var(--height_small);
 	display: block;
 	position: absolute;
@@ -186,7 +189,11 @@ footer.hide-x {
 	border-radius: var(--radius_small);
 	height: calc(100% - var(--margin_small) * 2);
 	margin: var(--margin_small);
-	overflow: hidden;
+}
+
+.mm_modal .mm_card {
+	max-width: 37.5rem;
+	margin: auto;
 }
 
 .card_head::before,
@@ -207,7 +214,7 @@ footer.hide-x {
 
 .card_head {
 	position: relative;
-	padding: var(--padding_mini) var(--padding_base);
+	padding: var(--padding_small) var(--padding_base);
 }
 
 .card_head~.card_body {
@@ -274,7 +281,8 @@ ol.mm_list li::before {
 	width: 100%;
 }
 
-.mm_item:before, .mm_item:after {
+.mm_item:before,
+.mm_item:after {
 	content: "";
 	display: block;
 	float: none;
@@ -282,11 +290,11 @@ ol.mm_list li::before {
 }
 
 .media {
-	padding: var(--padding_mini);
+	padding: var(--padding_small);
 }
 
 .doc {
-	padding: var(--padding_mini);
+	padding: var(--padding_small);
 	overflow: hidden;
 	height: 100%;
 }
@@ -295,9 +303,10 @@ ol.mm_list li::before {
 	padding-top: 0;
 }
 
-.mm_item .title{
+.mm_item .title {
 	overflow: hidden;
 }
+
 .mm_item .content {
 	overflow: hidden;
 	display: -webkit-box;
@@ -330,6 +339,7 @@ ol.mm_list li::before {
 
 .item-lr .content {
 	text-align: right;
+	line-height: 1.75;
 }
 
 .item-rl .media,
@@ -340,6 +350,10 @@ ol.mm_list li::before {
 .item-rl .title {
 	float: left;
 	margin-right: var(--margin_small);
+}
+
+.item-rl .content {
+	line-height: 1.75;
 }
 
 .item-rr .title {
@@ -386,14 +400,15 @@ ol.mm_list li::before {
 .mm_group>.unit,
 .mm_group>.title {
 	flex: inherit;
-	height: var(--height_base);
-	line-height: var(--height_base);
 	padding-left: var(--padding_base);
 	padding-right: var(--padding_base);
+	padding-top: var(--padding_mini);
+	padding-bottom: var(--padding_mini);
 	background-color: var(--color_light);
 	border: 1px solid var(--color_border);
-	font-size: 0.75rem;
+	font-size: 0.875rem;
 	text-align: center;
+	line-height: 1.75;
 }
 
 
@@ -484,6 +499,7 @@ ol.mm_list li::before {
 .info-base .mm_item .content {
 	color: var(--color_default);
 	line-height: var(--height_base);
+	margin-top: 0.25rem;
 }
 
 .info-base .mm_item .mm_grid {
@@ -532,7 +548,7 @@ ol.mm_list li::before {
 
 .table-sm td,
 .table-sm th {
-	padding: .25rem var(--padding_mini)
+	padding: var(--padding_mini) var(--padding_small);
 }
 
 
@@ -544,12 +560,14 @@ ol.mm_list li::before {
 	transform: translate(0, 0);
 	transition: all 0.5s ease-in-out;
 }
+
 .from_left .modal_main {
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 12rem;
 }
+
 .from_left.hide-x .modal_main {
 	transform: translate(-100%, 0);
 }
@@ -560,6 +578,7 @@ ol.mm_list li::before {
 	height: 100%;
 	width: 12rem;
 }
+
 .from_right.hide-x .modal_main {
 	transform: translate(100%, 0);
 }
@@ -569,6 +588,7 @@ ol.mm_list li::before {
 	left: 0;
 	width: 100%;
 }
+
 .from_top.hide-x .modal_main {
 	transform: translate(0, -100%);
 }
@@ -578,6 +598,7 @@ ol.mm_list li::before {
 	left: 0;
 	width: 100%;
 }
+
 .from_bottom.hide-x .modal_main {
 	transform: translate(0, 100%);
 }
@@ -589,6 +610,7 @@ ol.mm_list li::before {
 	transform: translate(-50%, -50%);
 	overflow: hidden;
 }
+
 .from_center.hide-x .modal_main {
 	width: 0;
 }
@@ -600,6 +622,7 @@ ol.mm_list li::before {
 	transform: translate(-50%, -50%);
 	overflow: hidden;
 }
+
 .from_default.hide-x .modal_main {
 	display: none;
 	opacity: 0;
@@ -614,9 +637,7 @@ ol.mm_list li::before {
 	z-index: 32;
 }
 
-.from_default.hide-x {
-	
-}
+.from_default.hide-x {}
 
 /* 所有CSS属性都拥有过渡属性，动画持续时间3s 延迟2s触发 linear的触发函数 */
 .trans {
@@ -635,14 +656,7 @@ ol.mm_list li::before {
 
 .mobile .value label {
 	float: none;
-}
-
-.mm_form dt {
-	line-height: 2rem;
-}
-
-.mm_form dd {
-	line-height: 1;
+	margin-right: 0;
 }
 
 .mm_icon {
@@ -657,6 +671,7 @@ ol.mm_list li::before {
 	height: 0;
 	padding-top: 100%;
 }
+
 .img-auto .img {
 	position: absolute;
 	top: 0;
@@ -682,6 +697,7 @@ ol.mm_list li::before {
 }
 
 @media (min-width:576px) {
+
 	.mm_side~header,
 	.mm_side~footer {
 		width: calc(100% - 12rem);

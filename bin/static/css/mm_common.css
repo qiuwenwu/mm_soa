@@ -87,17 +87,21 @@
 	-webkit-text-fill-color: transparent;
 	-webkit-text-stroke: 1px var(--color_base);
 }
-
+/* 
+未完成
+[class*=item_] {
+	padding: var(--padding_mini) var(--padding_small);
+} */
 .arrow,
-.item-arrow>* {
+.item-arrow [class*=item_] {
 	padding-right: var(--padding_larger) !important;
 }
 
 .arrow::after,
-.item-arrow>*::after {
+.item-arrow [class*=item_]::after {
 	position: absolute;
 	right: 1rem;
-	top: 50%;
+	top: calc(50% + 1px);
 	transform: translateY(-50%) rotate(-45deg);
 	content: "";
 	padding: 3px;
@@ -240,9 +244,8 @@
 }
 
 .grid-x>* {
-	margin-top: -1px;
-	margin-left: -1px;
-	border: 1px solid var(--color_border);
+	border-right: 1px solid var(--color_border);
+	border-bottom: 1px solid var(--color_border);
 }
 
 .grid-auto>* {
@@ -1878,7 +1881,7 @@
 /* ===  填充  === */
 /* 基础 */
 .pa {
-	padding: var(--padding_small) !important;
+	padding: var(--padding_small) var(--padding_base) !important;
 }
 
 .pb {
@@ -1886,16 +1889,16 @@
 }
 
 .pl {
-	padding-left: var(--padding_small) !important;
+	padding-left: var(--padding_base) !important;
 }
 
 .plr {
-	padding-left: var(--padding_small);
-	padding-right: var(--padding_small) !important;
+	padding-left: var(--padding_base);
+	padding-right: var(--padding_base) !important;
 }
 
 .pr {
-	padding-right: var(--padding_small) !important;
+	padding-right: var(--padding_base) !important;
 }
 
 .pt {
