@@ -19,7 +19,7 @@
 										<!--{if(v.name == 'keyword')}-->
 										<mm_item>
 											<control_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-											 @blur="search()" />
+											  />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -29,17 +29,17 @@
 										<!--{if(v.format.table)}-->
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 @change="search()" />
+											 />
 										</mm_item>
 										<!--{else}-->
 										<mm_item>
-											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
+											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
 										<mm_item>
-											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
+											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();">重置</mm_btn>
 										</mm_item>
 									</mm_list>
 								</mm_form>
@@ -126,7 +126,7 @@
 				<div class="card_head">
 					<h5>批量修改</h5>
 				</div>
-				<div class="card_body">
+				<div class="card_body pa">
 					<dl>
 						<!--{loop field v idx}-->
 						<!--{if(v.format)}-->
@@ -194,9 +194,7 @@
 				arr_color: ['', '', 'font_yellow', 'font_success', 'font_warning', 'font_primary', 'font_info', 'font_default'],
 				/*[loop js.data v idx]*/
 				// ${' ' + v.title}
-				'${v.name}': $ {
-					@JSON.stringify(v.value)
-				},
+				'${v.name}': ${@JSON.stringify(v.value)},
 				/*[/loop]*/
 				// 视图模型
 				vm: {}
@@ -229,7 +227,7 @@
 			 * 获取列表之前
 			 * @param {Object} param 参数
 			 */
-			get_list_before(param) {
+			get_list_before(param){
 				delete param.page;
 				param.size = "0";
 				return param;
@@ -239,7 +237,7 @@
 			/*[loop js.data v idx]*/
 			/*[if(v.path)]*/
 			// 获取 ${v.title}
-			this.get_ /*[v.basename]*/();
+			this.get_/*[v.basename]*/();
 			/*[/if]*/
 			/*[/loop]*/
 		},

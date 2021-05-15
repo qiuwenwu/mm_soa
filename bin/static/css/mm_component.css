@@ -221,6 +221,7 @@
 
 .control_select .value {
 	font-size: .875rem;
+	overflow-x: hidden;
 }
 
 .control_select select {
@@ -229,6 +230,7 @@
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	height: 2rem;
 	background-position-x: calc(100% - .25rem);
+	max-width: 100%;
 }
 
 .control_select .selected {
@@ -269,11 +271,12 @@
 	color: #000000;
 }
 
-.mm_textarea .value {
+.control_textarea .value {
 	position: relative;
+	overflow-x: hidden;
 }
 
-.mm_textarea .btn_expand {
+.control_textarea .btn_expand {
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -287,20 +290,20 @@
 	line-height: 1;
 }
 
-.mm_textarea textarea:focus~.btn_expand {
+.control_textarea textarea:focus~.btn_expand {
 	display: inline-block;
 	opacity: 1;
 }
 
-.mm_textarea .tox-tinymce {
+.control_textarea .tox-tinymce {
 	display: none;
 }
 
-.mm_textarea.show-expand .value textarea {
+.control_textarea.show-expand .value textarea {
 	display: none;
 }
 
-.mm_textarea.show-expand .tox-tinymce {
+.control_textarea.show-expand .tox-tinymce {
 	display: block;
 }
 
@@ -710,8 +713,8 @@ table .control_reverse .title {
 	margin-right: 1rem;
 }
 
-.mobile .control_input .title~.value {
-	overflow: hidden;
+.mobile .control_input .value {
+	overflow-x: hidden;
 	display: flex;
 }
 

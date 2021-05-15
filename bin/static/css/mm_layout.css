@@ -194,6 +194,7 @@ footer.hide-x {
 .mm_modal .mm_card {
 	max-width: 37.5rem;
 	margin: auto;
+	width: calc(100% - 1rem);
 }
 
 .card_head::before,

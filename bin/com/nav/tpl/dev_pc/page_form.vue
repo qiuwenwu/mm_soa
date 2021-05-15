@@ -54,7 +54,7 @@
 										</dd>
 										<!--{else if(v.dataType.indexOf('text') !== -1)}-->
 										<dd>
-											<mm_textarea v-model="form.${v.name}" type="text" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"></mm_textarea>
+											<control_textarea v-model="form.${v.name}" type="text" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"></control_textarea>
 										</dd>
 										<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
 										<dd>

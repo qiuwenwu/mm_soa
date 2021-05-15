@@ -2457,8 +2457,8 @@ function load_ui(jquery) {
 		}
 	};
 
-	var mm_textarea = {
-		template: "<div class=\"mm_textarea\" :class=\"{ 'show-expand': sw }\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><textarea :value=\"value\" @blur=\"set\" :disabled=\"disabled\" :placeholder=\"desc || placeholder\" v-if=\"type == 'text'\"></textarea><button class=\"btn_expand\" type=\"button\" v-show=\"$slots.default\" @click=\"sw = !sw\"><i class=\"fa-expand\"></i></button></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div><slot></slot></div>",
+	var control_textarea = {
+		template: "<div class=\"control_textarea\" :class=\"{ 'show-expand': sw }\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><textarea :value=\"value\" @blur=\"set\" :disabled=\"disabled\" :placeholder=\"desc || placeholder\" v-if=\"type == 'text'\"></textarea><button class=\"btn_expand\" type=\"button\" v-show=\"$slots.default\" @click=\"sw = !sw\"><i class=\"fa-expand\"></i></button></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div><slot></slot></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -2608,7 +2608,7 @@ function load_ui(jquery) {
 			Vue.component("control_input", control_input);
 			Vue.component("control_number", control_number);
 			Vue.component("mm_time", mm_time);
-			Vue.component("mm_textarea", mm_textarea);
+			Vue.component("control_textarea", control_textarea);
 			Vue.component("control_pager", control_pager);
 			Vue.component("control_radio", control_radio);
 			Vue.component("control_reverse", control_reverse);
