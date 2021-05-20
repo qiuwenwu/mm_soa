@@ -1,11 +1,12 @@
 /* 图片集合九宫 */
-.imgs{
+.imgs {
 	display: flex;
 	justify-content: stretch;
 	align-content: stretch;
 	flex: 1;
 }
-.imgs>*{
+
+.imgs>* {
 	padding: 0 0.125rem;
 	width: 100%;
 }
@@ -87,6 +88,7 @@
 	-webkit-text-fill-color: transparent;
 	-webkit-text-stroke: 1px var(--color_base);
 }
+
 /* 
 未完成
 [class*=item_] {
@@ -364,7 +366,9 @@
 
 	.container,
 	.container-sm {
-		max-width: 33.75rem
+		max-width: 33.75rem;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }
 

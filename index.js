@@ -1,3 +1,4 @@
+﻿require('mm_expand');
 const cluster = require('cluster');
 const Koa = require('koa');
 $.binPath = __dirname.fullname();

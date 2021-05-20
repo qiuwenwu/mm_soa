@@ -98,6 +98,14 @@ import swiper_text from '/src/components/swiper/swiper_text.vue';
 import table_coin from '/src/components/table/table_coin.vue';
 import table_stock from '/src/components/table/table_stock.vue';
 
+// 图表
+import chart_bar from '/src/components/chart/chart_bar.vue';
+import chart_depth from '/src/components/chart/chart_depth.vue';
+import chart_k from '/src/components/chart/chart_k.vue';
+import chart_line from '/src/components/chart/chart_line.vue';
+import chart_panel from '/src/components/chart/chart_panel.vue';
+import chart_pie from '/src/components/chart/chart_pie.vue';
+
 // 拓展
 import expand_drag from '/src/components/expand/expand_drag.vue';
 import expand_pay from '/src/components/expand/expand_pay.vue';
@@ -211,6 +219,13 @@ export default {
 		Vue.component('expand_qrcode', expand_qrcode);
 		Vue.component('expand_sptite', expand_sptite);
 		
+		// 图表
+		Vue.component('chart_bar', chart_bar);
+		Vue.component('chart_depth', chart_depth);
+		Vue.component('chart_k', chart_k);
+		Vue.component('chart_line', chart_line);
+		Vue.component('chart_panel', chart_panel);
+		Vue.component('chart_pie', chart_pie);
 		
 		/**
 		 * 转换时间
