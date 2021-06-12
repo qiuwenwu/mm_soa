@@ -481,7 +481,8 @@
 	-ms-flex: auto !important;
 	flex-basis: auto !important;
 	width: auto !important;
-	max-width: 100% !important
+	max-width: 100% !important;
+	flex: 1;
 }
 
 .col-1 {
