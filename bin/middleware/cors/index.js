@@ -18,7 +18,8 @@ module.exports = function(server) {
 
 		// 字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段.
 		ctx.set('Access-Control-Allow-Headers',
-			'Content-Type, Content-Length, Authorization, Accept, X-Requested-With, x-auth-token, token, client_id, appid, apikey, user_id');
+			'Content-Type, Content-Length, Authorization, Accept, X-Requested-With, x-auth-token, token, client_id, appid, apikey, user_id,x-forwarded-for,x-real-ip,user-agent,cache-control,pragma,accept-encoding,connection,host'
+			);
 
 		// 服务器收到请求以后，检查了Origin、Access-Control-Request-Method和Access-Control-Request-Headers字段以后，确认允许跨源请求，就可以做出回应。
 
@@ -47,8 +48,7 @@ module.exports = function(server) {
 		// ctx.set("Access-Control-Expose-Headers", "myData");
 		if (req.method === 'OPTIONS') {
 			ctx.status = 204;
-		}
-		else {
+		} else {
 			await next();
 		}
 	});

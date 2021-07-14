@@ -42,19 +42,27 @@ module.exports = function(server) {
 			})
 		);
 	}
-
+	
 	// 解析 text/xml
 	server.use(xmlParser());
-
-	// 解析 application/json、application/x-www-form-urlencoded、text/plain
-	// 接收主体
-	server.use(koaBody({
+	
+	var func = koaBody({
 		multipart: true,
 		formidable: {
 			// 设置上传文件大小最大限制，默认20M
 			maxFileSize: 2000 * 1024 * 1024
 		}
-	}));
-
+	});
+	
+	// 解析 application/json、application/x-www-form-urlencoded、text/plain
+	// 接收主体
+	server.use(async(ctx, next) => {
+		if(!ctx.request.body){
+			await func(ctx, next);
+		}
+		else {
+			await next();
+		}
+	});
 	return server;
 };
