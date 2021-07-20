@@ -130,7 +130,7 @@ Drive.prototype.model = function(fields) {
 		}
 		map = desc.between("(", ")");
 	}
-	if (name.indexOf('_id') !== -1) {
+	if (name.indexOf('_id') !== -1 || name == 'id') {
 		min = 0;
 	}
 	if (max === 0) {
@@ -522,20 +522,6 @@ Drive.prototype.update_api = async function(dir, cover) {
  * @param {String} scope 接口域
  */
 Drive.prototype.new_event = async function(dir, path, scope) {
-	// // 添加事件
-	// 				var event_dir = dir + "/event_api";
-	// 				if (!fs.existsSync(event_dir)) {
-	// 					fs.mkdirSync(event_dir);
-	// 				}
-	// 
-	// 				if (dir_arr.length > 1) {
-	// 					event_dir += "/" + dir_arr[1];
-	// 					if (!fs.existsSync(event_dir)) {
-	// 						fs.mkdirSync(event_dir);
-	// 					}
-	// 					this.new_event(event_dir, dir_arr[0], dir_arr[1]);
-	// 				}
-
 	var f = dir + "/main.js";
 	if (!f.hasFile()) {
 		var code = (__dirname + '/event_script.js').loadText();
@@ -932,9 +918,9 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 						m_max.title += "——最大值";
 						cm.list.push(m_max);
 					} else {
+						cm.get.query.push(n);
 						if (this.isSet(n, this.query_number)) {
 							cm.set.query.push(n);
-							cm.get.query.push(n);
 						}
 					}
 				} else {
