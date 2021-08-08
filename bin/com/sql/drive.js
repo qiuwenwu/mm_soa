@@ -74,7 +74,7 @@ class Drive extends Item {
 			// 分隔符 用于查询时的多条件处理
 			"separator": "|",
 			// 支持的方法 add增、del删、set改、get查, 只填get表示只支持查询 // import export del_repeat",
-			"method": "add del set get get_obj import export del_repeat sum count",
+			"method": "add del set get get_obj import export del_repeat avg sum count",
 			// sql查询语句
 			"query": {},
 			// 默认查询, 当查询条件中不包含该项时，默认添加该项。 例如: { "age": "`age` < 20" } , 当查询参含有age，不调用该项，不存在时，sql会增加该项
@@ -829,7 +829,24 @@ Drive.prototype.sum_main = async function(db, pm) {
 	var f = db.config.filter;
 	var field = pm[f.field];
 	delete pm[f.field];
-
+	
+	if(pm.page){
+		db.page = pm.page;
+		delete pm.page;
+	}
+	else {
+		db.page = 1;
+	}
+	
+	
+	if(pm.size){
+		db.size = pm.size;
+		delete pm.size;
+	}
+	else {
+		db.size = 0;
+	}
+	
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {
@@ -855,6 +872,63 @@ Drive.prototype.sum = async function(db, query, body) {
 	return await this.sum_main(db, pm);
 };
 
+/**
+ * 平均值
+ * @param {Object} db 数据库管理器
+ * @param {Object} pm 查询条件
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.avg_main = async function(db, pm) {
+	var ret;
+	var orderby = pm.orderby || "";
+	delete pm.orderby;
+	var groupby = pm.groupby;
+	delete pm.groupby;
+	var f = db.config.filter;
+	var field = pm[f.field];
+	delete pm[f.field];
+	
+	if(pm.page){
+		db.page = pm.page;
+		delete pm.page;
+	}
+	else {
+		db.page = 1;
+	}
+	
+	
+	if(pm.size){
+		db.size = pm.size;
+		delete pm.size;
+	}
+	else {
+		db.size = 0;
+	}
+	
+	if (!groupby || !field) {
+		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
+	} else {
+		var list = await db.groupAvg(pm, groupby, field, orderby);
+		if (!list.length && db.error) {
+			$.log.error('AVG查询SQL', db.sql, db.error);
+			ret = $.ret.body(db.error);
+		} else {
+			ret = $.ret.list(list);
+		}
+	}
+	return ret;
+};
+
+/**
+ * 平均值
+ * @param {Object} db 数据库管理器
+ * @param {Object} query 查询条件
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.avg = async function(db, query, body) {
+	var pm = Object.assign({}, query, body);
+	return await this.avg_main(db, pm);
+};
 
 /**
  * 总计
@@ -872,6 +946,23 @@ Drive.prototype.count_main = async function(db, pm) {
 	var field = pm[f.field];
 	delete pm[f.field];
 
+	if(pm.page){
+		db.page = pm.page;
+		delete pm.page;
+	}
+	else {
+		db.page = 1;
+	}
+	
+	
+	if(pm.size){
+		db.size = pm.size;
+		delete pm.size;
+	}
+	else {
+		db.size = 0;
+	}
+	
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {

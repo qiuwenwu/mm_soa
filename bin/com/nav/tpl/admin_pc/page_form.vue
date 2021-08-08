@@ -102,7 +102,8 @@
 		components: {},
 		data() {
 			return {
-				url: "${api.path}?",
+				url_add: "${api.path}?method=add",
+				url_set: "${api.path}?method=set",
 				url_get_obj: "${api.path}?method=get_obj",
 				field: "${sql.key}",
 				query: {

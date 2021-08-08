@@ -221,7 +221,6 @@
 
 .control_select .value {
 	font-size: .875rem;
-	overflow-x: hidden;
 }
 
 .control_select select {
@@ -553,7 +552,7 @@ table .control_reverse .title {
 }
 
 .click .mm_box {
-	right: initial;
+	right: 0;
 	min-width: 5.25rem;
 }
 
