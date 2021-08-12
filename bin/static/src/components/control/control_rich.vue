@@ -9,6 +9,10 @@
 
 	export default {
 		name: "tinymce",
+		model: {
+			event: "input",
+			prop: "value"
+		},
 		props: {
 			id: {
 				type: String,
@@ -49,13 +53,16 @@
 			}
 		},
 		watch: {
-			content() {
-				tinymce.get(this.id_sub).setContent(this.value)
+			value() {
+				if(this.value !== this.val){
+					tinymce.get(this.id_sub).setContent(this.value)
+				}
 			}
 		},
 		data: function(){
 			return {
-				id_sub: this.id || this.new_id()
+				id_sub: this.id || this.new_id(),
+				val: this.value
 			}
 		},
 		methods: {
@@ -92,7 +99,6 @@
 					},
 					success: function success(json, status) {
 						if (json.result && json.result.obj) {
-							console.log(json.result.obj.url);
 							succFun(json.result.obj.url);
 						} else {
 							if (json.error) {
@@ -122,13 +128,23 @@
 			let options = {}
 			let s1 = new Function()
 			let config = (editor) => {
-				editor.on('NodeChange Change KeyUp', (e) => {
-					this.$emit('input', tinymce.get(this.id_sub).getContent())
-					this.$emit('change', tinymce.get(this.id_sub), tinymce.get(this.id_sub).getContent())
+				// editor.on('NodeChange Change KeyUp', (e) => {
+				// 	this.$emit('input', tinymce.get(this.id_sub).getContent())
+				// 	this.$emit('change', tinymce.get(this.id_sub), tinymce.get(this.id_sub).getContent())
+				// });
+				editor.on('input', (e) => {
+					this.val = tinymce.get(this.id_sub).getContent();
+					this.$emit('input', this.val);
+				});
+				editor.on('change', (e) => {
+					this.val = tinymce.get(this.id_sub).getContent();
+					this.$emit('input', this.val);
+					this.$emit('change', tinymce.get(this.id_sub), this.val);
 				})
 				editor.on('init', (e) => {
-					if (this.value != undefined) tinymce.get(this.id_sub).setContent(this.value)
-					this.$emit('input', this.value)
+					if (this.value !== undefined){
+						tinymce.get(this.id_sub).setContent(this.value)
+					}
 				})
 			}
 
