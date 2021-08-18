@@ -66,7 +66,7 @@
 									<!--{loop field v idx}-->
 										<!--{if(v.format)}-->
 											<!--{if(v.format.table)}-->
-									<td><span>{{ get_name(${v.label}, o.${v.format.key}, '${v.format.id || v.format.key}', '${v.format.name}') }}</span></td>
+									<td><span>{{ $get_name(${v.label}, o.${v.format.key}, '${v.format.id || v.format.key}', '${v.format.name}') }}</span></td>
 											<!--{else}-->
 									<td><span>{{ ${v.label}[o.${v.name}] }}</span></td>
 											<!--{/if}-->

@@ -1078,46 +1078,6 @@ export default {
 			this.page_now = n;
 		},
 		/**
-		 * 获取名称
-		 * @param {Array} list 用来取名的列表
-		 * @param {String} arr_str id集合
-		 * @param {String} key 键
-		 * @param {String} name 名
-		 * @param {String} span 分隔符
-		 */
-		get_name(list, arr_str, key, name, span) {
-			if (!name) {
-				name = "name";
-			}
-			var value = "";
-			if (arr_str) {
-				if (typeof(arr_str) == 'string') {
-					if (!span) {
-						span = ',';
-					}
-					var arr = arr_str.split(span);
-					var id = Number(arr[0]);
-		
-					for (var i = 0; i < list.length; i++) {
-						var o = list[i];
-						if (o[key] == id) {
-							value += '|' + o[name];
-						}
-					}
-				} else {
-					var id = arr_str;
-					for (var i = 0; i < list.length; i++) {
-						var o = list[i];
-						if (o[key] == id) {
-							value = o[name];
-							break
-						}
-					}
-				}
-			}
-			return value.replace('|', '');
-		},
-		/**
 		 * 取消并返回
 		 */
 		cancel: function cancel() {

@@ -81,7 +81,7 @@
 												<control_switch v-model="o.${v.name}" @click.native="set(o)" />
 												<!--{else if(v.format)}-->
 												<!--{if(v.format.table)}-->
-												<span>{{ get_name(${v.label}, o.${v.format.key}, '${v.format.id || v.format.key}', '${v.format.name}') }}</span>
+												<span>{{ $get_name(${v.label}, o.${v.format.key}, '${v.format.id || v.format.key}', '${v.format.name}') }}</span>
 												<!--{else if(v.name == 'state' || v.name == 'status')}-->
 												<span v-bind:class="arr_color[o.${v.name}]">{{ ${v.label}[o.${v.name}] }}</span>
 												<!--{else}-->

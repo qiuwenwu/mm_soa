@@ -36,7 +36,49 @@ function load_mm_vue(Vue) {
 			 * @description 
 			 */
 			Vue.prototype.$ = $;
-
+			
+			/**
+			 * 获取名称
+			 * @param {Array} list 用来取名的列表
+			 * @param {String} arr_str id集合
+			 * @param {String} key 键
+			 * @param {String} name 名
+			 * @param {String} span 分隔符
+			 */
+			Vue.prototype.$get_name = function(list, arr_str, key, name, span) {
+				if (!name) {
+					name = "name";
+				}
+				var value = "";
+				if (arr_str) {
+					if (typeof(arr_str) == 'string') {
+						if (!span) {
+							span = ',';
+						}
+						var arr = arr_str.split(span);
+						var id = Number(arr[0]);
+			
+						for (var i = 0; i < list.length; i++) {
+							var o = list[i];
+							if (o[key] == id) {
+								value += '|' + o[name];
+							}
+						}
+						return value.replace('|', '');
+					} else {
+						var id = arr_str;
+						for (var i = 0; i < list.length; i++) {
+							var o = list[i];
+							if (o[key] == id) {
+								value = o[name];
+								break
+							}
+						}
+					}
+				}
+				return value;
+			};
+			
 			/**
 			 * 路由跳转
 			 * @param {String} url
@@ -166,7 +208,7 @@ function load_mm_vue(Vue) {
 			 */
 			Vue.prototype.$copy = function(text) {
 				$.copyText(text);
-				$.toast("复制成功");
+				_this.$toast("复制成功");
 			};
 
 			/**
@@ -376,11 +418,10 @@ function load_mm_vue(Vue) {
 						_this.$sotre.commit('set_user', json.result);
 					} else if (json.error) {
 						// 非法访问或未登录
-						// $.toast(json.error.message);
 						$.db.set("token", "");
 						// _this.$router.push('/signin')
 					} else {
-						$.toast('服务器连接失败！');
+						_this.$toast('服务器连接失败！');
 						return;
 					}
 					if (func) {

@@ -53,6 +53,14 @@
 		// 当修改的正文中出现username是转换为指定格式
 		"username": "`username` = '{0}'"
 	},
+	// 默认查询条件
+	"query_dedefault": {
+		
+	},
+	// 默认添加项
+	"body_default": {
+		
+	},
 	// SQL执行脚本，当设置js文件名后, 执行该SQL还将调用这个脚本
 	"func_file": "",
 	// 导入导出格式，转换导入、导出Eexcel时字段名和字段值

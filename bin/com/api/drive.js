@@ -367,10 +367,6 @@ Drive.prototype.save_file = function(files) {
 Drive.prototype.main = async function(ctx, db) {
 	if (this.sql) {
 		var req = ctx.request;
-		var user = ctx.session.user;
-		if (user) {
-			db.user = user;
-		}
 		// 获取文件
 		if (req.files) {
 			var fobj = this.save_file(req.files);
@@ -402,6 +398,10 @@ Drive.prototype.run = async function(ctx, db) {
 		}
 		var ret = await this.check(ctx);
 		if (!ret) {
+			var user = ctx.session.user;
+			if (user) {
+				db.user = user;
+			}
 			ret = await this.main(ctx, db);
 		}
 		var res = ctx.response;
@@ -431,10 +431,8 @@ Drive.prototype.getCache = async function(ctx) {
 				}
 			}
 		} else {
-			// console.log('需要读缓存');
 			var data = await $.cache.get("api_" + req.url);
 			if (data) {
-				// console.log('有缓存', data);
 				var obj = JSON.parse(data);
 				ctx.response.type = obj.type;
 				return obj.body;

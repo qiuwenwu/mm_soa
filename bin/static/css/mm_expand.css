@@ -611,7 +611,7 @@ all and max-width629px {
 	}
 }
 
-.toast {
+.$toast {
 	top: 40%;
 	padding: 0.75rem 1.5rem;
 	min-width: 5rem;

@@ -25,7 +25,7 @@
 										<!--{else if(v.format)}-->
 										<!--{if(v.format.table)}-->
 										<dd>
-											<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}', 0)" />
+											<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}', '0')" />
 										</dd>
 										<!--{else}-->
 										<dd>

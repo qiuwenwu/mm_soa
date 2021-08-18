@@ -81,6 +81,8 @@ class Drive extends Item {
 			"query_default": {},
 			// sql更改语句
 			"update": {},
+			// 默认添加条件，当不包含该项时，默认添加该项。 例如: { "age": "`age` += 1" } , 当查询参含有age，不调用该项，不存在时，sql会增加该项
+			"body_default": {},
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数
@@ -279,14 +281,15 @@ Drive.prototype.get_main = async function(db, query, method) {
 	var qt = cg.query_default;
 	if (Object.keys(qt).length > 0) {
 		var id = $.dict.user_id;
-		var word = "{" + id + "}";
+		var id_key = "{" + id + "}";
 		var user_id = "0";
-		if (db.user && db.user[id]) {
-			user_id = db.user[id];
+		var user = db.user;
+		if (user && user[id]) {
+			user_id = user[id];
 		}
 		for (var k in qt) {
 			if (!qy[k]) {
-				query_str += " && " + qt[k].replace(word, user_id);
+				query_str += " && " + qt[k].replace(id_key, user_id);
 			}
 		}
 		if (query_str.startsWith(" && ")) {
@@ -357,8 +360,27 @@ Drive.prototype.set_main = async function(db, query, body) {
 		qy[key] = body[key];
 	}
 	var query_str = db.tpl_query(qy, cg.query);
-	var set_str = db.tpl_body(body, cg.update);
 
+	var qt = cg.query_default;
+	if (Object.keys(qt).length > 0) {
+		var id = $.dict.user_id;
+		var id_key = "{" + id + "}";
+		var user_id = "0";
+		var user = db.user;
+		if (user && user[id]) {
+			user_id = user[id];
+		}
+		for (var k in qt) {
+			if (!qy[k]) {
+				query_str += " && " + qt[k].replace(id_key, user_id);
+			}
+		}
+		if (query_str.startsWith(" && ")) {
+			query_str = query_str.replace(" && ", "");
+		}
+	}
+	
+	var set_str = db.tpl_body(body, cg.update);
 	var n = await db.setSql(query_str, set_str);
 
 	if (n < 1) {
@@ -390,10 +412,25 @@ Drive.prototype.set = async function(db, query, body) {
  */
 Drive.prototype.add_main = async function(db, body) {
 	var ret;
-	var {
-		cg
-	} = await this.ready(db, {}, body);
+	var cg = this.config;
 	if (Object.keys(body).length > 0) {
+		var bt = cg.body_default;
+		if (Object.keys(bt).length > 0) {
+			var id = $.dict.user_id;
+			var id_key = "{" + id + "}";
+			var user_id = "0";
+			var user = db.user;
+			if (user && user[id]) {
+				user_id = user[id];
+			}
+			for (var k in bt) {
+				if (!body[k]) {
+					var str = bt[k].replace(id_key, user_id);
+					var key = str.left("=").trim("`");
+					body[key] = str.right("=").trim("'");
+				}
+			}
+		}
 		var n = await db.add(body);
 		if (n < 1) {
 			ret = $.ret.error(500, '添加失败！\n' + db.error.message);
@@ -829,24 +866,22 @@ Drive.prototype.sum_main = async function(db, pm) {
 	var f = db.config.filter;
 	var field = pm[f.field];
 	delete pm[f.field];
-	
-	if(pm.page){
+
+	if (pm.page) {
 		db.page = pm.page;
 		delete pm.page;
-	}
-	else {
+	} else {
 		db.page = 1;
 	}
-	
-	
-	if(pm.size){
+
+
+	if (pm.size) {
 		db.size = pm.size;
 		delete pm.size;
-	}
-	else {
+	} else {
 		db.size = 0;
 	}
-	
+
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {
@@ -887,24 +922,22 @@ Drive.prototype.avg_main = async function(db, pm) {
 	var f = db.config.filter;
 	var field = pm[f.field];
 	delete pm[f.field];
-	
-	if(pm.page){
+
+	if (pm.page) {
 		db.page = pm.page;
 		delete pm.page;
-	}
-	else {
+	} else {
 		db.page = 1;
 	}
-	
-	
-	if(pm.size){
+
+
+	if (pm.size) {
 		db.size = pm.size;
 		delete pm.size;
-	}
-	else {
+	} else {
 		db.size = 0;
 	}
-	
+
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {
@@ -946,23 +979,21 @@ Drive.prototype.count_main = async function(db, pm) {
 	var field = pm[f.field];
 	delete pm[f.field];
 
-	if(pm.page){
+	if (pm.page) {
 		db.page = pm.page;
 		delete pm.page;
-	}
-	else {
+	} else {
 		db.page = 1;
 	}
-	
-	
-	if(pm.size){
+
+
+	if (pm.size) {
 		db.size = pm.size;
 		delete pm.size;
-	}
-	else {
+	} else {
 		db.size = 0;
 	}
-	
+
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {

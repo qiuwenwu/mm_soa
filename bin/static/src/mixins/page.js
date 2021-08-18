@@ -304,7 +304,7 @@ define(function() {
 				var msg = this.events("submit_check", pm);
 				var ret;
 				if (msg) {
-					this.toast(msg);
+					this.$toast(msg);
 				} else {
 					ret = this.events("submit_main", pm, func);
 				}
@@ -322,19 +322,11 @@ define(function() {
 				var msg = this.events("upload_check", pm);
 				var ret;
 				if (msg) {
-					this.toast(msg);
+					this.$toast(msg);
 				} else {
 					ret = this.events("upload_main", pm, func);
 				}
 				return ret;
-			},
-			/**
-			 * @description 提示框
-			 * @param {String} text 提示内容
-			 * @param {Number} longTime 显示时长
-			 */
-			toast: function toast(text, longTime) {
-				this.$.toast(text, longTime ? longTime : 2000);
 			},
 			/**
 			 * @description 添加数据
@@ -349,11 +341,11 @@ define(function() {
 				this.$post(url, value, function(json) {
 					_this.events("add_after", json, func);
 					if (json.result) {
-						$.toast(json.result.tip);
+						_this.$toast(json.result.tip);
 					} else if (json.error) {
-						$.toast(json.error.message);
+						_this.$toast(json.error.message);
 					} else {
-						$.toast('添加失败! 原因:是服务器连接失败!');
+						_this.$toast('添加失败! 原因:是服务器连接失败!');
 					}
 				});
 			},
@@ -371,11 +363,11 @@ define(function() {
 				this.$get(url, query, function(json) {
 					_this.events("del_after", json, func);
 					if (json.result) {
-						$.toast(json.result.tip);
+						_this.$toast(json.result.tip);
 					} else if (json.error) {
-						$.toast(json.error.message);
+						_this.$toast(json.error.message);
 					} else {
-						$.toast('删除失败! 原因:是服务器连接失败!');
+						_this.$toast('删除失败! 原因:是服务器连接失败!');
 					}
 				});
 			},
@@ -403,11 +395,11 @@ define(function() {
 				this.$post(this.toUrl(this.query_set, url), value, function(json, status) {
 					_this.events("set_after", json, func);
 					if (json.result) {
-						$.toast(json.result.tip);
+						_this.$toast(json.result.tip);
 					} else if (json.error) {
-						$.toast(json.error.message);
+						_this.$toast(json.error.message);
 					} else {
-						$.toast('修改失败! 原因:是服务器连接失败!');
+						_this.$toast('修改失败! 原因:是服务器连接失败!');
 					}
 				});
 			},
@@ -517,7 +509,7 @@ define(function() {
 					} else if (json.error) {
 						console.log(json.error.message);
 					} else {
-						_this.toast("服务器连接失败！");
+						_this.$toast("服务器连接失败！");
 					}
 				});
 			},
@@ -558,7 +550,7 @@ define(function() {
 					} else if (json.error) {
 						console.log(json.error.message);
 					} else {
-						_this.toast("服务器连接失败！");
+						_this.$toast("服务器连接失败！");
 					}
 				});
 			},
@@ -708,11 +700,11 @@ define(function() {
 					var _this = this;
 					this.$post(url, param, function(json, status) {
 						if (json.result) {
-							_this.toast(json.result.tip);
+							_this.$toast(json.result.tip);
 						} else if (json.error) {
-							_this.toast(json.error.message);
+							_this.$toast(json.error.message);
 						} else {
-							_this.toast("服务器连接失败！");
+							_this.$toast("服务器连接失败！");
 						}
 						_this.events("submit_after", json, func);
 						if (url.indexOf("=set") !== -1) {
@@ -825,7 +817,7 @@ define(function() {
 					param = this.form;
 				}
 				if (msg) {
-					this.toast(msg);
+					this.$toast(msg);
 				} else {
 					this.uploading = 0;
 					var _this = this;
@@ -842,11 +834,11 @@ define(function() {
 			 */
 			upload_after: function upload_after(json, func) {
 				if (json.result) {
-					this.toast(json.result.tip);
+					this.$toast(json.result.tip);
 				} else if (json.error) {
-					this.toast(json.error.message);
+					this.$toast(json.error.message);
 				} else {
-					this.toast("服务器连接失败！");
+					this.$toast("服务器连接失败！");
 				}
 				if (func) {
 					func();
@@ -932,46 +924,6 @@ define(function() {
 					n = this.page_count
 				}
 				this.page_now = n;
-			},
-			/**
-			 * 获取名称
-			 * @param {Array} list 用来取名的列表
-			 * @param {String} arr_str id集合
-			 * @param {String} key 键
-			 * @param {String} name 名
-			 * @param {String} span 分隔符
-			 */
-			get_name(list, arr_str, key, name, span) {
-				if (!name) {
-					name = "name";
-				}
-				var value = "";
-				if (arr_str) {
-					if (typeof(arr_str) == 'string') {
-						if (!span) {
-							span = ',';
-						}
-						var arr = arr_str.split(span);
-						var id = Number(arr[0]);
-
-						for (var i = 0; i < list.length; i++) {
-							var o = list[i];
-							if (o[key] == id) {
-								value += '|' + o[name];
-							}
-						}
-					} else {
-						var id = arr_str;
-						for (var i = 0; i < list.length; i++) {
-							var o = list[i];
-							if (o[key] == id) {
-								value = o[name];
-								break
-							}
-						}
-					}
-				}
-				return value.replace('|', '');
 			},
 			/**
 			 * 取消并返回
