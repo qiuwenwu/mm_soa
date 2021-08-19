@@ -38,6 +38,13 @@ function load_mm_vue(Vue) {
 			Vue.prototype.$ = $;
 			
 			/**
+			 * 提示信息
+			 * @param {String} message 提示信息
+			 */
+			Vue.prototype.$toast = function(message) {
+				$.toast(message);
+			},
+			/**
 			 * 获取名称
 			 * @param {Array} list 用来取名的列表
 			 * @param {String} arr_str id集合
