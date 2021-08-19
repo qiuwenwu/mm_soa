@@ -19,7 +19,7 @@
 										<!--{if(v.name == 'keyword')}-->
 										<mm_item>
 											<control_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-											 @blur="search()" />
+											  />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -29,17 +29,17 @@
 										<!--{if(v.format.table)}-->
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 @change="search()" />
+											 />
 										</mm_item>
 										<!--{else}-->
 										<mm_item>
-											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
+											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
 										<mm_item>
-											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
+											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();">重置</mm_btn>
 										</mm_item>
 									</mm_list>
 								</mm_form>
@@ -57,7 +57,6 @@
 								<mm_table type="2">
 									<thead class="table-sm">
 										<tr>
-											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
@@ -72,7 +71,6 @@
 									<tbody>
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
-											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
@@ -85,7 +83,7 @@
 												<!--{else if(v.name == 'state' || v.name == 'status')}-->
 												<span v-bind:class="arr_color[o.${v.name}]">{{ ${v.label}[o.${v.name}] }}</span>
 												<!--{else}-->
-												<span>{{ $get_name(${v.label}, o.${v.name}, 'value') }}</span>
+												<control_select v-model="o.${v.name}" :options="$to_kv(${v.label})" />
 												<!--{/if}-->
 												<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1 || v.name === 'avatar')}-->
 												<img class="${v.name}" :src="o.${v.name}" alt="${v.title}" />
@@ -98,7 +96,7 @@
 												<!--{else if(v.name === 'display' || v.name === 'orderby')}-->
 												<input class="input_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
 												<!--{else}-->
-												<span>{{ o.${v.name} }}</span>
+												<control_input :auto="true" v-model="o.${v.name}" @blur="set(o)" />
 												<!--{/if}-->
 											</td>
 											<!--{/if}-->
@@ -111,18 +109,6 @@
 									</tbody>
 									<!-- </draggable> -->
 								</mm_table>
-							</div>
-							<div class="card_foot">
-								<div class="fl">
-									<control_select v-model="query.size" :options="$to_size()" @change="search()" />
-								</div>
-								<div class="fr">
-									<span class="mr">共 {{ count }} 条</span>
-									<span>当前</span>
-									<input type="number" class="pager_now" v-model.number="page_now" @blur="goTo(page_now)" @change="page_change" />
-									<span>/{{ page_count }}页</span>
-								</div>
-								<control_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo" :icons="['首页', '上一页', '下一页', '尾页']"></control_pager>
 							</div>
 						</mm_card>
 					</mm_col>
@@ -183,9 +169,9 @@
 				// 查询条件
 				query: {
 					//页码
-					page: 1,
+					page: 0,
 					//页面大小
-					size: 10,
+					size: '0',
 					/*[loop js.query v idx]*/
 					// ${' ' + v.title}
 					/*[if v.type === 'number' && !v.select]*/
@@ -224,13 +210,22 @@
 				}
 				this.$get('~${v.path}', query, function(json) {
 					if (json.result) {
-						_this/*['.' + v.name]*/.clear();
-						_this/*['.' + v.name]*/.addList(json.result.list)
+						_this /*['.' + v.name]*/ .clear();
+						_this /*['.' + v.name]*/ .addList(json.result.list)
 					}
 				});
 			},
 			/*[/if]*/
 			/*[/loop]*/
+			/**
+			 * 获取列表之前
+			 * @param {Object} param 参数
+			 */
+			get_list_before(param){
+				delete param.page;
+				param.size = "0";
+				return param;
+			}
 		},
 		created() {
 			/*[loop js.data v idx]*/

@@ -36,56 +36,56 @@ function load_mm_vue(Vue) {
 			 * @description 
 			 */
 			Vue.prototype.$ = $;
-			
+
 			/**
 			 * 提示信息
 			 * @param {String} message 提示信息
 			 */
 			Vue.prototype.$toast = function(message) {
-				$.toast(message);
-			},
-			/**
-			 * 获取名称
-			 * @param {Array} list 用来取名的列表
-			 * @param {String} arr_str id集合
-			 * @param {String} key 键
-			 * @param {String} name 名
-			 * @param {String} span 分隔符
-			 */
-			Vue.prototype.$get_name = function(list, arr_str, key, name, span) {
-				if (!name) {
-					name = "name";
-				}
-				var value = "";
-				if (arr_str) {
-					if (typeof(arr_str) == 'string') {
-						if (!span) {
-							span = ',';
-						}
-						var arr = arr_str.split(span);
-						var id = Number(arr[0]);
-			
-						for (var i = 0; i < list.length; i++) {
-							var o = list[i];
-							if (o[key] == id) {
-								value += '|' + o[name];
+					$.toast(message);
+				},
+				/**
+				 * 获取名称
+				 * @param {Array} list 用来取名的列表
+				 * @param {String} arr_str id集合
+				 * @param {String} key 键
+				 * @param {String} name 名
+				 * @param {String} span 分隔符
+				 */
+				Vue.prototype.$get_name = function(list, arr_str, key, name, span) {
+					if (!name) {
+						name = "name";
+					}
+					var value = "";
+					if (arr_str) {
+						if (typeof(arr_str) == 'string') {
+							if (!span) {
+								span = ',';
 							}
-						}
-						return value.replace('|', '');
-					} else {
-						var id = arr_str;
-						for (var i = 0; i < list.length; i++) {
-							var o = list[i];
-							if (o[key] == id) {
-								value = o[name];
-								break
+							var arr = arr_str.split(span);
+							var id = arr[0];
+
+							for (var i = 0; i < list.length; i++) {
+								var o = list[i];
+								if (o[key] == id) {
+									value += '|' + o[name];
+								}
+							}
+							return value.replace('|', '');
+						} else {
+							var id = arr_str;
+							for (var i = 0; i < list.length; i++) {
+								var o = list[i];
+								if (o[key] == id) {
+									value = o[name];
+									break
+								}
 							}
 						}
 					}
-				}
-				return value;
-			};
-			
+					return value;
+				};
+
 			/**
 			 * 路由跳转
 			 * @param {String} url
@@ -113,7 +113,7 @@ function load_mm_vue(Vue) {
 			 * @param {String} value 默认值
 			 */
 			Vue.prototype.$to_kv = function(arr, key, name, value) {
-				if(value === undefined){
+				if (value === undefined) {
 					value = '';
 				}
 				var list = [];
@@ -440,9 +440,8 @@ function load_mm_vue(Vue) {
 	});
 	return mm;
 }
-if(window.define){
+if (window.define) {
 	define(['Vue'], load_mm_vue);
-}
-else {
+} else {
 	window.mm_vue = load_mm_vue(Vue);
 }

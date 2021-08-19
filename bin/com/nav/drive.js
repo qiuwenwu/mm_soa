@@ -457,6 +457,10 @@ Drive.prototype.create_vue = async function(file, route) {
 		f += 'page_type.vue';
 	} else if (name.endsWith('nav')) {
 		f += 'page_nav.vue';
+	} else if (name.endsWith('lang')) {
+		f += 'page_lang.vue';
+	} else if (name.endsWith('config')) {
+		f += 'page_config.vue';
 	} else {
 		f += 'page_default.vue';
 	}

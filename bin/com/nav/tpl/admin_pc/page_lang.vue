@@ -19,7 +19,7 @@
 										<!--{if(v.name == 'keyword')}-->
 										<mm_item>
 											<control_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-											 @blur="search()" />
+											  />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -29,17 +29,17 @@
 										<!--{if(v.format.table)}-->
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 @change="search()" />
+											 />
 										</mm_item>
 										<!--{else}-->
 										<mm_item>
-											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
+											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
 										<mm_item>
-											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
+											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();">重置</mm_btn>
 										</mm_item>
 									</mm_list>
 								</mm_form>
@@ -57,7 +57,6 @@
 								<mm_table type="2">
 									<thead class="table-sm">
 										<tr>
-											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
@@ -72,7 +71,6 @@
 									<tbody>
 										<!-- <draggable v-model="list" tag="tbody" @change="sort_change"> -->
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
-											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
@@ -85,7 +83,7 @@
 												<!--{else if(v.name == 'state' || v.name == 'status')}-->
 												<span v-bind:class="arr_color[o.${v.name}]">{{ ${v.label}[o.${v.name}] }}</span>
 												<!--{else}-->
-												<span>{{ $get_name(${v.label}, o.${v.name}, 'value') }}</span>
+												<control_select v-model="o.${v.name}" :options="$to_kv(${v.label})" />
 												<!--{/if}-->
 												<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1 || v.name === 'avatar')}-->
 												<img class="${v.name}" :src="o.${v.name}" alt="${v.title}" />
@@ -98,7 +96,7 @@
 												<!--{else if(v.name === 'display' || v.name === 'orderby')}-->
 												<input class="input_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
 												<!--{else}-->
-												<span>{{ o.${v.name} }}</span>
+												<control_input :auto="true" v-model="o.${v.name}" @blur="set(o)" />
 												<!--{/if}-->
 											</td>
 											<!--{/if}-->
@@ -224,8 +222,8 @@
 				}
 				this.$get('~${v.path}', query, function(json) {
 					if (json.result) {
-						_this/*['.' + v.name]*/.clear();
-						_this/*['.' + v.name]*/.addList(json.result.list)
+						_this /*['.' + v.name]*/ .clear();
+						_this /*['.' + v.name]*/ .addList(json.result.list)
 					}
 				});
 			},
