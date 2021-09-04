@@ -19,7 +19,7 @@
 										<!--{if(v.name == 'keyword')}-->
 										<mm_item>
 											<control_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-											  />
+											 @blur="search()" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -29,17 +29,17 @@
 										<!--{if(v.format.table)}-->
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 />
+											 @change="search()" />
 										</mm_item>
 										<!--{else}-->
 										<mm_item>
-											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
+											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
 										<mm_item>
-											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();">重置</mm_btn>
+											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
 										</mm_item>
 									</mm_list>
 								</mm_form>
@@ -62,7 +62,7 @@
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
-											<th class="td_${v.name}">
+											<th>
 												<control_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></control_reverse>
 											</th>
 											<!--{/if}-->
@@ -223,15 +223,6 @@
 			},
 			/*[/if]*/
 			/*[/loop]*/
-			/**
-			 * 获取列表之前
-			 * @param {Object} param 参数
-			 */
-			get_list_before(param){
-				delete param.page;
-				param.size = "0";
-				return param;
-			}
 		},
 		created() {
 			/*[loop js.data v idx]*/

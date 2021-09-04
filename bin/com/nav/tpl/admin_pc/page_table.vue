@@ -61,7 +61,7 @@
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
-											<th>
+											<th class="th_${v.name}">
 												<control_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></control_reverse>
 											</th>
 											<!--{/if}-->

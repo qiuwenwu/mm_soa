@@ -62,8 +62,8 @@
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
-											<th>
-												<control_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></control_reverse>
+											<th class="th_${v.name}">
+												<span>${v.title}</span>
 											</th>
 											<!--{/if}-->
 											<!--{/loop}-->
@@ -174,20 +174,12 @@
 				},
 				// 查询条件
 				query: {
-					//页码
-					page: 0,
-					//页面大小
-					size: '0',
-					/*[loop js.query v idx]*/
-					// ${' ' + v.title}
-					/*[if v.type === 'number' && !v.select]*/
-					'${v.name}': 0,
-					/*[else]*/
-					'${v.name}': '',
-					/*[/if]*/
-					/*[/loop]*/
 					//排序
-					orderby: ""
+					orderby: "",
+					// 上级分类ID
+					father_id: '',
+					// 关键词
+					keyword: ''
 				},
 				form: {},
 				//颜色
@@ -243,16 +235,36 @@
 		},
 		computed: {
 			list_new() {
-				var lt = this.list.toTree(this.field).toList();
 				var list = [];
-				var arr = this.opens;
-				for (var i = 0; i < lt.length; i++) {
-					var o = lt[i];
-					if (this.opens.indexOf(o[this.father_id]) !== -1) {
-						list.push(o);
+				var {
+					keyword,
+					father_id
+				} = this.query;
+					
+				if (keyword && father_id) {
+					return this.list.filter(function(o) {
+						return o.father_id == father_id && (o.title.indexOf(keyword) !== -1 || o.name.indexOf(
+							keyword) !== -1);
+					});
+				} else if (father_id) {
+					return this.list.filter(function(o) {
+						return o.father_id == father_id;
+					});
+				} else if (keyword) {
+					return this.list.filter(function(o) {
+						return o.title.indexOf(keyword) !== -1 || o.name.indexOf(keyword) !== -1;
+					});
+				} else {
+					var lt = this.list.toTree(this.field).toList();
+					var arr = this.opens;
+					for (var i = 0; i < lt.length; i++) {
+						var o = lt[i];
+						if (this.opens.indexOf(o[this.father_id]) !== -1) {
+							list.push(o);
+						}
 					}
+					return list;
 				}
-				return list;
 			}
 		}
 	}

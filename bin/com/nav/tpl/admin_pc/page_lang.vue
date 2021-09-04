@@ -60,7 +60,7 @@
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
-											<th>
+											<th class="th_${v.name}">
 												<control_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></control_reverse>
 											</th>
 											<!--{/if}-->
@@ -83,7 +83,7 @@
 												<!--{else if(v.name == 'state' || v.name == 'status')}-->
 												<span v-bind:class="arr_color[o.${v.name}]">{{ ${v.label}[o.${v.name}] }}</span>
 												<!--{else}-->
-												<control_select v-model="o.${v.name}" :options="$to_kv(${v.label})" />
+												<control_select v-model="o.${v.name}" :options="$to_kv(${v.label})" @change.native="set(o)" />
 												<!--{/if}-->
 												<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1 || v.name === 'avatar')}-->
 												<img class="${v.name}" :src="o.${v.name}" alt="${v.title}" />

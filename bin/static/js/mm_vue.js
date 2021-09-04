@@ -57,32 +57,41 @@ function load_mm_vue(Vue) {
 						name = "name";
 					}
 					var value = "";
-					if (arr_str) {
-						if (typeof(arr_str) == 'string') {
-							if (!span) {
-								span = ',';
-							}
-							var arr = arr_str.split(span);
-							var id = arr[0];
-
-							for (var i = 0; i < list.length; i++) {
-								var o = list[i];
-								if (o[key] == id) {
-									value += '|' + o[name];
+					if (list.length) {
+						if (arr_str) {
+							var item = list[0];
+							if (typeof(arr_str) == 'string') {
+								if (!span) {
+									span = ',';
 								}
-							}
-							return value.replace('|', '');
-						} else {
-							var id = arr_str;
-							for (var i = 0; i < list.length; i++) {
-								var o = list[i];
-								if (o[key] == id) {
-									value = o[name];
-									break
+								var arr = arr_str.split(span);
+
+								if (typeof(item) === "object") {
+									arr.map((id) => {
+										for (var i = 0; i < list.length; i++) {
+											var o = list[i];
+											if (o[key] == id) {
+												value += '|' + o[name];
+											}
+										}
+									});
+									value = value.replace('|', '');
+								} else {
+									value = list[arr_str];
+								}
+							} else {
+								var id = arr_str;
+								for (var i = 0; i < list.length; i++) {
+									var o = list[i];
+									if (o[key] == id) {
+										value = o[name];
+										break
+									}
 								}
 							}
 						}
 					}
+					
 					return value;
 				};
 

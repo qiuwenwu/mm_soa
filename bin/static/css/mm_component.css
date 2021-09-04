@@ -108,6 +108,9 @@
 	line-height: 2rem;
 	min-width: auto;
 }
+.control_number .btn_add {
+	margin-left: 0.5rem;
+}
 
 .btn_del,
 .btn_add {
@@ -222,6 +225,9 @@
 .control_select .value {
 	font-size: .875rem;
 }
+.mm_form .control_select .value {
+	overflow-x: hidden;
+}
 
 .control_select select {
 	padding: 0 1.5rem 0 0.5rem;
@@ -229,8 +235,8 @@
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	height: 2rem;
 	background-position-x: calc(100% - .25rem);
-	max-width: 100%;
 	background-color: #fff;
+	max-width: 100%;
 }
 
 .control_select .selected {
@@ -593,6 +599,11 @@ table .control_reverse .title {
 	border-radius: .25rem;
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	min-width: 12rem;
+	max-width: 100%;
+}
+
+.pc .control_input .value {
+	overflow-x: hidden;
 }
 
 .pc .control_input .title {
@@ -655,6 +666,7 @@ table .control_reverse .title {
 	flex: 1;
 	border-color: transparent;
 	margin-right: 0.5rem;
+	max-width: 100%;
 }
 
 
@@ -1238,6 +1250,7 @@ table .control_reverse .title {
 	max-width: 24rem;
 	overflow: hidden;
 	text-overflow:ellipsis;
+	vertical-align: middle;
 }
 
 table .mm_btn {
@@ -1340,7 +1353,7 @@ table .mm_btn {
 
 .mm_upload_img .btns {
 	position: absolute;
-	left: calc(100% + 1rem);
+	left: 10rem;
 	bottom: 0;
 }
 

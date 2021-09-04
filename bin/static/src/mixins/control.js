@@ -96,14 +96,14 @@ export default {
 			type: String,
 			default: "value"
 		},
-    disabled: {
+		disabled: {
 			type: Boolean,
 			default: false
 		},
-    num: {
-      type: Number,
-      default: 5
-    }
+		num: {
+			type: Number,
+			default: 5
+		}
 	},
 	data: function data() {
 		return {

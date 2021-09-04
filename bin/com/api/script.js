@@ -11,11 +11,25 @@
 async function main(ctx, db) {
 	// 获取请求参数
 	var req = ctx.request;
-	var { query, body } = req;
-	return "hello world" + JSON.stringify(body);
+	var {
+		query,
+		body
+	} = req;
+	// return "hello world" + JSON.stringify(body);
+
 	// 操作sql模板
-	// var ret = await this.sql.run(query, body, db);
-	// return ret;
+	var m = query.method;
+	if (m === "add") {
+
+	} else if (m === "del") {
+
+	} else if (m === "set") {
+
+	} else {
+
+	}
+	var ret = await this.sql.run(query, body, db);
+	return ret;
 };
 
 exports.main = main;

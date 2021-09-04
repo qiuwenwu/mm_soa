@@ -2287,8 +2287,7 @@ function load_ui(jquery) {
 
 				for (var i = 0; i < lt.length; i++) {
 					var o = lt[i];
-
-					if (o[k] === v) {
+					if (o[k] == v) {
 						name = o.name;
 						break;
 					}

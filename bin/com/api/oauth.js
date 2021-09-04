@@ -61,6 +61,14 @@ Oauth.prototype.main = async function(ctx) {
 };
 
 /**
+ * 小校验
+ * @param {Object} ctx
+ */
+Oauth.prototype.check_sub = async function(ctx) {
+	
+};
+
+/**
  * 验证身份
  * @param {Object} ctx HTTP请求上下文
  * @return {Object} 验证失败返回错误提示，验证通过返回null
@@ -83,7 +91,7 @@ Oauth.prototype.check = async function(ctx) {
 		var token = ctx.headers[$.dict.token];
 		if (token) {
 			var u = await $.cache.get($.dict.session_id + '_' + token);
-			if(u){
+			if (u) {
 				var type = typeof(u);
 				if (type === "string") {
 					var o = u.toJson();

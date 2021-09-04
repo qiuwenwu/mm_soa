@@ -19,7 +19,7 @@
 										<!--{if(v.name == 'keyword')}-->
 										<mm_item>
 											<control_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-											  />
+											 @blur="search()" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -29,17 +29,17 @@
 										<!--{if(v.format.table)}-->
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 />
+											 @change="search()" />
 										</mm_item>
 										<!--{else}-->
 										<mm_item>
-											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
+											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
 										<mm_item>
-											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();">重置</mm_btn>
+											<mm_btn class="btn_primary-x" type="reset" @click.native="reset();search()">重置</mm_btn>
 										</mm_item>
 									</mm_list>
 								</mm_form>
@@ -60,7 +60,7 @@
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
 											<!--{if(v.name !== sql.key)}-->
-											<th>
+											<th class="th_${v.name}">
 												<control_reverse title="${v.title}" v-model="query.orderby" field="${v.name}" :func="search"></control_reverse>
 											</th>
 											<!--{/if}-->
@@ -83,7 +83,7 @@
 												<!--{else if(v.name == 'state' || v.name == 'status')}-->
 												<span v-bind:class="arr_color[o.${v.name}]">{{ ${v.label}[o.${v.name}] }}</span>
 												<!--{else}-->
-												<control_select v-model="o.${v.name}" :options="$to_kv(${v.label})" />
+												<control_select v-model="o.${v.name}" :options="$to_kv(${v.label})" @change.native="set(o)" />
 												<!--{/if}-->
 												<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1 || v.name === 'avatar')}-->
 												<img class="${v.name}" :src="o.${v.name}" alt="${v.title}" />
@@ -95,8 +95,13 @@
 												<span>{{ $to_time(o.${v.name}, 'yyyy-MM-dd hh:mm') }}</span>
 												<!--{else if(v.name === 'display' || v.name === 'orderby')}-->
 												<input class="input_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
+												<!--{else if(v.name === 'value')}-->
+												<control_com v-if="o.control == 'number'" tag="number" v-model="o.${v.name}" @blur="set(o)" />
+												<control_com v-else-if="o.control == 'select'" tag="select" v-model="o.${v.name}" :mod="o.model" @change="set(o)" />
+												<control_com v-else-if="o.control == 'checkbox' || o.control == 'radio'" :tag="o.control" v-model="o.${v.name}" :mod="o.model" @click="set(o)" />
+												<control_com v-else :auto="true" :tag="o.control" v-model="o.${v.name}" @blur="set(o)" />
 												<!--{else}-->
-												<control_input :auto="true" v-model="o.${v.name}" @blur="set(o)" />
+												<span>{{ o.${v.name} }}</span>
 												<!--{/if}-->
 											</td>
 											<!--{/if}-->
@@ -150,10 +155,14 @@
 </template>
 
 <script>
+	import control_com from '/src/components/control/control_com.vue';
 	import mixin from '/src/mixins/page.js';
 
 	export default {
 		mixins: [mixin],
+		components: {
+			control_com
+		},
 		data() {
 			return {
 				// 列表请求地址
