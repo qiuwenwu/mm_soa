@@ -874,7 +874,6 @@ Drive.prototype.sum_main = async function(db, pm) {
 		db.page = 1;
 	}
 
-
 	if (pm.size) {
 		db.size = pm.size;
 		delete pm.size;
