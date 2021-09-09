@@ -120,7 +120,6 @@ ViewModel.prototype.js = async function(model) {
 				}
 				if(o.name === 'title'){
 					obj.title_name = 'title';
-					console.log('有');
 				}
 				// 存在BUG（end）
 			} else {

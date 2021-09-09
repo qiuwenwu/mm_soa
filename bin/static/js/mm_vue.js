@@ -81,17 +81,21 @@ function load_mm_vue(Vue) {
 								}
 							} else {
 								var id = arr_str;
-								for (var i = 0; i < list.length; i++) {
-									var o = list[i];
-									if (o[key] == id) {
-										value = o[name];
-										break
+								if (typeof(item) == 'object') {
+									for (var i = 0; i < list.length; i++) {
+										var o = list[i];
+										if (o[key] == id) {
+											value = o[name];
+											break
+										}
 									}
+								}
+								else {
+									value = list[arr_str];
 								}
 							}
 						}
 					}
-					
 					return value;
 				};
 
