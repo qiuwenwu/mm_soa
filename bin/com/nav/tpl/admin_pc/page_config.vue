@@ -96,10 +96,10 @@
 												<!--{else if(v.name === 'display' || v.name === 'orderby')}-->
 												<input class="input_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
 												<!--{else if(v.name === 'value')}-->
-												<control_com v-if="o.control == 'number'" tag="number" v-model="o.${v.name}" @blur="set(o)" />
+												<control_com v-if="o.control == 'number'" tag="number" v-model="o.${v.name}" @change="set(o)" />
 												<control_com v-else-if="o.control == 'select'" tag="select" v-model="o.${v.name}" :mod="o.model" @change="set(o)" />
-												<control_com v-else-if="o.control == 'checkbox' || o.control == 'radio'" :tag="o.control" v-model="o.${v.name}" :mod="o.model" @click="set(o)" />
-												<control_com v-else :auto="true" :tag="o.control" v-model="o.${v.name}" @blur="set(o)" />
+												<control_com v-else-if="o.control == 'checkbox' || o.control == 'radio'" :tag="o.control" v-model="o.${v.name}" :mod="o.model" @change="set(o)" />
+												<control_com v-else :auto="true" :tag="o.control" v-model="o.${v.name}" @change="set(o)" />
 												<!--{else}-->
 												<span>{{ o.${v.name} }}</span>
 												<!--{/if}-->

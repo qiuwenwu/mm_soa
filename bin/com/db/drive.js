@@ -645,6 +645,9 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 			} else if (n === uid && query_default_user) {
 				query_default[n] = "`" + n + "` = {" + uid + "}";
 			}
+			else if(n === 'available' || n === 'show'){
+				query_default[n] = "`" + n + "` = 1";
+			}
 		}
 		if (o.map) {
 			var fmt = await this.get_format(o);

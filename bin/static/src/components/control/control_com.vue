@@ -1,17 +1,20 @@
 <template>
-	<control_input class="control_com" v-if="tag === 'input'" v-model="ve"></control_input>
-	<control_number class="control_com" v-else-if="tag === 'number'" v-model="ve">
-	</control_number>
-	<control_select class="control_com" v-else-if="tag === 'select'" v-model="ve" :options="m">
-	</control_select>
-	<control_checkbox class="control_com" v-else-if="tag === 'checkbox'" :options="m" v-model="ve"></control_checkbox>
-	<control_switch class="control_com" v-else-if="tag === 'switch'" v-model="ve">
-	</control_switch>
-	<control_textarea class="control_com" v-else-if="tag === 'textarea'" v-model="ve">
-	</control_textarea>
-	<control_radio class="control_com" v-else-if="tag === 'radio'" :options="m" v-model="ve">
-	</control_radio>
-	<input :type="type" v-else v-model="ve" />
+	<div class="control_com">
+		<control_input v-if="tag === 'input'" v-model="ve" @blur.native="$emit('change', ve)"></control_input>
+		<control_number v-else-if="tag === 'number'" v-model="ve" @input.native="$emit('change', ve)">
+		</control_number>
+		<control_select v-else-if="tag === 'select'" v-model="ve" :options="m" @input.native="$emit('change', ve)">
+		</control_select>
+		<control_checkbox v-else-if="tag === 'checkbox'" :options="m" v-model="ve" @input.native="$emit('change', ve)">
+		</control_checkbox>
+		<control_switch v-else-if="tag === 'switch'" v-model="ve" @input.native="$emit('change', ve)">
+		</control_switch>
+		<control_textarea v-else-if="tag === 'textarea'" v-model="ve" @input.native="$emit('change', ve)">
+		</control_textarea>
+		<control_radio v-else-if="tag === 'radio'" :options="m" @input.native="$emit('change', ve)" v-model="ve">
+		</control_radio>
+		<input :type="type" v-else v-model="ve" @blur.native="$emit('change', ve)" />
+	</div>
 </template>
 
 <script>

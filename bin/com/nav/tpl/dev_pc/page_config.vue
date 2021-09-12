@@ -102,7 +102,7 @@
 												<!--{else if(v.name === 'display' || v.name === 'orderby')}-->
 												<input class="input_display" v-model.number="o.${v.name}" @blur="set(o)" min="0" max="1000" />
 												<!--{else}-->
-												<control_input :auto="true" v-model="o.${v.name}" @blur="set(o)" />
+												<control_input :auto="true" v-model="o.${v.name}" @blur.native="set(o)" />
 												<!--{/if}-->
 											</td>
 											<!--{/if}-->

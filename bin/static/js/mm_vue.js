@@ -179,15 +179,29 @@ function load_mm_vue(Vue) {
 
 			/**
 			 * 转换时间
-			 * @param {String} datetime 
-			 * @param {String} format
+			 * @param {String} timeStr 时间字符串
+			 * @param {String} format 转换格式
+			 * @return {String} 返回转换后的结果
 			 */
-			Vue.prototype.$to_time = function(datetime, format) {
-				if (!format) {
-					format = 'yyyy-MM-dd hh:mm';
+			Vue.prototype.$to_time = function(timeStr, format) {
+				var time = timeStr.toTime();
+				if (format) {
+					return time.toStr(format);
+				} else {
+					var date = time.toStr("yyyy-MM-dd");
+					var now = new Date();
+					if (date == now.toStr("yyyy-MM-dd")) {
+						return time.toStr("hh:mm")
+					} else if (date == now.addDays(-1).toStr("yyyy-MM-dd")) {
+						return "昨天" + time.toStr("hh:mm")
+					} else if (time.toStr("yyyy") == now.toStr("yyyy")) {
+						return time.toStr("MM-dd");
+					} else {
+						return date;
+					}
 				}
-				return new Date(datetime).toStr(format);
 			};
+			
 			/**
 			 * 转页面大小
 			 * @param {Object} arr

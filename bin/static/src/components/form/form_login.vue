@@ -1,6 +1,6 @@
 <template>
 	<!-- 登录表单 -->
-	<div class="form_login">
+	<div class="from_userlogin">
 		
 	</div>
 </template>

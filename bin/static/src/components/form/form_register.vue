@@ -1,6 +1,6 @@
 <template>
 	<!-- 注册表单 -->
-	<div class="form_register">
+	<div class="from_userregister">
 		
 	</div>
 </template>
