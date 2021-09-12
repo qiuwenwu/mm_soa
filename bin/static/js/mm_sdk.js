@@ -851,7 +851,8 @@ if (typeof($) === "undefined") {
 	 */
 	String.prototype.toTime = function() {
 		var str = this.replace('T', ' ').replace('Z', '').replaceAll('-', '/');
-		return new Date(str);
+		var time = new Date(str);
+		return time.addSeconds(28800);
 	};
 	/**
 	 * @description 转为时间格式字符串
