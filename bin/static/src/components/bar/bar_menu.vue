@@ -22,7 +22,7 @@
 				type: Array,
 				default () {
 					return [{
-							title: "手机充值",
+							title: "手机兑换",
 							img: "/img/default.png",
 							url:"#"
 						},
@@ -32,7 +32,7 @@
 							url:"#"
 						},
 						{
-							title: "Q币充值",
+							title: "Q币兑换",
 							img: "/img/default.png",
 							url:"#"
 						},

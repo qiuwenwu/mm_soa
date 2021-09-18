@@ -384,7 +384,7 @@ input[type=color] {
 input[type=range] {
 	margin-top: 0.75rem;
 	margin-bottom: 0.875rem;
-	/*上部分的填充值*/
+	/*上部分的填兑换*/
 	outline: none;
 	-webkit-appearance: none;
 	background: var(--color_border);
