@@ -859,6 +859,7 @@ table .control_reverse .title {
 .mm_nav_side .active .box {
 	max-height: 80vh;
 	padding: var(--padding_mini) 0;
+	overflow: auto;
 }
 
 .mm_nav_side .active .btn {
