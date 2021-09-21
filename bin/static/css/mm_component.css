@@ -106,10 +106,7 @@
 	-moz-appearance: textfield;
 	height: 2rem;
 	line-height: 2rem;
-	min-width: auto;
-}
-.control_number .btn_add {
-	margin-left: 0.5rem;
+	min-width: 5rem;
 }
 
 .btn_del,
