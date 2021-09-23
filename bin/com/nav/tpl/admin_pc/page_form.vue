@@ -48,7 +48,7 @@
 										<dd>
 											<mm_upload_img width="10rem" height="10rem" name="${v.name}" type="text" v-model="form.${v.name}" />
 										</dd>
-										<!--{else if(v.name.indexOf('content') !== -1 || v.name.indexOf('note') !== -1)}-->
+										<!--{else if(v.name.indexOf('content') !== -1 || v.dataType.indexOf('longtext') !== -1)}-->
 										<dd>
 											<control_rich v-model="form.${v.name}"></control_rich>
 										</dd>
