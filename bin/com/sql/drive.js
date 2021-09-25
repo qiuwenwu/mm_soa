@@ -289,14 +289,14 @@ Drive.prototype.get_main = async function(db, query, method) {
 		}
 		for (var k in qt) {
 			if (!qy[k]) {
-				query_str += " && " + qt[k].replace(id_key, user_id);
+				query_str += " && " + qt[k].replaceAll(id_key, user_id);
 			}
 		}
 		if (query_str.startsWith(" && ")) {
 			query_str = query_str.replace(" && ", "");
 		}
 	}
-
+	
 	// 查询
 	if (db.count_ret === "true") {
 		ret = $.ret.body(await db.getCountSql(query_str, db.orderby, db.field));
