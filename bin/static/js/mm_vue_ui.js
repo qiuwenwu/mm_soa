@@ -812,7 +812,7 @@ function load_ui(jquery) {
 		for (var i = 0; i < this.length; i++) {
 			var elStyle = this[i].style;
 			elStyle.webkitTransitionDuration = elStyle.MozTransitionDuration = elStyle.transitionDuration =
-			duration;
+				duration;
 		}
 
 		return this;
@@ -963,9 +963,9 @@ function load_ui(jquery) {
 				}],
 				onClick: function onClick(modal, index) {
 					var username = $(modal).find(".modal-text-input[name=\"modal-username\"]")
-				.val();
+						.val();
 					var password = $(modal).find(".modal-text-input[name=\"modal-password\"]")
-				.val();
+						.val();
 					if (index === 0 && callbackCancel) callbackCancel(username, password);
 					if (index === 1 && callbackOk) callbackOk(username, password);
 				}
@@ -993,7 +993,7 @@ function load_ui(jquery) {
 				}],
 				onClick: function onClick(modal, index) {
 					var password = $(modal).find(".modal-text-input[name=\"modal-password\"]")
-				.val();
+						.val();
 					if (index === 0 && callbackCancel) callbackCancel(password);
 					if (index === 1 && callbackOk) callbackOk(password);
 				}
@@ -1294,14 +1294,14 @@ function load_ui(jquery) {
 
 			if (clicked.hasClass("modal-overlay")) {
 				if ($(".modal.modal-in").length > 0 && defaults.modalCloseByOutside) $.closeModal(
-				".modal.modal-in");
+					".modal.modal-in");
 				if ($(".actions-modal.modal-in").length > 0 && defaults.actionsCloseByOutside) $.closeModal(
 					".actions-modal.modal-in");
 			}
 
 			if (clicked.hasClass("popup-overlay")) {
 				if ($(".popup.modal-in").length > 0 && defaults.popupCloseByOutside) $.closeModal(
-				".popup.modal-in");
+					".popup.modal-in");
 			}
 		}
 
@@ -1318,7 +1318,7 @@ function load_ui(jquery) {
 	/* 组件 */
 
 
-	var from_usermixin = {
+	var from_mixin = {
 		model: {
 			prop: 'value',
 			event: 'input'
@@ -1394,12 +1394,12 @@ function load_ui(jquery) {
 			// 最小值
 			min: {
 				type: Number,
-				default: 0
+				default: -999999999
 			},
 			// 最大值
 			max: {
 				type: Number,
-				default: 0
+				default: 999999999
 			},
 			// 最小长度
 			min_length: {
@@ -1653,7 +1653,7 @@ function load_ui(jquery) {
 				if (cl) {
 					return " row-" + cl;
 				}
-				
+
 				return "";
 			}
 		}
@@ -1910,7 +1910,7 @@ function load_ui(jquery) {
 
 	var control_checkbox = {
 		template: "<div class=\"control_checkbox\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': has(o[field]), 'disabled': o.disabled }\" @click=\"selected(o[field])\"><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		props: {
 			symbol: {
 				type: String,
@@ -1944,7 +1944,7 @@ function load_ui(jquery) {
 	};
 	var mm_code = {
 		template: "<div class=\"mm_code\"><mm_icon :icon=\"icon\"></mm_icon><div class=\"title\" v-if=\"title\">{{ title }}</div><slot><mm_group><input type=\"text\" :value=\"value\" :placeholder=\"desc || placeholder\" @input=\"$emit('input', $event.target.value)\"></input><button :class=\"'btn-' + type\" v-html=\"btn\"></button></mm_group></slot><div class=\"tip\" v-if=\"tip\" v-html=\"tip\"></div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		props: {
 			placeholder: {
 				type: String
@@ -1969,7 +1969,7 @@ function load_ui(jquery) {
 
 	var control_input = {
 		template: "<div class=\"control_input\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input v-bind:class=\"{'auto-width': auto }\" :type=\"type\" :value=\"value\" :min=\"min\" :max=\"max\" :minlength=\"min_length\" :maxlength=\"max_length\" :placeholder=\"desc || placeholder\" @input=\"set\" :disabled=\"disabled\" :required=\"required\" @blur=\"$emit('blur')\" :style=\"style\" /><slot><span class=\"unit\" v-if=\"unit\">{{ unit }}</span></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		props: {
 			placeholder: {
 				type: String
@@ -2024,7 +2024,7 @@ function load_ui(jquery) {
 	};
 	var control_number = {
 		template: "<div class=\"control_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn class=\"btn_primary btn_del\" @click.native=\"del\"><span></span></mm_btn><input type=\"number\" :value.number=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn class=\"btn_primary btn_add\" @click.native=\"add\"><span></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		methods: {
 			setInt: function setInt(e) {
 				var value = e.target.value ? e.target.value : "0";
@@ -2166,7 +2166,7 @@ function load_ui(jquery) {
 	};
 	var control_radio = {
 		template: "<div class=\"control_radio\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': value == o[field] }\" @click=\"$emit('input', $event.target.value)\"><input type=\"radio\" :name=\"name\" :value=\"o[field]\" /><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		data: function data() {
 			var name = this.name;
 
@@ -2181,7 +2181,7 @@ function load_ui(jquery) {
 	};
 	var control_reverse = {
 		template: "<div class=\"control_reverse\"><div class=\"title\" v-if=\"title\" v-html=\"title\" @click=\"set\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><slot><div class=\"figure\" v-bind:class=\"{ 'reverse_arrow' : display !== '1' }\" @click=\"set\"><span class=\"up\" v-bind:class=\"{'active': selected === 0 }\"></span><span class=\"down\" v-bind:class=\"{'active': selected === 1 }\"></span></div></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		methods: {
 			set: function set() {
 				var n = this.selected;
@@ -2262,9 +2262,23 @@ function load_ui(jquery) {
 			}
 		}
 	};
+
+	var idn = 0;
+
+	function new_id(name) {
+		idn++;
+		var rand = Math.random().toFixed(6) + "";
+		return name + "_" + idn; // rand.replace(".", "").substring(0, 6);
+	}
+
 	var control_select = {
-		template: "<div class=\"control_select\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><select v-if=\"type === 'text'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\"><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><select v-else-if=\"type === 'multiple'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\" multiple><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><a href=\"javascript:void(0)\" class=\"click\" v-else-if=\"type === 'click'\" v-bind:class=\"{ 'current': sw }\"><div :class=\"{'selected': !$slots.default}\" @click=\"sw = !sw\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field]);sw = false\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a><a href=\"javascript:void(0)\" v-bind:class=\"type\" v-else><div class=\"selected\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field])\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		template: "<div class=\"control_select\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><select v-if=\"type === 'text'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\"><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><div v-else-if=\"type === 'list'\" class=\"input_list\"><input :list=\"ids\" :value=\"value\" @blur=\"blur_fun\" @change=\"set\" :disabled=\"disabled\" /><datalist :id=\"ids\"><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></datalist></div><select v-else-if=\"type === 'multiple'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\" multiple><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><a href=\"javascript:void(0)\" class=\"click\" v-else-if=\"type === 'click'\" v-bind:class=\"{ 'current': sw }\"><div :class=\"{'selected': !$slots.default}\" @click=\"sw = !sw\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field]);sw = false\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a><a href=\"javascript:void(0)\" v-bind:class=\"type\" v-else><div class=\"selected\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field])\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		mixins: [from_mixin],
+		data: function() {
+			return {
+				ids: this.id || new_id("select")
+			}
+		},
 		methods: {
 			set: function set(e) {
 				var value = e.target.value;
@@ -2276,6 +2290,32 @@ function load_ui(jquery) {
 			click_fun: function click_fun(value) {
 				this.$emit("input", value);
 				this.func(value);
+			},
+			blur_fun: function blur_fun(e) {
+				var value = e.target.value;
+				var list = this.options;
+				var val;
+				for (var i = 0; i < list.length; i++) {
+					var o = list[i];
+					if (o.value == value) {
+						val = o.value;
+						break;
+					}
+				}
+				if (!val) {
+					for (var i = 0; i < list.length; i++) {
+						var o = list[i];
+						if (o.name.indexOf(value) !== -1) {
+							val = o.value;
+							break;
+						}
+					}
+				}
+				if (val) {
+					this.$emit("input", val);
+					this.$emit("change", val);
+					this.func(val);
+				}
 			}
 		},
 		computed: {
@@ -2299,7 +2339,7 @@ function load_ui(jquery) {
 	};
 	var control_switch = {
 		template: "<div class=\"control_switch\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label :class=\"{ 'active': value === 1 }\" @click=\"set\"><div class=\"onoff\"><span class=\"on\" v-if=\"display === '1'\"></span><span class=\"off\" v-if=\"display === '1'\"></span></div></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		methods: {
 			set: function set() {
 				var val = 0;
@@ -2437,7 +2477,7 @@ function load_ui(jquery) {
 
 	var mm_time = {
 		template: "<div class=\"mm_time\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type || 'datetime'\" :value=\"value\" @blur=\"set\" :disabled=\"disabled\"></select></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		methods: {
 			set: function set(e) {
 				this.$emit("input", e.target.value);
@@ -2458,7 +2498,7 @@ function load_ui(jquery) {
 
 	var control_textarea = {
 		template: "<div class=\"control_textarea\" :class=\"{ 'show-expand': sw }\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><textarea :value=\"value\" @blur=\"set\" :disabled=\"disabled\" :placeholder=\"desc || placeholder\" v-if=\"type == 'text'\"></textarea><button class=\"btn_expand\" type=\"button\" v-show=\"$slots.default\" @click=\"sw = !sw\"><i class=\"fa-expand\"></i></button></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div><slot></slot></div>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		props: {
 			placeholder: {
 				type: String
@@ -2473,7 +2513,7 @@ function load_ui(jquery) {
 
 	var control_file = {
 		template: "<label class='mm_btn'><input type=\"file\" :id=\"file_id\" :accept=\"accept\" class=\"mm_btn btn_primary-x\" @change=\"change\" hidden /><slot>导入</slot></label>",
-		mixins: [from_usermixin],
+		mixins: [from_mixin],
 		props: {
 			accept: {
 				type: String,

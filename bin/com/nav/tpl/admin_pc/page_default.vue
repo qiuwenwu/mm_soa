@@ -28,8 +28,12 @@
 										<!--{if(v.format)}-->
 										<!--{if(v.format.table)}-->
 										<mm_item>
+											<!--{if(v.format.key.endWith('_id') !== -1)}-->
+											<control_select type="list" v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" @change="search()" />
+											<!--{else}-->
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
 											 @change="search()" />
+											 <!--{/if}-->
 										</mm_item>
 										<!--{else}-->
 										<mm_item>
