@@ -344,9 +344,7 @@ Mm_contract.prototype.subscribe_event = function(provider) {
       chainId,
       accounts
     } = payload;
-    console.log("连接成功");
-    console.log(chainId, accounts);
-    console.log(Object.keys(payload));
+
     this.event('connect', accounts, this.toChage_10(chainId, 1));
   });
 
