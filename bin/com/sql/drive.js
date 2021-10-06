@@ -664,7 +664,7 @@ Drive.prototype.import_main = async function(db, file) {
  * 导入数据
  * @param {Object} db 数据库操作类
  * @param {Object} query 查询条件
- * @param {Object} body 导出设置
+ * @param {Object} body 导入设置
  * @return {Object} 返回执行结果
  */
 Drive.prototype.import = async function(db, query, body) {
