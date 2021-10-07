@@ -46,7 +46,7 @@
 					</dl>
 					<footer>
 						<div class="mm_group">
-							<button class="btn_default" type="button" @click="cancel">取消</button>
+							<button class="btn_default" type="button" @click="cancel">返回</button>
 							<button class="btn_primary" type="button" @click="submit()">提交</button>
 						</div>
 					</footer>

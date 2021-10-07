@@ -1024,16 +1024,17 @@ define(function() {
 			/**
 			 * 判断子孙级别, 最大支持5次分叉
 			 * @param {Number} fid 祖辈ID
+			 * @param {String} key 主键字段
 			 * @param {Object} list 数据列表
 			 * @return {Number} 返回级别
 			 */
-			opens_lv: function opens_lv(fid, list) {
+			opens_lv: function opens_lv(fid, key, list) {
 				if (!list) {
 					list = this.list;
 				}
 				var lv = 0;
 				var father_id = this.father_id;
-				var id = this.field;
+				var id = key || this.field;
 				var num = fid;
 				for (var n = 0; n < 5; n++) {
 					if (num === 0) {
