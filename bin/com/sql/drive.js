@@ -296,7 +296,7 @@ Drive.prototype.get_main = async function(db, query, method) {
 			query_str = query_str.replace(" && ", "");
 		}
 	}
-	
+
 	// 查询
 	if (db.count_ret === "true") {
 		ret = $.ret.body(await db.getCountSql(query_str, db.orderby, db.field));
@@ -379,7 +379,7 @@ Drive.prototype.set_main = async function(db, query, body) {
 			query_str = query_str.replace(" && ", "");
 		}
 	}
-	
+
 	var set_str = db.tpl_body(body, cg.update);
 	var n = await db.setSql(query_str, set_str);
 
