@@ -489,7 +489,7 @@ Drive.prototype.create_vue = async function(file, route) {
 		file.saveText(vue);
 	}
 	else {
-		console.log(tpl.error);
+		$.log.error("更新模板失败", tpl.error);
 	}
 };
 

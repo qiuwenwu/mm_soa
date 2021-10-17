@@ -336,8 +336,7 @@ Drive.prototype.save_file = function(files) {
 		const fileDir = path.join($.runPath, dir);
 		if (!fs.existsSync(fileDir)) {
 			fs.mkdirSync(fileDir, err => {
-				console.log(err)
-				console.log('创建失败')
+				$.log.error('创建失败', err);
 			});
 		}
 		// 创建写入流
@@ -346,10 +345,9 @@ Drive.prototype.save_file = function(files) {
 			readStream.pipe(writeStream);
 			// writeStream.close();
 			url = url_path + name;
-		} catch (e) {
-			console.log(e);
+		} catch (err) {
+			$.log.error('保存文件失败', err);
 		}
-		// readStream.close();
 	}
 	return {
 		file,
@@ -402,7 +400,12 @@ Drive.prototype.run = async function(ctx, db) {
 			if (user) {
 				db.user = user;
 			}
-			ret = await this.main(ctx, db);
+			try {
+				ret = await this.main(ctx, db);
+			} catch (err) {
+				$.log.error("脚本文件错误", req.path, err);
+				ret = $.ret.error(10000, "脚本文件错误：" + err.toString());
+			}
 		}
 		var res = ctx.response;
 		body = this.body(ret, res, req.type);

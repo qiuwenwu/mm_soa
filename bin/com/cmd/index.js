@@ -64,7 +64,7 @@ Cmd.prototype.run = async function(msg, db, table) {
 						msg_log.create_time = new Date().toStr('yyyy-MM-dd hh:mm:ss');
 					}
 				} else {
-					console.log('添加微信消息到wechat_message表失败！');
+					$.log.error('添加微信消息到wechat_message表失败！', msg_log);
 					return null;
 				}
 			} else if (msg_log.content_last !== msg.content) {

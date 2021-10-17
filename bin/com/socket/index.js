@@ -32,7 +32,7 @@ Socket.prototype.run = async function(ctx, next) {
 	var list = this.list;
 	const path = ctx.path;
 	for (var i = 0, o; o = list[i++];) {
-		console.log(path === o.config.path);
+		// console.log("监听webscoket路径是否正确", path === o.config.path);
 		if (path === o.config.path) {
 			o.add(ctx);
 			break;

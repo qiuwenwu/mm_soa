@@ -620,6 +620,7 @@ Drive.prototype.get_format = async function(db) {
 Drive.prototype.import_main = async function(db, file) {
 	var params = await this.get_params();
 	var format = await this.get_format(db);
+	file = file.replace(url_path, save_dir);
 	file = file.fullname($.config.path.user || $.config.path.static);
 	if (!file.hasFile()) {
 		return $.ret.error(30001, file + "文件不存在！");
@@ -633,7 +634,7 @@ Drive.prototype.import_main = async function(db, file) {
 	try {
 		jarr = await excel.load();
 	} catch (e) {
-		console.log(e);
+		$.log.error("导入文件", e);
 	} finally {
 		excel.clear();
 		excel = null;
@@ -641,20 +642,43 @@ Drive.prototype.import_main = async function(db, file) {
 
 	var list = [];
 	var errors = [];
+	var list_error = [];
 	db.table = db.table || this.config.table;
-	for (var i = 0; i < jarr.length; i++) {
-		var o = jarr[i];
-		var n = await db.add(o);
-		if (n < 1) {
-			list.push(o);
-			errors.push(db.error);
+	if (!jarr.length) {
+		return $.ret.error(10000, '要导入的数据不能为空!');
+	}
+	var key = this.config.key;
+	if (jarr[0][key]) {
+		for (var i = 0; i < jarr.length; i++) {
+			var o = jarr[i];
+			var qy = {};
+			qy[key] = o[key];
+			var n = await db.set(qy, o);
+			if (n < 1) {
+				errors.push(db.error);
+				list_error.push(o);
+			} else {
+				list.push(o);
+			}
+		}
+	} else {
+		for (var i = 0; i < jarr.length; i++) {
+			var o = jarr[i];
+			var n = await db.add(o);
+			if (n < 1) {
+				errors.push(db.error);
+				list_error.push(o);
+			} else {
+				list.push(o);
+			}
 		}
 	}
-	var bl = list.length !== jarr.length;
+	var bl = list.length === jarr.length;
 	var body = $.ret.bl(bl, bl ? '导入成功!' : '导入失败!');
 	body.result.list = list;
 	if (errors.length) {
-		body.errors = errors;
+		body.result.list_error = list_error;
+		body.result.errors = errors;
 	}
 	return body;
 };
@@ -723,7 +747,7 @@ Drive.prototype.export_main = async function(db, query, body) {
 	try {
 		file = await excel.save(list);
 	} catch (e) {
-		console.log(e);
+		$.log.error("导出保存文件失败！", e);
 	} finally {
 		excel.clear();
 		excel = null;
@@ -825,7 +849,8 @@ Drive.prototype.main = async function(params, db) {
 	if (!cg.method.has("*" + method + "*")) {
 		return $.ret.error(50001, '不支持的操作方式')
 	}
-	delete query.method;
+	var qy = Object.assign({}, query);
+	delete qy.method;
 	if (this[method]) {
 		db.method = method;
 
@@ -844,7 +869,7 @@ Drive.prototype.main = async function(params, db) {
 			db.table = cg.table + '';
 		}
 
-		return await this[method](db, query, body);
+		return await this[method](db, qy, Object.assign({}, body));
 	} else {
 		return $.ret.error(50001, '不支持的操作方式');
 	}
