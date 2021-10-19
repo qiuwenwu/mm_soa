@@ -265,7 +265,7 @@ Drive.prototype.clear = function(millisecond) {
  * @return {Object} 当前类
  */
 Drive.prototype.main = async function() {
-	$.log.debug('定时任务, 执行中...');
+	$.log.debug('定时任务(默认), 执行中...');
 };
 
 /**

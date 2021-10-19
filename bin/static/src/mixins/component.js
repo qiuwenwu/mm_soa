@@ -341,7 +341,7 @@ export default {
 		set_before: function set_before(param, includeZero) {
 			var pm = $.delete(param, includeZero);
 			for (var k in pm) {
-				if (k.toLocaleLowerCase().indexOf('time') !== -1 && pm[k].indexOf('T') !== -1) {
+				if (k.toLocaleLowerCase().indexOf('time') !== -1 && typeof(pm[k]) === 'string' && pm[k].indexOf('T') !== -1) {
 					pm[k] = new Date(pm[k]).toStr('yyyy-MM-dd 00:00:00');
 				}
 			}
@@ -631,7 +631,7 @@ export default {
 						for (var k in o) {
 							if (k.indexOf('time') !== -1) {
 								var val = o[k];
-								if (val && val.indexOf('T') !== -1) {
+								if (val && typeof(val) === 'string' && val.indexOf('T') !== -1) {
 									var v = new Date(o[k]);
 									o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
 								}
