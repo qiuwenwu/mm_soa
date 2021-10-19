@@ -234,6 +234,9 @@ export default {
 		 * @return {String} 返回转换后的结果
 		 */
 		Vue.prototype.$to_time = function(timeStr, format){
+			if(!timeStr){
+				return ""
+			}
 			var time = timeStr.toTime();
 			if(format){
 				return time.toStr(format);
