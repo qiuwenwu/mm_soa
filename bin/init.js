@@ -1,5 +1,6 @@
 $.binPath = __dirname.fullname() + "/";
 $.Html = require('mm_html');
+$.mongodb_admin = require("mm_mongodb").mongoDB_admin;
 $.redis_admin = require("mm_redis").redis_admin;
 $.mysql_admin = require('mm_mysql').mysql_admin;
 
@@ -21,7 +22,6 @@ module.exports = function(config) {
 		$.cache_admin = require('mm_cache').cache_admin;
 		$.push($.cache, $.cache_admin('sys'), true);
 	} else if (sys.cache === 'mongodb') {
-		$.mongodb_admin = require("mm_mongodb").mongoDB_admin;
 		var mongodb = $.mongodb_admin('sys');
 		mongodb.setConfig(config.mongodb);
 		mongodb.open();
