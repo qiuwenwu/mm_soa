@@ -26,15 +26,17 @@
 										<!--{if(v.format.table)}-->
 										<dd>
 											<!--{if(v.format.key.endWith('_id') !== -1)}-->
-											<control_select type="list" v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" @change="search()" />
+											<control_select type="list" v-model="form.${v.format.key}"
+												:options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
 											<!--{else}-->
-											<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 @change="search()" />
-											 <!--{/if}-->
+											<control_select v-model="form.${v.format.key}"
+												:options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+											<!--{/if}-->
 										</dd>
 										<!--{else}-->
 										<dd>
-											<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
+											<control_select v-model="form.${v.format.key}"
+												:options="$to_kv(${v.label})" />
 										</dd>
 										<!--{/if}-->
 										<!--{else if(v.dataType === 'date')}-->
@@ -51,7 +53,8 @@
 										</dd>
 										<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1 || v.name === 'avatar')}-->
 										<dd>
-											<mm_upload_img width="10rem" height="10rem" name="${v.name}" type="text" v-model="form.${v.name}" />
+											<mm_upload_img width="10rem" height="10rem" name="${v.name}" type="text"
+												v-model="form.${v.name}" />
 										</dd>
 										<!--{else if(v.name.indexOf('content') !== -1 || v.dataType.indexOf('longtext') !== -1)}-->
 										<dd>
@@ -59,23 +62,32 @@
 										</dd>
 										<!--{else if(v.dataType.indexOf('text') !== -1)}-->
 										<dd>
-											<control_textarea v-model="form.${v.name}" type="text" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"></control_textarea>
+											<control_textarea v-model="form.${v.name}" type="text"
+												placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}">
+											</control_textarea>
 										</dd>
 										<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
 										<dd>
 											<!--{if(v.number.range && v.number.range.length)}-->
-											<control_number v-model="form.${v.name}" :min="${v.number.range[0]}" :max="${v.number.range[1]}" />
+											<control_number v-model="form.${v.name}" :min="${v.number.range[0]}"
+												:max="${v.number.range[1]}" />
 											<!--{else}-->
-											<control_number v-model="form.${v.name}" :min="${v.number ? v.number.min : 0}" :max="${v.number ? v.number.max : 0}" />
+											<control_number v-model="form.${v.name}"
+												:min="${v.number ? v.number.min : 0}"
+												:max="${v.number ? v.number.max : 0}" />
 											<!--{/if}-->
 										</dd>
 										<!--{else}-->
 										<dd>
 											<!--{if(v.required)}-->
-											<control_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-											 :required="true" />
+											<control_input v-model="form.${v.name}" :minlength="0"
+												:maxlength="${v.string ? v.string.max : 0}"
+												placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
+												:required="true" />
 											<!--{else}-->
-											<control_input v-model="form.${v.name}" :minlength="0" :maxlength="${v.string ? v.string.max : 0}" placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
+											<control_input v-model="form.${v.name}" :minlength="0"
+												:maxlength="${v.string ? v.string.max : 0}"
+												placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
 											<!--{/if}-->
 										</dd>
 										<!--{/if}-->
@@ -125,7 +137,9 @@
 				},
 				/*[loop js.data v idx]*/
 				// ${' ' + v.title}
-				'${v.name}': ${@JSON.stringify(v.value)},
+				'${v.name}': $ {
+					@JSON.stringify(v.value)
+				},
 				/*[/loop]*/
 			}
 		},
@@ -136,7 +150,7 @@
 			 * 获取 ${v.title}
 			 * @param {query} 查询条件
 			 */
-			get_/*[v.basename]*/(query) {
+			get_ /*[v.basename]*/(query) {
 				var _this = this;
 				if (!query) {
 					query = {
@@ -145,8 +159,8 @@
 				}
 				this.$get('~${v.path}', query, function(json) {
 					if (json.result) {
-						_this/*['.' + v.name]*/.clear();
-						_this/*['.' + v.name]*/.addList(json.result.list)
+						_this /*['.' + v.name]*/ .clear();
+						_this /*['.' + v.name]*/ .addList(json.result.list)
 					}
 				});
 			},

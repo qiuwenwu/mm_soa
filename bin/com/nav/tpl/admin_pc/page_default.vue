@@ -35,6 +35,10 @@
 											 @change="search()" />
 											 <!--{/if}-->
 										</mm_item>
+										<!--{else if(v.format.key.indexOf('user_id') !== -1)}-->
+										<mm_item>
+											<control_select type="" v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
+										</mm_item>
 										<!--{else}-->
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
@@ -89,7 +93,7 @@
 												<!--{else if(v.name == 'state' || v.name == 'status')}-->
 												<span v-bind:class="arr_color[o.${v.name}]">{{ ${v.label}[o.${v.name}] }}</span>
 												<!--{else}-->
-												<span>{{ $get_name(${v.label}, o.${v.name}, 'value') }}</span>
+												<span>{{ ${v.label}[o.${v.name}] }}</span>
 												<!--{/if}-->
 												<!--{else if(v.name.indexOf('img') !== -1 || v.name.indexOf('icon') !== -1 || v.name === 'avatar')}-->
 												<img class="${v.name}" :src="o.${v.name}" alt="${v.title}" />
@@ -145,7 +149,11 @@
 						<dt>${v.title}</dt>
 						<!--{if(v.format.table)}-->
 						<dd>
+							<!--{if(v.format.key.endWith('_id') !== -1)}-->
+							<control_select type="list" v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<!--{else}-->
 							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<!--{/if}-->
 						</dd>
 						<!--{else}-->
 						<dd>
@@ -219,7 +227,7 @@
 			 * 获取 ${v.title}
 			 * @param {query} 查询条件
 			 */
-			get_ /*[v.basename]*/(query) {
+			get_/*[v.basename]*/(query) {
 				var _this = this;
 				if (!query) {
 					query = {
@@ -240,7 +248,7 @@
 			/*[loop js.data v idx]*/
 			/*[if(v.path)]*/
 			// 获取 ${v.title}
-			this.get_ /*[v.basename]*/();
+			this.get_/*[v.basename]*/();
 			/*[/if]*/
 			/*[/loop]*/
 		}

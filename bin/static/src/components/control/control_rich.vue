@@ -134,12 +134,16 @@
 				// });
 				editor.on('input', (e) => {
 					this.val = tinymce.get(this.id_sub).getContent();
-					this.$emit('input', this.val);
+					this.$emit('input', this.val.replace(/"..\/..\//g, '"/'));
 				});
 				editor.on('change', (e) => {
 					this.val = tinymce.get(this.id_sub).getContent();
-					this.$emit('input', this.val);
-					this.$emit('change', tinymce.get(this.id_sub), this.val);
+					this.$emit('input', this.val.replace(/"..\/..\//g, '"/'));
+					this.$emit('change', tinymce.get(this.id_sub), this.val.replace(/"..\/..\//g, '"/'));
+				})
+				editor.on('blur', (e) => {
+					this.val = tinymce.get(this.id_sub).getContent();
+					this.$emit('blur', this.val.replace(/"..\/..\//g, '"/'));
 				})
 				editor.on('init', (e) => {
 					if (this.value !== undefined){

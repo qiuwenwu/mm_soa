@@ -27,10 +27,15 @@
 										<!--{loop field v idx}-->
 										<!--{if(v.format)}-->
 										<!--{if(v.format.table)}-->
-										<mm_item>
-											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 />
-										</mm_item>
+										<dd>
+											<!--{if(v.format.key.endWith('_id') !== -1)}-->
+											<control_select type="list" v-model="form.${v.format.key}" title="${v.title}"
+												:options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+											<!--{else}-->
+											<control_select v-model="form.${v.format.key}" title="${v.title}"
+												:options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+											<!--{/if}-->
+										</dd>
 										<!--{else}-->
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
@@ -133,7 +138,11 @@
 						<dt>${v.title}</dt>
 						<!--{if(v.format.table)}-->
 						<dd>
+							<!--{if(v.format.key.endWith('_id') !== -1)}-->
+							<control_select type="list" v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<!--{else}-->
 							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<!--{/if}-->
 						</dd>
 						<!--{else}-->
 						<dd>

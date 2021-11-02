@@ -149,7 +149,11 @@
 						<dt>${v.title}</dt>
 						<!--{if(v.format.table)}-->
 						<dd>
+							<!--{if(v.format.key.endWith('_id') !== -1)}-->
+							<control_select type="list" v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<!--{else}-->
 							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+							<!--{/if}-->
 						</dd>
 						<!--{else}-->
 						<dd>
@@ -223,7 +227,7 @@
 			 * 获取 ${v.title}
 			 * @param {query} 查询条件
 			 */
-			get_ /*[v.basename]*/(query) {
+			get_/*[v.basename]*/(query) {
 				var _this = this;
 				if (!query) {
 					query = {
@@ -244,7 +248,7 @@
 			/*[loop js.data v idx]*/
 			/*[if(v.path)]*/
 			// 获取 ${v.title}
-			this.get_ /*[v.basename]*/();
+			this.get_/*[v.basename]*/();
 			/*[/if]*/
 			/*[/loop]*/
 		}
