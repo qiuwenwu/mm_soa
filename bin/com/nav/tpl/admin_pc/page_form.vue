@@ -137,9 +137,7 @@
 				},
 				/*[loop js.data v idx]*/
 				// ${' ' + v.title}
-				'${v.name}': $ {
-					@JSON.stringify(v.value)
-				},
+				'${v.name}': ${@JSON.stringify(v.value)},
 				/*[/loop]*/
 			}
 		},
@@ -150,7 +148,7 @@
 			 * 获取 ${v.title}
 			 * @param {query} 查询条件
 			 */
-			get_ /*[v.basename]*/(query) {
+			get_/*[v.basename]*/(query) {
 				var _this = this;
 				if (!query) {
 					query = {
@@ -159,8 +157,8 @@
 				}
 				this.$get('~${v.path}', query, function(json) {
 					if (json.result) {
-						_this /*['.' + v.name]*/ .clear();
-						_this /*['.' + v.name]*/ .addList(json.result.list)
+						_this/*['.' + v.name]*/.clear();
+						_this/*['.' + v.name]*/.addList(json.result.list)
 					}
 				});
 			},
@@ -171,7 +169,7 @@
 			/*[loop js.data v idx]*/
 			/*[if(v.path)]*/
 			// 获取 ${v.title}
-			this.get_ /*[v.basename]*/();
+			this.get_/*[v.basename]*/();
 			/*[/if]*/
 			/*[/loop]*/
 		}

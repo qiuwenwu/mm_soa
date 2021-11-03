@@ -212,8 +212,8 @@
 				}
 				this.$get('~${v.path}', query, function(json) {
 					if (json.result) {
-						_this /*['.' + v.name]*/ .clear();
-						_this /*['.' + v.name]*/ .addList(json.result.list)
+						_this/*['.' + v.name]*/.clear();
+						_this/*['.' + v.name]*/.addList(json.result.list)
 					}
 				});
 			},
