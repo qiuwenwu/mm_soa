@@ -220,7 +220,7 @@ Drive.prototype.update_config = async function(db, cover) {
 	var list = [];
 
 	// 查询表注释并修改
-	var sql = "SELECT TABLE_NAME, TABLE_COMMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + db.database +
+	var sql = "SELECT TABLE_NAME, TABLE_COMMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + db.database() +
 		"' && TABLE_NAME = '" + cg.table + "';";
 
 	var lt = await db.run(sql);
