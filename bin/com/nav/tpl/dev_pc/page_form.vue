@@ -111,7 +111,7 @@
 				form: {
 					/*[loop field v idx]*/
 					/*[if v.type === 'number']*/
-					"${v.name}": 0,
+					"${v.name}": ${Number(v.default) || ''},
 					/*[else]*/
 					"${v.name}": '',
 					/*[/if]*/

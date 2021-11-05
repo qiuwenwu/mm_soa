@@ -25,6 +25,7 @@
 										<!--{/loop}-->
 										<!--{/if}-->
 										<!--{loop field v idx}-->
+										<!--{if(v.show.search)}-->
 										<!--{if(v.format)}-->
 										<!--{if(v.format.table)}-->
 										<dd>
@@ -40,6 +41,7 @@
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
 										</mm_item>
+										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -78,6 +80,7 @@
 										<tr v-for="(o, idx) in list" :key="idx" :class="{'active': select == idx}" @click="selected(idx)">
 											<td>{{ o[field] }}</td>
 											<!--{loop field v idx}-->
+											<!--{if(v.show.table)}-->
 											<!--{if(v.name !== sql.key)}-->
 											<td>
 												<!--{if(v.dataType === 'tinyint')}-->
@@ -104,6 +107,7 @@
 												<control_input :auto="true" v-model="o.${v.name}" @blur="set(o)" />
 												<!--{/if}-->
 											</td>
+											<!--{/if}-->
 											<!--{/if}-->
 											<!--{/loop}-->
 											<td>
@@ -140,6 +144,7 @@
 				<div class="card_body pa">
 					<dl>
 						<!--{loop field v idx}-->
+						<!--{if(v.show.batch)}-->
 						<!--{if(v.format)}-->
 						<dt>${v.title}</dt>
 						<!--{if(v.format.table)}-->
@@ -154,6 +159,7 @@
 						<dd>
 							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
 						</dd>
+						<!--{/if}-->
 						<!--{/if}-->
 						<!--{/if}-->
 						<!--{/loop}-->

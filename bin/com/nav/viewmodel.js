@@ -23,15 +23,14 @@ ViewModel.prototype.field = async function(model) {
 		return [];
 	}
 	var field;
-	if(model.file.indexOf('_form') !== -1 || model.file.indexOf('_view') !== -1){
+	if (model.file.indexOf('_form') !== -1 || model.file.indexOf('_view') !== -1) {
 		field = model.sql.field_obj || '';
-	}
-	else {
+	} else {
 		field = model.sql.field_default || '';
 	}
 	var requireds = [];
 	var add = model.param.add;
-	if(add){
+	if (add) {
 		requireds = add.body_required;
 	}
 	var arr = field.replace(/`/g, '').split(',');
@@ -40,7 +39,7 @@ ViewModel.prototype.field = async function(model) {
 		var o = list[i];
 		var name = o.name;
 		if (arr.indexOf(name) !== -1) {
-			var obj = Object.assign({name}, o);
+			var obj = Object.assign({}, o);
 			var format = model.sql.format.getObj({
 				key: name
 			});
@@ -48,8 +47,50 @@ ViewModel.prototype.field = async function(model) {
 				obj.title = format.title;
 				obj.format = format;
 			}
-			if(requireds.indexOf(name) !== -1){
+			if (requireds.indexOf(name) !== -1) {
 				obj.required = true;
+			}
+			var desc = obj.description;
+			obj.show = {};
+			if (desc.indexOf("##") === -1) {
+				obj.show.form = true;
+				obj.show.view = true;
+				obj.show.search = true;
+				obj.show.table = true;
+				obj.show.list = true;
+				obj.show.edit = true;
+				obj.show.details = true;
+				obj.show.batch = true;
+			} else {
+				desc = desc.between("##", "##");
+				if (desc.indexOf("none") !== -1) {
+					obj.show.form = false;
+					obj.show.view = false;
+					obj.show.search = false;
+					obj.show.table = false;
+					obj.show.list = false;
+					obj.show.edit = false;
+					obj.show.details = false;
+					obj.show.batch = false;
+				} else {
+					obj.show.form = desc.indexOf("form") !== -1;
+					obj.show.view = desc.indexOf("view") !== -1;
+					obj.show.search = desc.indexOf("search") !== -1;
+					obj.show.table = desc.indexOf("table") !== -1;
+					obj.show.list = desc.indexOf("list") !== -1;
+					obj.show.edit = desc.indexOf("edit") !== -1;
+					obj.show.details = desc.indexOf("details") !== -1;
+					obj.show.batch = desc.indexOf("batch") !== -1;
+
+					obj.show.form = !(desc.indexOf("form_no") !== -1);
+					obj.show.view = !(desc.indexOf("view_no") !== -1);
+					obj.show.search = !(desc.indexOf("search_no") !== -1);
+					obj.show.table = !(desc.indexOf("table_no") !== -1);
+					obj.show.list = !(desc.indexOf("list_no") !== -1);
+					obj.show.edit = !(desc.indexOf("edit_no") !== -1);
+					obj.show.details = !(desc.indexOf("details_no") !== -1);
+					obj.show.batch = !(desc.indexOf("batch_no") !== -1);
+				}
 			}
 			pm.push(obj);
 		}
@@ -92,7 +133,7 @@ ViewModel.prototype.js = async function(model) {
 	};
 	var field = model.field;
 	var path_start = model.file.indexOf('admin') !== -1 ? '/apis/' : '/api/';
-	
+
 	for (var i = 0; i < field.length; i++) {
 		var o = field[i];
 		var format = o.format;
@@ -113,12 +154,12 @@ ViewModel.prototype.js = async function(model) {
 					value: [],
 					path
 				};
-				
+
 				// 存在BUG（start）
-				if(o.name === 'father_id' || o.name === 'fid'){
+				if (o.name === 'father_id' || o.name === 'fid') {
 					obj.father_id = o.name;
 				}
-				if(o.name === 'title'){
+				if (o.name === 'title') {
 					obj.title_name = 'title';
 				}
 				// 存在BUG（end）

@@ -220,7 +220,8 @@ Drive.prototype.update_config = async function(db, cover) {
 	var list = [];
 
 	// 查询表注释并修改
-	var sql = "SELECT TABLE_NAME, TABLE_COMMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + db.database() +
+	var sql = "SELECT TABLE_NAME, TABLE_COMMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + db
+		.database() +
 		"' && TABLE_NAME = '" + cg.table + "';";
 
 	var lt = await db.run(sql);
@@ -315,7 +316,7 @@ Drive.prototype.update_db = async function(db) {
 						notnull = "NOT NULL";
 					}
 					if (o.default) {
-						value = "DEFAULT '" + o.default+"'";
+						value = "DEFAULT '" + o.default + "'";
 					} else if (o.default === null) {
 						value = "DEFAULT NULL";
 					} else {
@@ -382,15 +383,17 @@ Drive.prototype.update_db = async function(db) {
 				note += '(' + o.map + ')'
 			}
 			var sql = "`{1}` {2} {3} {4} COMMENT '{5}'";
-			sql = sql.replace('{1}', o.name).replace('{2}', type).replace('{3}', notnull).replace('{4}', value).replace('{5}',
-				note);
+			sql = sql.replace('{1}', o.name).replace('{2}', type).replace('{3}', notnull).replace('{4}', value)
+				.replace('{5}',
+					note);
 
 			if (arr.length === 0) {
 				// 如果没有则添加
 				await db.exec("alter table `{0}` add ".replace('{0}', cg.table) + sql);
 			} else {
 				// 如果有则修改
-				await db.exec("alter table `{0}` change `{1}` ".replace('{0}', cg.table).replace('{1}', o.name) + sql);
+				await db.exec("alter table `{0}` change `{1}` ".replace('{0}', cg.table).replace('{1}', o
+					.name) + sql);
 			}
 		}
 	} else {
@@ -547,21 +550,19 @@ Drive.prototype.get_format = async function(obj) {
 			format.list = list.map((o) => {
 				var arr = o.split(',');
 				var value = arr[0];
-				if(arr.length > 0){
+				if (arr.length > 0) {
 					return {
 						name: arr[1],
 						value: value
 					}
-				}
-				else {
+				} else {
 					return {
 						name: value,
 						value
 					}
 				}
 			});
-		}
-		else if (/^[0-9]+/.test(map)) {
+		} else if (/^[0-9]+/.test(map)) {
 			if (map.indexOf('0') !== 0) {
 				list.unshift('');
 			}
@@ -644,8 +645,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 				}
 			} else if (n === uid && query_default_user) {
 				query_default[n] = "`" + n + "` = {" + uid + "}";
-			}
-			else if(n === 'available' || n === 'show'){
+			} else if (n === 'available' || n === 'show') {
 				query_default[n] = "`" + n + "` = 1";
 			}
 		}
@@ -699,7 +699,8 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		delete m.method;
 		m.field_hide = [];
 		m.name += 2;
-		m.field_obj = m.field_obj.replace(",`time_create`", "").replace(",`time_update`", "").replace(",`create_time`", "")
+		m.field_obj = m.field_obj.replace(",`time_create`", "").replace(",`time_update`", "").replace(
+				",`create_time`", "")
 			.replace(",`update_time`", "");
 		delete m.query_default;
 		this.save_file(manage + '/sql.json', m, cover);
@@ -785,11 +786,14 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			// 参数类型 string字符串、number数字、bool布尔、dateTime时间、object对象类型、array数组类型
 			"type": "",
 			// 数据存储类型
-			"dataType": p,
+			"dataType": p
 		};
 
 		if (p === 'varchar' || p === 'text' || p === 'longtext') {
 			m.type = "string";
+			// 默认值
+			m.default = o.default;
+
 			// 字符串相关验证
 			m.string = {
 				// // 非空
@@ -838,7 +842,6 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				keyword += "、" + o.title + "(" + n + ")";
 			}
 			cm.set.body.push(n);
-
 			// 添加验证模型
 			cm.list.push(m);
 		} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'timestamp') {
@@ -849,6 +852,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				format = p;
 			}
 			m.type = "string";
+			m.default = "";
 			// 时间相关验证
 			m.string = {
 				// 非空
@@ -875,6 +879,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			cm.get.query.push(n + "_max");
 		} else {
 			m.type = "number";
+			m.default = Number(o.default) + "";
 			// 数值相关验证
 
 			m.number = {

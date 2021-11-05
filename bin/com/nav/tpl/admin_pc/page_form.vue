@@ -12,6 +12,7 @@
 								<mm_form>
 									<dl>
 										<!--{loop field v idx}-->
+										<!--{if(v.show.form)}-->
 										<!--{if(v.name !== sql.key)}-->
 										<!--{if(v.required)}-->
 										<dt class="required">${v.title}</dt>
@@ -69,12 +70,9 @@
 										<!--{else if(v.type === 'number' && v.name.indexOf('id') === -1)}-->
 										<dd>
 											<!--{if(v.number.range && v.number.range.length)}-->
-											<control_number v-model="form.${v.name}" :min="${v.number.range[0]}"
-												:max="${v.number.range[1]}" />
+											<control_number v-model="form.${v.name}" :min="${v.number.range[0]}" :max="${v.number.range[1]}" />
 											<!--{else}-->
-											<control_number v-model="form.${v.name}"
-												:min="${v.number ? v.number.min : 0}"
-												:max="${v.number ? v.number.max : 0}" />
+											<control_number v-model="form.${v.name}" :min="${v.number ? v.number.min : -99999999}" :max="${v.number ? v.number.max : 99999999}" />
 											<!--{/if}-->
 										</dd>
 										<!--{else}-->
@@ -90,6 +88,7 @@
 												placeholder="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}" />
 											<!--{/if}-->
 										</dd>
+										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -129,7 +128,7 @@
 				form: {
 					/*[loop field v idx]*/
 					/*[if v.type === 'number']*/
-					"${v.name}": 0,
+					"${v.name}": '${v.defualt !== "0" ? v.defualt : ""}',
 					/*[else]*/
 					"${v.name}": '',
 					/*[/if]*/

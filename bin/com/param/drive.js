@@ -178,7 +178,8 @@ Drive.prototype.model = function() {
 			"max": 0,
 			// 验证字符串范围
 			"range": []
-		}
+		},
+		"default": ""
 	});
 };
 

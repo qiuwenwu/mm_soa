@@ -25,6 +25,7 @@
 										<!--{/loop}-->
 										<!--{/if}-->
 										<!--{loop field v idx}-->
+										<!--{if(v.show.search)}-->
 										<!--{if(v.format)}-->
 										<!--{if(v.format.table)}-->
 										<mm_item>
@@ -35,6 +36,7 @@
 										<mm_item>
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
 										</mm_item>
+										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{/loop}-->
@@ -61,10 +63,12 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 											<th class="th_id"><span>#</span></th>
 											<!--{loop field v idx}-->
+											<!--{if(v.show.table)}-->
 											<!--{if(v.name !== sql.key)}-->
 											<th class="th_${v.name}">
 												<span>${v.title}</span>
 											</th>
+											<!--{/if}-->
 											<!--{/if}-->
 											<!--{/loop}-->
 											<th class="th_handle"><span>操作</span></th>
@@ -79,6 +83,7 @@
 											<th class="th_selected"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 											<td>{{ o[field] }}</td>
 											<!--{loop field v idx}-->
+											<!--{if(v.show.table)}-->
 											<!--{if(v.name !== sql.key)}-->
 											<td >
 												<!--{if(v.dataType === 'tinyint')}-->
@@ -106,6 +111,7 @@
 												<!--{/if}-->
 											</td>
 											<!--{/if}-->
+											<!--{/if}-->
 											<!--{/loop}-->
 											<td>
 												<mm_btn class="btn_primary" :url="'./${name}_form?${sql.key}=' + o[field]">修改</mm_btn>
@@ -129,6 +135,7 @@
 				<div class="card_body pa">
 					<dl>
 						<!--{loop field v idx}-->
+						<!--{if(v.show.batch)}-->
 						<!--{if(v.format)}-->
 						<dt>${v.title}</dt>
 						<!--{if(v.format.table)}-->
@@ -143,6 +150,7 @@
 						<dd>
 							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
 						</dd>
+						<!--{/if}-->
 						<!--{/if}-->
 						<!--{/if}-->
 						<!--{/loop}-->
