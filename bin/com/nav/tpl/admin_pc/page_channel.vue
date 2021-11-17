@@ -4,8 +4,8 @@
 			<mm_container>
 				<mm_row>
 					<mm_col class="col-12">
-						<mm_card>
-							<div class="card_head arrow">
+						<mm_card :class="{ 'hide_filter': !show_filter }">
+							<div class="card_head arrow" @click="show_filter = !show_filter">
 								<h5>${api.title}</h5>
 							</div>
 							<div class="card_body">
@@ -14,27 +14,33 @@
 										<h5><span>筛选条件</span></h5>
 									</div>
 									<mm_list :col="3">
-										<!--{if(param.list)}-->
 										<!--{loop param.list v idx}-->
-										<!--{if(v.name == 'keyword')}-->
+										<!--{if(v.name === 'keyword')}-->
 										<mm_item>
 											<control_input v-model="query.keyword" title="${v.title}" desc="${v.description.replace(/\([0-9A-Za-z_]+\)/g, '').replace('用于搜索', '').replace(/、/g, ' / ')}"
-											  />
+											@blur="search()" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/loop}-->
-										<!--{/if}-->
 										<!--{loop field v idx}-->
 										<!--{if(v.show.search)}-->
-										<!--{if(v.format)}-->
+										<!--{if(v.show.search === "input")}-->
+										<mm_item>
+											<control_input v-model="query.${v.name}" title="${v.title}" @blur="search()" />
+										</mm_item>
+										<!--{else if(v.show.search === "select")}-->
 										<!--{if(v.format.table)}-->
 										<mm_item>
+											<!--{if(v.format.key.endWith('_id') !== -1)}-->
+											<control_select type="list" v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" @change="search()" />
+											<!--{else}-->
 											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')"
-											 />
+											 @change="search()" />
+											 <!--{/if}-->
 										</mm_item>
 										<!--{else}-->
 										<mm_item>
-											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" />
+											<control_select v-model="query.${v.format.key}" title="${v.title}" :options="$to_kv(${v.label})" @change="search()" />
 										</mm_item>
 										<!--{/if}-->
 										<!--{/if}-->
@@ -120,6 +126,23 @@
 										</tr>
 									</tbody>
 									<!-- </draggable> -->
+									
+									<template v-slot:right>
+										<thead class="table-sm">
+											<tr>
+												<th class="th_handle"><span>操作</span></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr v-for="(o, idx) in list_new" :key="idx" :class="{'active': select == idx, sub: o[father_id], open: opens_has(o[field]), no_sub: !opens_has_sub(o[field]) }"
+											 @click="selected(idx)">
+												<td>
+													<mm_btn class="btn_primary" :url="'./${name}_form?${sql.key}=' + o[field]">修改</mm_btn>
+													<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
+												</td>
+											</tr>
+										</tbody>
+									</template>
 								</mm_table>
 							</div>
 						</mm_card>
@@ -136,22 +159,22 @@
 					<dl>
 						<!--{loop field v idx}-->
 						<!--{if(v.show.batch)}-->
-						<!--{if(v.format)}-->
 						<dt>${v.title}</dt>
-						<!--{if(v.format.table)}-->
 						<dd>
-							<!--{if(v.format.key.endWith('_id') !== -1)}-->
-							<control_select type="list" v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+						<!--{if(v.show.batch === "input")}-->
+						<control_input v-model="form.${v.name}" />
+						<!--{else if(v.show.batch === "select")}-->
+							<!--{if(v.format.table)}-->
+								<!--{if(v.format.key.endWith('_id') !== -1)}-->
+								<control_select type="list" v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+								<!--{else}-->
+								<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
+								<!--{/if}-->
 							<!--{else}-->
-							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
-							<!--{/if}-->
-						</dd>
-						<!--{else}-->
-						<dd>
 							<control_select v-model="form.${v.format.key}" :options="$to_kv(${v.label})" />
+							<!--{/if}-->
+						<!--{/if}-->
 						</dd>
-						<!--{/if}-->
-						<!--{/if}-->
 						<!--{/if}-->
 						<!--{/loop}-->
 					</dl>

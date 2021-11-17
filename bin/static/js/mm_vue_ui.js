@@ -1892,7 +1892,7 @@ function load_ui(jquery) {
 	};
 
 	var mm_table = {
-		template: "<div :class=\"'mm_table table-' + type\"><table><slot></slot></table></div>",
+		template: "<div :class=\"'mm_table table-' + type\"><div class=\"table_left\" v-if=\"$slots.left\"><table><slot name=\"left\"></slot></table></div><div class=\"table_body\"><table><slot></slot></table></div><div class=\"table_right\" v-if=\"$slots.right\"><table><slot name=\"right\"></slot></table></div></div>",
 		props: {
 			type: {
 				type: String,

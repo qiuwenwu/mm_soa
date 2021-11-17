@@ -13,6 +13,76 @@ class ViewModel {
 }
 
 /**
+ * 获取显示类型 
+ * @param {String} key
+ * @param {Boolean} f 是否带格式
+ * @return {String} 返回显示类型
+ */
+ViewModel.prototype.get_type = function(key, f) {
+	var show = '';
+	switch (key) {
+		case "search":
+			show = f ? "select" : "";
+			break;
+		case "view":
+			show = "text";
+			break;
+		case "table":
+			show = f ? "select" : "text";
+			break;
+		case "edit":
+			show = f ? "select" : "input";
+			break;
+		case "list":
+			show = "text";
+			break;
+		case "details":
+			show = "text";
+			break;
+		case "batch":
+			show = f ? "select" : "";
+			break;
+		case "filter":
+			show = f ? "select" : "";
+			break;
+		default:
+			show = f ? "select" : "";
+			break;
+	}
+	return show;
+};
+
+/**
+ * 查询显示方式
+ * @param {Array} arr
+ * @param {String} key
+ * @param {Boolean} f 是否带格式
+ * @return {String}
+ */
+ViewModel.prototype.get_show = function(arr, key, f) {
+	var show = '';
+	for (var i = 0; i < arr.length; i++) {
+		var str = arr[i];
+		if (str.indexOf(key + "_no") !== -1) {
+			break;
+		} else if (str.indexOf(key + "_input") !== -1) {
+			show = 'input';
+			break;
+		} else if (str.indexOf(key + "_select") !== -1) {
+			show = 'select';
+			break;
+		} else if (str.indexOf(key + "_text") !== -1) {
+			show = 'text';
+			break;
+		}
+	}
+	if (!show && arr.indexOf(key) === -1) {
+		show = this.get_type(key, f);
+	}
+	return show;
+};
+
+/**
  * 获取表格所需键值对
  * @param {Object} model 模型
  * @return {Object} 返回视图所用模型
@@ -20,6 +90,7 @@ class ViewModel {
 ViewModel.prototype.field = async function(model) {
 	var list = model.param.list;
 	if (!list) {
+		model.param.list = [];
 		return [];
 	}
 	var field;
@@ -43,55 +114,65 @@ ViewModel.prototype.field = async function(model) {
 			var format = model.sql.format.getObj({
 				key: name
 			});
+			var f = false;
 			if (format) {
 				obj.title = format.title;
 				obj.format = format;
+				f = true;
 			}
 			if (requireds.indexOf(name) !== -1) {
 				obj.required = true;
 			}
 			var desc = obj.description;
-			obj.show = {};
+			var show = {};
+			
 			if (desc.indexOf("##") === -1) {
-				obj.show.form = true;
-				obj.show.view = true;
-				obj.show.search = true;
-				obj.show.table = true;
-				obj.show.list = true;
-				obj.show.edit = true;
-				obj.show.details = true;
-				obj.show.batch = true;
+				show.form = f ? "select" : "input";
+				show.view = "text";
+				show.search = f ? "select" : "";
+				show.table = f ? "select" : "text";
+				show.list = "text";
+				show.edit = f ? "select" : "input";
+				show.details = "text";
+				show.batch = f ? "select" : "";
+				show.filter = f ? "select" : "";
 			} else {
 				desc = desc.between("##", "##");
+				obj.description = obj.description.replace("##" + desc + "##", "");
+				var ar = desc.trim().split(" ");
 				if (desc.indexOf("none") !== -1) {
-					obj.show.form = false;
-					obj.show.view = false;
-					obj.show.search = false;
-					obj.show.table = false;
-					obj.show.list = false;
-					obj.show.edit = false;
-					obj.show.details = false;
-					obj.show.batch = false;
+					show.form = '';
+					show.view = '';
+					show.search = '';
+					show.table = '';
+					show.list = '';
+					show.edit = '';
+					show.details = '';
+					show.batch = '';
+					show.filter = '';
 				} else {
-					obj.show.form = desc.indexOf("form") !== -1;
-					obj.show.view = desc.indexOf("view") !== -1;
-					obj.show.search = desc.indexOf("search") !== -1;
-					obj.show.table = desc.indexOf("table") !== -1;
-					obj.show.list = desc.indexOf("list") !== -1;
-					obj.show.edit = desc.indexOf("edit") !== -1;
-					obj.show.details = desc.indexOf("details") !== -1;
-					obj.show.batch = desc.indexOf("batch") !== -1;
+					// 后端 - 搜索栏
+					show.search = this.get_show(ar, "search", f);
+					// 后端 - 表格
+					show.table = this.get_show(ar, "table", f);
+					// 后端 - 表单页
+					show.form = this.get_show(ar, "form", f);
+					// 后端 - 详情页
+					show.view = this.get_show(ar, "view", f);
+					// 后端 - 批量操作
+					show.batch = this.get_show(ar, "batch", f);
 
-					obj.show.form = !(desc.indexOf("form_no") !== -1);
-					obj.show.view = !(desc.indexOf("view_no") !== -1);
-					obj.show.search = !(desc.indexOf("search_no") !== -1);
-					obj.show.table = !(desc.indexOf("table_no") !== -1);
-					obj.show.list = !(desc.indexOf("list_no") !== -1);
-					obj.show.edit = !(desc.indexOf("edit_no") !== -1);
-					obj.show.details = !(desc.indexOf("details_no") !== -1);
-					obj.show.batch = !(desc.indexOf("batch_no") !== -1);
+					// 前端 - 列表
+					show.list = this.get_show(ar, "list", f);
+					// 前端 - 详情页
+					show.details = this.get_show(ar, "details", f);
+					// 前端 - 筛选栏
+					show.filter = this.get_show(ar, "filter", f);
+					// 前端 - 编辑页
+					show.edit = this.get_show(ar, "edit", f);
 				}
 			}
+			obj.show = show;
 			pm.push(obj);
 		}
 	}

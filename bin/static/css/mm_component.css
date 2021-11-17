@@ -1240,7 +1240,41 @@ table .control_reverse .title {
 }
 
 .mm_table {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.mm_table .table_body {
 	overflow-x: auto;
+}
+
+.table_right {
+	width: initial;
+	height: calc(100% - 0.5rem);
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	left: auto;
+	background: #fff;
+	box-shadow: 0 0 10px rgb(0 0 0 / 12%);
+}
+
+.table_left table, .table_right table
+{
+	height: 100%;
+}
+
+.table_left {
+	width: initial;
+	height: calc(100% - 0.5rem);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	left: auto;
+	background: #fff;
 }
 
 .mm_table th {

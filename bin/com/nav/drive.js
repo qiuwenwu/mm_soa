@@ -25,10 +25,10 @@ class Drive extends Item {
 	constructor(dir, scope) {
 		super(dir, __dirname);
 		this.default_file = "./" + scope + ".nav.json";
-		
+
 		// 模板路径
 		this.tpl_path = "./tpl/";
-		
+
 		/* 通用项 */
 		// 配置参数
 		this.config = {
@@ -315,10 +315,9 @@ Drive.prototype.new_config = function(file) {
 	cg.name = app + "_" + plugin;
 	var title = "未命名";
 	var app_file = ("/app/" + app + "/app.json").fullname();
-	if(app_file.hasFile())
-	{
+	if (app_file.hasFile()) {
 		var jobj = app_file.loadJson();
-		if(jobj){
+		if (jobj) {
 			title = jobj.title;
 		}
 	}
@@ -387,7 +386,7 @@ Drive.prototype.get_api = function(app, route) {
 		api_route = "/api" + p
 	}
 	var api = $.pool.api[scope];
-	if(!api){
+	if (!api) {
 		scope = scope.replace(app + '_', '');
 		api = $.pool.api[scope];
 	}
@@ -400,7 +399,7 @@ Drive.prototype.get_api = function(app, route) {
 		param: {},
 		sql: {}
 	};
-	
+
 	for (var i = 0; i < lt.length; i++) {
 		var o = lt[i];
 		if (o.config.path === api_route) {
@@ -413,7 +412,7 @@ Drive.prototype.get_api = function(app, route) {
 			break;
 		}
 	}
-	
+
 	// console.log(scope, app, config, api_route);
 	return config;
 };
@@ -483,13 +482,15 @@ Drive.prototype.create_vue = async function(file, route) {
 	var m = Object.assign(model, this.get_api(app, route));
 	var vm = await viewModel.run(m);
 	vm.JSON = JSON;
-	var vue = tpl.view(f, vm);
-	if(vue)
-	{
-		file.saveText(vue);
-	}
-	else {
-		$.log.error("更新模板失败", tpl.error);
+	try {
+		var vue = tpl.view(f, vm);
+		if (vue) {
+			file.saveText(vue);
+		} else {
+			$.log.error("更新模板失败", tpl.error);
+		}
+	} catch (err) {
+		$.log.error("更新模板失败", err);
 	}
 };
 

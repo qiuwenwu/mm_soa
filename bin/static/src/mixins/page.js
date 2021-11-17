@@ -88,7 +88,9 @@ define(function() {
 				// 上级ID: father_id
 				father_id: "father_id",
 				// 展开项
-				opens: opens
+				opens: opens,
+				// 是否显示筛选栏
+				show_filter: true
 			};
 		},
 		methods: {

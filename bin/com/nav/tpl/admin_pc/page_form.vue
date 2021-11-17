@@ -27,16 +27,16 @@
 										<!--{if(v.format.table)}-->
 										<dd>
 											<!--{if(v.format.key.endWith('_id') !== -1)}-->
-											<control_select type="list" v-model="form.${v.format.key}"
+											<control_select type="list" v-model="form.${v.name}"
 												:options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
 											<!--{else}-->
-											<control_select v-model="form.${v.format.key}"
+											<control_select v-model="form.${v.name}"
 												:options="$to_kv(${v.label}, '${v.format.id || v.format.key}', '${v.format.name}')" />
 											<!--{/if}-->
 										</dd>
 										<!--{else}-->
 										<dd>
-											<control_select v-model="form.${v.format.key}"
+											<control_select v-model="form.${v.name}"
 												:options="$to_kv(${v.label})" />
 										</dd>
 										<!--{/if}-->
@@ -127,10 +127,11 @@
 				},
 				form: {
 					/*[loop field v idx]*/
+					// ${v.title}
 					/*[if v.type === 'number']*/
-					"${v.name}": '${v.defualt !== "0" ? v.defualt : ""}',
+					"${v.name}": ${v.default ? v.default : 0},
 					/*[else]*/
-					"${v.name}": '',
+					"${v.name}": '${v.default !== "0" ? v.default : ""}',
 					/*[/if]*/
 					/*[/loop]*/
 				},
