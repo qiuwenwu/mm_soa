@@ -127,6 +127,7 @@
 									</tbody>
 									<!-- </draggable> -->
 									
+									<!--{if param.list.length > 7}-->
 									<template v-slot:right>
 										<thead class="table-sm">
 											<tr>
@@ -142,6 +143,7 @@
 											</tr>
 										</tbody>
 									</template>
+									<!--{/if}-->
 								</mm_table>
 							</div>
 							<div class="card_foot">

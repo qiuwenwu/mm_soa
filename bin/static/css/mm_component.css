@@ -99,13 +99,16 @@
 	-webkit-appearance: none;
 }
 
-.control_number input[type=number] {
+.control_number input[type=number],
+.control_number input[type=text] {
 	border: none;
 	text-align: center;
 	-moz-appearance: textfield;
 	height: 2rem;
 	line-height: 2rem;
-	min-width: 5rem;
+	width: 6.5rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
 }
 
 .btn_del,
@@ -1240,7 +1243,6 @@ table .control_reverse .title {
 }
 
 .mm_table {
-	width: 100%;
 	overflow: hidden;
 	position: relative;
 }
@@ -1251,7 +1253,7 @@ table .control_reverse .title {
 
 .table_right {
 	width: initial;
-	height: calc(100% - 0.5rem);
+	height: 100%;
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -1261,8 +1263,14 @@ table .control_reverse .title {
 	box-shadow: 0 0 10px rgb(0 0 0 / 12%);
 }
 
-.table_left table, .table_right table
-{
+@media (min-width:768px) {
+	.table_right {
+		height: calc(100% - 0.5rem);
+	}
+}
+
+.table_left table,
+.table_right table {
 	height: 100%;
 }
 

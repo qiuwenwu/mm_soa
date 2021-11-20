@@ -217,7 +217,8 @@ define(function() {
 			set_before: function set_before(param, includeZero) {
 				var pm = $.delete(param, includeZero);
 				for (var k in pm) {
-					if (k.toLocaleLowerCase().indexOf('time') !== -1 && typeof(pm[k]) === 'string' && pm[k].indexOf('T') !== -1) {
+					if (k.toLocaleLowerCase().indexOf('time') !== -1 && typeof(pm[k]) === 'string' && pm[k]
+						.indexOf('T') !== -1) {
 						pm[k] = new Date(pm[k]).toStr('yyyy-MM-dd 00:00:00');
 					}
 				}
@@ -496,7 +497,8 @@ define(function() {
 							for (var k in o) {
 								if (k.indexOf('time') !== -1) {
 									var val = o[k];
-									if (val && typeof(val) === 'string' && val.indexOf('T') !== -1) {
+									if (val && typeof(val) === 'string' && val.indexOf('T') !== -
+										1) {
 										var v = new Date(o[k]);
 										o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
 									}
@@ -703,15 +705,15 @@ define(function() {
 					this.$post(url, param, function(json, status) {
 						if (json.result) {
 							_this.$toast(json.result.tip);
+							if (url.indexOf("=set") !== -1) {
+								_this.$back();
+							}
 						} else if (json.error) {
 							_this.$toast(json.error.message);
 						} else {
 							_this.$toast("服务器连接失败！");
 						}
 						_this.events("submit_after", json, func);
-						if (url.indexOf("=set") !== -1) {
-							_this.$back();
-						}
 					});
 				}
 			},
