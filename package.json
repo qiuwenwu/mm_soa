@@ -1,6 +1,6 @@
 ﻿{
 	"name": "mm_soa",
-	"version": "1.9.5",
+	"version": "1.9.8",
 	"description": "这是超级美眉全网应用互联服务端框架，用于多个平台跨域应用连接，共享资源。",
 	"main": "index.js",
 	"scripts": {
@@ -60,7 +60,7 @@
 		"mm_excel": "^1.0.8",
 		"mm_expand": "^1.5.1",
 		"mm_html": "^1.1.1",
-		"mm_https": "^1.4.5",
+		"mm_https": "^1.4.6",
 		"mm_koa_proxy": "^1.0.0",
 		"mm_logs": "^1.0.7",
 		"mm_machine": "^1.4.3",

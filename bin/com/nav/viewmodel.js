@@ -60,10 +60,12 @@ ViewModel.prototype.get_type = function(key, f) {
  * @return {String}
  */
 ViewModel.prototype.get_show = function(arr, key, f) {
+	var bl = false;
 	var show = '';
 	for (var i = 0; i < arr.length; i++) {
 		var str = arr[i];
 		if (str.indexOf(key + "_no") !== -1) {
+			bl = true;
 			break;
 		} else if (str.indexOf(key + "_input") !== -1) {
 			show = 'input';
@@ -76,7 +78,7 @@ ViewModel.prototype.get_show = function(arr, key, f) {
 			break;
 		}
 	}
-	if (!show && arr.indexOf(key) === -1) {
+	if (!show && !bl) {
 		show = this.get_type(key, f);
 	}
 	return show;
