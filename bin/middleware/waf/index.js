@@ -37,7 +37,7 @@ function waf_check(url) {
 }
 
 function getClientIP(req) {
-	return req.headers['x-forwarded-for'] ||
+	return req.headers['x-forwarded-for'] || req.headers['X-Forwarded-For'] ||
 		req.connection.remoteAddress ||
 		req.socket.remoteAddress ||
 		req.connection.socket.remoteAddress;

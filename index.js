@@ -1,4 +1,4 @@
-﻿require('mm_expand');
+require('mm_expand');
 const cluster = require('cluster');
 const Koa = require('koa');
 $.binPath = __dirname.fullname();
@@ -107,7 +107,12 @@ class Soa extends Base {
 				 * 使用外事件
 				 * @type {Boolean}
 				 */
-				"event": true
+				"event": true,
+				/**
+				 * 网站代理，用于获取用户正确的IP
+				 * @type {Boolean}
+				 */
+				"proxy": true
 			},
 			/**
 			 * 系统项
@@ -264,6 +269,8 @@ class Soa extends Base {
 		if (!m.port) {
 			m.port = this.config.web.port * 2;
 		}
+		
+		server.proxy = this.config.web.proxy;
 		var dict = this.config.proxy.targets;
 		for (var k in dict) {
 			var o = dict[k];
