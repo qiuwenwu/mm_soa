@@ -74,7 +74,6 @@ Oauth.prototype.check_sub = async function(ctx) {
  * @return {Object} 验证失败返回错误提示，验证通过返回null
  */
 Oauth.prototype.check = async function(ctx) {
-
 	// 无需登录则不验证身份和权限
 	var cg = this.config;
 	if (!cg.signIn) {
@@ -84,10 +83,8 @@ Oauth.prototype.check = async function(ctx) {
 	if (error) {
 		return error;
 	}
-	var user;
-	if (ctx.session.user) {
-		user = ctx.session.user;
-	} else {
+	var user = ctx.session.user;
+	if (!user) {
 		var token = ctx.headers[$.dict.token];
 		if (token) {
 			var u = await $.cache.get($.dict.session_id + '_' + token);
@@ -101,6 +98,7 @@ Oauth.prototype.check = async function(ctx) {
 						user = u.user;
 					}
 				}
+				ctx.session.user = user;
 			}
 		}
 	}

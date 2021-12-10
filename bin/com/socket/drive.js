@@ -277,58 +277,63 @@ Drive.prototype.req = async function(method, params, func, token) {
  * @return {Object} 返回执行结果
  */
 Drive.prototype.run = async function(bodyStr, ctx, token) {
-	var ws = ctx.websocket;
-	var json = bodyStr.toJson();
-	var req = ctx.request;
-	var request = Object.assign({}, {
-		headers: req.headers,
-		query: req.query,
-		token: token
-	});
-	if (json) {
-		var {
-			id,
-			method
-		} = json;
-		if (json.result && id) {
-			var lt = ws.list_msg;
-			var len = lt.length;
-			var has = false;
-			for (var i = 0; i < len; i++) {
-				var o = lt[i];
-				if (id === o.id) {
-					o.func(json.result);
-					lt.splice(i, 1);
-					has = true;
-					break;
-				}
-			}
-			if (has) {
-				return;
-			}
-		} else if (method) {
-			if (this.methods[method]) {
-				var ret;
-				var result = await this.methods[method](json.params, ws, request);
-				if (result) {
-					if (typeof(result) == "object" && !Array.isArray(result)) {
-						ret = Object.assign({
-							id
-						}, result);
-					} else {
-						ret = {};
-						if (id) {
-							ret.id = id
-						}
-						ret.result = result;
+	try {
+		var ws = ctx.websocket;
+		var json = bodyStr.toJson();
+		var req = ctx.request;
+		var request = Object.assign({}, {
+			headers: req.headers,
+			query: req.query,
+			token: token
+		});
+		if (json) {
+			var {
+				id,
+				method
+			} = json;
+			if (json.result && id) {
+				var lt = ws.list_msg;
+				var len = lt.length;
+				var has = false;
+				for (var i = 0; i < len; i++) {
+					var o = lt[i];
+					if (id === o.id) {
+						o.func(json.result);
+						lt.splice(i, 1);
+						has = true;
+						break;
 					}
 				}
-				return ret;
+				if (has) {
+					return;
+				}
+			} else if (method) {
+				if (this.methods[method]) {
+					var ret;
+					var result = await this.methods[method](json.params, ws, request);
+					if (result) {
+						if (typeof(result) == "object" && !Array.isArray(result)) {
+							ret = Object.assign({
+								id
+							}, result);
+						} else {
+							ret = {};
+							if (id) {
+								ret.id = id
+							}
+							ret.result = result;
+						}
+					}
+					return ret;
+				}
 			}
+			return await this.main(json, ws, request);
 		}
-		return await this.main(json, ws, request);
+		return await this.main(bodyStr, ws, request);
+	} catch (err) {
+		$.log.error("webscoket 错误", err);
+		return $.log.error(10000, "代码错误！原因：" + err.toString());
 	}
-	return await this.main(bodyStr, ws, request);
 };
 
 /**
