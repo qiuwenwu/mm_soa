@@ -394,12 +394,8 @@ Drive.prototype.run = async function(ctx, db) {
 		if (md !== req.method && md !== "ALL") {
 			return null;
 		}
-		var ret = await this.check(ctx);
+		var ret = await this.check(ctx, db);
 		if (!ret) {
-			var user = ctx.session.user;
-			if (user) {
-				db.user = user;
-			}
 			try {
 				ret = await this.main(ctx, db);
 			} catch (err) {
