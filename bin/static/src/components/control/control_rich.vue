@@ -134,11 +134,10 @@
 				// });
 				editor.on('input', (e) => {
 					this.val = tinymce.get(this.id_sub).getContent();
-					this.$emit('input', this.val.replace(/"..\/..\//g, '"/'));
+					this.$emit('input', this.val);
 				});
 				editor.on('change', (e) => {
 					this.val = tinymce.get(this.id_sub).getContent();
-					this.$emit('input', this.val.replace(/"..\/..\//g, '"/'));
 					this.$emit('change', tinymce.get(this.id_sub), this.val.replace(/"..\/..\//g, '"/'));
 				})
 				editor.on('blur', (e) => {

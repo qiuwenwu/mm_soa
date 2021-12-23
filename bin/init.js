@@ -3,7 +3,6 @@ $.Html = require('mm_html');
 $.mongodb_admin = require("mm_mongodb").mongoDB_admin;
 $.redis_admin = require("mm_redis").redis_admin;
 $.mysql_admin = require('mm_mysql').mysql_admin;
-
 /**
  * @param {Object} config
  */
