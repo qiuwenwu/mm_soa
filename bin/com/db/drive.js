@@ -6,6 +6,11 @@ if (!$.dict.user_id) {
 	$.dict.user_id = "user_id";
 }
 
+var keyword_default =
+	"`user_id` in (SELECT `user_id` FROM `user_account` WHERE `nickname` LIKE '%{0}%' OR `phone` LIKE '%{0}%' OR `wallet_address` LIKE '%{0}%')";
+
+var keyword_default_tip = "昵称、手机号、钱包地址";
+
 /**
  * db数据库开发驱动类
  * @extends {Item}
@@ -57,6 +62,7 @@ class Drive extends Item {
 				/* */
 			]
 		};
+
 	}
 }
 
@@ -316,7 +322,7 @@ Drive.prototype.update_db = async function(db) {
 						notnull = "NOT NULL";
 					}
 					if (o.default) {
-						value = "DEFAULT '" + o.default + "'";
+						value = "DEFAULT '" + o.default+"'";
 					} else if (o.default === null) {
 						value = "DEFAULT NULL";
 					} else {
@@ -657,6 +663,10 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		}
 	}
 
+	if (cg.table.indexOf("user_") !== -1) {
+		keyword += ' || ' + keyword_default;
+	}
+
 	if (keyword) {
 		query["keyword"] = "(" + keyword.replace(' || ', '') + ")";
 	}
@@ -681,7 +691,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		if (orderby) {
 			oj.orderby_default = orderby;
 		}
-		if (oj.query_default[uid]) {
+		if (oj.query_default[uid] && cg.table.indexOf("user_") !== -1) {
 			oj.filter = {
 				"table": "table",
 				"page": "page",
@@ -942,6 +952,9 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 	if (keyword) {
 		cm.get.query.push('keyword');
 		cm.set.query.push('keyword');
+		if (cg.table.indexOf("user_") !== -1) {
+			keyword += '、' + keyword_default_tip;
+		}
 		var m_k = {
 			"name": "keyword",
 			"title": "关键词",

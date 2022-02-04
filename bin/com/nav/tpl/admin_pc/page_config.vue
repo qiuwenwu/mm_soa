@@ -114,6 +114,12 @@
 												<control_com v-if="o.control == 'number'" tag="number" v-model="o.${v.name}" @change="set(o)" />
 												<control_com v-else-if="o.control == 'select'" tag="select" v-model="o.${v.name}" :mod="o.model" @change="set(o)" />
 												<control_com v-else-if="o.control == 'checkbox' || o.control == 'radio'" :tag="o.control" v-model="o.${v.name}" :mod="o.model" @change="set(o)" />
+												<control_file class="bg_white upload_img" v-else-if="o.control == 'image'" accept="*.jpeg,*.png,*.gif,*.jpg" @change="$setImg(o, $event)">
+													<img :src="$url(o.${v.name})" /><a class="btn_preview" target="_blank" v-if="o.${v.name}.indexOf('/') === 0" :href="$url(o.${v.name})"><span>预览</span></a>
+												</control_file>
+												<control_file class="bg_white" v-else-if="o.control == 'file'" accept="*.*" @change="$setFile(o, $event)">
+													<span>{{o.${v.name}}}</span><a class="btn" v-if="o.${v.name}.indexOf('/') === 0" :href="$url(o.${v.name})"><span>下载</span></a>
+												</control_file>
 												<control_com v-else :auto="true" :tag="o.control" v-model="o.${v.name}" @change="set(o)" />
 												<!--{else}-->
 												<span>{{ o.${v.name} }}</span>

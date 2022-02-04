@@ -90,7 +90,11 @@ define(function() {
 				// 展开项
 				opens: opens,
 				// 是否显示筛选栏
-				show_filter: true
+				show_filter: true,
+				// 统计数
+				count_num: 0,
+				// 求和数
+				sum_num: 0
 			};
 		},
 		methods: {

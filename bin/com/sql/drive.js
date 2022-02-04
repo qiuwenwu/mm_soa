@@ -211,7 +211,7 @@ Drive.prototype.run = async function(query, body, db) {
  * @param {Object} body 修改项
  * @return {Object} 返回准备参数
  */
-Drive.prototype.ready = async function(db, query, body) {
+Drive.prototype.ready = function(db, query, body) {
 	var cg = this.config;
 	var qy = Object.assign({}, query);
 	$.push(db.config.filter, cg.filter, true);
@@ -223,18 +223,17 @@ Drive.prototype.ready = async function(db, query, body) {
 };
 
 /**
- * 查询(主要)
- * @param {Object} db 数据库操作类
- * @param {Object} query 查询条件
+ * 转为查询条件字符串
+ * @param {Object} db 数据库管理器
+ * @param {Object} query 查寻条件
  * @param {Object} method 方法
- * @return {Object} 返回查询结果
+ * @return {String} 返回查询条件
  */
-Drive.prototype.get_main = async function(db, query, method) {
-	var ret;
+Drive.prototype.to_where = function(db, query, method) {
 	var {
 		cg,
 		qy
-	} = await this.ready(db, query, {});
+	} = this.ready(db, query, {});
 	db.config.separator = cg.separator;
 	if (!query.size && cg.page_size) {
 		db.size = cg.page_size + 0;
@@ -247,9 +246,6 @@ Drive.prototype.get_main = async function(db, query, method) {
 	var field = query[f.field];
 	if (cg.field.has("*{0}*")) {
 		if (field) {
-			if (cg.field_hide.getMatch(field)) {
-				return $.ret.error(70003, '不合法的查询参数');
-			}
 			db.field = cg.field.replace("{0}", field);
 		} else if (method === 'get_obj' && cg.field_obj) {
 			db.field = cg.field_obj + '';
@@ -296,6 +292,25 @@ Drive.prototype.get_main = async function(db, query, method) {
 			query_str = query_str.replace(" && ", "");
 		}
 	}
+	return query_str;
+}
+
+/**
+ * 查询(主要)
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} method 方法
+ * @return {Object} 返回查询结果
+ */
+Drive.prototype.get_main = async function(db, query, method) {
+	var ret;
+
+	if (this.config.field.has("*{0}*")) {
+		if (this.config.field_hide.getMatch(query[db.config.filter.field])) {
+			return $.ret.error(70003, '不合法的查询参数');
+		}
+	}
+	var query_str = this.to_where(db, query, method);
 
 	// 查询
 	if (db.count_ret === "true") {
@@ -354,7 +369,7 @@ Drive.prototype.set_main = async function(db, query, body) {
 	var {
 		cg,
 		qy
-	} = await this.ready(db, query, body);
+	} = this.ready(db, query, body);
 	var key = cg.key;
 	if (body[key]) {
 		qy[key] = body[key];
@@ -469,7 +484,7 @@ Drive.prototype.del_main = async function(db, query) {
 	var {
 		cg,
 		qy
-	} = await this.ready(db, query, {});
+	} = this.ready(db, query, {});
 	var query_str = db.tpl_query(qy, cg.query);
 	var bl = await db.delSql(query_str);
 	if (bl < 1) {
@@ -495,7 +510,6 @@ Drive.prototype.del = async function(db, query, body) {
 	return await this.del_main(db, query);
 };
 
-
 /**
  * 添加或修改(主要)
  * @param {Object} db 数据库操作类
@@ -508,7 +522,7 @@ Drive.prototype.addOrSet_main = async function(db, query, body) {
 	var {
 		cg,
 		qy
-	} = await this.ready(db, query, body);
+	} = this.ready(db, query, body);
 	if (Object.keys(body).length > 0 && Object.keys(qy).length > 0) {
 		var n = await db.addOrSet(qy, body);
 		if (n < 1) {
@@ -891,25 +905,12 @@ Drive.prototype.sum_main = async function(db, pm) {
 	var f = db.config.filter;
 	var field = pm[f.field];
 	delete pm[f.field];
-
-	if (pm.page) {
-		db.page = pm.page;
-		delete pm.page;
-	} else {
-		db.page = 1;
-	}
-
-	if (pm.size) {
-		db.size = pm.size;
-		delete pm.size;
-	} else {
-		db.size = 0;
-	}
+	var query_str = this.to_where(db, pm, "get_list");
 
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {
-		var list = await db.groupSum(pm, groupby, field, orderby);
+		var list = await db.groupSumSql(query_str, groupby, field, orderby);
 		if (!list.length && db.error) {
 			$.log.error('SUM查询SQL', db.sql, db.error);
 			ret = $.ret.body(db.error);
@@ -946,26 +947,12 @@ Drive.prototype.avg_main = async function(db, pm) {
 	var f = db.config.filter;
 	var field = pm[f.field];
 	delete pm[f.field];
-
-	if (pm.page) {
-		db.page = pm.page;
-		delete pm.page;
-	} else {
-		db.page = 1;
-	}
-
-
-	if (pm.size) {
-		db.size = pm.size;
-		delete pm.size;
-	} else {
-		db.size = 0;
-	}
+	var query_str = this.to_where(db, pm, "get_list");
 
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {
-		var list = await db.groupAvg(pm, groupby, field, orderby);
+		var list = await db.groupAvgSql(query_str, groupby, field, orderby);
 		if (!list.length && db.error) {
 			$.log.error('AVG查询SQL', db.sql, db.error);
 			ret = $.ret.body(db.error);
@@ -1002,29 +989,15 @@ Drive.prototype.count_main = async function(db, pm) {
 	var f = db.config.filter;
 	var field = pm[f.field];
 	delete pm[f.field];
-
-	if (pm.page) {
-		db.page = pm.page;
-		delete pm.page;
-	} else {
-		db.page = 1;
-	}
-
-
-	if (pm.size) {
-		db.size = pm.size;
-		delete pm.size;
-	} else {
-		db.size = 0;
-	}
+	var query_str = this.to_where(db, pm, "get_list");
 
 	if (!groupby || !field) {
 		ret = $.ret.error(30000, "参数groupby、field是必须的，且值不能为空！");
 	} else {
-		var list = await db.groupCount(pm, groupby, field, orderby);
+		var list = await db.groupCountSql(query_str, groupby, field, orderby);
 		if (!list.length && db.error) {
 			$.log.error('COUNT查询SQL', db.sql, db.error);
-			ret = $.ret.error(10000, db.error);
+			ret = $.ret.body(db.error);
 		} else {
 			ret = $.ret.list(list);
 		}

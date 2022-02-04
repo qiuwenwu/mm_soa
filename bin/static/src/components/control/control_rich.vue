@@ -54,12 +54,12 @@
 		},
 		watch: {
 			value() {
-				if(this.value !== this.val){
+				if (this.value !== this.val) {
 					tinymce.get(this.id_sub).setContent(this.value)
 				}
 			}
 		},
-		data: function(){
+		data: function() {
 			return {
 				id_sub: this.id || this.new_id(),
 				val: this.value
@@ -118,15 +118,15 @@
 				hp.headers = {};
 				$.ajax(hp);
 			},
-			new_id: function new_id(){
+			new_id: function new_id() {
 				var num = Math.ceil(Math.random() * 100000);
 				return "rich_" + num;
 			}
 		},
 		mounted() {
 			//Initial configuration
-			let options = {}
-			let s1 = new Function()
+			let options = {};
+			let s1 = new Function();
 			let config = (editor) => {
 				// editor.on('NodeChange Change KeyUp', (e) => {
 				// 	this.$emit('input', tinymce.get(this.id_sub).getContent())
@@ -138,6 +138,7 @@
 				});
 				editor.on('change', (e) => {
 					this.val = tinymce.get(this.id_sub).getContent();
+					this.$emit('input', this.val.replace(/"..\/..\//g, '"/'));
 					this.$emit('change', tinymce.get(this.id_sub), this.val.replace(/"..\/..\//g, '"/'));
 				})
 				editor.on('blur', (e) => {
@@ -145,7 +146,7 @@
 					this.$emit('blur', this.val.replace(/"..\/..\//g, '"/'));
 				})
 				editor.on('init', (e) => {
-					if (this.value !== undefined){
+					if (this.value !== undefined) {
 						tinymce.get(this.id_sub).setContent(this.value)
 					}
 				})
@@ -156,7 +157,9 @@
 			if (typeof this.options == 'object') {
 
 				options = Object.assign({}, this.options)
-				if (!this.options.hasOwnProperty('selector')) options.selector = '#' + this.id_sub
+				if (!this.options.hasOwnProperty('selector')) {
+					options.selector = '#' + this.id_sub
+				}
 				if (typeof this.options.setup == 'function') {
 					s1 = (editor) => {
 						config(editor)
@@ -164,16 +167,20 @@
 					}
 				}
 
-			} else options.selector = '#' + this.id_sub
+			} else {
+				options.selector = '#' + this.id_sub
+			}
 
 			options.setup = (editor) => s1(editor);
 			options.language = this.lang;
-			options.images_upload_handler = (blobInfo, succFun, failFun) => {
-				if (this.base64) {
-					this.upload_image_base64(blobInfo, succFun, failFun);
+			var _this = this;
+			options.images_upload_handler = function(blobInfo, succFun, failFun) {
+				if (_this.base64) {
+					_this.upload_image_base64(blobInfo, succFun, failFun);
 				} else {
-					this.upload_image(blobInfo, succFun, failFun);
+					_this.upload_image(blobInfo, succFun, failFun);
 				}
+				_this.$emit('input', _this.val.replace(/"..\/..\//g, '"/'));
 			};
 			Vue.nextTick(() => tinymce.init(options))
 		},

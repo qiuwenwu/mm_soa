@@ -89,8 +89,7 @@ function load_mm_vue(Vue) {
 											break
 										}
 									}
-								}
-								else {
+								} else {
 									value = list[arr_str];
 								}
 							}
@@ -118,93 +117,6 @@ function load_mm_vue(Vue) {
 				this.$router.back();
 			};
 
-			/**
-			 * 转为键值
-			 * @param {Object} arr 数组
-			 * @param {String} key 键
-			 * @param {String} name 名称
-			 * @param {String} value 默认值
-			 */
-			Vue.prototype.$to_kv = function(arr, key, name, value) {
-				if (value === undefined) {
-					value = '';
-				}
-				var list = [];
-				if (arr.length > 0) {
-					if (key) {
-						var n = name ? name : 'name';
-						for (var i = 0; i < arr.length; i++) {
-							var o = arr[i];
-							list.push({
-								name: o[n],
-								value: o[key]
-							});
-						}
-						if (arr[0].name !== '') {
-							list.unshift({
-								name: '',
-								value: value
-							});
-						} else {
-							list[0].value = value;
-						}
-					} else if (arr.length && typeof(arr[0]) === "object") {
-						list = arr;
-						if (arr[0].name !== '') {
-							list.unshift({
-								name: '',
-								value: value
-							});
-						}
-					} else {
-						for (var i = 0; i < arr.length; i++) {
-							var o = arr[i];
-							list.push({
-								name: o,
-								value: i
-							})
-						}
-						if (arr[0] !== '') {
-							list.unshift({
-								name: '',
-								value: value
-							});
-						} else {
-							list[0].value = value;
-						}
-					}
-				}
-				return list;
-			};
-
-			/**
-			 * 转换时间
-			 * @param {String} timeStr 时间字符串
-			 * @param {String} format 转换格式
-			 * @return {String} 返回转换后的结果
-			 */
-			Vue.prototype.$to_time = function(timeStr, format) {
-				if(!timeStr){
-					return ""
-				}
-				var time = timeStr.toTime();
-				if (format) {
-					return time.toStr(format);
-				} else {
-					var date = time.toStr("yyyy-MM-dd");
-					var now = new Date();
-					if (date == now.toStr("yyyy-MM-dd")) {
-						return time.toStr("hh:mm")
-					} else if (date == now.addDays(-1).toStr("yyyy-MM-dd")) {
-						return "昨天" + time.toStr("hh:mm")
-					} else if (time.toStr("yyyy") == now.toStr("yyyy")) {
-						return time.toStr("MM-dd");
-					} else {
-						return date;
-					}
-				}
-			};
-			
 			/**
 			 * 转页面大小
 			 * @param {Object} arr
@@ -383,6 +295,339 @@ function load_mm_vue(Vue) {
 			Vue.prototype.$toStr = function(value, num) {
 				return value.toStr(num);
 			};
+
+			/* 新加函数 */
+			/**
+			 * 签名地址
+			 * @param {String} content 正文
+			 * @return {Object} 返回签名后的对象
+			 */
+			Vue.prototype.$sign_address = function(content) {
+				var date = new Date();
+				var timestamp = date.stamp();
+				var salt = (Math.random(0, 18) + '').md5().substring(0, 6);
+				var signature = (timestamp + content + salt + "wr").md5();
+				return {
+					timestamp,
+					content,
+					signature,
+					salt
+				};
+			};
+
+			Vue.prototype.$sign = function(content) {
+				var date = new Date();
+				var timestamp = date.stamp();
+				var {
+					salt,
+					user_id
+				} = this.user;
+				var signature = (timestamp + content + user_id + salt + "wr").md5();
+				return {
+					timestamp,
+					content,
+					salt,
+					signature
+				}
+			};
+
+			/**
+			 * 改变地址
+			 * @param {Object} address
+			 * @return {String}
+			 */
+			Vue.prototype.$change_address = function(address) {
+				if (address) {
+					var len = address.length;
+					return address.substring(0, 6) + "******" + address.substring(len - 4, len);
+				}
+				return address;
+			};
+
+			/**
+			 * 转为键值
+			 * @param {Object} arr 数组
+			 * @param {String} key 键
+			 * @param {String} name 名称
+			 * @param {String} value 默认值
+			 */
+			Vue.prototype.$to_kv = function(arr, key, name, value) {
+				if (value === undefined) {
+					value = '';
+				}
+				var list = [];
+				if (arr.length > 0) {
+					if (key) {
+						var n = name ? name : 'name';
+						for (var i = 0; i < arr.length; i++) {
+							var o = arr[i];
+							list.push({
+								name: o[n],
+								value: o[key]
+							});
+						}
+						if (arr[0].name !== '') {
+							list.unshift({
+								name: '',
+								value: value
+							});
+						} else {
+							list[0].value = value;
+						}
+					} else if (arr.length && typeof(arr[0]) === "object") {
+						list = arr;
+						if (arr[0].name !== '') {
+							list.unshift({
+								name: '',
+								value: value
+							});
+						}
+					} else {
+						for (var i = 0; i < arr.length; i++) {
+							var o = arr[i];
+							list.push({
+								name: o,
+								value: i
+							})
+						}
+						if (arr[0] !== '') {
+							list.unshift({
+								name: '',
+								value: value
+							});
+						} else {
+							list[0].value = value;
+						}
+					}
+				}
+				return list;
+			};
+
+			/**
+			 * 转换时间
+			 * @param {String} timeStr 时间字符串
+			 * @param {String} format 转换格式
+			 * @return {String} 返回转换后的结果
+			 */
+			Vue.prototype.$to_time = function(timeStr, format) {
+				var time = timeStr.toTime();
+				if (format) {
+					return time.toStr(format);
+				} else {
+					var date = time.toStr("yyyy-MM-dd");
+					var now = new Date();
+					if (date == now.toStr("yyyy-MM-dd")) {
+						return time.toStr("hh:mm")
+					} else if (date == now.addDays(-1).toStr("yyyy-MM-dd")) {
+						return "昨天" + time.toStr("hh:mm")
+					} else if (time.toStr("yyyy") == now.toStr("yyyy")) {
+						return time.toStr("MM-dd");
+					} else {
+						return date;
+					}
+				}
+			};
+
+			/**
+			 * @description 过滤数组
+			 * @param {Array} arr 被过滤的数组
+			 * @param {String} key 判断的键
+			 * @param {Object} value 判断的值
+			 * @return {Array} 返回过滤后的数组
+			 */
+			Vue.prototype.$filter = function(arr, key, value) {
+				var ar = [];
+				for (var i = 0; i < arr.length; i++) {
+					var o = arr[i];
+					if (o[key] === value) {
+						ar.push(o);
+					}
+				}
+				return ar;
+			};
+
+			/**
+			 *  改变对象属性时间
+			 * @param {Object} o 被改变的对象
+			 */
+			Vue.prototype.$changeTime = function(o) {
+				for (var k in o) {
+					if (k.indexOf('time') !== -1) {
+						if (typeof(k) == 'string') {
+							var val = o[k];
+							if (val || val.indexOf('T') !== -1) {
+								var v = new Date(o[k]);
+								o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+							} else if (/\d+/.test(val)) {
+								if (o[k].length == 10) {
+									var v = new Date(o[k] * 1000);
+									o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+								} else if (o[k].length == 13) {
+									var v = new Date(o[k] * 1000);
+									o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+								}
+							} else if (typeof(k) == 'number') {
+								var v = new Date(o[k]);
+								o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+							}
+						}
+					}
+				}
+			};
+
+			/**
+			 * 转为大写
+			 * @param {String} word 单词
+			 */
+			Vue.prototype.$to_up = function(word) {
+				return word.toUpperCase()
+			};
+
+			/**
+			 * 显示小数位
+			 * @param {Number} num 数值
+			 * @param {Number} len 小数位
+			 */
+			Vue.prototype.$to_fixed = function(num, len = 4) {
+				if (typeof(num) === 'number') {
+					return num.toFixed(len);
+				} else if (num) {
+					var n = Number(num);
+					return n.toFixed(len);
+				} else {
+					num = 0;
+					return num.toFixed(len);
+				}
+			};
+
+			/**
+			 * @description 转url字符串
+			 * @param {Object} obj 被转换的对象
+			 * @param {String} url 请求地址
+			 * @return {String} url参数格式字符串
+			 */
+			Vue.prototype.$toUrl = function(obj, url) {
+				var queryStr = "";
+				for (var key in obj) {
+					var value = obj[key];
+					if (typeof(value) === 'number') {
+						if (value > 0) {
+							queryStr += "&" + key + "=" + obj[key];
+						}
+					} else if (value) {
+						queryStr += "&" + key + "=" + encodeURI(value);
+					}
+				}
+				if (url) {
+					if (url.endWith('?') || url.endWith('&')) {
+						return url + queryStr.replace('&', '');
+					} else if (url.indexOf('?') === -1) {
+						return url + queryStr.replace('&', '?');
+					} else {
+						return url + queryStr;
+					}
+				} else {
+					return queryStr.replace('&', '');
+				}
+			};
+
+			/**
+			 * 转换名称
+			 * @param {Array} list 数组
+			 */
+			Vue.prototype.$to_name = function(list, value, value_key = 'name', key = 'value') {
+				var ret = "";
+				for (var i = 0; i < list.length; i++) {
+					var o = list[i];
+					if (o[key] === value) {
+						ret = o[value_key];
+						break
+					}
+				}
+				return ret;
+			};
+
+			/**
+			 * 补全请求url
+			 * @param {String} url 现地址
+			 * @return {String} 新地址
+			 */
+			Vue.prototype.$fullUrl = function(url) {
+				var url_new = "";
+				if (url) {
+					if (url.indexOf("~/") === 0) {
+						url_new = url.replace('~/', host);
+					} else if (url.indexOf("/") === 0) {
+						url_new = url.replace('/', host);
+					} else {
+						url_new = url;
+					}
+				}
+				return url_new;
+			};
+
+			/**
+			 * 补全请求url
+			 * @param {String} url 现地址
+			 * @return {String} 新地址
+			 */
+			Vue.prototype.$fullImgUrl = function(url) {
+				if (url) {
+					return this.$fullUrl(url);
+				} else {
+					return "/static/img/logo.png"
+				}
+			};
+
+			/**
+			 * 设置文件
+			 * @param {Object} o 被设置的对象
+			 * @param {Object} e 事件
+			 * @param {String} key 设置的值 
+			 */
+			Vue.prototype.$setFile = function(o, e, key = "value", set = true) {
+				var file = e;
+				var _this = this;
+				var form = {
+					name: file.name,
+					filename: file.name,
+					file
+				};
+				this.$upload("~/upload/file", form, function(json) {
+					if (json.result && json.result.obj) {
+						o[key] = json.result.obj.url;
+						if (set) {
+							_this.set(o);
+						}
+					}
+				});
+			};
+
+			/**
+			 * 设置图片
+			 * @param {Object} o 被设置的对象
+			 * @param {Object} e 事件
+			 * @param {String} key 设置的值 
+			 */
+			Vue.prototype.$setImg = function(o, e, key = "value", set = true) {
+				var file = e;
+				var _this = this;
+				var form = {
+					name: file.name,
+					filename: file.name,
+					file
+				};
+				this.$upload("~/upload/image", form, function(json) {
+					if (json.result && json.result.obj) {
+						o[key] = json.result.obj.url;
+						if (set) {
+							_this.set(o);
+						}
+					}
+				});
+			};
+
+			/* /新加函数 */
 
 			/* === 注册过滤器, 备注：过滤器在$-app中无法使用 === */
 			/**

@@ -442,6 +442,9 @@ Drive.prototype.create_vue = async function(file, route) {
 	} else if (file.indexOf('pc' + l) !== -1) {
 		f += "pc/";
 	}
+	if (name.endsWith('_config_form')) {
+		f += 'page_config_form.vue';
+	}
 	if (name.endsWith('_form')) {
 		f += 'page_form.vue';
 	} else if (name.endsWith('_view')) {
