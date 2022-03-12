@@ -340,9 +340,6 @@ define(["/js/web3.min.js", "/js/bignumber.min.js"], function(Web3, BigNumber){
 	      chainId,
 	      accounts
 	    } = payload;
-	    console.log("连接成功");
-	    console.log(chainId, accounts);
-	    console.log(Object.keys(payload));
 	    this.event('connect', accounts, this.toChage_10(chainId, 1));
 	  });
 	

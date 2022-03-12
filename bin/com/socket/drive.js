@@ -132,7 +132,7 @@ Drive.prototype.onmessage = async function(bodyStr, ctx, token) {
  * @return {Boolean} 返回true表示做状态修改, 例如关闭时为true, 会删除该客户端
  */
 Drive.prototype.noticy = async function(type, bodyStr, ctx, token) {
-	$.log.debug('通知:', '关闭了');
+	// $.log.debug('通知:', '关闭了');
 	return true;
 };
 
@@ -201,7 +201,7 @@ Drive.prototype.set_socket = function(ctx, token) {
  * @param {String} token 临时访问牌
  */
 Drive.prototype.success = function(ctx, token) {
-	var ret = $.ret.bl(true, '连接成功');
+	var ret = $.ret.bl(true, 'connection succeeded');
 	// 首次响应加上身份牌
 	ret.result.token = token;
 	// ID为0表示连接成功
