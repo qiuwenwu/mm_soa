@@ -304,9 +304,9 @@ Drive.prototype.to_where = function(db, query, method) {
  */
 Drive.prototype.get_main = async function(db, query, method) {
 	var ret;
-
 	if (this.config.field.has("*{0}*")) {
-		if (this.config.field_hide.getMatch(query[db.config.filter.field])) {
+		var field = query[db.config.filter.field];
+		if (field && this.config.field_hide.getMatch(field)) {
 			return $.ret.error(70003, '不合法的查询参数');
 		}
 	}
