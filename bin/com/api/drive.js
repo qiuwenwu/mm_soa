@@ -371,7 +371,7 @@ Drive.prototype.main = async function(ctx, db) {
 			req.body.file = fobj.file;
 			req.body.url = fobj.url;
 		}
-
+		db.user = ctx.session.user;
 		var ret = await this.sql.run(req.query, req.body, db);
 		return ret;
 	} else {

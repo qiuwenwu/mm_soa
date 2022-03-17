@@ -73,16 +73,9 @@ Oauth.prototype.check_sub = async function(ctx) {
  * @param {Object} ctx HTTP请求上下文
  * @return {Object} 验证失败返回错误提示，验证通过返回null
  */
-Oauth.prototype.check = async function(ctx, db) {
+Oauth.prototype.check = async function(ctx) {
 	// 无需登录则不验证身份和权限
 	var cg = this.config;
-	if (!cg.signIn) {
-		return null;
-	}
-	var error = await this.main(ctx);
-	if (error) {
-		return error;
-	}
 	var user = ctx.session.user;
 	if (!user) {
 		var token = ctx.headers[$.dict.token];
@@ -100,16 +93,23 @@ Oauth.prototype.check = async function(ctx, db) {
 				}
 				if (user) {
 					ctx.session.user = user;
-					db.user = user;
 				}
 			}
 		}
+	}
+	if (!cg.signIn) {
+		return null;
+	}
+	var error = await this.main(ctx);
+	if (error) {
+		return error;
 	}
 
 	error = {
 		code: 70000,
 		message: "没有访问权限"
 	};
+	
 	if (user) {
 		// 判断特殊用户级别
 		if (cg.gm !== 0 && user.gm < cg.gm) {
