@@ -33,7 +33,7 @@ class Static extends Index {
 		this.run = async function(ctx, next) {
 			var done;
 			var md = ctx.method;
-			var path = ctx.path;
+			var path = ctx.path.toLocaleLowerCase();
 			if (md === 'GET' || md === 'HEAD') {
 				var list = $this.list;
 				var len = list.length;
