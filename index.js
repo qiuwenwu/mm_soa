@@ -104,6 +104,11 @@ class Soa extends Base {
 				 */
 				"static": true,
 				/**
+				 * 前端web缓存时长, 默认7天
+				 * @type {Number} 
+				 */
+				"maxAge": 60 * 60 * 24 * 7,
+				/**
 				 * 使用外事件
 				 * @type {Boolean}
 				 */

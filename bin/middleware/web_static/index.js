@@ -9,8 +9,8 @@ module.exports = function(server) {
 	// 处理静态文件
 	if (config.web.static) {
 		server.use(statics(
-			config.path.static, {
-				maxAge: 60 * 60 * 24 * 7,
+			config.path.static.fullname(), {
+				maxAge: config.web.maxAge,
 				gzip: true,
 				brotli: true
 			}));
