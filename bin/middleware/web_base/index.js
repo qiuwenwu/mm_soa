@@ -16,6 +16,7 @@ module.exports = function(server) {
 	 * 发送文件
 	 */
 	server.use(async(ctx, next) => {
+		ctx.path = ctx.path.toLocaleLowerCase();
 		ctx.send = async function(src){
 			await send(ctx, src);
 		}
@@ -24,7 +25,7 @@ module.exports = function(server) {
 	
 	// 设置session 保存时长2小时
 	server.use(session({
-		maxAge: 7200
+		maxAge: web.maxAge
 	}));
 
 	// 使用压缩
